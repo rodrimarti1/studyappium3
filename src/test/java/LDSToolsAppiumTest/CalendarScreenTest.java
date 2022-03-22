@@ -174,7 +174,7 @@ public class CalendarScreenTest extends BaseDriver {
         }
     }
 
-    @Test (groups = {"all", "all3", "daily", "daily2", "jft"})
+    @Test (groups = {"all", "all3", "daily", "daily2"})
     public void calenderDisplayType() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -207,52 +207,58 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all", "all4", "daily", "daily3"})
+    @Test (groups = {"all", "all4", "daily", "daily3", "jft"})
     public void calenderSubscriptions() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
-        PinScreen myPinScreen = new PinScreen(driver);
         BasePage myBasePage = new BasePage(driver);
-        WhatsNewScreen myWhatsNew = new WhatsNewScreen(driver);
         MenuScreen myMenu = new MenuScreen(driver);
         CalendarsScreen myCalendar = new CalendarsScreen(driver);
 
+        //Login
         myHelper.proxyLogin("sungah");
         myHelper.enterPin("1", "1", "3", "3");
         //Go to Calendar
         myMenu.selectMenu(myMenu.calendar);
         Thread.sleep(2000);
-        myBasePage.scrollToTextGeneral("Temple Closed");
+        //Check for a Stake Calendar Item
+        myBasePage.scrollToTextGeneral("High Council");
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Temple Closed", pageSource, "contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("High Council", pageSource, "contains"));
+        //Edit the Calendar
         editCalendar();
         Thread.sleep(1000);
+        //Edit the Subscriptions and uncheck Stake Calendar
         myBasePage.waitForElementThenClick(myCalendar.calendarSubscriptions);
         myBasePage.scrollDownAndroidUIAutomator("0");
         myCalendar.checkCalendarToDisplay("Stake Calendar", "check");
         myBasePage.waitForElementThenClick(myCalendar.calendarsSubscriptionsDone);
         myBasePage.waitUnitlTextIsGone("Syncing");
+        //Go back to the Calendar Main Page
         if (getRunningOS().equals("ios")) {
             myBasePage.waitForElementThenClick(myCalendar.calendarDone);
             Thread.sleep(2000);
         } else {
             myBasePage.waitForElementThenClick(myBasePage.backButton);
         }
-
+        //Scroll up to refresh the calendar
         myBasePage.scrollUp(500);
         //Check the page source for Stake Event
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertFalse(myBasePage.checkNoCaseList("Temple Closed", pageSource, "contains"));
+
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            pageSource = myBasePage.getSourceOfPage();
+        } else {
+            pageSource = scrollAndGetText();
+        }
+        Assert.assertFalse(myBasePage.checkNoCaseList("High Council", pageSource, "contains"));
 
 
         //Clean up
         editCalendar();
         Thread.sleep(1000);
         myBasePage.waitForElementThenClick(myCalendar.calendarSubscriptions);
-
         myBasePage.scrollDownAndroidUIAutomator("0");
         myCalendar.checkCalendarToDisplay("Stake Calendar", "uncheck");
-
         myBasePage.waitForElementThenClick(myCalendar.calendarsSubscriptionsDone);
 
 
@@ -271,11 +277,23 @@ public class CalendarScreenTest extends BaseDriver {
 
         Thread.sleep(2000);
         //Check the page source to see Stake Presidency Interviews
-        myBasePage.scrollToTextGeneral("Temple Closed");
+        myBasePage.scrollToTextGeneral("High Council");
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Temple Closed", pageSource, "contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("High Council", pageSource, "contains"));
 
 
+    }
+
+    private String scrollAndGetText() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        String pageSource = null;
+        int myCounter;
+
+        for (myCounter = 1; myCounter < 5; myCounter++) {
+            pageSource = myBasePage.getSourceOfPage();
+            myBasePage.scrollDownAndroidUIAutomator("0");
+        }
+        return pageSource;
     }
 
 
@@ -352,13 +370,6 @@ public class CalendarScreenTest extends BaseDriver {
         calendarCheck();
     }
 
-    //    @Test (groups = {"all4", "all", "smoke", "smoke4"})
-//    public void calendarSimple_BISHOP() throws Exception {
-//        HelperMethods myHelper = new HelperMethods();
-//        myHelper.proxyLogin("mbthomas74");
-//        myHelper.enterPin("1", "1", "3", "3");
-//        calendarCheck();
-//    }
 
 
 }
