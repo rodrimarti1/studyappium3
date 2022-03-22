@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="iOS Smoke Test" configfailurepolicy="continue" verbose="2" parallel="tests" thread-count="4">
+    <test name="iOS Smoke Test - iPhone 12" thread-count="1" parallel="false" >
+        <parameter name="os" value="ios" />
+        <parameter name="fileName" value="LDS Tools.app" />
+        <parameter name="testDevice" value="iPhone 12" />
+        <parameter name="startSleepTime" value="0200" />
+        <parameter name="systemPort" value="8269" />
+
+        <groups>
+            <run>
+                <include name="smoke1"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="LDSToolsAppium.BaseDriver" />
+
+            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.LoginPageTest" />
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />
+            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.PinScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
+            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
+            <class name="LDSToolsAppiumTest.ListsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
+        </classes>
+    </test>
+
+    <test name="iOS Smoke Test - iPhone 11" thread-count="1" parallel="false" >
+        <parameter name="os" value="ios" />
+        <parameter name="fileName" value="LDS Tools.app" />
+        <parameter name="testDevice" value="iPhone 11" />
+        <parameter name="startSleepTime" value="60000" />
+        <parameter name="systemPort" value="8292" />
+
+        <groups>
+            <run>
+                <include name="smoke2"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="LDSToolsAppium.BaseDriver" />
+
+            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.LoginPageTest" />
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />
+            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.PinScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
+            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
+            <class name="LDSToolsAppiumTest.ListsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
+        </classes>
+    </test>
+
+    <test name="iOS Smoke Test - iPhone 13" thread-count="1" parallel="false" >
+        <parameter name="os" value="ios" />
+        <parameter name="fileName" value="LDS Tools.app" />
+        <parameter name="testDevice" value="iPhone 13" />
+        <parameter name="startSleepTime" value="60000" />
+        <parameter name="systemPort" value="8282" />
+
+        <groups>
+            <run>
+                <include name="smoke3"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="LDSToolsAppium.BaseDriver" />
+
+            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.LoginPageTest" />
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />
+            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.PinScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
+            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
+            <class name="LDSToolsAppiumTest.ListsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
+        </classes>
+    </test>
+
+    <test name="iOS Smoke Test - iPhone 8" thread-count="1" parallel="false" >
+        <parameter name="os" value="ios" />
+        <parameter name="fileName" value="LDS Tools.app" />
+        <parameter name="testDevice" value="iPhone 8" />
+        <parameter name="startSleepTime" value="0200" />
+        <parameter name="systemPort" value="8267" />
+
+        <groups>
+            <run>
+                <include name="smoke4"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="LDSToolsAppium.BaseDriver" />
+
+            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.LoginPageTest" />
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />
+            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.PinScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
+            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
+            <class name="LDSToolsAppiumTest.ListsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
+        </classes>
+    </test>
+</suite>
+
+

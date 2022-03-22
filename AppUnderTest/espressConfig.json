@@ -1,10 +1,16 @@
 {
   "toolsVersions": {
+    "gradle": "7.2",
+    "androidGradlePlugin": "4.2.0",
     "compileSdk": 31,
+    "buildTools": "30.0.3",
     "minSdk": 23,
-    "targetSdk": 31
-  }
+    "targetSdk": 31,
+    "kotlin": "1.6.10"
+  },
+  "additionalAppDependencies": [
 
-
+  ]
 }
+
 
