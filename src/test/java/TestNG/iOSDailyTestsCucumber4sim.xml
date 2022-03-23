@@ -5,7 +5,7 @@
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
         <parameter name="testDevice" value="iPhone 12" />
-        <parameter name="startSleepTime" value="2000" />
+        <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8202" />
 
         <classes>

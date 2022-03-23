@@ -71,7 +71,7 @@
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
         <parameter name="testDevice" value="iPhone 13" />
-        <parameter name="startSleepTime" value="60000" />
+        <parameter name="startSleepTime" value="120000" />
         <parameter name="systemPort" value="8282" />
 
         <groups>
@@ -104,7 +104,7 @@
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
         <parameter name="testDevice" value="iPhone 8" />
-        <parameter name="startSleepTime" value="0200" />
+        <parameter name="startSleepTime" value="180000" />
         <parameter name="systemPort" value="8267" />
 
         <groups>
