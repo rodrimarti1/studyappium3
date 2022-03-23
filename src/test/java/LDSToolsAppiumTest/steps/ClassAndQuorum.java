@@ -300,7 +300,7 @@ public class ClassAndQuorum extends BaseDriver {
                 for (int x = 2; x <= 5; x++) {
 //                    Thread.sleep(2000);
 //                    System.out.println(myBasePage.getSourceOfPage());
-                    tempDate = (driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[" + x + "]")).getAttribute("value"));
+                    tempDate = (driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeStaticText[" + x + "]")).getAttribute("value"));
 //                    System.out.println("TEMP DATE: "  + tempDate);
 //                    System.out.println(myBasePage.getSourceOfPage());
                     dateArray = tempDate.split(":");
