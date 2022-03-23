@@ -81,12 +81,12 @@
         </classes>
     </test>
 
-    <test name="Android daily Test 3 - Pixel 4 XL" thread-count="1" parallel="false" >
+    <test name="Android daily Test 3 - Pixel 5" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
        <parameter name="fileName" value="ldstools-master.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
-        <parameter name="testDevice" value="99051FFBA000S7" />
+        <parameter name="testDevice" value="09251FDD4003MU" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->
         <parameter name="startSleepTime" value="120000" />
         <parameter name="systemPort" value="8203" />
@@ -118,12 +118,12 @@
         </classes>
     </test>
 
-    <test name="Android daily Test 4 - Samsung Galaxy Note 10" thread-count="1" parallel="false" >
+    <test name="Android daily Test 4 - Samsung Galaxy S20 Plus" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
        <parameter name="fileName" value="ldstools-master.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
-        <parameter name="testDevice" value="R38M803MWGM" />
+        <parameter name="testDevice" value="R5CN3032NSW" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->
         <parameter name="startSleepTime" value="180000" />
         <parameter name="systemPort" value="8204" />
@@ -157,12 +157,12 @@
     </test>
 
 
-<!--    <test name="Android daily Test 5 - Samsung Galaxy Note 10 - Cucumber Tests" thread-count="2" parallel="true">-->
+<!--    <test name="Android daily Test 5 - Samsung Galaxy S20 Plus - Cucumber Tests" thread-count="2" parallel="true">-->
 <!--        <parameter name="os" value="android" />-->
 <!--       <parameter name="fileName" value="ldstools-master.apk" />-->
 <!--        &lt;!&ndash;        <parameter name="fileName" value="ldstools-beta.apk" />&ndash;&gt;-->
 <!--&lt;!&ndash;        <parameter name="fileName" value="ldstools-release.apk" />&ndash;&gt;-->
-<!--        <parameter name="testDevice" value="R38M803MWGM" />-->
+<!--        <parameter name="testDevice" value="R5CN3032NSW" />-->
 <!--        <parameter name="startSleepTime" value="180000" />-->
 <!--        <parameter name="systemPort" value="8205" />-->
 
