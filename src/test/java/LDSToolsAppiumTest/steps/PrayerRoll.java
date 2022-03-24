@@ -48,6 +48,8 @@ public class PrayerRoll extends BaseDriver {
     @When("the prayer roll button is pressed")
     public void thePrayerRollButtonIsPressed() throws Exception {
         LOGGER.info("the prayer roll button is pressed");
+        //Need a sleep here to wait for the popup to go away.
+        Thread.sleep(2000);
 //        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myTemple.prayerRollButton);
 //        myTemple.prayerRollButton.click();
