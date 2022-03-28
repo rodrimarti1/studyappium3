@@ -12,7 +12,7 @@
         <parameter name="systemPort" value="8251" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.ClassAndQuorumRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.ProgressRecordRunner"> </class>
         </classes>
     </test>
 </suite>
