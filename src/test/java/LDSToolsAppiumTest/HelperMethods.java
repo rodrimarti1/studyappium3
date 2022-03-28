@@ -152,7 +152,7 @@ public class HelperMethods extends BaseDriver {
             myBasePage.allowButton.click();
         }
 
-        byte[] decodeBytes = Base64.decodeBase64("QkBiMDBuU3AxNzIwMjA=");
+        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
 //            iosDeepLink(proxyUserName);
             loginName = "zmaxfield/stage/" + proxyUserName;
@@ -293,7 +293,7 @@ public class HelperMethods extends BaseDriver {
         if (myBasePage.checkForElement(myBasePage.allowButton)) {
             myBasePage.allowButton.click();
         }
-        byte[] decodeBytes = Base64.decodeBase64("QkBiMDBuU3AxNzIwMjA=");
+        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             iosDeepLinkProd(proxyUserName);
         } else {

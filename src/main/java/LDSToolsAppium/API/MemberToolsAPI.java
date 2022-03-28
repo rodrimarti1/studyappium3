@@ -45,7 +45,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //        System.out.println("Decoded value is " + new String(valueDecoded));
 
 
-        byte[] decodeBytes = Base64.decodeBase64("QkBiMDBuU3AxNzIwMjA=");
+        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
 
         TestWam2CredentialsManager credentialsManager = new TestWam2CredentialsManager("zmaxfield", new String(decodeBytes));
 
