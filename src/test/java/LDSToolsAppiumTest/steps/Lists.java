@@ -9,7 +9,11 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import org.apache.commons.lang.WordUtils;
 import org.testng.Assert;
+
+import java.util.List;
 
 
 public class Lists extends BaseDriver  {
@@ -130,6 +134,19 @@ public class Lists extends BaseDriver  {
     }
 
 
+    @And("members are added to the list")
+    public void membersAreAddedToTheList(List<String> membersToAdd ) throws Exception {
+        String memberToClickOn;
+        for (String oneMember : membersToAdd ) {
+            memberToClickOn = WordUtils.capitalize(oneMember);
+            System.out.println("Member to Add: " + oneMember);
+            System.out.println("Member to click on: " + memberToClickOn);
+            myLists.addMemberToList(oneMember, memberToClickOn);
+        }
+        myBasePage.waitForElementThenClick(myLists.listsBackButton);
+    }
+
+
 
 
 
@@ -154,4 +171,5 @@ public class Lists extends BaseDriver  {
         myBase.backButton.click();
         Thread.sleep(2000);
     }
+
 }

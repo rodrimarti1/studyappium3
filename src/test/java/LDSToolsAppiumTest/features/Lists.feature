@@ -2,17 +2,24 @@
   Feature: Test the Lists functionality of Member Tools
 
     @jft
-    Scenario: As a user I want to create a list and add members to the list
+    Scenario: Create a list and add members to the list
       Given a user is logged in and on the Lists page
       When I add a List "New Automated List"
-      And I add members to the list
+      And members are added to the list
+        | "lovell, heather" |
       Then the "New Automated List" with the members should be displayed.
 
 
-    Scenario: As a user I want to create a list and add multiple members
+    Scenario: Create a list and add multiple members
       Given  a user is logged in and on the Lists page
       When I add a List "Test List 1"
-      And I add six members to the list
+      And members are added to the list
+        | "lovell, heather" |
+        | "lovell, kyler"   |
+        | "carter, earon"   |
+        | "carter, genie"   |
+        | "carter, tanya"   |
+        | "casas, sarai"    |
       Then the "Test List 1" six members should be displayed on the list
 
 
