@@ -149,7 +149,7 @@ public class ListsScreenTest extends BaseDriver {
     }
 
 
-    //TODO: Need to update user
+    //Now a Cucumber Test
     @Test(groups = {"needUpdate"})
 //    @Test(groups = {"all4", "all"})
     public void listsMaxOutName() throws Exception {
@@ -227,7 +227,7 @@ public class ListsScreenTest extends BaseDriver {
 
     }
 
-    //TODO: Need to update user
+    //Cucumber test now
     @Test(groups = {"needUpdate"})
 //    @Test(groups = {"all4", "all"})
     public void listsOtherNames() throws Exception {
@@ -305,7 +305,7 @@ public class ListsScreenTest extends BaseDriver {
 
 
     //iOS has had problems with & in the name
-    //TODO: Need to update user
+    //Cucumber test now
     @Test(groups = {"needUpdate"})
 //    @Test(groups = {"all3", "all"})
     public void listsOtherNamesAnd() throws Exception {
@@ -382,7 +382,7 @@ public class ListsScreenTest extends BaseDriver {
 
 
 
-    //TODO: Need to update user
+    //Cucumber test now
     @Test(groups = {"needUpdate"})
 //    @Test(groups = {"all3", "all"})
     public void listsDelete() throws Exception {
@@ -473,7 +473,7 @@ public class ListsScreenTest extends BaseDriver {
 
     }
 
-    //TODO: Need to update user
+    //Cucumber test now
     @Test(groups = {"needUpdate"})
 //    @Test(groups = {"all4", "all"})
     public void listsEdit() throws Exception {
@@ -579,7 +579,7 @@ public class ListsScreenTest extends BaseDriver {
 
     }
 
-    //TODO: Need to update user
+    //Cucumber test now
     @Test(groups = {"needUpdate"})
 //    @Test(groups = {"all4", "all"})
     public void listsLargeNumberOfMembers() throws Exception {
