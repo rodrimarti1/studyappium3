@@ -1,9 +1,12 @@
 @Lists
   Feature: Test the Lists functionality of Member Tools
 
+    Background:
+      Given a list user signs in
+      And is on the list page
+
     @MQA-5711 @MQA-2215 @jft
     Scenario: Create a list and add a member to the list
-      Given a user is logged in and on the Lists page
       When I add a List "New Automated List"
       And members are added to the list
         | "barker, susan" |
@@ -11,7 +14,6 @@
 
     @MQA-5712 @MQA-2215
     Scenario: Create a list and add multiple members
-      Given  a user is logged in and on the Lists page
       When I add a List "Test List 1"
       And members are added to the list
         | "barker, susan"       |
@@ -24,7 +26,6 @@
 
     @MQA-5714 @MQA-2215
     Scenario: Max out a list name
-      Given a user is logged in and on the Lists page
       When I add a List "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890"
       And members are added to the list
         | "barker, susan" |
@@ -32,7 +33,6 @@
 
     @MQA-5715 @MQA-2215
     Scenario: Create a list with odd characters
-      Given a user is logged in and on the Lists page
       When I add a List "!@#$%^&*(){}[]~~//??.,<>;;;;;"
       And members are added to the list
         | "barker, susan" |
@@ -40,7 +40,6 @@
 
     @MQA-5716 @MQA-2215
     Scenario: Create a list with ampersands
-      Given a user is logged in and on the Lists page
       When I add a List "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&"
       And members are added to the list
         | "barker, susan" |
@@ -48,31 +47,30 @@
 
     @MQA-5718 @MQA-2215
     Scenario: Delete a list
-      Given and user is logged in on the lists page with lists setup
+      And sample lists are setup
       When the list "Delete This List" is deleted
       Then the list "Delete This List" will be deleted
 
     @MQA-5719 @MQA-2215
     Scenario: Delete a member from a list
-      Given and user is logged in on the lists page with lists setup
+      And sample lists are setup
       When a member "boat, steven" is deleted from "My Member List"
       Then the member "boat, steven" will be deleted
 
     @MQA-5720 @MQA-2215
     Scenario: Create a list with a large number of members
-      Given a user is logged in and on the Lists page
       When a list is created with a large number of members
       Then the large number list will be created
 
     @MQA-5721 @MQA-2215
     Scenario: Rotate lists
-      Given and user is logged in on the lists page with lists setup
+      And sample lists are setup
       When the device is rotated
       Then the information for the lists setup will be visible
 
     @MQA-5722 @MQA-2215
     Scenario: Change the name of a list
-      Given and user is logged in on the lists page with lists setup
+      And sample lists are setup
       When a list name is changed
       Then the list name will be updated
 
