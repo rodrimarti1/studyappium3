@@ -266,7 +266,7 @@ public class ListsScreen extends BasePage {
         if (getOS().equals("ios")) {
             Thread.sleep(2000);
 //            myBasePage.scrollDownIOS();
-            System.out.println(myBasePage.getSourceOfPage());
+//            System.out.println(myBasePage.getSourceOfPage());
             listsAddToListButton.click();
             Thread.sleep(2000);
             listsSearch.sendKeys(memberToAdd);

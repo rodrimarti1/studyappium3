@@ -28,7 +28,7 @@ public class Lists extends BaseDriver  {
     @Given("a list user signs in")
     public void aListUserSignsIn() throws Exception {
         LOGGER.info("a list user signs in");
-        myHelper.proxyLogin("darthjohn");
+        myHelper.proxyLogin("julieryan");
         myHelper.enterPin("1", "1", "3", "3");
     }
 
@@ -44,7 +44,7 @@ public class Lists extends BaseDriver  {
 
     @Given("a user is logged in and on the Lists page")
     public void aUserIsLoggedInAndOnTheListsPage() throws Exception {
-        myHelper.proxyLogin("darthjohn");
+        myHelper.proxyLogin("julieryan");
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.lists);
         //Check for existing Lists and delete if found
@@ -87,8 +87,8 @@ public class Lists extends BaseDriver  {
         myLists.selectListName(listName);
         Thread.sleep(4000);
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Lovell", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Heather", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("barker", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("susan", pageSource, "Contains"));
         myBasePage.backButton.click();
         Thread.sleep(2000);
 
@@ -131,7 +131,7 @@ public class Lists extends BaseDriver  {
         //Logout - Login
         myMenu.menuLogOut();
 //        myHelper.loginUAT("LDSTools25", "password1");
-        myHelper.proxyLogin("darthjohn");
+        myHelper.proxyLogin("julieryan");
         myHelper.enterPin("1", "1", "3", "3");
 
         //Go to Lists
@@ -231,12 +231,12 @@ public class Lists extends BaseDriver  {
         myLists.selectListName("Test List 1");
         Thread.sleep(4000);
         pageSource = myBase.getSourceOfPage();
-        Assert.assertTrue(myBase.checkNoCaseList("Earon", pageSource, "Contains"));
-        Assert.assertTrue(myBase.checkNoCaseList("Genie", pageSource, "Contains"));
-        Assert.assertTrue(myBase.checkNoCaseList("Tanya", pageSource, "Contains"));
-        Assert.assertTrue(myBase.checkNoCaseList("Sarai", pageSource, "Contains"));
-        Assert.assertTrue(myBase.checkNoCaseList("Heather", pageSource, "Contains"));
-        Assert.assertTrue(myBase.checkNoCaseList("Kyler", pageSource, "Contains"));
+        Assert.assertTrue(myBase.checkNoCaseList("Susan", pageSource, "Contains"));
+        Assert.assertTrue(myBase.checkNoCaseList("Audrey", pageSource, "Contains"));
+        Assert.assertTrue(myBase.checkNoCaseList("Jacqueline", pageSource, "Contains"));
+        Assert.assertTrue(myBase.checkNoCaseList("John", pageSource, "Contains"));
+        Assert.assertTrue(myBase.checkNoCaseList("Steven", pageSource, "Contains"));
+        Assert.assertTrue(myBase.checkNoCaseList("Rachel", pageSource, "Contains"));
         myBase.backButton.click();
         Thread.sleep(2000);
     }
