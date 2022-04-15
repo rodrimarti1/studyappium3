@@ -5,14 +5,14 @@
       Given a list user signs in
       And is on the list page
 
-    @MQA-5711 @MQA-2215
+    @MQA-5711 @MQA-2215 @jft
     Scenario: Create a list and add a member to the list
       When I add a List "New Automated List"
       And members are added to the list
         | barker, susan |
       Then the "New Automated List" with the members should be displayed.
 
-    @MQA-5712 @MQA-2215  @jft
+    @MQA-5712 @MQA-2215
     Scenario: Create a list and add multiple members
       When I add a List "Test List 1"
       And members are added to the list

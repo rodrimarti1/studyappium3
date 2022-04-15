@@ -154,8 +154,8 @@ public class HelperMethods extends BaseDriver {
 
         byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-//            iosDeepLink(proxyUserName);
-            loginName = "zmaxfield/stage/" + proxyUserName;
+            iosDeepLink(proxyUserName);
+//            loginName = "zmaxfield/stage/" + proxyUserName;
         } else {
             while(!myBasePage.checkForElement(myLoginPage.titleMemberToolsSTAGE)|| myCounter > 4) {
 //                System.out.println(myBasePage.getSourceOfPage());
@@ -504,19 +504,18 @@ public class HelperMethods extends BaseDriver {
                 }
             }
 
-
-            mySettings.networkEnvironment.click();
-            mySettings.UAT.click();
             myBasePage.waitForElement(mySettings.proxyUsername);
             mySettings.proxyUsername.click();
             myBasePage.waitForElement(mySettings.proxyEditField);
             mySettings.proxyEditField.setValue(proxyUserName);
             mySettings.proxyDone.click();
+            mySettings.networkEnvironment.click();
+            mySettings.UAT.click();
             Thread.sleep(1000);
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
-            Thread.sleep(500);
-//            System.out.println(myBasePage.getSourceOfPage());
-            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
+//            myBasePage.waitForElementThenClick(myBasePage.backButton);
+//            Thread.sleep(500);
+////            System.out.println(myBasePage.getSourceOfPage());
+//            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
 
 
         } else {

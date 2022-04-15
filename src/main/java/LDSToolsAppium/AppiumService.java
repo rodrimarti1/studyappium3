@@ -39,7 +39,7 @@ public class AppiumService {
 				.withIPAddress("127.0.0.1")
 				.withLogFile(appiumLogFile)
 				.withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-				.withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
+				.withArgument(GeneralServerFlag.LOG_LEVEL, "error")
 				.withArgument(GeneralServerFlag.RELAXED_SECURITY)
 				.build();
 		System.out.println("Starting Appium");
