@@ -965,7 +965,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
         } else if (jsonElement instanceof JsonArray) {
-//            System.out.println("JSON Array!");
+            System.out.println("JSON Array!");
             JsonArray jsonData = jsonElement.getAsJsonArray();
             List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
             for(ApiFinance unit : testExpenses) {
@@ -975,7 +975,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //                        System.out.println(myFinanceRequest.getPurpose());
                         myMap.put("prupose", myFinanceRequest.getPurpose());
                         myMap.put("id", myFinanceRequest.getId());
-                        myMap.put("date", myFinanceRequest.getDate());
+                        myMap.put("date", myFinanceRequest.getSubmittedDate());
                         myMap.put("receiptCount", myFinanceRequest.getReceiptCount());
                         myMap.put("payeeId", myFinanceRequest.getPayee().getId());
                         myMap.put("payeeName", myFinanceRequest.getPayee().getName());

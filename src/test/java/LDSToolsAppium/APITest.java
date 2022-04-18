@@ -54,6 +54,15 @@ public class APITest {
         int codeTest = 0;
         int responseCode = 0;
 
+        Map<String, Object> myMap = new HashMap<>();
+        myMap = apiTest.getExpenses("mbthomas74", "21628", "Test One");
+
+        for (String mapKey: myMap.keySet()) {
+            String key = mapKey.toString();
+            String value = myMap.get(mapKey).toString();
+            System.out.println(key + " - " + value);
+        }
+
 
 
         // *********************************

@@ -17,7 +17,8 @@ import java.util.List;
 public class QuarterlyScreenTest extends BaseDriver {
 
     //TODO: Need API tests
-    @Test ( groups = {"all3", "all", "daily", "daily3", "smoke", "smoke3", "jft"} )
+//    @Test ( groups = {"all3", "all", "daily", "daily3", "smoke", "smoke3", "jft"} )
+    @Test ( groups = {"broken"})
     public void quarterlyReportBasic() throws Exception {
         String pageSource;
         int rights;
@@ -51,8 +52,6 @@ public class QuarterlyScreenTest extends BaseDriver {
             Assert.assertFalse(myBasePage.checkNoCaseList("Reports", pageSource, "Contains"));
         }
     }
-
-
 
 
 }
