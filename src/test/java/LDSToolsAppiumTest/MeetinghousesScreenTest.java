@@ -41,6 +41,7 @@ public class MeetinghousesScreenTest extends BaseDriver {
             myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesAllowAndroidPermissions);
         }
 
+        myBasePage.waitForElement(myMeetinghouses.meetinghousesCurrentLocation);
         Assert.assertTrue(myMeetinghouses.meetinghousesCurrentLocation.isDisplayed());
         myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesCurrentLocation);
         Thread.sleep(4000);
