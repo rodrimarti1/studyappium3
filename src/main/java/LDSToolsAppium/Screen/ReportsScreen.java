@@ -216,6 +216,7 @@ public class ReportsScreen extends BasePage {
     public  MobileElement notBaptizedSort;
 
 
+
     //*************************************************************************************
     //********************* Action and Interview List *************************************
     //*************************************************************************************
@@ -556,7 +557,20 @@ public class ReportsScreen extends BasePage {
     public  MobileElement classAndQuorumFilterPrimary;
 
 
+    //Class and Quorum Visitors
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='VISITORS']")
+    @iOSXCUITFindBy(accessibility = "Add Visitors")
+    public MobileElement classAndQuorumVisitors;
 
+    //Class and Quorum Visitors Done - Save
+    @AndroidFindBy(xpath = "//*[@text='SAVE']")
+    @iOSXCUITFindBy(accessibility = "Done")
+    public MobileElement classAndQuorumVisitorsDone;
+
+    //Class and Quorum Visitors Cancel
+    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+    @iOSXCUITFindBy(accessibility = "Cancel")
+    public MobileElement classAndQuorumVisitorsCancel;
 
     //*************************************************************************************
     //************************************* Ordinances ************************************

@@ -10,6 +10,8 @@ import LDSToolsAppium.Screen.TemplesScreen;
 import LDSToolsAppiumTest.HelperMethods;
 
 import io.appium.java_client.MobileElement;
+import io.appium.java_client.pagefactory.AndroidFindBy;
+import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -452,6 +454,16 @@ public class ClassAndQuorum extends BaseDriver {
         //Done button?
     }
 
+    public MobileElement getVisitorField(String category, String weekNumber) throws Exception{
+        MobileElement myElement = null;
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            category = category.toUpperCase();
+            myElement = (MobileElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
+        } else {
+            myElement = (MobileElement) driver.get().findElement(By.xpath("//android.view.View[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
+        }
 
+        return  myElement;
+    }
 
 }
