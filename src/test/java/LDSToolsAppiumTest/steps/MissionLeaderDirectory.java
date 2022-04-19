@@ -41,8 +41,9 @@ public class MissionLeaderDirectory extends BaseDriver {
 
     @Then("they should see a list of their missionaries")
     public void theyShouldSeeAListOfTheirMissionaries() throws Exception {
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(pageSource.contains("Gallafent"));
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(pageSource.contains("Gallafent"));
+        searchForMemberCheckResultsMissionary("Gallafent, Zachary");
     }
 
     @When("they select a missionary under their mission")
