@@ -466,4 +466,44 @@ public class ClassAndQuorum extends BaseDriver {
         return  myElement;
     }
 
+    @Given("a {string} logs in and is on the Class and Quorum Attendance visitors page")
+    public void aLogsInAndIsOnTheClassAndQuorumAttendanceVisitorsPage(String memberCalling) throws Exception {
+        LOGGER.info("a " + memberCalling + " logs in and is on the Class and Quorum Attendance visitors page");
+        String[] callingRights;
+        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+        myHelper.proxyLogin(callingRights[1]);
+        myHelper.enterPin("1", "1", "3", "3");
+        myMenu.selectMenu(myMenu.reports);
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
+//        System.out.println(myBasePage.getSourceOfPage());
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
+    }
+
+
+    @When("{string} is entered in the {string} in the {string} field")
+    public void visitorIsEnteredInTheClassInTheWeekNumberField(String visitorNumber, String visitorClass, String weekNumber) throws Exception {
+        LOGGER.info(visitorNumber + " is entered in the " + visitorClass + " in the " + weekNumber + " field");
+        MobileElement myElement = null;
+        myBasePage.scrollToTextGeneral(visitorClass);
+        myElement = getVisitorField(visitorClass, weekNumber);
+        myElement.setValue(visitorNumber);
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
+    }
+
+    @Then("{string} will be saved in the {string} {string} field attendance")
+    public void visitorWillBeSavedInTheClassWeekNumberFieldAttendance(String visitorNumber, String visitorClass, String weekNumber) throws Exception {
+        LOGGER.info(visitorNumber + " will be saved in the " +visitorClass + " " +  weekNumber + " field attendance");
+        MobileElement myElement = null;
+        String foundText;
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
+        myBasePage.scrollToTextGeneral(visitorClass);
+        myElement = getVisitorField(visitorClass, weekNumber);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            foundText = myElement.getAttribute("value");
+        } else {
+            foundText = myElement.getAttribute("text");
+        }
+        Assert.assertEquals(foundText, visitorNumber);
+
+    }
 }

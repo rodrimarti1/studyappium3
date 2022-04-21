@@ -494,23 +494,27 @@ public class HelperMethods extends BaseDriver {
 
 
         if (myBasePage.getOS().equals("ios")) {
-            myLoginPage.overflowMenu.click();
+            myBasePage.waitForElementThenClick(myLoginPage.overflowMenu);
+//            myLoginPage.overflowMenu.click();
 
             if (myScanner.scannerCheckForText("Developer Settings") ) {
-                myLoginPage.developerButton.click();
+                myBasePage.waitForElementThenClick(myLoginPage.developerButton);
+//                myLoginPage.developerButton.click();
             } else {
                 for (int x = 1; x <= 5; x++) {
-                    myLoginPage.enterDeveloperButton.click();
+                    myBasePage.waitForElementThenClick(myLoginPage.enterDeveloperButton);
+//                    myLoginPage.enterDeveloperButton.click();
                 }
             }
 
-            myBasePage.waitForElement(mySettings.proxyUsername);
-            mySettings.proxyUsername.click();
+
+            myBasePage.waitForElementThenClick(mySettings.proxyUsername);
+//            mySettings.proxyUsername.click();
             myBasePage.waitForElement(mySettings.proxyEditField);
             mySettings.proxyEditField.setValue(proxyUserName);
             mySettings.proxyDone.click();
-            mySettings.networkEnvironment.click();
-            mySettings.UAT.click();
+            myBasePage.waitForElementThenClick(mySettings.networkEnvironment);
+            myBasePage.waitForElementThenClick(mySettings.UAT);
             Thread.sleep(1000);
 //            myBasePage.waitForElementThenClick(myBasePage.backButton);
 //            Thread.sleep(500);
