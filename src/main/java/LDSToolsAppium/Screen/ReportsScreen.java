@@ -558,7 +558,7 @@ public class ReportsScreen extends BasePage {
 
 
     //Class and Quorum Visitors
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='VISITORS']")
+    @AndroidFindBy(xpath = "//android.widget.Button[@text='VISITORS']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Add Visitors'")
     public MobileElement classAndQuorumVisitors;
 

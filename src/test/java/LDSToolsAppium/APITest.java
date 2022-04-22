@@ -20,6 +20,7 @@ import io.restassured.path.json.JsonPath;
 import java.awt.*;
 import java.io.File;
 import java.lang.reflect.Type;
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.List;
@@ -39,7 +40,8 @@ public class APITest {
     String rawData;
 
 //    111074 - AburnHill
-//    258598 - Fagamalo 2ndas
+//    258598 - Fagamalo 2nd
+//    39373 - Maplewood 2nd
     String unitNumber = "21628";
     String proxyLogin = "mbthomas74";
 
@@ -99,24 +101,29 @@ public class APITest {
         unitMap.put("212", "PRIMARY_SECOND_COUNSELOR");
         unitMap.put("213", "PRIMARY_SECRETARY");
 
-//        //Accounts!!
+
+
+
+        for (String callingId: unitMap.keySet()) {
+            memberList = apiTest.getAccounts("111074", callingId);
+            for (String myUsername: memberList) {
+//                System.out.println("Calling Username: " + myUsername);
+                callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
+            }
+        }
+
+        Collections.sort(callingAndLoginName);
+
+        for (String loginWithCalling : callingAndLoginName) {
+            System.out.println(loginWithCalling);
+        }
+
+        //        //Accounts!!
 ////        memberList = apiTest.getAccounts("39373", "183");
 ////        for (String myUsername: memberList) {
 ////            System.out.println("LIST NAME: " + myUsername);
 ////        }
 //
-        for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("39373", callingId);
-//            System.out.println("Calling: " + unitMap.get(callingId) );
-            for (String myUsername: memberList) {
-//                System.out.println("Calling Username: " + myUsername);
-                callingAndLoginName.add(unitMap.get(callingId)  + "," + myUsername );
-            }
-        }
-
-        for (String loginWithCalling : callingAndLoginName) {
-            System.out.println(loginWithCalling);
-        }
 //
 
 

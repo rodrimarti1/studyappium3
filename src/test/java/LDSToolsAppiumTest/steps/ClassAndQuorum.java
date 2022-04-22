@@ -460,6 +460,7 @@ public class ClassAndQuorum extends BaseDriver {
             category = category.toUpperCase();
             myElement = (MobileElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
         } else {
+//            System.out.println(myBasePage.getSourceOfPage());
             myElement = (MobileElement) driver.get().findElement(By.xpath("//android.view.View[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
         }
 
@@ -484,7 +485,14 @@ public class ClassAndQuorum extends BaseDriver {
     public void visitorIsEnteredInTheClassInTheWeekNumberField(String visitorNumber, String visitorClass, String weekNumber) throws Exception {
         LOGGER.info(visitorNumber + " is entered in the " + visitorClass + " in the " + weekNumber + " field");
         MobileElement myElement = null;
-        myBasePage.scrollToTextGeneral(visitorClass);
+        if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women"))) {
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                myBasePage.scrollDownIOS();
+            } else {
+                myBasePage.scrollDownAndroidUIAutomator("0");
+            }
+            Thread.sleep(1000);
+        }
         myElement = getVisitorField(visitorClass, weekNumber);
         myElement.setValue(visitorNumber);
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
@@ -496,7 +504,10 @@ public class ClassAndQuorum extends BaseDriver {
         MobileElement myElement = null;
         String foundText;
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
-        myBasePage.scrollToTextGeneral(visitorClass);
+        if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women"))) {
+            myBasePage.scrollDownAndroidUIAutomator("0");
+            Thread.sleep(1000);
+        }
         myElement = getVisitorField(visitorClass, weekNumber);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             foundText = myElement.getAttribute("value");
