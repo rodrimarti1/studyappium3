@@ -84,7 +84,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily1", "jft"})
+    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily1"})
     public void ministeringBasic_BISHOP() throws Exception {
         ministeringBasicSub("BISHOP");
     }
@@ -681,7 +681,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4"})
+    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4", "jft"})
     public void companionshipsElders_BISHOP() throws Exception {
         companionshipsEldersSub("BISHOP");
     }
@@ -805,7 +805,7 @@ public class MinisteringScreenTest extends BaseDriver {
             myMinistering.selectDistrict("EQ President");
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Bryson", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Martinez", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Darth", pageSource, "Contains"));
 
             myBasePage.backButton.click();
