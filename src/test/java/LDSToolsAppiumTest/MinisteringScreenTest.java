@@ -548,7 +548,7 @@ public class MinisteringScreenTest extends BaseDriver {
         ministeringAssignedHouseholdsSub("MEMBER2");
     }
 
-    @Test(groups = {"all2", "all", "daily", "daily1"})
+    @Test(groups = {"all2", "all", "daily", "daily1", "jft"})
     public void ministeringAssignedHouseholds_ELDERS_QUORUM_PRESIDENT() throws Exception {
         ministeringAssignedHouseholdsSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -631,11 +631,11 @@ public class MinisteringScreenTest extends BaseDriver {
             //For some reason the pageSource is broken for this page in iOS.
             if (getRunningOS().equalsIgnoreCase("ios")) {
                 pageSource = myBasePage.getSourceOfPage();
-                Assert.assertTrue(pageSource.contains("Anderson"));
+                Assert.assertTrue(pageSource.contains("Adams"));
                 Assert.assertFalse(pageSource.contains("Skywalker"));
             } else {
                 pageSource = myBasePage.getSourceOfPage();
-                Assert.assertTrue(myBasePage.checkNoCaseList("Anderson", pageSource, "Contains"));
+                Assert.assertTrue(myBasePage.checkNoCaseList("Adams", pageSource, "Contains"));
                 Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
             }
 
@@ -681,7 +681,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4"})
     public void companionshipsElders_BISHOP() throws Exception {
         companionshipsEldersSub("BISHOP");
     }
