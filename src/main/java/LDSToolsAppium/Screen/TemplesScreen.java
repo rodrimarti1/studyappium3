@@ -281,6 +281,7 @@ public class TemplesScreen extends BasePage {
             }
 
             myBasePage.waitForElementThenClick(mySettings.templeShowTempleRecommendExpiration);
+            myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
             myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
             myBasePage.checkForElement(numberOfWeeks);
             numberOfWeeks.click();
