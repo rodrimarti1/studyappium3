@@ -274,7 +274,12 @@ public class TemplesScreen extends BasePage {
             //Open Settings and enable Recommend
             Thread.sleep(2000);
             myMenu.selectMenu(myMenu.settings);
-            myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
+            } else {
+                myBasePage.scrollTextIntoViewAndroid("Show Temple Recommend Expiration", 4);
+            }
+
             myBasePage.waitForElementThenClick(mySettings.templeShowTempleRecommendExpiration);
             myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
             myBasePage.checkForElement(numberOfWeeks);
