@@ -15,7 +15,7 @@ import java.util.List;
 public class MissionaryScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1", "jft"})
+    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1"})
     public void missionaryTest_BISHOP() throws Exception {
         missionaryTestCheckSub("BISHOP");
     }
@@ -90,7 +90,7 @@ public class MissionaryScreenTest extends BaseDriver {
         missionaryTestCheckSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all4", "all", "daily", "daily4"})
+    @Test(groups = {"all4", "all", "daily", "daily4", "jft"})
     public void missionaryTest_YOUNG_WOMEN_PRESIDENT() throws Exception {
         missionaryTestCheckSub("YOUNG_WOMEN_PRESIDENT");
     }

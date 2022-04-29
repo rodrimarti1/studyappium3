@@ -478,6 +478,7 @@ public class ClassAndQuorum extends BaseDriver {
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
 //        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
+        clearVisitor(memberCalling);
     }
 
 
@@ -485,7 +486,7 @@ public class ClassAndQuorum extends BaseDriver {
     public void visitorIsEnteredInTheClassInTheWeekNumberField(String visitorNumber, String visitorClass, String weekNumber) throws Exception {
         LOGGER.info(visitorNumber + " is entered in the " + visitorClass + " in the " + weekNumber + " field");
         MobileElement myElement = null;
-        if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women"))) {
+        if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women") || (visitorClass.equalsIgnoreCase("young men")))) {
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
                 myBasePage.scrollDownIOS();
             } else {
@@ -494,6 +495,7 @@ public class ClassAndQuorum extends BaseDriver {
             Thread.sleep(1000);
         }
         myElement = getVisitorField(visitorClass, weekNumber);
+        myElement.clear();
         myElement.setValue(visitorNumber);
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
     }
@@ -504,7 +506,7 @@ public class ClassAndQuorum extends BaseDriver {
         MobileElement myElement = null;
         String foundText;
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
-        if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women"))) {
+        if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women") || (visitorClass.equalsIgnoreCase("young men")))) {
             myBasePage.scrollDownAndroidUIAutomator("0");
             Thread.sleep(1000);
         }
@@ -517,4 +519,61 @@ public class ClassAndQuorum extends BaseDriver {
         Assert.assertEquals(foundText, visitorNumber);
 
     }
+
+    public void clearVisitor(String memberCalling) throws Exception {
+        List<String> visitorClass = new ArrayList<>();
+        if (memberCalling.contains("ELDERS")) {
+            visitorClass.add("Men");
+        }
+
+        if (memberCalling.contains("RELIEF")) {
+            visitorClass.add("Women");
+        }
+
+        if (memberCalling.contains("YOUNG_WOMEN")) {
+            visitorClass.add("Young Women");
+        }
+
+        if (memberCalling.contains("YOUNG_MEN")) {
+            visitorClass.add("Young Men");
+        }
+
+        if (memberCalling.contains("PRIMARY")) {
+            visitorClass.add("Children");
+        }
+
+        if (memberCalling.contains("BISHOP") || (memberCalling.contains("SUNDAY") )) {
+            visitorClass.add("Children");
+            visitorClass.add("Young Women");
+            visitorClass.add("Young Men");
+            visitorClass.add("Women");
+            visitorClass.add("Men");
+        }
+
+
+
+        MobileElement myElement = null;
+        String weekNumber;
+
+        for (String myClass: visitorClass) {
+            if (myClass.equalsIgnoreCase("men") || (myClass.equalsIgnoreCase("women") || (myClass.equalsIgnoreCase("young men")))) {
+                if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                    myBasePage.scrollDownIOS();
+                } else {
+                    myBasePage.scrollDownAndroidUIAutomator("0");
+                }
+                Thread.sleep(1000);
+            }
+            for (int myCounter = 1; myCounter < 6; myCounter++ ) {
+                weekNumber = String.valueOf(myCounter);
+                myElement = getVisitorField(myClass,weekNumber);
+                myElement.clear();
+                myElement.setValue("0");
+            }
+        }
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
+
+    }
+
 }
