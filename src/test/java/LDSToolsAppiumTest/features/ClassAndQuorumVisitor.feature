@@ -8,7 +8,7 @@
       When "25" is entered in the "Men" in the "1" field
       Then "25" will be saved in the "Men" "1" field attendance
 
-    @jft
+
     Scenario Outline: Enter in visitor counts for different callings
       Given a <leader> logs in and is on the Class and Quorum Attendance visitors page
       When <visitor> is entered in the <class> in the <weekNumber> field
@@ -37,9 +37,12 @@
       When "100200300400" is entered in the "Children"
       Then an error will be displayed
 
+    @jft
     Scenario Outline: Rights for different callings
       Given a <leader> logs in and is on the Class and Quorum Attendance visitors page
-      Then the <class> will be displayed
+      Then the visitor <class> will be displayed
+      And the visitor <noClass> will not be displayed
       Examples:
-        | leader                    | class |
-        | "ELDERS_QUORUM_PRESIDENT" | "Men" |
+        | leader                    | class                                      | noClass                                |
+        | "ELDERS_QUORUM_PRESIDENT" | "Men"                                      | "Women,Young Women,Children,Young Men" |
+        | "BISHOP"                  | "Women,Young Women,Children,Young Men,Men" | "none"                                 |

@@ -22,7 +22,9 @@ import org.testng.Assert;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 
 public class ClassAndQuorum extends BaseDriver {
     BasePage myBasePage = new BasePage(driver);
@@ -520,6 +522,52 @@ public class ClassAndQuorum extends BaseDriver {
 
     }
 
+    @Then("the visitor {string} will be displayed")
+    public void theVisitorClassWillBeDisplayed(String visitorClass )  throws Exception {
+        LOGGER.info("the visitor " + visitorClass + " will be displayed");
+        String pageSource;
+        List<String> classList;
+        pageSource = myBasePage.getSourceOfPage();
+        visitorClass = visitorClass.toLowerCase();
+        pageSource = visitorClass.toLowerCase();
+        if (visitorClass.contains(",")) {
+            myBasePage.scrollDownAndroidUIAutomator("0");
+            pageSource = pageSource + myBasePage.getSourceOfPage();
+            classList = getVisitorListFromString(visitorClass);
+            for (String oneClass: classList) {
+                Assert.assertTrue(pageSource.contains(oneClass));
+            }
+        } else {
+            Assert.assertTrue(pageSource.contains(visitorClass));
+        }
+
+    }
+
+    @And("the visitor {string} will not be displayed")
+    public void theVisitorNoClassWillNotBeDisplayed(String noClass) throws Exception {
+        LOGGER.info("the visitor " + noClass + " will not be displayed");
+        String pageSource;
+        List<String> noClassList;
+        pageSource = myBasePage.getSourceOfPage();
+        noClass = noClass.toLowerCase();
+        pageSource = pageSource.toLowerCase();
+        if (noClass.equalsIgnoreCase("none")) {
+            System.out.println("Nothing to do here");
+        } else {
+            noClassList = getVisitorListFromString(noClass);
+            for (String oneClass: noClassList) {
+                Assert.assertFalse(pageSource.contains(oneClass));
+            }
+        }
+
+    }
+
+    public List<String> getVisitorListFromString(String visitorClass) throws Exception {
+        String[] myArray = visitorClass.split(",");
+        List<String> myList = Arrays.asList(myArray);
+        return myList;
+    }
+
     public void clearVisitor(String memberCalling) throws Exception {
         List<String> visitorClass = new ArrayList<>();
         if (memberCalling.contains("ELDERS")) {
@@ -575,5 +623,7 @@ public class ClassAndQuorum extends BaseDriver {
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
 
     }
+
+
 
 }
