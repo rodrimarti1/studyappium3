@@ -473,7 +473,8 @@ public class ClassAndQuorum extends BaseDriver {
     public void aLogsInAndIsOnTheClassAndQuorumAttendanceVisitorsPage(String memberCalling) throws Exception {
         LOGGER.info("a " + memberCalling + " logs in and is on the Class and Quorum Attendance visitors page");
         String[] callingRights;
-        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+//        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+        callingRights = myHelper.getMemberNameFromList(memberCalling, "Maplewood 2nd");
         myHelper.proxyLogin(callingRights[1]);
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.reports);
@@ -494,12 +495,14 @@ public class ClassAndQuorum extends BaseDriver {
             } else {
                 myBasePage.scrollDownAndroidUIAutomator("0");
             }
-            Thread.sleep(1000);
+            Thread.sleep(2000);
+        } else {
+            Thread.sleep(2000);
         }
         myElement = getVisitorField(visitorClass, weekNumber);
         myElement.clear();
         myElement.setValue(visitorNumber);
-        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
+
     }
 
     @Then("{string} will be saved in the {string} {string} field attendance")
@@ -590,7 +593,14 @@ public class ClassAndQuorum extends BaseDriver {
             visitorClass.add("Children");
         }
 
-        if (memberCalling.contains("BISHOP") || (memberCalling.contains("SUNDAY") )) {
+        if (memberCalling.contains("SUNDAY")) {
+            visitorClass.add("Young Women");
+            visitorClass.add("Young Men");
+            visitorClass.add("Women");
+            visitorClass.add("Men");
+        }
+
+        if (memberCalling.contains("BISHOP")) {
             visitorClass.add("Children");
             visitorClass.add("Young Women");
             visitorClass.add("Young Men");
@@ -602,6 +612,8 @@ public class ClassAndQuorum extends BaseDriver {
 
         MobileElement myElement = null;
         String weekNumber;
+
+        Thread.sleep(2000);
 
         for (String myClass: visitorClass) {
             if (myClass.equalsIgnoreCase("men") || (myClass.equalsIgnoreCase("women") || (myClass.equalsIgnoreCase("young men")))) {
@@ -625,5 +637,15 @@ public class ClassAndQuorum extends BaseDriver {
     }
 
 
+    @And("the done button is pressed")
+    public void theDoneButtonIsPressed() throws Exception {
+        LOGGER.info("the done button is pressed");
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
+    }
 
+    @And("the cancel button is pressed")
+    public void theCancelButtonIsPressed() throws Exception {
+        LOGGER.info("the cancel button is pressed");
+        myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsCancel);
+    }
 }
