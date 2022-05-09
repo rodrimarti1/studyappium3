@@ -53,7 +53,8 @@ public class PrayerRoll extends BaseDriver {
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myBasePage.scrollDownTEST(500);
         } else {
-            myBasePage.scrollToTextGeneral("Prayer Roll");
+//            myBasePage.scrollDownTEST(200);
+//            myBasePage.scrollToTextGeneral("Prayer Roll");
         }
 //        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myTemple.prayerRollButton);
