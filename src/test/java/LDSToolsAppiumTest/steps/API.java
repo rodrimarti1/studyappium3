@@ -61,7 +61,8 @@ public class API {
     @Given("a {string} goes to the {string}")
     public void aMemberGoesToTheUrl(String member, String url) throws Exception {
         String[] callingRights;
-        callingRights = myHelper.getMemberNameFromList(member, "Centinela 1st");
+//        callingRights = myHelper.getMemberNameFromList(member, "Centinela 1st");
+        callingRights = myHelper.getMemberNameFromList(member, "Maplewood 2nd");
         urlStatus = apiTest.getApiResponseCode( url, callingRights[1] );
     }
 

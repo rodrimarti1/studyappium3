@@ -34,7 +34,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     public OkHttpClient loginCred() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
+        loggingInterceptor.redactHeader("Authorization");
+        loggingInterceptor.redactHeader("Cookie");
 
 //        // Encode data on your side using BASE64
 //        byte[] bytesEncoded = Base64.encodeBase64(str.getBytes());
