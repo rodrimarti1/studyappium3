@@ -229,6 +229,8 @@ public class HelperMethods extends BaseDriver {
 
         syncTimeWriter(duration);
 
+
+
         Thread.sleep(1000);
     }
 
