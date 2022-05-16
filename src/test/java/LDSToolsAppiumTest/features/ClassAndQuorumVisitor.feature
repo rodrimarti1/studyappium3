@@ -9,7 +9,7 @@
       And the done button is pressed
       Then "25" will be saved in the "Men" "1" field attendance
 
-    @MQA-5700 @MQA-2225 @all @all1 @daily @daily1
+    @MQA-5700 @MQA-2225 @all @all1 @daily @daily1 @jft
     Scenario Outline: Enter in visitor counts for different callings
       Given a <leader> logs in and is on the Class and Quorum Attendance visitors page
       When <visitor> is entered in the <class> in the <weekNumber> field
@@ -32,6 +32,7 @@
       Then "0" will be saved in the "Children" "1" field attendance
 
     #Todo: needs work
+    @jft
     Scenario Outline: Visitor rights for different callings
       Given a <leader> logs in and is on the Class and Quorum Attendance visitors page
       Then the visitor <class> will be displayed
