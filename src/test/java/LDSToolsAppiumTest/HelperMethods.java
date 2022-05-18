@@ -139,6 +139,7 @@ public class HelperMethods extends BaseDriver {
         SettingsScreen mySettings = new SettingsScreen(driver);
         String loginName = "zmaxfield";
 
+
         String deviceName;
         String pageSource;
         int myCounter = 1;
@@ -210,14 +211,20 @@ public class HelperMethods extends BaseDriver {
         if (myBasePage.getOS().equals("ios")) {
             unavailableCheck();
 
-            LOGGER.info("Waiting for Updating.... ");
-            myBasePage.waitForTextPopUp("Updating");
+            pageSource = myBasePage.getSourceOfPage();
+            if (pageSource.contains("passcode")) {
+                LOGGER.info("Found Passcode");
 
-            LOGGER.info("Found Updating waiting for Updating to go away.");
-            myBasePage.waitUntilTextIsGonePopUp("Updating");
+            } else {
+                LOGGER.info("Waiting for Updating.... ");
+                myBasePage.waitForTextPopUp("Updating");
+
+                LOGGER.info("Found Updating waiting for Updating to go away.");
+                myBasePage.waitUntilTextIsGonePopUp("Updating");
 
 //            myBasePage.waitForText("passcode");
 //            LOGGER.info("Text found: Passcode");
+            }
 
         } else {
             myBasePage.waitUnitlTextIsGone("Authenticating");
