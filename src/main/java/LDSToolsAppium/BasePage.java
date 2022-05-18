@@ -746,6 +746,19 @@ public class BasePage extends BaseDriver {
         //System.out.println("Stop Checking for Element");
     }
 
+    public void waitUntilTextIsGonePopUp(String myText) {
+        //System.out.println("Start Checking for Element");
+        WebDriverWait wait = new WebDriverWait(driver.get(), 120);
+
+        if(getOS().equals("ios")) {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@label, '" + myText + "')]")));
+        } else {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@text, '" + myText + "')]")));
+        }
+
+        //System.out.println("Stop Checking for Element");
+    }
+
 
 
 
@@ -766,6 +779,16 @@ public class BasePage extends BaseDriver {
         }
 
         //System.out.println("Stop Checking for Element");
+    }
+
+    public void waitForTextPopUp(String myText) {
+        //System.out.println("Start Checking for Element");
+        WebDriverWait wait = new WebDriverWait(driver.get(), 300);
+        if(getOS().equals("ios")) {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@label, '" + myText + "')]")));
+        } else {
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@text, '" + myText + "')]")));
+        }
     }
 
     public void waitForElementThenClick(MobileElement myElement) throws Exception {

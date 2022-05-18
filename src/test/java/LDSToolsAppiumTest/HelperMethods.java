@@ -209,8 +209,15 @@ public class HelperMethods extends BaseDriver {
 
         if (myBasePage.getOS().equals("ios")) {
             unavailableCheck();
-            myBasePage.waitForText("passcode");
-            LOGGER.info("Text found: Passcode");
+
+            LOGGER.info("Waiting for Updating.... ");
+            myBasePage.waitForTextPopUp("Updating");
+
+            LOGGER.info("Found Updating waiting for Updating to go away.");
+            myBasePage.waitUntilTextIsGonePopUp("Updating");
+
+//            myBasePage.waitForText("passcode");
+//            LOGGER.info("Text found: Passcode");
 
         } else {
             myBasePage.waitUnitlTextIsGone("Authenticating");
@@ -268,7 +275,7 @@ public class HelperMethods extends BaseDriver {
                 syncChecker = false;
             }
 
-            if (syncCounter >= 5 ) {
+            if (syncCounter >= 3 ) {
                 syncChecker = false;
             }
             syncCounter++;
