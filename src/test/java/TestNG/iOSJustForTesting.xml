@@ -13,8 +13,8 @@
         
         <groups>
             <run>
-                <include name="jft"/>
-<!--                <include name="goat"/>-->
+<!--                <include name="jft"/>-->
+                <include name="goat"/>
 <!--                <include name="all"/>-->
             </run>
         </groups>

@@ -748,7 +748,7 @@ public class BasePage extends BaseDriver {
 
     public void waitUntilTextIsGonePopUp(String myText) {
         //System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), 120);
+        WebDriverWait wait = new WebDriverWait(driver.get(), 180);
 
         if(getOS().equals("ios")) {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@label, '" + myText + "')]")));
