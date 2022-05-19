@@ -50,12 +50,10 @@ public class PrayerRoll extends BaseDriver {
         LOGGER.info("the prayer roll button is pressed");
         //Need a sleep here to wait for the popup to go away.
         Thread.sleep(2000);
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myBasePage.scrollDownTEST(500);
-        } else {
-//            myBasePage.scrollDownTEST(200);
-//            myBasePage.scrollToTextGeneral("Prayer Roll");
+        if (!myBasePage.checkForElement(myTemple.prayerRollButton)) {
+            myBasePage.scrollToTextGeneral("Prayer Roll");
         }
+
 //        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myTemple.prayerRollButton);
 //        myTemple.prayerRollButton.click();
