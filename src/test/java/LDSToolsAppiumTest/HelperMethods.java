@@ -224,6 +224,7 @@ public class HelperMethods extends BaseDriver {
 //
 //
 //            }
+            Thread.sleep(1000);
 
             myBasePage.waitForText("passcode");
             LOGGER.info("Text found: Passcode");
