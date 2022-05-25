@@ -15,7 +15,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -258,7 +258,6 @@ public class ReportsScreenTest extends BaseDriver {
 
             }
 
-            //Todo: change to an api call per user
             myBasePage.rightsCheck("Action and Interview List", 3, rights, pageSource);
             myBasePage.rightsCheck("Birthday List", 3, rights, pageSource);
             myBasePage.rightsCheck("Ministering", 3, rights, pageSource);
@@ -339,7 +338,7 @@ public class ReportsScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all2", "all", "report", "daily", "daily3"})
+    @Test (groups = {"all2", "all", "report", "daily", "daily3", "jft"})
     public void reportsActionAndInterviewReports() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -398,13 +397,12 @@ public class ReportsScreenTest extends BaseDriver {
         Thread.sleep(2000);
         checkActionAndInterviewApi("Bishopric Counselor Youth Interviews",memberLogin, unitNumber);
         myBasePage.backButton.click();
-
-        //TODO: Need to check if the report exists
+        
         //Young Men Approaching Mission Age
-//        myReports.youngMenApproachingMissionAgeReport.click();
-//        Thread.sleep(2000);
-//        checkActionAndInterviewApi("Young Men Approaching Mission Age",memberLogin, unitNumber);
-//        myBasePage.backButton.click();
+        myBasePage.waitForElementThenClick(myReports.youngMenApproachingMissionAgeReport);
+        Thread.sleep(2000);
+        checkActionAndInterviewApi("Young Men Approaching Mission Age",memberLogin, unitNumber);
+        myBasePage.backButton.click();
 
         //Men Who Have Not Served a Mission
         myBasePage.waitForElementThenClick(myReports.menWhoHaveNotServedaMissionReport);
