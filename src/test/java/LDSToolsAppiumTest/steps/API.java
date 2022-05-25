@@ -28,15 +28,17 @@ public class API {
     @Given("a {string} account checks the Class and Quorum Attendance right")
     public void aMemberAccountChecksTheClassAndQuorumAttendanceRight(String memberCalling) throws Exception {
         String[] callingRights;
-        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
-        memberList = apiTest.getClassAndQuorumRights(callingRights[1], "21628");
+//        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+        callingRights = myHelper.getMemberNameFromList(memberCalling, "Maplewood 2nd");
+        memberList = apiTest.getClassAndQuorumRights(callingRights[1], "39373");
     }
 
     @Given("a {string} account checks the Reports")
     public void aMemberAccountChecksTheReports(String memberCalling) throws Exception {
         String[] callingRights;
-        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
-        urlStatus = apiTest.getApiResponseCode( "reports?units=21628" , callingRights[1] );
+//        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+        callingRights = myHelper.getMemberNameFromList(memberCalling, "Maplewood 2nd");
+        urlStatus = apiTest.getApiResponseCode( "reports?units=39373" , callingRights[1] );
     }
 
     @Then("the Reports {string} are visible")

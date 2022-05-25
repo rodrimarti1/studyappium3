@@ -1574,7 +1574,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
     public List<String> getNamesFromMembersMovedOut(String proxyLogin, String unitNumber) throws Exception {
-        proxyLogin = "mbthomas74";
+//        proxyLogin = "mbthomas74";
         JsonParser parser = new JsonParser();
         String responseData;
         Gson gson = new Gson();

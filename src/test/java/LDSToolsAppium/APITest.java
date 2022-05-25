@@ -50,9 +50,18 @@ public class APITest {
     HashMap<String, String> listMap = new HashMap<>();
 
 
-
     @Test
-    public void apiInfoTestStuff() throws Exception {
+    public void apiCheck() throws Exception {
+        memberList = apiTest.getNamesFromMembersMovedOut("mbthomas74", "21628");
+        //        memberList = apiTest.getInfoFromMinisteringBrothers("mbthomas74",  "21628", "sisters");
+        for (String reportName: memberList) {
+            System.out.println("Report Name: " + reportName);
+        }
+
+    }
+
+
+    public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
 

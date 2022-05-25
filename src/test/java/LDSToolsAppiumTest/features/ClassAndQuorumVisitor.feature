@@ -38,9 +38,11 @@
       Then the visitor <class> will be displayed
       And the visitor <noClass> will not be displayed
       Examples:
-        | leader                    | class                                      | noClass                                |
-        | "ELDERS_QUORUM_PRESIDENT" | "Men"                                      | "Women,Young Women,Children,Young Men" |
-        | "BISHOP"                  | "Women,Young Women,Children,Young Men,Men" | "none"                                 |
+        | leader                     | class                                      | noClass                                |
+        | "ELDERS_QUORUM_PRESIDENT"  | "Men"                                      | "Women,Young Women,Children,Young Men" |
+        | "BISHOP"                   | "Women,Young Women,Children,Young Men,Men" | "none"                                 |
+        | "RELIEF_SOCIETY_PRESIDENT" | "Women"                                    | "Men,Young Women,Children,Young Men"   |
+        | "YOUNG_WOMEN_PRESIDENT"    | "Young Women"                              | "Men,Women,Children,Young Men"         |
 
 
 

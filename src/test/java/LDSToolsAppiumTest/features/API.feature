@@ -41,7 +41,7 @@
         | "ELDERS_QUORUM_PRESIDENT"         | "true"  |
         | "ELDERS_QUORUM_FIRST_COUNSELOR"   | "true"  |
         | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "true"  |
-#        | "ELDERS_QUORUM_SECRETARY"         | "true"  |
+        | "ELDERS_QUORUM_SECRETARY"         | "true"  |
         | "RELIEF_SOCIETY_PRESIDENT"        | "true"  |
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"  |
         | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "true"  |
@@ -75,18 +75,18 @@
         | member                            | status  |
         | "BISHOP"                          | "true"  |
         | "BISHOPRIC_FIRST_COUNSELOR"       | "true"  |
-#        | "BISHOPRIC_SECOND_COUNSELOR"      | "true"  |
+        | "BISHOPRIC_SECOND_COUNSELOR"      | "true"  |
         | "WARD_CLERK"                      | "true"  |
         | "WARD_EXECUTIVE_SECRETARY"        | "true"  |
         | "ELDERS_QUORUM_PRESIDENT"         | "true"  |
-#        | "ELDERS_QUORUM_FIRST_COUNSELOR"   | "true"     |
+        | "ELDERS_QUORUM_FIRST_COUNSELOR"   | "true"  |
         | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "true"  |
         | "ELDERS_QUORUM_SECRETARY"         | "true"  |
         | "RELIEF_SOCIETY_PRESIDENT"        | "true"  |
-#        | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"     |
+        | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"  |
         | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "true"  |
         | "YOUNG_WOMEN_PRESIDENT"           | "true"  |
         | "YOUNG_WOMEN_SECOND_COUNSELOR"    | "true"  |
-#        | "SUNDAY_SCHOOL_PRESIDENT"         | "true"  |
+        | "SUNDAY_SCHOOL_PRESIDENT"         | "true"  |
         | "MEMBER1"                         | "false" |
         | "MEMBER2"                         | "false" |

@@ -15,7 +15,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -95,7 +95,7 @@ public class ReportsScreenTest extends BaseDriver {
         reportsBasicCheckSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all4", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"all4", "all", "daily", "daily4"})
     public void reportsBasic_YOUNG_WOMEN_PRESIDENT() throws Exception {
         reportsBasicCheckSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -183,8 +183,7 @@ public class ReportsScreenTest extends BaseDriver {
             myBasePage.rightsCheckNewRights("Action and Interview List", 4, rights, pageSource);
             myBasePage.rightsCheckNewRights("Birthday List", 4, rights, pageSource);
             myBasePage.rightsCheckNewRights("Ministering", 4, rights, pageSource);
-//            myBasePage.rightsCheckNewRights("Members Moved In", 4, rights, pageSource);
-//            myBasePage.rightsCheckNewRights("Members Moved Out", 4, rights, pageSource);
+            myBasePage.rightsCheckNewRights("Move In and Out Report", 4, rights, pageSource);
             myBasePage.rightsCheckNewRights("Members with Callings", 4, rights, pageSource);
             myBasePage.rightsCheckNewRights("Members without Callings", 4, rights, pageSource);
             // myBasePage.rightsCheck("Missionary Progress Record", 2, rights, pageSource);
@@ -195,8 +194,8 @@ public class ReportsScreenTest extends BaseDriver {
             myBasePage.rightsCheckNewRights("Youth Recommend Status", 6, rights, pageSource);
 
 
-//            getMembersMovedInReport(rights);
-//            getMembersMovedOutReport(rights);
+            getMembersMovedInReport(rights);
+            getMembersMovedOutReport(rights);
             getMembersWithCallings(rights);
             getMembersWithOutCallings(rights);
 //            getNewMembers(rights);
@@ -654,21 +653,21 @@ public class ReportsScreenTest extends BaseDriver {
 
     }*/
 
-    //No API test
+
     private void getMembersMovedInReport(int rights) throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
         ReportsScreen myReports = new ReportsScreen(driver);
 
-        myReports.membersMovedInReport.click();
+        myReports.membersMoveInAndOutReport.click();
         Thread.sleep(3000);
         pageSource = myBasePage.getSourceOfPage();
 //        System.out.println(pageSource);
-//        Assert.assertTrue(myBasePage.checkNoCaseList("Vega", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Caldarera", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
-        myBasePage.backButton.click();
+        myBasePage.navigateUp.click();
         Thread.sleep(1000);
 
     }
@@ -682,7 +681,8 @@ public class ReportsScreenTest extends BaseDriver {
         List<String> shortList = new ArrayList<>();
 
 
-        myReports.membersMovedOutReport.click();
+        myReports.membersMoveInAndOutReport.click();
+        myBasePage.waitForElementThenClick(myReports.moveReportOutTab);
         Thread.sleep(2000);
 
         memberList = apiTest.getNamesFromMembersMovedOut(memberLogin, unitNumber);
@@ -696,7 +696,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
         Thread.sleep(1000);
-        myBasePage.backButton.click();
+        myBasePage.navigateUp.click();
         Thread.sleep(1000);
     }
 

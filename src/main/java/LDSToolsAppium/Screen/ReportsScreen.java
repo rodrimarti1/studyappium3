@@ -55,12 +55,27 @@ public class ReportsScreen extends BasePage {
     //Move In and Out Report
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Move In and Out Report']")
     @iOSXCUITFindBy(accessibility = "Move In and Out Report")
+    public MobileElement membersMoveInAndOutReport;
+
+    //Move In and Out Report
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Move In and Out Report']")
+    @iOSXCUITFindBy(accessibility = "Move In and Out Report")
     public MobileElement moveInAndOutReport;
 
     //Move Records In and Out
     @AndroidFindBy(xpath = "//*[@text='Move Records In and Out']")
     @iOSXCUITFindBy(accessibility = "Move Records In and Out")
     public MobileElement moveRecordsInAndOut;
+
+    //Move In and Out Report In tab
+    @AndroidFindBy(xpath = "//*[@text='In']")
+    @iOSXCUITFindBy(accessibility = "Members Moved In")
+    public MobileElement moveReportInTab;
+
+    //Move In and Out Report Out tab
+    @AndroidFindBy(xpath = "//*[@text='Out']")
+    @iOSXCUITFindBy(accessibility = "Members Moved Out")
+    public MobileElement moveReportOutTab;
 
 
     //Members with Callings

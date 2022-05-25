@@ -51,6 +51,11 @@ public class BasePage extends BaseDriver {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
     public MobileElement backButton;
 
+    //Navigate up
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
+    public MobileElement navigateUp;
+
 //    @AndroidFindBy(accessibility = "Navigate up")
     @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
