@@ -177,8 +177,7 @@ public class ReportsScreenTest extends BaseDriver {
 
             }
 
-            //Todo: change to an api call per user
-            //Todo: Update Move in - Move out
+
 //            System.out.println(myBasePage.getSourceOfPage());
             myBasePage.rightsCheckNewRights("Action and Interview List", 4, rights, pageSource);
             myBasePage.rightsCheckNewRights("Birthday List", 4, rights, pageSource);
@@ -202,7 +201,6 @@ public class ReportsScreenTest extends BaseDriver {
             getUnitStats(rights);
 
             //Bishopric Only Reports
-            //Todo: Add youth temple recommend reports
             if (rights >= 6 ) {
                 if (!getRunningOS().equalsIgnoreCase("ios")) {
                     getTempleRecommendStatus(rights);
