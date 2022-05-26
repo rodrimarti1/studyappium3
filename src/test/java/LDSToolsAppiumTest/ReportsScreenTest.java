@@ -397,7 +397,7 @@ public class ReportsScreenTest extends BaseDriver {
         Thread.sleep(2000);
         checkActionAndInterviewApi("Bishopric Counselor Youth Interviews",memberLogin, unitNumber);
         myBasePage.backButton.click();
-        
+
         //Young Men Approaching Mission Age
         myBasePage.waitForElementThenClick(myReports.youngMenApproachingMissionAgeReport);
         Thread.sleep(2000);

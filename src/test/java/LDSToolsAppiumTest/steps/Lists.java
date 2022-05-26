@@ -93,7 +93,8 @@ public class Lists extends BaseDriver  {
         Thread.sleep(2000);
 
         //Delete the List
-        myLists.deleteList("New Automated List");
+//        myLists.deleteList("New Automated List");
+        myLists.deleteList(listName);
 
         //Make Sure the List is deleted
         Thread.sleep(2000);
@@ -164,8 +165,6 @@ public class Lists extends BaseDriver  {
     }
 
 
-
-
     @And("sample lists are setup")
     public void sampleListsAreSetup() throws Exception {
         LOGGER.info("sample lists are setup");
@@ -180,6 +179,25 @@ public class Lists extends BaseDriver  {
         changeMyListName();
     }
 
+    @When("the list {string} is deleted")
+    public void theListIsDeleted(String listName) throws Exception {
+        LOGGER.info("the list " + listName + " is deleted");
+        myLists.deleteList(listName);
+    }
+
+    @Then("the list {string} will be deleted")
+    public void theListWillBeDeleted(String listName) throws Exception {
+        LOGGER.info("the list " + listName + " will be deleted");
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertFalse(pageSource.contains(listName));
+        Assert.assertTrue(pageSource.contains("My Member List"));
+        Assert.assertTrue(pageSource.contains("Change List Name"));
+        //Cleanup
+        myLists.deleteAllLists();
+    }
+
+
+
     private void deleteThisList() throws Exception {
         //Add a new List
         myBasePage.waitForElementThenClick(myLists.listsAddList);
@@ -188,7 +206,7 @@ public class Lists extends BaseDriver  {
 
         //Add a member to the list
         myLists.addMemberToList("adams, noel carl", "Adams, Noel Carl");
-        myLists.addMemberToList("merlos, max donal", "Merlos, Max Donal");
+        myLists.addMemberToList("monge, emma", "Monge, Emma");
 
         myBasePage.waitForElementThenClick(myLists.listsBackButton);
         Thread.sleep(2000);
@@ -201,7 +219,7 @@ public class Lists extends BaseDriver  {
 
         //Add a member to the list
         myLists.addMemberToList("boat, steven", "Boat, Steven");
-        myLists.addMemberToList("merlos, max donal", "Merlos, Max Donal");
+        myLists.addMemberToList("monge, emma", "Monge, Emma");
 
         myBasePage.waitForElementThenClick(myLists.listsBackButton);
         Thread.sleep(2000);
@@ -209,12 +227,12 @@ public class Lists extends BaseDriver  {
 
     private void changeMyListName() throws Exception {
         myBasePage.waitForElementThenClick(myLists.listsAddList);
-        myLists.listsName.sendKeys("My Member List");
+        myLists.listsName.sendKeys("Change List Name");
         myLists.listsOk.click();
 
         //Add a member to the list
         myLists.addMemberToList("boat, steven", "Boat, Steven");
-        myLists.addMemberToList("merlos, max donal", "Merlos, Max Donal");
+        myLists.addMemberToList("monge, emma", "Monge, Emma");
 
         myBasePage.waitForElementThenClick(myLists.listsBackButton);
         Thread.sleep(2000);
