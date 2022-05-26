@@ -196,6 +196,32 @@ public class Lists extends BaseDriver  {
         myLists.deleteAllLists();
     }
 
+    @When("a member {string} is deleted from {string}")
+    public void aMemberIsDeletedFrom(String oneMember, String listName) throws Exception {
+        LOGGER.info("a member " + oneMember + " is deleted from " + listName);
+        myLists.selectListName(listName);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            oneMember = swapNames(oneMember);
+        }
+        myLists.deleteMemberFromList(oneMember);
+        myBasePage.waitForElementThenClick(myLists.listsBackButton);
+        Thread.sleep(2000);
+    }
+
+
+    @Then("the member {string} will be deleted from {string}")
+    public void theMemberWillBeDeletedFrom(String memberToCheck, String listName) throws Exception {
+        LOGGER.info("the member " + memberToCheck + " will be deleted from " + listName );
+        myLists.selectListName(listName);
+        pageSource = myBasePage.getSourceOfPage();
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            memberToCheck = swapNames(memberToCheck);
+        }
+        Assert.assertFalse(pageSource.contains(memberToCheck));
+        Assert.assertTrue(pageSource.contains("Monge"));
+
+    }
+
 
 
     private void deleteThisList() throws Exception {
@@ -259,6 +285,14 @@ public class Lists extends BaseDriver  {
         Thread.sleep(2000);
     }
 
+
+    private String swapNames(String givenName) throws Exception {
+        String firstName = givenName.substring(0, givenName.indexOf(" "));
+        String lastName = givenName.substring(givenName.indexOf(" "));
+        String cName =  lastName + ", " + firstName;
+        cName = cName.trim();
+        return cName;
+    }
 
 
 }

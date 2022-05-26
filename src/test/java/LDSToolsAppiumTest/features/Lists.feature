@@ -45,19 +45,19 @@
         | barker, susan |
       Then the "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" with the members should be displayed.
 
-    @MQA-5718 @MQA-2215 @jft
+    @MQA-5718 @MQA-2215 @all @all2 @daily @daily2
     Scenario: Delete a list
       And sample lists are setup
       When the list "Delete This List" is deleted
       Then the list "Delete This List" will be deleted
 
-    @MQA-5719 @MQA-2215
+    @MQA-5719 @MQA-2215 @all @all3 @daily @daily3
     Scenario: Delete a member from a list
       And sample lists are setup
-      When a member "boat, steven" is deleted from "My Member List"
-      Then the member "boat, steven" will be deleted
+      When a member "Steven Boat" is deleted from "My Member List"
+      Then the member "Steven Boat" will be deleted from "My Member List"
 
-    @MQA-5720 @MQA-2215
+    @MQA-5720 @MQA-2215 @jft
     Scenario: Create a list with a large number of members
       When a list is created with a large number of members
       Then the large number list will be created

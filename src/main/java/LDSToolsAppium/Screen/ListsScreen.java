@@ -196,8 +196,10 @@ public class ListsScreen extends BasePage {
 
     public void deleteMemberFromList(String memberName) throws Exception {
         if (getOS().equals("ios")) {
+            Thread.sleep(1000);
             listsEdit.click();
-            driver.get().findElement(By.xpath("//XCUIElementTypeButton[contains(@name, 'Delete " + memberName + "')]")).click();
+            Thread.sleep(1000);
+            driver.get().findElement(By.xpath("//XCUIElementTypeButton[contains(@name, '" + memberName + "')]")).click();
             driver.get().findElement(MobileBy.iOSNsPredicateString("name == 'Delete' ")).click();
 
             //If there more than one list this "Done" button will still be displayed
