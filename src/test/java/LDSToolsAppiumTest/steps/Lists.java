@@ -13,6 +13,7 @@ import io.cucumber.java.en.When;
 import org.apache.commons.lang.WordUtils;
 import org.testng.Assert;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -222,6 +223,62 @@ public class Lists extends BaseDriver  {
 
     }
 
+    @When("a list is created with a large number of members")
+    public void aListIsCreatedWithALargeNumberOfMembers() throws Exception {
+        LOGGER.info("a list is created with a large number of members");
+        List<String> membersToAdd = new ArrayList<String>();
+        membersToAdd.add("adams, dewayne");
+        membersToAdd.add("adams, zachary");
+        membersToAdd.add("agcaoili, lisa");
+        membersToAdd.add("anderson, lisa");
+        membersToAdd.add("arabia, jaclyn");
+        membersToAdd.add("arabia, norma");
+        membersToAdd.add("arabia, roman");
+        membersToAdd.add("arce, malakhi");
+        membersToAdd.add("austin, joseph");
+        membersToAdd.add("auton, daniel");
+        membersToAdd.add("auton, james");
+        membersToAdd.add("ayon, stephanie");
+        membersToAdd.add("banuelos, bruno");
+        membersToAdd.add("barker, susan");
+        membersToAdd.add("barton, reilly");
+        membersToAdd.add("bearden, olivia");
+        membersToAdd.add("beeson, adam");
+        membersToAdd.add("beeson, melanie");
+        membersToAdd.add("benn, hattie");
+        iAddAList("Large Number Of Members");
+        membersAreAddedToTheList(membersToAdd );
+
+    }
+
+    @Then("the large number list will be created")
+    public void theLargeNumberListWillBeCreated() throws Exception {
+        LOGGER.info("the large number list will be created");
+        //Check the expected number of members in the list
+        numberOfListMembers = myLists.getNumberOfListMembers("Large Number Of Members");
+        System.out.println("Number of List Members: " + numberOfListMembers);
+        Assert.assertEquals("19", numberOfListMembers);
+
+        //Check the list members
+        myLists.selectListName("Large Number Of Members");
+        Thread.sleep(4000);
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertTrue(myBasePage.checkNoCaseList("adams", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("lisa", pageSource, "Contains"));
+        myBasePage.backButton.click();
+        Thread.sleep(2000);
+
+        //Delete the List
+//        myLists.deleteList("New Automated List");
+        myLists.deleteList("Large Number Of Members");
+
+        //Make Sure the List is deleted
+        Thread.sleep(2000);
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertFalse(myBasePage.checkNoCaseList("Large Number Of Members", pageSource, "Contains"));
+
+    }
+
 
 
     private void deleteThisList() throws Exception {
@@ -293,6 +350,7 @@ public class Lists extends BaseDriver  {
         cName = cName.trim();
         return cName;
     }
+
 
 
 }
