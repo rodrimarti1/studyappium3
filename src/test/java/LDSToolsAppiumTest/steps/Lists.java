@@ -11,6 +11,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import org.apache.commons.lang.WordUtils;
+import org.openqa.selenium.ScreenOrientation;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -277,6 +278,45 @@ public class Lists extends BaseDriver  {
         pageSource = myBasePage.getSourceOfPage();
         Assert.assertFalse(myBasePage.checkNoCaseList("Large Number Of Members", pageSource, "Contains"));
 
+    }
+
+
+    @When("the device is rotated")
+    public void theDeviceIsRotated() throws Exception {
+        LOGGER.info("the device is rotated");
+        rotateListNameCheck();
+        driver.get().rotate(ScreenOrientation.LANDSCAPE);
+        rotateListNameCheck();
+        driver.get().rotate(ScreenOrientation.PORTRAIT);
+        rotateListNameCheck();
+    }
+
+    @Then("the information for the lists setup will be visible")
+    public void theInformationForTheListsSetupWillBeVisible() throws Exception {
+        LOGGER.info("the information for the lists setup will be visible");
+        myLists.selectListName("My Member List");
+        rotateMyMemberListCheck();
+        driver.get().rotate(ScreenOrientation.LANDSCAPE);
+        rotateMyMemberListCheck();
+        driver.get().rotate(ScreenOrientation.PORTRAIT);
+        rotateMyMemberListCheck();
+        myBasePage.backButton.click();
+
+        myLists.deleteAllLists();
+    }
+
+    private void rotateMyMemberListCheck() throws Exception {
+        Thread.sleep(4000);
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertTrue(myBasePage.checkNoCaseList("boat", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("monge", pageSource, "Contains"));
+    }
+
+    private void rotateListNameCheck() throws Exception {
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertTrue(pageSource.contains("Delete This List"));
+        Assert.assertTrue(pageSource.contains("My Member List"));
+        Assert.assertTrue(pageSource.contains("Change List Name"));
     }
 
 

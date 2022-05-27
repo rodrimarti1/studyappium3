@@ -57,12 +57,12 @@
       When a member "Steven Boat" is deleted from "My Member List"
       Then the member "Steven Boat" will be deleted from "My Member List"
 
-    @MQA-5720 @MQA-2215 @jft
+    @MQA-5720 @MQA-2215 @all @all4 @daily @daily4
     Scenario: Create a list with a large number of members
       When a list is created with a large number of members
       Then the large number list will be created
 
-    @MQA-5721 @MQA-2215
+    @MQA-5721 @MQA-2215 @jft
     Scenario: Rotate lists
       And sample lists are setup
       When the device is rotated
