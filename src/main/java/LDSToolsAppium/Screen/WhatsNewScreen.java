@@ -6,6 +6,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.cucumber.java.en.And;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.support.PageFactory;
 
@@ -54,7 +55,8 @@ public class WhatsNewScreen extends BasePage {
     public MobileElement helpWhatsNew;
 
     //Done Button
-    @AndroidFindBy(xpath = "//android.view.View[@text='DONE']")
+//    @AndroidFindBy(xpath = "//android.view.View[@text='DONE']")
+    @AndroidFindBy(xpath = "//android.widget.Button")
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/doneButton")
     @iOSXCUITFindBy(accessibility = "Done")
     public MobileElement whatsNewDone;

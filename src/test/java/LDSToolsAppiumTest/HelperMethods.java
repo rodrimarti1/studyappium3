@@ -1136,7 +1136,8 @@ public class HelperMethods extends BaseDriver {
 //      if (myBasePage.checkForElement(myWhatsNew.whatsNewDone)) {
         if (myBasePage.checkElementExists("Done") || (myBasePage.checkElementExists("DONE")) ){
 //            System.out.println(myBasePage.getSourceOfPage());
-            myWhatsNew.whatsNewDone.click();
+            myBasePage.waitForElementThenClick(myWhatsNew.whatsNewDone);
+//            myWhatsNew.whatsNewDone.click();
             if (!myBasePage.getOS().equals("ios")) {
                 if (myBasePage.checkForElement(myBasePage.allowButton)) {
                     myBasePage.allowButton.click();
