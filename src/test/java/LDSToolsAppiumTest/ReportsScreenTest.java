@@ -15,7 +15,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -338,7 +338,7 @@ public class ReportsScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all2", "all", "report", "daily", "daily3", "jft"})
+    @Test (groups = {"all2", "all", "report", "daily", "daily3"})
     public void reportsActionAndInterviewReports() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -659,7 +659,7 @@ public class ReportsScreenTest extends BaseDriver {
         Thread.sleep(3000);
         pageSource = myBasePage.getSourceOfPage();
 //        System.out.println(pageSource);
-        Assert.assertTrue(myBasePage.checkNoCaseList("Caldarera", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Glover", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
@@ -736,8 +736,8 @@ public class ReportsScreenTest extends BaseDriver {
             myReports.selectSort(myReports.notSetApartSort);
             Thread.sleep(3000);
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Clerk", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Nielson", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Wright", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Wagstaff", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("P0, C3", pageSource, "Contains"));
         }
 
@@ -937,7 +937,7 @@ public class ReportsScreenTest extends BaseDriver {
             Assert.assertFalse(pageSource.contains("Jinn, Qui-Gon"));
         } else {
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Alvaro", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Shreeve", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Jinn, Qui-Gon", pageSource, "Contains"));
         }
 
