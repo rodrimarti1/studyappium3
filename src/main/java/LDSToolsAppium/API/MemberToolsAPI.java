@@ -757,8 +757,10 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-    public int postListTest(String listMembers, String listName, int listSort, String listOwner) throws IOException {
+    public int postListTest(String listMembers, String listName, int listSort, String listOwner, String proxyUser) throws IOException {
         int responseData = 0;
+        String[] listOfMembers = null;
+        listOfMembers = listMembers.split(",");
         String json;
 //        String json = "{" +
 //                "  \"members\": [" +
@@ -771,7 +773,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //                "}";
 
         JSONObject jsonPost = new JSONObject();
-        jsonPost.put("members", new String[] {listMembers});
+//        jsonPost.put("members", new String[] {listMembers});
+        jsonPost.put("members", listOfMembers);
         jsonPost.put("name", listName);
         jsonPost.put("removed",false);
         jsonPost.put("sort", listSort);
@@ -792,7 +795,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/lists")
-                .addHeader("X-Proxy-User" , "mbthomas74")
+                .addHeader("X-Proxy-User" , proxyUser)
                 .post(body)
                 .build();
 
@@ -827,7 +830,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         Request request = new Request.Builder()
                 .delete()
                 .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/lists/" + listUuid)
-                .addHeader("X-Proxy-User" , "mbthomas74")
+                .addHeader("X-Proxy-User" , proxyUser)
                 .build();
 
 

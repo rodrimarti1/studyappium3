@@ -66,7 +66,9 @@ public class ListsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Done")
     public MobileElement listsOk;
 
-
+    @AndroidFindBy(xpath = "//*[@text='OK']")
+    @iOSXCUITFindBy(accessibility = "OK")
+    public MobileElement listsOk2;
 
 
 
@@ -217,6 +219,38 @@ public class ListsScreen extends BasePage {
 
     }
 
+    public void editListName(String myListName, String newName) throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        if (getOS().equals("ios")) {
+            myBasePage.waitForElementThenClick(listsEdit);
+            Thread.sleep(3000);
+//            System.out.println(myBasePage.getSourceOfPage());
+//            myBasePage.waitForElementThenClick((MobileElement) driver.get().findElement(By.xpath("//*[contains(@name, '" + myListName + "')]")));
+            myBasePage.waitForElementThenClick((MobileElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myListName + "']")));
+            Thread.sleep(1000);
+            listsName.setValue(newName);
+            myBasePage.waitForElementThenClick(listsOk2);
+            Thread.sleep(1000);
+
+            //If there more than one list this "Done" button will still be displayed
+            if (checkForElement(listsDone)) {
+                listsDone.click();
+            }
+
+        } else {
+            selectListName(myListName);
+            myBasePage.waitForElementThenClick(listsMoreOptions);
+            myBasePage.waitForElementThenClick(listsMoreOptionsEdit);
+            myBasePage.waitForElementThenClick(listsEditName);
+            listsName.clear();
+            listsName.setValue(newName);
+//            System.out.println(getSourceOfPage());
+            myBasePage.waitForElementThenClick(listsOk);
+            myBasePage.backButton.click();
+            Thread.sleep(2000);
+            myBasePage.backButton.click();
+        }
+    }
 
 
 

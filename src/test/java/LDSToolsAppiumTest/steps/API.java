@@ -82,7 +82,7 @@ public class API {
 
     @Given("a member creates a list")
     public void aMemberCreatesAList() throws Exception {
-        responseCode = apiTest.postListTest("ee4a2b31-a913-442a-9cef-70722cb55f3c", "TEST API",51, "50eff3b6-10c2-4caf-9c18-f070e41fc1ca");
+        responseCode = apiTest.postListTest("ee4a2b31-a913-442a-9cef-70722cb55f3c", "TEST API",51, "50eff3b6-10c2-4caf-9c18-f070e41fc1ca", "mbthomas74");
         Assert.assertEquals(responseCode, 200);
     }
 

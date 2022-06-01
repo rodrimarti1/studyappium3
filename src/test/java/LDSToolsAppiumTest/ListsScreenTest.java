@@ -12,7 +12,8 @@ import org.testng.annotations.Test;
 public class ListsScreenTest extends BaseDriver {
 
 
-    @Test(groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1", "jft"})
+//    @Test(groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1", "jft"})
+    @Test(groups = {"depreciated"})
     public void listsSimpleTest() throws Exception {
         String pageSource;
         String numberOfListMembers;
@@ -74,7 +75,7 @@ public class ListsScreenTest extends BaseDriver {
     }
 
     //TODO: Need to update user
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all3", "all"})
     public void listsMultipleSyncTest() throws Exception {
         String pageSource;
@@ -150,7 +151,7 @@ public class ListsScreenTest extends BaseDriver {
 
 
     //Now a Cucumber Test
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all4", "all"})
     public void listsMaxOutName() throws Exception {
         String pageSource;
@@ -228,7 +229,7 @@ public class ListsScreenTest extends BaseDriver {
     }
 
     //Cucumber test now
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all4", "all"})
     public void listsOtherNames() throws Exception {
         String pageSource;
@@ -306,7 +307,7 @@ public class ListsScreenTest extends BaseDriver {
 
     //iOS has had problems with & in the name
     //Cucumber test now
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all3", "all"})
     public void listsOtherNamesAnd() throws Exception {
         String pageSource;
@@ -383,7 +384,7 @@ public class ListsScreenTest extends BaseDriver {
 
 
     //Cucumber test now
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all3", "all"})
     public void listsDelete() throws Exception {
         String pageSource;
@@ -474,7 +475,7 @@ public class ListsScreenTest extends BaseDriver {
     }
 
     //Cucumber test now
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all4", "all"})
     public void listsEdit() throws Exception {
         String pageSource;
@@ -580,7 +581,7 @@ public class ListsScreenTest extends BaseDriver {
     }
 
     //Cucumber test now
-    @Test(groups = {"needUpdate"})
+    @Test(groups = {"depreciated"})
 //    @Test(groups = {"all4", "all"})
     public void listsLargeNumberOfMembers() throws Exception {
         String pageSource;

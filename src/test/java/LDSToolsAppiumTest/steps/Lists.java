@@ -1,5 +1,6 @@
 package LDSToolsAppiumTest.steps;
 
+import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.ListsScreen;
@@ -15,6 +16,7 @@ import org.openqa.selenium.ScreenOrientation;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -25,11 +27,28 @@ public class Lists extends BaseDriver  {
     ListsScreen myLists = new ListsScreen(driver);
     String pageSource;
     String numberOfListMembers;
+    MemberToolsAPI apiTest = new MemberToolsAPI();
 
 
     @Given("a list user signs in")
     public void aListUserSignsIn() throws Exception {
         LOGGER.info("a list user signs in");
+        myHelper.proxyLogin("julieryan");
+        myHelper.enterPin("1", "1", "3", "3");
+    }
+
+    @Given("a list with sample setup user signs in")
+    public void aListWithSampleSetupUserSignsIn() throws Exception{
+        LOGGER.info("a list with sample setup user signs in");
+        //Delete all lists
+        deleteListAPI();
+//        myLists.deleteAllLists();
+        //Create Delete this list
+        deleteThisList();
+        //Create My Member List
+        myMemberList();
+        //Create Change My Name
+        changeMyListName();
         myHelper.proxyLogin("julieryan");
         myHelper.enterPin("1", "1", "3", "3");
     }
@@ -41,6 +60,14 @@ public class Lists extends BaseDriver  {
         //Check for existing Lists and delete if found
         Thread.sleep(2000);
         myLists.deleteAllLists();
+    }
+
+    @And("is on the list page with sample")
+    public void isOnTheListPageWithSample() throws Exception {
+        LOGGER.info("is on the list page with sample");
+        LOGGER.info("is on the list page");
+        myMenu.selectMenu(myMenu.lists);
+        Thread.sleep(2000);
     }
 
 
@@ -167,6 +194,7 @@ public class Lists extends BaseDriver  {
     }
 
 
+    //Todo: change this to API setup
     @And("sample lists are setup")
     public void sampleListsAreSetup() throws Exception {
         LOGGER.info("sample lists are setup");
@@ -179,6 +207,7 @@ public class Lists extends BaseDriver  {
         myMemberList();
         //Create Change My Name
         changeMyListName();
+
     }
 
     @When("the list {string} is deleted")
@@ -195,7 +224,8 @@ public class Lists extends BaseDriver  {
         Assert.assertTrue(pageSource.contains("My Member List"));
         Assert.assertTrue(pageSource.contains("Change List Name"));
         //Cleanup
-        myLists.deleteAllLists();
+        deleteListAPI();
+//        myLists.deleteAllLists();
     }
 
     @When("a member {string} is deleted from {string}")
@@ -222,6 +252,7 @@ public class Lists extends BaseDriver  {
         Assert.assertFalse(pageSource.contains(memberToCheck));
         Assert.assertTrue(pageSource.contains("Monge"));
 
+        deleteListAPI();
     }
 
     @When("a list is created with a large number of members")
@@ -302,7 +333,30 @@ public class Lists extends BaseDriver  {
         rotateMyMemberListCheck();
         myBasePage.backButton.click();
 
-        myLists.deleteAllLists();
+        deleteListAPI();
+//        myLists.deleteAllLists();
+    }
+
+    @When("a list name is changed")
+    public void aListNameIsChanged() throws Exception {
+        LOGGER.info("a list name is changed");
+        myLists.editListName("Change List Name", "New List Name");
+    }
+
+    @Then("the list name will be updated")
+    public void theListNameWillBeUpdated() throws Exception {
+        LOGGER.info("the list name will be updated");
+        numberOfListMembers = myLists.getNumberOfListMembers("New List Name");
+        System.out.println("Number of List Members: " + numberOfListMembers);
+        Assert.assertEquals("2", numberOfListMembers);
+        //Check the list members
+        myLists.selectListName("New List Name");
+        Thread.sleep(4000);
+        myBasePage.backButton.click();
+
+        deleteListAPI();
+//        myLists.deleteAllLists();
+
     }
 
     private void rotateMyMemberListCheck() throws Exception {
@@ -322,43 +376,65 @@ public class Lists extends BaseDriver  {
 
 
     private void deleteThisList() throws Exception {
-        //Add a new List
-        myBasePage.waitForElementThenClick(myLists.listsAddList);
-        myLists.listsName.sendKeys("Delete This List");
-        myLists.listsOk.click();
+        int responseCode = 0;
+        responseCode = apiTest.postListTest("dbe8087d-4308-461c-8a5f-decb6e03f06d,2d608fa5-ed9a-460e-b220-270214c6e9bb", "Delete This List",53, "a1479b4c-df02-4454-bdb6-576f12473195", "julieryan");
+        Assert.assertEquals(responseCode, 200);
 
-        //Add a member to the list
-        myLists.addMemberToList("adams, noel carl", "Adams, Noel Carl");
-        myLists.addMemberToList("monge, emma", "Monge, Emma");
-
-        myBasePage.waitForElementThenClick(myLists.listsBackButton);
-        Thread.sleep(2000);
+//        myBasePage.waitForElementThenClick(myLists.listsAddList);
+//        myLists.listsName.sendKeys("Delete This List");
+//        myLists.listsOk.click();
+//
+//        //Add a member to the list
+//        myLists.addMemberToList("adams, noel carl", "Adams, Noel Carl");
+//        myLists.addMemberToList("monge, emma", "Monge, Emma");
+//
+//        myBasePage.waitForElementThenClick(myLists.listsBackButton);
+//        Thread.sleep(2000);
     }
 
     private void myMemberList() throws Exception {
-        myBasePage.waitForElementThenClick(myLists.listsAddList);
-        myLists.listsName.sendKeys("My Member List");
-        myLists.listsOk.click();
-
-        //Add a member to the list
-        myLists.addMemberToList("boat, steven", "Boat, Steven");
-        myLists.addMemberToList("monge, emma", "Monge, Emma");
-
-        myBasePage.waitForElementThenClick(myLists.listsBackButton);
-        Thread.sleep(2000);
+        int responseCode = 0;
+        responseCode = apiTest.postListTest("7d9c46fd-958f-4a91-8c74-7ef41a297c55,2d608fa5-ed9a-460e-b220-270214c6e9bb", "My Member List",52, "a1479b4c-df02-4454-bdb6-576f12473194", "julieryan");
+        Assert.assertEquals(responseCode, 200);
+//
+//        myBasePage.waitForElementThenClick(myLists.listsAddList);
+//        myLists.listsName.sendKeys("My Member List");
+//        myLists.listsOk.click();
+//
+//        //Add a member to the list
+//        myLists.addMemberToList("boat, steven", "Boat, Steven");
+//        myLists.addMemberToList("monge, emma", "Monge, Emma");
+//
+//        myBasePage.waitForElementThenClick(myLists.listsBackButton);
+//        Thread.sleep(2000);
     }
 
     private void changeMyListName() throws Exception {
-        myBasePage.waitForElementThenClick(myLists.listsAddList);
-        myLists.listsName.sendKeys("Change List Name");
-        myLists.listsOk.click();
+        int responseCode = 0;
+        responseCode = apiTest.postListTest("7d9c46fd-958f-4a91-8c74-7ef41a297c55,2d608fa5-ed9a-460e-b220-270214c6e9bb", "Change List Name",51, "a1479b4c-df02-4454-bdb6-576f12473193", "julieryan");
+        Assert.assertEquals(responseCode, 200);
 
-        //Add a member to the list
-        myLists.addMemberToList("boat, steven", "Boat, Steven");
-        myLists.addMemberToList("monge, emma", "Monge, Emma");
+//        myBasePage.waitForElementThenClick(myLists.listsAddList);
+//        myLists.listsName.sendKeys("Change List Name");
+//        myLists.listsOk.click();
+//
+//        //Add a member to the list
+//        myLists.addMemberToList("boat, steven", "Boat, Steven");
+//        myLists.addMemberToList("monge, emma", "Monge, Emma");
+//
+//        myBasePage.waitForElementThenClick(myLists.listsBackButton);
+//        Thread.sleep(2000);
+    }
 
-        myBasePage.waitForElementThenClick(myLists.listsBackButton);
-        Thread.sleep(2000);
+
+    private void deleteListAPI() throws Exception {
+        int responseCode = 0;
+        HashMap<String, String> listMap = new HashMap<>();
+        listMap = apiTest.getListNames("julieryan");
+        for (String listToDelete: listMap.keySet()) {
+            System.out.println(listToDelete);
+            responseCode = apiTest.listDelete(listToDelete, "julieryan");
+        }
     }
 
 

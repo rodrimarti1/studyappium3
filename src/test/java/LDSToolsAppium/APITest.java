@@ -49,14 +49,52 @@ public class APITest {
     String idToken;
     HashMap<String, String> listMap = new HashMap<>();
 
+//    "a1479b4c-df02-4454-bdb6-576f12473193"
 
     @Test
     public void apiCheck() throws Exception {
-        memberList = apiTest.getNamesFromMembersMovedOut("mbthomas74", "21628");
-        //        memberList = apiTest.getInfoFromMinisteringBrothers("mbthomas74",  "21628", "sisters");
-        for (String reportName: memberList) {
-            System.out.println("Report Name: " + reportName);
+//        memberList = apiTest.getNamesFromMembersMovedOut("mbthomas74", "21628");
+//        //        memberList = apiTest.getInfoFromMinisteringBrothers("mbthomas74",  "21628", "sisters");
+//        for (String reportName: memberList) {
+//            System.out.println("Report Name: " + reportName);
+//        }
+
+        int responseCode = 0;
+
+        //List Tests
+//        responseCode = apiTest.postListTest("7d9c46fd-958f-4a91-8c74-7ef41a297c55,2d608fa5-ed9a-460e-b220-270214c6e9bb", "Change List Name",51, "a1479b4c-df02-4454-bdb6-576f12473193", "julieryan");
+//        Assert.assertEquals(responseCode, 200);
+//
+//        responseCode = apiTest.postListTest("7d9c46fd-958f-4a91-8c74-7ef41a297c55,2d608fa5-ed9a-460e-b220-270214c6e9bb", "My Member List",52, "a1479b4c-df02-4454-bdb6-576f12473194", "julieryan");
+//        Assert.assertEquals(responseCode, 200);
+//
+//        responseCode = apiTest.postListTest("dbe8087d-4308-461c-8a5f-decb6e03f06d,2d608fa5-ed9a-460e-b220-270214c6e9bb", "Delete This List",53, "a1479b4c-df02-4454-bdb6-576f12473195", "julieryan");
+//        Assert.assertEquals(responseCode, 200);
+
+
+//        //Delete all lists
+        listMap = apiTest.getListNames("julieryan");
+        for (String listToDelete: listMap.keySet()) {
+            System.out.println(listToDelete);
+            responseCode = apiTest.listDelete(listToDelete, "julieryan");
         }
+
+
+
+
+
+
+//        responseCode = apiTest.postListTest("ee4a2b31-a913-442a-9cef-70722cb55f3c,16e090cf-d980-47da-b537-75b1040fe85e", "TEST API",51, "50eff3b6-10c2-4caf-9c18-f070e41fc1ca", "mbthomas74");
+//        Assert.assertEquals(responseCode, 200);
+//
+//        listMap = apiTest.getListNames("mbthomas74");
+//        Assert.assertTrue(listMap.containsKey("TEST API"));
+//
+//        responseCode = apiTest.listDelete("TEST API", "mbthomas74");
+//        Assert.assertEquals(responseCode, 200);
+//
+//        listMap = apiTest.getListNames("mbthomas74");
+//        Assert.assertFalse(listMap.containsKey("TEST API"));
 
     }
 
