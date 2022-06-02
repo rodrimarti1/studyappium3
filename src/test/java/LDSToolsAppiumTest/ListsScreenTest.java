@@ -74,7 +74,6 @@ public class ListsScreenTest extends BaseDriver {
 
     }
 
-    //TODO: Need to update user
     @Test(groups = {"depreciated"})
 //    @Test(groups = {"all3", "all"})
     public void listsMultipleSyncTest() throws Exception {

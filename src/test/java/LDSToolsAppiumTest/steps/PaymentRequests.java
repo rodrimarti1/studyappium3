@@ -47,7 +47,7 @@ public class PaymentRequests extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.finance);
         Thread.sleep(1000);
-//        System.out.println(myBasePage.getSourceOfPage());
+        System.out.println(myBasePage.getSourceOfPage());
         myFinance.financePaymentRequests.click();
     }
 

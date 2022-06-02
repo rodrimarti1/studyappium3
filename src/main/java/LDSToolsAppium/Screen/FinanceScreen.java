@@ -24,7 +24,7 @@ public class FinanceScreen extends BasePage {
 
     // ****************** Finance Main Screen ******************
     //Payment Requests
-    @AndroidFindBy(xpath = "//android.view.View[@text='Payment Requests']")
+    @AndroidFindBy(xpath = "//*[@text='Payment Requests']")
     @iOSXCUITFindBy(accessibility = "Payment Requests")
     public MobileElement financePaymentRequests;
 
