@@ -684,7 +684,7 @@ public class ReportsScreenTest extends BaseDriver {
         memberList = apiTest.getNamesFromMembersMovedOut(memberLogin, unitNumber);
 
         //Just take the first 5 members in the list
-        for (int i = 0; i < 4; i++ ) {
+        for (int i = 0; i < 3; i++ ) {
             shortList.add(memberList.get(i));
         }
 
