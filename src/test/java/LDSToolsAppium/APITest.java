@@ -42,6 +42,8 @@ public class APITest {
 //    111074 - AburnHill
 //    258598 - Fagamalo 2nd
 //    39373 - Maplewood 2nd
+//    356832 - Foxhill ward
+
     String unitNumber = "21628";
     String proxyLogin = "mbthomas74";
 
@@ -51,7 +53,7 @@ public class APITest {
 
 //    "a1479b4c-df02-4454-bdb6-576f12473193"
 
-    @Test
+//    @Test
     public void apiCheck() throws Exception {
 //        memberList = apiTest.getNamesFromMembersMovedOut("mbthomas74", "21628");
 //        //        memberList = apiTest.getInfoFromMinisteringBrothers("mbthomas74",  "21628", "sisters");
@@ -98,7 +100,7 @@ public class APITest {
 
     }
 
-
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -147,7 +149,6 @@ public class APITest {
         unitMap.put("211", "PRIMARY_FIRST_COUNSELOR");
         unitMap.put("212", "PRIMARY_SECOND_COUNSELOR");
         unitMap.put("213", "PRIMARY_SECRETARY");
-
 
 
 
