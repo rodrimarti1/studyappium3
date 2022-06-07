@@ -2,7 +2,7 @@
   Feature: Test the visitor feature for Class and Quorum
 
 
-    @MQA-5699 @MQA-2225 @all @all4 @daily @daily4 @smoke @smoke4
+    @MQA-5699 @MQA-2225 @all @all4 @daily @daily4 @smoke @smoke4 @jft
     Scenario: Enter visitors for Class and Quorum
       Given a "BISHOP" logs in and is on the Class and Quorum Attendance visitors page
       When "25" is entered in the "Men" in the "1" field
@@ -32,7 +32,6 @@
       Then "0" will be saved in the "Children" "1" field attendance
 
     #Todo: needs work
-    @jft
     Scenario Outline: Visitor rights for different callings
       Given a <leader> logs in and is on the Class and Quorum Attendance visitors page
       Then the visitor <class> will be displayed

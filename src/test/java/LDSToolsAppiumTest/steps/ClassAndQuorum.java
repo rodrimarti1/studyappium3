@@ -463,7 +463,7 @@ public class ClassAndQuorum extends BaseDriver {
             myElement = (MobileElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
         } else {
 //            System.out.println(myBasePage.getSourceOfPage());
-            myElement = (MobileElement) driver.get().findElement(By.xpath("//android.view.View[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
+            myElement = (MobileElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
         }
 
         return  myElement;
