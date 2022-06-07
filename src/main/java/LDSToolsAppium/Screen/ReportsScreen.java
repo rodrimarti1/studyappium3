@@ -728,12 +728,12 @@ public class ReportsScreen extends BasePage {
     public  MobileElement moveRecordsMoreSearchOptions;
 
     //Name
-    @AndroidFindBy(xpath = "//android.view.View[@text='Name']")
+    @AndroidFindBy(xpath = "//*[@text='Name']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Name']//XCUIElementTypeTextView")
     public  MobileElement moveRecordsName;
 
     //Birth Date
-    @AndroidFindBy(xpath = "//android.view.View[@text='Birth Date']")
+    @AndroidFindBy(xpath = "//*[@text='Birth Date']")
     @iOSXCUITFindBy(accessibility = "Date Picker")
     public  MobileElement moveRecordsBirthDate;
 
@@ -754,23 +754,23 @@ public class ReportsScreen extends BasePage {
         public  MobileElement moveRecordsBirthDateOkButton;
 
     //Gender
-    @AndroidFindBy(xpath = "//android.view.View[@text='Gender']")
+    @AndroidFindBy(xpath = "//*[@text='Gender']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Optional']")
     public  MobileElement moveRecordsGender;
 
     //Country
-    @AndroidFindBy(xpath = "//android.view.View[@text='Country']")
+    @AndroidFindBy(xpath = "//*[@text='Country']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Country, Optional' AND type == 'XCUIElementTypeButton'")
     public  MobileElement moveRecordsCountry;
 
     //Country address to move to
-    @AndroidFindBy(xpath = "//android.view.View[@text='Country']")
+    @AndroidFindBy(xpath = "//*[@text='Country']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Country, Select' AND type == 'XCUIElementTypeButton'")
     public  MobileElement moveRecordsCountry2;
 
 
     //Next
-    @AndroidFindBy(xpath = "//android.view.View[@text='NEXT']")
+    @AndroidFindBy(xpath = "//*[@text='NEXT']")
     @iOSXCUITFindBy(accessibility = "Next")
     public  MobileElement moveRecordsNext;
 
@@ -780,63 +780,63 @@ public class ReportsScreen extends BasePage {
     public  MobileElement moveRecordsAddressSelector;
 
         //Address Known
-        @AndroidFindBy(xpath = "//android.view.View[@text='Address Known']")
+        @AndroidFindBy(xpath = "//*[@text='Address Known']")
         @iOSXCUITFindBy(accessibility = "Address Known")
         public  MobileElement moveRecordsAddressKnown;
 
         //Address Unchanging
-        @AndroidFindBy(xpath = "//android.view.View[@text='Address Unchanging']")
+        @AndroidFindBy(xpath = "//*[@text='Address Unchanging']")
         @iOSXCUITFindBy(accessibility = "Address Unchanging")
         public  MobileElement moveRecordsAddressUnchanging;
 
         //Joining a Household
-        @AndroidFindBy(xpath = "//android.view.View[@text='Joining a Household']")
+        @AndroidFindBy(xpath = "//*[@text='Joining a Household']")
         @iOSXCUITFindBy(accessibility = "Joining a Household")
         public  MobileElement moveRecordsJoiningAHousehold;
 
     //Locate On Map
-    @AndroidFindBy(xpath = "//android.view.View[@text='LOCATE ON MAP']")
+    @AndroidFindBy(xpath = "//*[@text='LOCATE ON MAP']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Locate on Map' AND type == 'XCUIElementTypeButton'")
     public  MobileElement moveRecordsLocateOnMap;
 
     //Address 1
-    @AndroidFindBy(xpath = "//android.view.View[@text='Address 1']")
+    @AndroidFindBy(xpath = "//*[@text='Address 1']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Address 1']//XCUIElementTypeTextView")
     public  MobileElement moveRecordsAddress1;
 
     //Address 2
-    @AndroidFindBy(xpath = "//android.view.View[@text='Address 2']")
+    @AndroidFindBy(xpath = "//*[@text='Address 2']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Address 2']//XCUIElementTypeTextView")
     public  MobileElement moveRecordsAddress2;
 
     //City
-    @AndroidFindBy(xpath = "//android.view.View[@text='City']")
+    @AndroidFindBy(xpath = "//*[@text='City']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='City']//XCUIElementTypeTextView")
     public  MobileElement moveRecordsCity;
 
     //State or Province
-    @AndroidFindBy(xpath = "//android.view.View[@text='State or Province']")
+    @AndroidFindBy(xpath = "//*[@text='State or Province']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='State or Province, Select']/XCUIElementTypeButton")
     public  MobileElement moveRecordsStateOrProvince;
 
     //Postal Code
-    @AndroidFindBy(xpath = "//android.view.View[@text='Postal Code']")
+    @AndroidFindBy(xpath = "//*[@text='Postal Code']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Postal Code']//XCUIElementTypeTextView")
     public  MobileElement moveRecordsPostalCode;
 
 
     //Move Records In
-    @AndroidFindBy(xpath = "//android.view.View[@text='MOVE RECORDS IN']")
+    @AndroidFindBy(xpath = "//*[@text='MOVE RECORDS IN']")
     @iOSXCUITFindBy(accessibility = "Move In")
     public  MobileElement moveRecordsMoveRecordsIn;
 
     //Discard Move
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Discard Move']")
+    @AndroidFindBy(xpath = "//*[@content-desc='Discard Move']")
     @iOSXCUITFindBy(accessibility = "Trash")
     public  MobileElement moveRecordsDiscardMove;
 
     //Discard Button
-    @AndroidFindBy(xpath = "//android.view.View[@text='DISCARD']")
+    @AndroidFindBy(xpath = "//*[@text='DISCARD']")
     @iOSXCUITFindBy(accessibility = "OK")
     public  MobileElement moveRecordsDiscardButton;
 
