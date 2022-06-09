@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-@a = ("R9TN80AQ57J", "HT69D0204296", "99051FFBA000S7", "R38M803MWGM");
+@a = ("R9TN80AQ57J", "HT69D0204296", "R9TN80AQ57J", "09251FDD4003MU");
 
 foreach $i (@a) {
     system("adb -s " . $i . " uninstall org.lds.ldstools.dev");

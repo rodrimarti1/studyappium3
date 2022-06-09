@@ -53,15 +53,34 @@ public class APITest {
 
 //    "a1479b4c-df02-4454-bdb6-576f12473193"
 
-//    @Test
+    @Test
     public void apiCheck() throws Exception {
+        int responseCode = 0;
+
+        Map<String, Object> myMap = new HashMap<>();
+
+
+        reportNameToCheck =  apiTest.getAllExpenses("mbthomas74", "21628");
+        for (String listItem : reportNameToCheck) {
+            System.out.println(listItem);
+        }
+
+//        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test One");
+//        for (String mapKey: myMap.keySet()) {
+//            String key = mapKey.toString();
+//            String value = myMap.get(mapKey).toString();
+//            System.out.println(key + " - " + value);
+//        }
+
+
+        //Members Moved Out
 //        memberList = apiTest.getNamesFromMembersMovedOut("mbthomas74", "21628");
 //        //        memberList = apiTest.getInfoFromMinisteringBrothers("mbthomas74",  "21628", "sisters");
 //        for (String reportName: memberList) {
 //            System.out.println("Report Name: " + reportName);
 //        }
 
-        int responseCode = 0;
+
 
         //List Tests
 //        responseCode = apiTest.postListTest("7d9c46fd-958f-4a91-8c74-7ef41a297c55,2d608fa5-ed9a-460e-b220-270214c6e9bb", "Change List Name",51, "a1479b4c-df02-4454-bdb6-576f12473193", "julieryan");
@@ -75,11 +94,11 @@ public class APITest {
 
 
 //        //Delete all lists
-        listMap = apiTest.getListNames("julieryan");
-        for (String listToDelete: listMap.keySet()) {
-            System.out.println(listToDelete);
-            responseCode = apiTest.listDelete(listToDelete, "julieryan");
-        }
+//        listMap = apiTest.getListNames("julieryan");
+//        for (String listToDelete: listMap.keySet()) {
+//            System.out.println(listToDelete);
+//            responseCode = apiTest.listDelete(listToDelete, "julieryan");
+//        }
 
 
 
@@ -100,7 +119,7 @@ public class APITest {
 
     }
 
-    @Test
+
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;

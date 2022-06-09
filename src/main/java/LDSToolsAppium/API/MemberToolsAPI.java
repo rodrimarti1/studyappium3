@@ -948,8 +948,42 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return listMap;
     }
 
+    public List<String> getAllExpenses(String proxyLogin, String unitNumber) throws Exception {
+        JsonParser parser = new JsonParser();
+        String responseData;
+        Gson gson = new Gson();
+        ApiFinance myFinance = new ApiFinance();
+//        HashMap myMap = new HashMap();
+        Map<String, Object> myMap = new HashMap<>();
+//        ArrayList<String> memberNames = new ArrayList<String>();
+//        List<String> foundExpense = null;
+        List<String> foundExpense = new ArrayList<String>();
+        Type apiFinance = new TypeToken<ArrayList<ApiFinance>>(){}.getType();
+        responseData = getFinanceExpenses(unitNumber, proxyLogin);
+//        System.out.println("Response String: " + responseData);
+        JsonElement jsonElement = parser.parse(responseData);
 
-    public Map<String, Object> getExpenses(String proxyLogin, String unitNumber, String purposeSearch) throws Exception {
+        if (jsonElement instanceof JsonObject) {
+//            System.out.println("JSON Object!");
+            myFinance = gson.fromJson(jsonElement, ApiFinance.class);
+
+
+        } else if (jsonElement instanceof JsonArray) {
+            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+            List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
+            for(ApiFinance unit : testExpenses) {
+                List<Expense> myExpenses = unit.getExpenses();
+                for (Expense myFinanceRequest: myExpenses) {
+                    foundExpense.add(myFinanceRequest.getPurpose());
+                }
+            }
+        }
+
+        return foundExpense;
+    }
+
+    public Map<String, Object> getExpensesDetail(String proxyLogin, String unitNumber, String purposeSearch) throws Exception {
         JsonParser parser = new JsonParser();
         String responseData;
         Gson gson = new Gson();
