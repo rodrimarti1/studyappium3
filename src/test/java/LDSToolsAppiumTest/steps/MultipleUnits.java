@@ -7,11 +7,11 @@ import LDSToolsAppium.Screen.DirectoryScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppium.Screen.ReportsScreen;
 import LDSToolsAppiumTest.HelperMethods;
-import io.appium.java_client.MobileElement;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -54,7 +54,7 @@ public class MultipleUnits extends BaseDriver {
 
     public List<String> getAllUnits() throws Exception {
         List<String> StakeWard = new ArrayList<String>();
-        List<MobileElement> options;
+        List<WebElement> options;
         String myUnit;
         BasePage myBasePage = new BasePage(driver);
 

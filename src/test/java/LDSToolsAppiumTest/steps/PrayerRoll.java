@@ -8,7 +8,6 @@ import LDSToolsAppium.Screen.TemplesScreen;
 import LDSToolsAppiumTest.HelperMethods;
 
 
-import io.appium.java_client.MobileElement;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -69,7 +68,7 @@ public class PrayerRoll extends BaseDriver {
     @And("the member enters in a name")
     public void theMemberEntersInAName() throws Exception {
         LOGGER.info("the member enters in a name");
-        myTemple.prayerRoll1stName.setValue("Test One");
+        myTemple.prayerRoll1stName.sendKeys("Test One");
         myTemple.prayerRollSubmitNames.click();
     }
 
@@ -102,11 +101,11 @@ public class PrayerRoll extends BaseDriver {
     @When("the member enters in five names")
     public void theMemberEntersInFiveNames() throws Exception {
         LOGGER.info("the member enters in five names");
-        myTemple.prayerRoll1stName.setValue("Test One");
-        myTemple.prayerRoll2ndName.setValue("Test Two");
-        myTemple.prayerRoll3rdName.setValue("Test Three");
-        myTemple.prayerRoll4thName.setValue("Test Four");
-        myTemple.prayerRoll5thName.setValue("Test Five");
+        myTemple.prayerRoll1stName.sendKeys("Test One");
+        myTemple.prayerRoll2ndName.sendKeys("Test Two");
+        myTemple.prayerRoll3rdName.sendKeys("Test Three");
+        myTemple.prayerRoll4thName.sendKeys("Test Four");
+        myTemple.prayerRoll5thName.sendKeys("Test Five");
         myTemple.prayerRollSubmitNames.click();
     }
 

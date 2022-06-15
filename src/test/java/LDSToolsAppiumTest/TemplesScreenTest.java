@@ -185,7 +185,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
+    @Test (groups= { "all", "all1", "daily", "daily2"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
@@ -289,7 +289,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all3", "daily", "daily4"})
+    @Test (groups= { "all", "all3", "daily", "daily4", "jft"})
     public void templeSearch() throws Exception {
         String pageSource;
 
@@ -308,8 +308,9 @@ public class TemplesScreenTest extends BaseDriver {
         myMenu.selectMenu(myMenu.temples);
         myTemple.yesRemindMe.click();
         myTemple.chooseDifferentTab(myTemple.allTab);
+        Thread.sleep(8000);
 
-        myTemple.searchTemple.setValue("Cedar City");
+        myTemple.searchTemple.sendKeys("Cedar City");
 
 
         Thread.sleep(2000);
@@ -324,7 +325,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1"})
+    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 
@@ -345,8 +346,9 @@ public class TemplesScreenTest extends BaseDriver {
         myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
         Thread.sleep(2000);
         myTemple.chooseDifferentTab(myTemple.allTab);
+        Thread.sleep(8000);
 
-        myTemple.searchTemple.setValue("New York");
+        myTemple.searchTemple.sendKeys("New York");
 
 
         Thread.sleep(2000);

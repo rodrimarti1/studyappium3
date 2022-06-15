@@ -8,7 +8,8 @@ import LDSToolsAppium.Screen.FinanceScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
 import com.google.common.collect.ImmutableMap;
-import io.appium.java_client.MobileElement;
+
+import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
@@ -19,7 +20,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
-import io.appium.java_client.InteractsWithFiles.*;
+
 import org.testng.Assert;
 
 import java.awt.desktop.SystemEventListener;
@@ -232,7 +233,7 @@ public class PaymentRequests extends BaseDriver {
             myFinance.paymentRequestsAddPurpose.click();
         }
 
-        myFinance.paymentRequestsPurpose.setValue(purpose);
+        myFinance.paymentRequestsPurpose.sendKeys(purpose);
         Thread.sleep(2000);
 //        System.out.println(myBasePage.getSourceOfPage());
 //        Thread.sleep(2000);
@@ -272,7 +273,7 @@ public class PaymentRequests extends BaseDriver {
                 //TODO: Need more code here....
                 break;
             default:
-                myFinance.paymentRequestsSearch.setValue(payee);
+                myFinance.paymentRequestsSearch.sendKeys(payee);
                 if (myBasePage.getRunningOS().equalsIgnoreCase("ios")) {
                     //TODO: iOS code
                 } else {
@@ -291,7 +292,7 @@ public class PaymentRequests extends BaseDriver {
             Thread.sleep(500);
             myBasePage.waitForElementThenClick(myFinance.paymentRequestsAddPurpose);
         }
-        myFinance.paymentRequestsPurpose.setValue(purpose);
+        myFinance.paymentRequestsPurpose.sendKeys(purpose);
         myBasePage.waitForElementThenClick(myFinance.paymentRequestsPurposeAddButton);
 
     }
@@ -371,7 +372,7 @@ public class PaymentRequests extends BaseDriver {
             x = myFinance.paymentRequestsCategoryGroup1Spinner.getLocation().getX();
             y = myFinance.paymentRequestsCategoryGroup1Spinner.getLocation().getY();
 
-            TouchAction action = new TouchAction(driver.get())
+            TouchAction action = new TouchAction((PerformsTouchActions) driver.get())
                     .press(PointOption.point(x + 60, y + 250))
                     .release();
             action.perform();
@@ -386,7 +387,7 @@ public class PaymentRequests extends BaseDriver {
         x = myFinance.paymentRequestsCategoryGroup2Spinner.getLocation().getX();
         y = myFinance.paymentRequestsCategoryGroup2Spinner.getLocation().getY();
 
-        TouchAction action = new TouchAction(driver.get())
+        TouchAction action = new TouchAction((PerformsTouchActions) driver.get())
                 .press(PointOption.point(x + 60, y + 350))
                 .release();
         action.perform();
@@ -400,7 +401,7 @@ public class PaymentRequests extends BaseDriver {
         x = myFinance.paymentRequestsCategoryGroup3Spinner.getLocation().getX();
         y = myFinance.paymentRequestsCategoryGroup3Spinner.getLocation().getY();
 
-        TouchAction action = new TouchAction(driver.get())
+        TouchAction action = new TouchAction((PerformsTouchActions) driver.get())
                 .press(PointOption.point(x + 60, y + 350))
                 .release();
         action.perform();

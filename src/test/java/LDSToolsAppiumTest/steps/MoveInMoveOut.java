@@ -62,7 +62,7 @@ public class MoveInMoveOut extends BaseDriver {
         //Enter in a MRN
         myBasePage.waitForElementThenClick(myReports.moveRecordsMoreSearchOptions);
         Thread.sleep(500);
-        myReports.moveRecordsMRNField.setValue("00004179234");
+        myReports.moveRecordsMRNField.sendKeys("00004179234");
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsNext));
         myBasePage.waitForElementThenClick(myReports.moveRecordsNext);
 

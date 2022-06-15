@@ -41,6 +41,7 @@ public class AppiumService {
 				.withArgument(GeneralServerFlag.SESSION_OVERRIDE)
 				.withArgument(GeneralServerFlag.LOG_LEVEL, "error")
 				.withArgument(GeneralServerFlag.RELAXED_SECURITY)
+				.withArgument(() -> "--base-path", "/wd/hub")
 				.build();
 		System.out.println("Starting Appium");
 		myAppiumService.start();

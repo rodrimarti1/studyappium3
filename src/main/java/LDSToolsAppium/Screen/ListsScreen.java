@@ -3,7 +3,7 @@ package LDSToolsAppium.Screen;
 import LDSToolsAppium.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
+import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.pagefactory.AndroidFindBy;
@@ -13,6 +13,7 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 //import org.springframework.ui.context.Theme;
 
@@ -32,17 +33,17 @@ public class ListsScreen extends BasePage {
 
     //Edit List - iOS Only
     @iOSXCUITFindBy(accessibility = "Edit")
-    public MobileElement listsEdit;
+    public WebElement listsEdit;
 
     //Done List - iOS Only
     @iOSXCUITFindBy(accessibility = "Done")
-    public MobileElement listsDone;
+    public WebElement listsDone;
 
 
     //Add List
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fab")
     @iOSXCUITFindBy(accessibility = "Add List")
-    public MobileElement listsAddList;
+    public WebElement listsAddList;
 
 
 
@@ -53,22 +54,22 @@ public class ListsScreen extends BasePage {
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/editText")
 //    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     @iOSXCUITFindBy(iOSNsPredicate =  "type == 'XCUIElementTypeTextField'")
-    public MobileElement listsName;
+    public WebElement listsName;
 
     //New List Dialog - Cancel
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_button_negative")
     @iOSXCUITFindBy(accessibility = "Cancel")
-    public MobileElement listsCancel;
+    public WebElement listsCancel;
 
     //New List Dialog - OK or Done
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/button1")
     @AndroidFindBy(xpath = "//*[@text='OK']")
     @iOSXCUITFindBy(accessibility = "Done")
-    public MobileElement listsOk;
+    public WebElement listsOk;
 
     @AndroidFindBy(xpath = "//*[@text='OK']")
     @iOSXCUITFindBy(accessibility = "OK")
-    public MobileElement listsOk2;
+    public WebElement listsOk2;
 
 
 
@@ -77,26 +78,26 @@ public class ListsScreen extends BasePage {
 
     //Android - Edit List Name
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_edit_name")
-    public MobileElement listsEditName;
+    public WebElement listsEditName;
 
     //Android - Add member name text field
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individualLookupAutoCompleteTextView")
-    public MobileElement listsAddMemberName;
+    public WebElement listsAddMemberName;
 
 
     //iOS - Add Member Button
 //    @iOSXCUITFindBy(accessibility = "Add")
     @iOSXCUITFindBy(accessibility = " + ")
-    public MobileElement listsAddToListButton;
+    public WebElement listsAddToListButton;
 
     //iOS - Search Field
     @iOSXCUITFindBy(accessibility = "Search")
-    public MobileElement listsSearch;
+    public WebElement listsSearch;
 
     //Back button after adding user
     @AndroidFindBy(xpath = "//android.widget.ImageButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
-    public MobileElement listsBackButton;
+    public WebElement listsBackButton;
 
 
 
@@ -105,38 +106,38 @@ public class ListsScreen extends BasePage {
 
     //Share - Email button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_send_email")
-    public MobileElement listsSendEmail;
+    public WebElement listsSendEmail;
 
     //Show On Map
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_show_on_map")
-    public MobileElement listsShowOnMap;
+    public WebElement listsShowOnMap;
 
     //Send Text to List
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_show_on_map")
-    public MobileElement listsSendText;
+    public WebElement listsSendText;
 
     //More Options
     @AndroidFindBy(accessibility = "More options")
-    public MobileElement listsMoreOptions;
+    public WebElement listsMoreOptions;
 
 
     //More Options - Share
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Share']")
-    public MobileElement listsMoreOptionsShare;
+    public WebElement listsMoreOptionsShare;
 
     //More Options - Edit
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit']")
-    public MobileElement listsMoreOptionsEdit;
+    public WebElement listsMoreOptionsEdit;
 
     //More Options - Delete
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Delete']")
-    public MobileElement listsMoreOptionsDelete;
+    public WebElement listsMoreOptionsDelete;
 
 
     //Top List Element
     @AndroidFindBy(xpath = "//androidx.recyclerview.widget.RecyclerView/android.widget.FrameLayout[1]/android.widget.LinearLayout/android.widget.TextView[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeStaticText[1]")
-    public MobileElement listTopList;
+    public WebElement listTopList;
 
 
     public String findTopListName() throws Exception {
@@ -169,13 +170,13 @@ public class ListsScreen extends BasePage {
             myBasePage.waitForElementThenClick(listsEdit);
             Thread.sleep(3000);
 //            System.out.println(myBasePage.getSourceOfPage());
-            myBasePage.waitForElementThenClick((MobileElement) driver.get().findElement(By.xpath("//*[contains(@name, 'Delete " + myListName + "')]")));
+            myBasePage.waitForElementThenClick((WebElement) driver.get().findElement(By.xpath("//*[contains(@name, 'Delete " + myListName + "')]")));
 //            driver.get().findElement(By.xpath("//XCUIElementTypeButton[contains(@name, 'Delete " + myListName + "')]")).click();
 
             Thread.sleep(1000);
 
 //            myBasePage.waitForElementThenClick(driver.get().findElement(MobileBy.iOSNsPredicateString("name == 'Delete' ")));
-            myBasePage.waitForElementThenClick((MobileElement) driver.get().findElement(By.name("Delete")));
+            myBasePage.waitForElementThenClick((WebElement) driver.get().findElement(By.name("Delete")));
             Thread.sleep(8000);
 
 //            driver.get().findElement(MobileBy.iOSNsPredicateString("name == 'Delete' ")).click();
@@ -225,10 +226,10 @@ public class ListsScreen extends BasePage {
             myBasePage.waitForElementThenClick(listsEdit);
             Thread.sleep(3000);
 //            System.out.println(myBasePage.getSourceOfPage());
-//            myBasePage.waitForElementThenClick((MobileElement) driver.get().findElement(By.xpath("//*[contains(@name, '" + myListName + "')]")));
-            myBasePage.waitForElementThenClick((MobileElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myListName + "']")));
+//            myBasePage.waitForElementThenClick((WebElement) driver.get().findElement(By.xpath("//*[contains(@name, '" + myListName + "')]")));
+            myBasePage.waitForElementThenClick((WebElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myListName + "']")));
             Thread.sleep(1000);
-            listsName.setValue(newName);
+            listsName.sendKeys(newName);
             myBasePage.waitForElementThenClick(listsOk2);
             Thread.sleep(1000);
 
@@ -243,7 +244,7 @@ public class ListsScreen extends BasePage {
             myBasePage.waitForElementThenClick(listsMoreOptionsEdit);
             myBasePage.waitForElementThenClick(listsEditName);
             listsName.clear();
-            listsName.setValue(newName);
+            listsName.sendKeys(newName);
 //            System.out.println(getSourceOfPage());
             myBasePage.waitForElementThenClick(listsOk);
             myBasePage.backButton.click();
@@ -317,7 +318,7 @@ public class ListsScreen extends BasePage {
             elementX = listsAddMemberName.getLocation().getX();
             elementY = listsAddMemberName.getLocation().getY();
 
-            TouchAction nameField = new TouchAction(driver.get()).press(PointOption.point(elementX, elementY)).release();
+            TouchAction nameField = new TouchAction((PerformsTouchActions) driver.get()).press(PointOption.point(elementX, elementY)).release();
             nameField.perform();
 
             listsAddMemberName.sendKeys(memberToAdd);
@@ -327,7 +328,7 @@ public class ListsScreen extends BasePage {
             elementX = listsAddMemberName.getLocation().getX();
             elementY = listsAddMemberName.getLocation().getY();
 
-            TouchAction clickElement = new TouchAction(driver.get()).press(PointOption.point(elementX + 60, elementY + 200)).release();
+            TouchAction clickElement = new TouchAction((PerformsTouchActions) driver.get()).press(PointOption.point(elementX + 60, elementY + 200)).release();
             clickElement.perform();
         }
     }

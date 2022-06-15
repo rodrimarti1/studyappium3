@@ -296,13 +296,13 @@ public class MissionaryScreenTest extends BaseDriver {
         Assert.assertTrue(myBasePage.checkNoCaseList("katalina@clearfreight.com", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("zmaxfield", pageSource, "Contains"));
 
-        myMissionary.referralName.setValue("Auto Test Name");
-        myMissionary.referralPhone.setValue("801-867-5309");
+        myMissionary.referralName.sendKeys("Auto Test Name");
+        myMissionary.referralPhone.sendKeys("801-867-5309");
 
         //System.out.println(myBasePage.getSourceOfPage());
         myBasePage.scrollToTextGeneral("Email");
 
-        myMissionary.referralEmail.setValue("autotest@gmail.com");
+        myMissionary.referralEmail.sendKeys("autotest@gmail.com");
 
         myBasePage.scrollToTextGeneral("Locate on Map");
 
@@ -330,7 +330,7 @@ public class MissionaryScreenTest extends BaseDriver {
 
 
         Thread.sleep(2000);
-        myMissionary.referralMapSearch.setValue("920 Mocking Bird Ln, Sunnyvale");
+        myMissionary.referralMapSearch.sendKeys("920 Mocking Bird Ln, Sunnyvale");
         Thread.sleep(10000);
 
         myBasePage.clickByText("920 Mockingbird Ln, Sunnyvale, CA, USA");
@@ -359,7 +359,7 @@ public class MissionaryScreenTest extends BaseDriver {
             myBasePage.scrollToTextGeneral("SEND");
         }
 //        System.out.println(myBasePage.getSourceOfPage());
-        myMissionary.referralMessageField.setValue("Hello this is a test");
+        myMissionary.referralMessageField.sendKeys("Hello this is a test");
 
         if (getRunningOS().equals("ios")) {
             //driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name='Message']/following-sibling::XCUIElementTypeImage[@name='minus']")).click();

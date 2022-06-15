@@ -7,7 +7,6 @@ import LDSToolsAppium.Screen.ReportsScreen;
 import LDSToolsAppiumTest.HelperMethods;
 
 
-import io.appium.java_client.MobileElement;
 import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -15,6 +14,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.text.SimpleDateFormat;
@@ -53,7 +53,7 @@ public class SacramentAttendance extends BaseDriver {
     @When("{string} is entered in the {string}")
     public void isEnteredInThe(String valueToEnter, String fieldToEnter) throws Exception  {
         LOGGER.info(valueToEnter + " is entered in the " + fieldToEnter);
-        MobileElement sacToEnter;
+        WebElement sacToEnter;
         //Need to scroll down or iOS cannot see the elements.
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myBasePage.scrollDownIOS();
@@ -65,12 +65,12 @@ public class SacramentAttendance extends BaseDriver {
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             sacToEnter = getSunday(fieldToEnter);
             sacToEnter.clear();
-            sacToEnter.setValue(valueToEnter);
+            sacToEnter.sendKeys(valueToEnter);
             myBasePage.keyboardReturn.click();
         } else {
             Thread.sleep(2000);
 //            System.out.println(myBasePage.getSourceOfPage());
-            myReports.sacramentAttendanceDialogEditField.setValue(valueToEnter);
+            myReports.sacramentAttendanceDialogEditField.sendKeys(valueToEnter);
             myReports.sacramentAttendanceDialogOk.click();
             Thread.sleep(2000);
         }
@@ -127,7 +127,7 @@ public class SacramentAttendance extends BaseDriver {
     @When("a {string} is entered using the counter")
     public void aIsEnteredUsingTheCounter(String counterNumber) throws Exception {
         LOGGER.info("a " + counterNumber + " is entered using the counter");
-        MobileElement sacToEnter;
+        WebElement sacToEnter;
         int counterTotal;
         counterTotal = Integer.parseInt(counterNumber);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
@@ -139,7 +139,7 @@ public class SacramentAttendance extends BaseDriver {
             sacToEnter = getSunday("First Date Field");
             sacToEnter.clear();
 //            Thread.sleep(2000);
-            sacToEnter.setValue("0");
+            sacToEnter.sendKeys("0");
             myBasePage.waitForElement(myReports.sacramentAttendanceCounterIcon);
 //            myBasePage.keyboardReturn.click();
 //            Thread.sleep(2000);
@@ -155,7 +155,7 @@ public class SacramentAttendance extends BaseDriver {
     @When("a {string} is entered using the counter without saving")
     public void aIsEnteredUsingTheCounterWithoutSaving(String counterNumber) throws Exception{
         LOGGER.info("a " + counterNumber + " is entered using the counter without saving");
-        MobileElement sacToEnter;
+        WebElement sacToEnter;
         int counterTotal;
         counterTotal = Integer.parseInt(counterNumber);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
@@ -167,7 +167,7 @@ public class SacramentAttendance extends BaseDriver {
             sacToEnter = getSunday("First Date Field");
             sacToEnter.clear();
 //            Thread.sleep(2000);
-            sacToEnter.setValue("0");
+            sacToEnter.sendKeys("0");
             myBasePage.waitForElement(myReports.sacramentAttendanceCounterIcon);
 //            myBasePage.keyboardReturn.click();
 //            Thread.sleep(2000);
@@ -218,14 +218,14 @@ public class SacramentAttendance extends BaseDriver {
     }
 
     public void clickElement(String elementName) throws Exception {
-        MobileElement myElement = null;
+        WebElement myElement = null;
         myElement = getSunday(elementName);
         myElement.click();
     }
 
     public String getTextFromElement(String elementName) throws Exception {
         String myText = null;
-        MobileElement myElement = null;
+        WebElement myElement = null;
         myElement = getSunday(elementName);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myText = myElement.getAttribute("value");
@@ -253,14 +253,14 @@ public class SacramentAttendance extends BaseDriver {
         return myText;
     }
 
-    public MobileElement getSunday(String elementName) throws Exception {
-        MobileElement returnElement = null;
+    public WebElement getSunday(String elementName) throws Exception {
+        WebElement returnElement = null;
         List<String> sundayNumber = getSundaysInCurrentMonth();
         switch(elementName) {
             case "First Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
 //                    System.out.println(myBasePage.getSourceOfPage());
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(0) + "']"));
                 } else {
                     returnElement = myReports.sacramentAttendanceFirstWeek;
@@ -268,7 +268,7 @@ public class SacramentAttendance extends BaseDriver {
                 break;
             case "Second Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(1) + "']"));
                 } else {
                     returnElement = myReports.sacramentAttendanceSecondWeek;
@@ -277,7 +277,7 @@ public class SacramentAttendance extends BaseDriver {
                 break;
             case "Third Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(2) + "']"));
                 } else {
                     returnElement = myReports.sacramentAttendanceThirdWeek;
@@ -286,7 +286,7 @@ public class SacramentAttendance extends BaseDriver {
                 break;
             case "Fourth Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(3) + "']"));
                 } else {
                     returnElement = myReports.sacramentAttendanceFourthWeek;
@@ -296,7 +296,7 @@ public class SacramentAttendance extends BaseDriver {
 
             case "Fifth Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(4) + "']"));
                 } else {
                     returnElement = myReports.sacramentAttendanceFifthWeek;
@@ -341,7 +341,7 @@ public class SacramentAttendance extends BaseDriver {
     }
 
     public void sacramentAttendanceCleanUp() throws Exception {
-        MobileElement myElement;
+        WebElement myElement;
         List<String> fieldName = new ArrayList<>();
         fieldName.add("First Date Field");
         fieldName.add("Second Date Field");
@@ -366,7 +366,7 @@ public class SacramentAttendance extends BaseDriver {
 //                    Thread.sleep(2000);
 //                    myElement.click();
 //                    myElement.clear();
-//                    myElement.setValue("0");
+//                    myElement.sendKeys("0");
 //                    myBasePage.keyboardReturn.click();
 //                }
 //            }
@@ -374,28 +374,28 @@ public class SacramentAttendance extends BaseDriver {
         } else {
             if (checkForEnabled(myReports.sacramentAttendanceFirstWeek).equalsIgnoreCase("true")) {
                 myReports.sacramentAttendanceFirstWeek.click();
-                myReports.sacramentAttendanceDialogEditField.setValue("0");
+                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
                 myReports.sacramentAttendanceDialogOk.click();
             }
             if (checkForEnabled(myReports.sacramentAttendanceSecondWeek).equalsIgnoreCase("true")) {
                 myReports.sacramentAttendanceSecondWeek.click();
-                myReports.sacramentAttendanceDialogEditField.setValue("0");
+                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
                 myReports.sacramentAttendanceDialogOk.click();
             }
             if (checkForEnabled(myReports.sacramentAttendanceThirdWeek).equalsIgnoreCase("true")) {
                 myReports.sacramentAttendanceThirdWeek.click();
-                myReports.sacramentAttendanceDialogEditField.setValue("0");
+                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
                 myReports.sacramentAttendanceDialogOk.click();
             }
             if (checkForEnabled(myReports.sacramentAttendanceFourthWeek).equalsIgnoreCase("true")) {
                 myReports.sacramentAttendanceFourthWeek.click();
-                myReports.sacramentAttendanceDialogEditField.setValue("0");
+                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
                 myReports.sacramentAttendanceDialogOk.click();
             }
             if (myBasePage.checkForElement(myReports.sacramentAttendanceFifthWeek)) {
                 if (checkForEnabled(myReports.sacramentAttendanceFifthWeek).equalsIgnoreCase("true")) {
                     myReports.sacramentAttendanceFifthWeek.click();
-                    myReports.sacramentAttendanceDialogEditField.setValue("0");
+                    myReports.sacramentAttendanceDialogEditField.sendKeys("0");
                     myReports.sacramentAttendanceDialogOk.click();
                 }
             }
@@ -404,7 +404,7 @@ public class SacramentAttendance extends BaseDriver {
 
     }
 
-    public String checkForEnabled(MobileElement elementToCheck) throws Exception {
+    public String checkForEnabled(WebElement elementToCheck) throws Exception {
         String returnStatus;
         Thread.sleep(500);
         returnStatus = elementToCheck.getAttribute("enabled");

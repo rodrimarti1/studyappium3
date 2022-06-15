@@ -2,11 +2,11 @@ package LDSToolsAppium.Screen;
 
 import LDSToolsAppium.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
@@ -27,132 +27,132 @@ public class OrganizationsScreen extends BasePage {
     //Organizations Dropdown
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Organizations']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Organizations']")
-    public MobileElement organizationsDropdown;
+    public WebElement organizationsDropdown;
 
     //Savaii Samoa Fagamalo Stake
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Savaii Samoa Fagamalo Stake']")
     @iOSXCUITFindBy(accessibility = "Savaii Samoa Fagamalo Stake")
-    public MobileElement savaiiStake;
+    public WebElement savaiiStake;
 
     //Inglewood California Stake
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Inglewood California Stake']")
     @iOSXCUITFindBy(accessibility = "Inglewood California Stake")
-    public MobileElement inglewoodStake;
+    public WebElement inglewoodStake;
 
     //Fagamalo 1st Ward
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Fagamalo 1st Ward']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Fagamalo 1st Ward')]")
 //    @iOSXCUITFindBy(accessibility = "//XCUIElementTypeStaticText[@name=\" Fagamalo 1st Ward\"]")
-    public MobileElement fagamalo1stWard;
+    public WebElement fagamalo1stWard;
 
     //  ****************** Organizations Stake ******************
     //Stake Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Presidency']")
     @iOSXCUITFindBy(accessibility = "Stake Presidency")
-    public MobileElement stakePresidencyOrg;
+    public WebElement stakePresidencyOrg;
 
     //High Priests Quorum
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='High Priests Quorum']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"High Priests Quorum\"]")
-    public MobileElement highPriestsQuorumOrg;
+    public WebElement highPriestsQuorumOrg;
 
     //High Priests Quorum Members
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='High Priests Quorum Members']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"All High Priests Quorum Members\"]")
-    public MobileElement highPriestsQuorumMembersOrg;
+    public WebElement highPriestsQuorumMembersOrg;
 
 
     //High Council
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='High Council']")
     @iOSXCUITFindBy(accessibility = "High Council")
-    public MobileElement highCouncilOrg;
+    public WebElement highCouncilOrg;
 
     //Patriarch
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Patriarch']")
     @iOSXCUITFindBy(accessibility = "Patriarch")
-    public MobileElement patriarchOrg;
+    public WebElement patriarchOrg;
 
     //Stake Relief Society
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Relief Society']")
     @iOSXCUITFindBy(accessibility = "Stake Relief Society")
-    public MobileElement stakeReliefSocietyOrg;
+    public WebElement stakeReliefSocietyOrg;
 
     //Stake Young Men
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Young Men']")
     @iOSXCUITFindBy(accessibility = "Stake Young Men")
-    public MobileElement stakeYoungMenOrg;
+    public WebElement stakeYoungMenOrg;
 
     //Stake Young Women
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Young Women']")
     @iOSXCUITFindBy(accessibility = "Stake Young Women")
-    public MobileElement stakeYoungWomenOrg;
+    public WebElement stakeYoungWomenOrg;
 
     //Stake Sunday School
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Sunday School']")
     @iOSXCUITFindBy(accessibility = "Stake Sunday School")
-    public MobileElement stakeSundaySchoolOrg;
+    public WebElement stakeSundaySchoolOrg;
 
     //Stake Primary
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Primary']")
     @iOSXCUITFindBy(accessibility = "Stake Primary")
-    public MobileElement stakePrimaryOrg;
+    public WebElement stakePrimaryOrg;
 
     //Stake Family History
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Family History']")
     @iOSXCUITFindBy(accessibility = "Stake Family History")
-    public MobileElement stakeFamilyHistoryOrg;
+    public WebElement stakeFamilyHistoryOrg;
 
 
     //  ****************** Organizations Ward ******************
     //Bishopric
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Bishopric']")
     @iOSXCUITFindBy(accessibility = "Bishopric")
-    public MobileElement bishopricOrg;
+    public WebElement bishopricOrg;
 
     //High Priests Group
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='High Priests Group']")
     @iOSXCUITFindBy(accessibility = "High Priests Group")
-    public MobileElement highPriestsOrg;
+    public WebElement highPriestsOrg;
 
     //Elders Quorum
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Elders Quorum']")
     @iOSXCUITFindBy(accessibility = "Elders Quorum")
-    public MobileElement eldersQuorumOrg;
+    public WebElement eldersQuorumOrg;
 
     //Relief Society
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Relief Society']")
     @iOSXCUITFindBy(accessibility = "Relief Society")
-    public MobileElement reliefSocietyOrg;
+    public WebElement reliefSocietyOrg;
 
     //Young Men
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Aaronic Priesthood Quorums']")
     @iOSXCUITFindBy(accessibility = "Aaronic Priesthood Quorums")
-    public MobileElement youngMenOrg;
+    public WebElement youngMenOrg;
 
     //Young Women
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Young Women']")
     @iOSXCUITFindBy(accessibility = "Young Women")
-    public MobileElement youngWomenOrg;
+    public WebElement youngWomenOrg;
 
     //Sunday School
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sunday School']")
     @iOSXCUITFindBy(accessibility = "Sunday School")
-    public MobileElement sundaySchoolOrg;
+    public WebElement sundaySchoolOrg;
 
     //Primary
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Primary']")
     @iOSXCUITFindBy(accessibility = "Primary")
-    public MobileElement primaryOrg;
+    public WebElement primaryOrg;
 
     //Ward Missionaries
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Ward Missionaries']")
     @iOSXCUITFindBy(accessibility = "Ward Missionaries")
-    public MobileElement wardMissionariesOrg;
+    public WebElement wardMissionariesOrg;
 
     //Other Callings
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Other Callings']")
     @iOSXCUITFindBy(accessibility = "Other Callings")
-    public MobileElement otherCallingsOrg;
+    public WebElement otherCallingsOrg;
 
 
 
@@ -160,319 +160,319 @@ public class OrganizationsScreen extends BasePage {
     //High Priests Group Leadership
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='High Priests Group Leadership']")
     @iOSXCUITFindBy(accessibility = "High Priests Group Leadership")
-    public MobileElement highPriestsLeadership;
+    public WebElement highPriestsLeadership;
 
     //High Priests Home Teaching District Supervisors
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home Teaching District Supervisors']")
     @iOSXCUITFindBy(accessibility = "Home Teaching District Supervisors")
-    public MobileElement highPriestsHTDistrictSuper;
+    public WebElement highPriestsHTDistrictSuper;
 
     //High Priests All Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All High Priests Group Members")
-    public MobileElement highPriestsAllMembers;
+    public WebElement highPriestsAllMembers;
 
     // ****************** Elders Quorum ******************
     //Elders Quorum Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Elders Quorum Presidency']")
     @iOSXCUITFindBy(accessibility = "Elders Quorum Presidency")
-    public MobileElement eldersQuorumPresidency;
+    public WebElement eldersQuorumPresidency;
 
     //Elders Quorum Home Teaching District Supervisors
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Home Teaching District Supervisors']")
     @iOSXCUITFindBy(accessibility = "Home Teaching District Supervisors")
-    public MobileElement eldersHTDistrictSuper;
+    public WebElement eldersHTDistrictSuper;
 
     //Elders Quorum All Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Elders Quorum Members")
-    public MobileElement eldersAllMembers;
+    public WebElement eldersAllMembers;
 
     // ****************** Relief Society ******************
     //Relief Society Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Relief Society Presidency']")
     @iOSXCUITFindBy(accessibility = "Relief Society Presidency")
-    public MobileElement reliefSocietyPresidency;
+    public WebElement reliefSocietyPresidency;
 
     //Relief Society Ministering
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Ministering']")
     @iOSXCUITFindBy(accessibility = "Ministering")
-    public MobileElement reliefSocietyVisitingTeaching;
+    public WebElement reliefSocietyVisitingTeaching;
 
     //Relief Society Music
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Music']")
     @iOSXCUITFindBy(accessibility = "Music")
-    public MobileElement reliefSocietyMusic;
+    public WebElement reliefSocietyMusic;
 
     //Relief Society All Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Relief Society Members")
-    public MobileElement reliefSocietyAllMembers;
+    public WebElement reliefSocietyAllMembers;
 
     // ****************** Young Men ******************
     //Young Men Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Young Men Presidency']")
     @iOSXCUITFindBy(accessibility = "Young Men Presidency")
-    public MobileElement youngMenPresidency;
+    public WebElement youngMenPresidency;
 
     //Priests Quorum
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Priests Quorum']")
     @iOSXCUITFindBy(accessibility = "Priests Quorum")
-    public MobileElement priestsQuorum;
+    public WebElement priestsQuorum;
 
     //Priests Quorum Presidency
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'Presidency')]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Priests Quorum Presidency']")
     @iOSXCUITFindBy(accessibility = "Priests Quorum Presidency")
-    public MobileElement priestsQuorumPresidency;
+    public WebElement priestsQuorumPresidency;
 
     //Priests Quorum Adult Leaders
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"Priests Quorum Adult Leaders\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Priests Quorum Adult Leaders']")
     @iOSXCUITFindBy(accessibility = "Priests Quorum Adult Leaders")
-    public MobileElement priestsQuorumAdultLeaders;
+    public WebElement priestsQuorumAdultLeaders;
 
     //All Priests Quorum Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Priests Quorum Members")
-    public MobileElement priestsQuorumMembersAll;
+    public WebElement priestsQuorumMembersAll;
 
     //Teachers Quorum
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Teachers Quorum']")
     @iOSXCUITFindBy(accessibility = "Teachers Quorum")
-    public MobileElement teachersQuorum;
+    public WebElement teachersQuorum;
 
     //Teachers Quorum Presidency
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"Teachers Quorum Presidency\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Teachers Quorum Presidency']")
     @iOSXCUITFindBy(accessibility = "Teachers Quorum Presidency")
-    public MobileElement teachersQuorumPresidency;
+    public WebElement teachersQuorumPresidency;
 
     //Teachers Quorum Adult Leaders
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"Teachers Quorum Adult Leaders\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Teachers Quorum Adult Leaders']")
     @iOSXCUITFindBy(accessibility = "Teachers Quorum Adult Leaders")
-    public MobileElement teachersQuorumAdultLeaders;
+    public WebElement teachersQuorumAdultLeaders;
 
     //All Priests Quorum Members
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='All Teachers Quorum Members']")
     @iOSXCUITFindBy(accessibility = "All Teachers Quorum Members")
-    public MobileElement teachersQuorumMembersAll;
+    public WebElement teachersQuorumMembersAll;
 
     //Deacons Quorum
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Deacons Quorum']")
     @iOSXCUITFindBy(accessibility = "Deacons Quorum")
-    public MobileElement deaconsQuorum;
+    public WebElement deaconsQuorum;
 
     //Deacons Quorum Presidency
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"presidency\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Deacons Quorum Presidency']")
     @iOSXCUITFindBy(accessibility = "Deacons Quorum Presidency")
-    public MobileElement deaconsQuorumPresidency;
+    public WebElement deaconsQuorumPresidency;
 
     //Deacons Quorum Adult Leaders
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"Deacons Quorum Adult Leaders\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Deacons Quorum Adult Leaders']")
     @iOSXCUITFindBy(accessibility = "Deacons Quorum Adult Leaders")
-    public MobileElement deaconsQuorumAdultLeaders;
+    public WebElement deaconsQuorumAdultLeaders;
 
     //All Deacons Quorum Members
 //    @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='All Deacons Quorum Members']")
     @iOSXCUITFindBy(accessibility = "All Deacons Quorum Members")
-    public MobileElement deaconsQuorumMembersAll;
+    public WebElement deaconsQuorumMembersAll;
 
     //All Young Men Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Young Men Members")
-    public MobileElement youngMenMembersAll;
+    public WebElement youngMenMembersAll;
 
 
     // ****************** Young Women ******************
     //Young Women Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Young Women Presidency']")
     @iOSXCUITFindBy(accessibility = "Young Women Presidency")
-    public MobileElement youngWomenPresidency;
+    public WebElement youngWomenPresidency;
 
     //Young Women 12-18
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Young Women 12-18']")
     @iOSXCUITFindBy(accessibility = "Young Women 12-18")
-    public MobileElement youngWomen12to18;
+    public WebElement youngWomen12to18;
 
     //Young Women Class Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Young Women Class Presidency']")
     @iOSXCUITFindBy(accessibility = "Young Women Class Presidency")
-    public MobileElement youngWomenClassPresidency;
+    public WebElement youngWomenClassPresidency;
 
     //Laurel
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Laurel']")
     @iOSXCUITFindBy(accessibility = "Laurel")
-    public MobileElement laurel;
+    public WebElement laurel;
 
     //Laurel Presidency
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"presidency\")]")
     @iOSXCUITFindBy(accessibility = "Laurel Presidency")
-    public MobileElement laurelPresidency;
+    public WebElement laurelPresidency;
 
     //All Laurel Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Laurel Members")
-    public MobileElement laurelMembersAll;
+    public WebElement laurelMembersAll;
 
     //Mia Maid
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Mia Maid']")
     @iOSXCUITFindBy(accessibility = "Mia Maid")
-    public MobileElement miaMaid;
+    public WebElement miaMaid;
 
     //Mia Maid Presidency
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"presidency\")]")
     @iOSXCUITFindBy(accessibility = "Mia Maid Presidency")
-    public MobileElement miaMaidPresidency;
+    public WebElement miaMaidPresidency;
 
     //Mia Maid Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Mia Maid Members")
-    public MobileElement miaMaidMembersAll;
+    public WebElement miaMaidMembersAll;
 
     //Beehive
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Beehive']")
     @iOSXCUITFindBy(accessibility = "Beehive")
-    public MobileElement beehive;
+    public WebElement beehive;
 
     //Beehive Presidency
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"presidency\")]")
     @iOSXCUITFindBy(accessibility = "Beehive Presidency")
-    public MobileElement beehivePresidency;
+    public WebElement beehivePresidency;
 
     //All Beehive Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Beehive Members")
-    public MobileElement beehivemMembersAll;
+    public WebElement beehivemMembersAll;
 
     //All Young Women Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(accessibility = "All Young Women Members")
-    public MobileElement youngWomenMembersAll;
+    public WebElement youngWomenMembersAll;
 
     // ****************** Sunday School ******************
 
     //Sunday School Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sunday School Presidency']")
     @iOSXCUITFindBy(accessibility = "Sunday School Presidency")
-    public MobileElement sundaySchoolPresidency;
+    public WebElement sundaySchoolPresidency;
 
     //Gospel Doctrine
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Gospel Doctrine']")
     @iOSXCUITFindBy(accessibility = "Gospel Doctrine")
-    public MobileElement gospelDoctrine;
+    public WebElement gospelDoctrine;
 
     //Course 17
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Course 17']")
     @iOSXCUITFindBy(accessibility = "Course 17")
-    public MobileElement course17;
+    public WebElement course17;
 
     //Course 16
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Course 16']")
     @iOSXCUITFindBy(accessibility = "Course 16")
-    public MobileElement course16;
+    public WebElement course16;
 
     //Course 15
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Course 15']")
     @iOSXCUITFindBy(accessibility = "Course 15")
-    public MobileElement course15;
+    public WebElement course15;
 
     //Course 14
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Course 14']")
     @iOSXCUITFindBy(accessibility = "Course 14")
-    public MobileElement course14;
+    public WebElement course14;
 
     //Course 13
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Course 13']")
     @iOSXCUITFindBy(accessibility = "Course 13")
-    public MobileElement course13;
+    public WebElement course13;
 
     //Course 12
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Course 12']")
     @iOSXCUITFindBy(accessibility = "Course 12")
-    public MobileElement course12;
+    public WebElement course12;
 
 
     // ****************** Primary ******************
     //Primary Presidency
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Primary Presidency']")
     @iOSXCUITFindBy(accessibility = "Primary Presidency")
-    public MobileElement primaryPresidency;
+    public WebElement primaryPresidency;
 
     //Music
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Music']")
     @iOSXCUITFindBy(accessibility = "Gospel Doctrine")
-    public MobileElement primaryMusic;
+    public WebElement primaryMusic;
 
     //Valiant 10
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Valiant 10']")
     @iOSXCUITFindBy(accessibility = "Valiant 10")
-    public MobileElement valiant10;
+    public WebElement valiant10;
 
     //Valiant 11
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Valiant 11']")
     @iOSXCUITFindBy(accessibility = "Valiant 11")
-    public MobileElement valiant11;
+    public WebElement valiant11;
 
     //Valiant 9
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Valiant 9']")
     @iOSXCUITFindBy(accessibility = "Valiant 9")
-    public MobileElement valiant9;
+    public WebElement valiant9;
 
     //Valiant 8
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Valiant 8']")
     @iOSXCUITFindBy(accessibility = "Valiant 8")
-    public MobileElement valiant8;
+    public WebElement valiant8;
 
     //CTR 7
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='CTR 7']")
     @iOSXCUITFindBy(accessibility = "CTR 7")
-    public MobileElement ctr7;
+    public WebElement ctr7;
 
     //CTR 6
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='CTR 6']")
     @iOSXCUITFindBy(accessibility = "CTR 6")
-    public MobileElement ctr6;
+    public WebElement ctr6;
 
     //CTR 5
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='CTR 5']")
     @iOSXCUITFindBy(accessibility = "CTR 5")
-    public MobileElement ctr5;
+    public WebElement ctr5;
 
     //CTR 4
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='CTR 4']")
     @iOSXCUITFindBy(accessibility = "CTR 4")
-    public MobileElement ctr4;
+    public WebElement ctr4;
 
     //Sunbeam
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sunbeam']")
     @iOSXCUITFindBy(accessibility = "Sunbeam")
-    public MobileElement sunbeam;
+    public WebElement sunbeam;
 
     //Nursery
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Nursery']")
     @iOSXCUITFindBy(accessibility = "Nursery")
-    public MobileElement nursery;
+    public WebElement nursery;
 
     //Cub Scouts
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Cub Scouts']")
     @iOSXCUITFindBy(accessibility = "Cub Scouts")
-    public MobileElement cubScouts;
+    public WebElement cubScouts;
 
     //Eleven-Year-Old Scouts
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Eleven-Year-Old Scouts']")
     @iOSXCUITFindBy(accessibility = "Eleven-Year-Old Scouts")
-    public MobileElement elevenYearOldScouts;
+    public WebElement elevenYearOldScouts;
 
     //Activity Days
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Activity Days']")
     @iOSXCUITFindBy(accessibility = "Activity Days")
-    public MobileElement activityDays;
+    public WebElement activityDays;
 
 
 
@@ -480,14 +480,14 @@ public class OrganizationsScreen extends BasePage {
     //Music
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Music']")
     @iOSXCUITFindBy(accessibility = "Music")
-    public MobileElement otherMusic;
+    public WebElement otherMusic;
 
 
 
     //General All Members
     @AndroidFindBy(xpath = "//*[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all members\")]")
     @iOSXCUITFindBy(iOSNsPredicate = "name CONTAINS 'Members'")
-    public MobileElement generalAllMembers;
+    public WebElement generalAllMembers;
 
 
 }

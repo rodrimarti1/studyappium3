@@ -1,13 +1,13 @@
 package LDSToolsAppium;
 
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 public class MobileDevMain extends BaseDriver {
 
 
-    public MobileDevMain(AppiumDriver<MobileElement> driver2) {
+    public MobileDevMain(AppiumDriver driver2) {
         super();
     }
 

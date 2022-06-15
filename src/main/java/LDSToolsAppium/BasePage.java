@@ -49,65 +49,65 @@ public class BasePage extends BaseDriver {
     //Universal Elements
     @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
-    public MobileElement backButton;
+    public WebElement backButton;
 
     //Navigate up
     @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
-    public MobileElement navigateUp;
+    public WebElement navigateUp;
 
 //    @AndroidFindBy(accessibility = "Navigate up")
     @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
-    public MobileElement backAltButton;
+    public WebElement backAltButton;
 
 //    @AndroidFindBy(accessibility = "Navigate up")
     @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
-    public MobileElement drawerButton;
+    public WebElement drawerButton;
 
     @AndroidFindBy(id = "clearTextImageButton")
-    public MobileElement searchCollapse;
+    public WebElement searchCollapse;
 
     @iOSXCUITFindBy(accessibility = "More")
-    public MobileElement moreButton;
+    public WebElement moreButton;
 
     //OK
     @AndroidFindBy(xpath = "//*[@text=\"OK\"]")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'OK'")
-    public MobileElement alertOK;
+    public WebElement alertOK;
 
     //Cancel
     @AndroidFindBy(accessibility = "Cancel")
     @iOSXCUITFindBy(accessibility = "Cancel")
-    public MobileElement cancel;
+    public WebElement cancel;
 
     //Allow button
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]")
 //    @AndroidFindBy(id = "permission_allow_foreground_only_button")
     @iOSXCUITFindBy(accessibility = "Allow")
-    public MobileElement allowButton;
+    public WebElement allowButton;
 
 
     //Allow While Using App
     @AndroidFindBy(xpath = "//*[@text=\"Allow only while using the app\"]")
     @iOSXCUITFindBy(accessibility = "Allow While Using App")
-    public MobileElement allowWhileUsingApp;
+    public WebElement allowWhileUsingApp;
 
 
     //Alert check
     @AndroidFindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/content\"]/android.view.ViewGroup")
     @iOSXCUITFindBy(xpath = "//UIAAlert")
-    public MobileElement alertCheck;
+    public WebElement alertCheck;
 
     //Menu Title
 //    @AndroidFindBy(xpath = "//*[@resource-id=\"ab_toolbar\"]//android.widget.TextView")
     @AndroidFindBy(xpath = "//*[@resource-id='org.lds.ldstools.alpha:id/toolbar']//android.widget.TextView")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar//XCUIElementTypeStaticText")
-    public MobileElement menuTitle;
+    public WebElement menuTitle;
 
     //Return Key
     @iOSXCUITFindBy(accessibility = "Return")
-    public MobileElement keyboardReturn;
+    public WebElement keyboardReturn;
 
 
 
@@ -115,7 +115,7 @@ public class BasePage extends BaseDriver {
 
 
 
-    public BasePage(AppiumDriver<MobileElement> driver) {
+    public BasePage(AppiumDriver driver) {
 
     }
 
@@ -162,8 +162,8 @@ public class BasePage extends BaseDriver {
 
             if (!scrollArea.isEmpty()) {
                 for (String areaToScroll : scrollArea ) {
-                    MobileElement list = (MobileElement) driver.get().findElement(By.id(areaToScroll));
-                    MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                    WebElement list = (WebElement) driver.get().findElement(By.id(areaToScroll));
+                    WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                             + "new UiSelector().text(\"" + myElement + "\"));"));
                     if (radioGroup.getLocation().toString().isEmpty()) {
                         System.out.println("Text not found in: " + areaToScroll);
@@ -184,13 +184,13 @@ public class BasePage extends BaseDriver {
 
         } else {
             if (!checkTextOnPage(myElement)) {
-                MobileElement list = (MobileElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/list"));
-                MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                WebElement list = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/list"));
+                WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().text(\"" + myElement + "\"));"));
 
                 while (myLoopStatus == 0) {
                     System.out.println("OVERFLOW SCROLL: " + myCounter);
-                    radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                    radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                             + "new UiSelector().text(\"" + myElement + "\"));"));
 
 
@@ -224,13 +224,13 @@ public class BasePage extends BaseDriver {
         int myLoopStatus = 0;
 
         if (!checkTextOnPage(myElement)) {
-            MobileElement list = (MobileElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/scroll_area"));
-            MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+            WebElement list = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/scroll_area"));
+            WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                     + "new UiSelector().text(\"" + myElement + "\"));"));
 
             while (myLoopStatus == 0) {
                 System.out.println("OVERFLOW SCROLL: " + myCounter);
-                radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().text(\"" + myElement + "\"));"));
 
 
@@ -253,13 +253,13 @@ public class BasePage extends BaseDriver {
         int myLoopStatus = 0;
 
         if (!checkTextOnPage(myElement)) {
-            MobileElement list = (MobileElement) driver.get().findElement(By.id("top_layout"));
-            MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+            WebElement list = (WebElement) driver.get().findElement(By.id("top_layout"));
+            WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                     + "new UiSelector().text(\"" + myElement + "\"));"));
 
             while (myLoopStatus == 0) {
                 System.out.println("OVERFLOW SCROLL: " + myCounter);
-                radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().text(\"" + myElement + "\"));"));
 
 
@@ -283,13 +283,13 @@ public class BasePage extends BaseDriver {
 
         if (!checkTextOnPage(myElement)) {
 //            System.out.println(getSourceOfPage());
-            MobileElement list = (MobileElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/recycler_view"));
-            MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+            WebElement list = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/recycler_view"));
+            WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                     + "new UiSelector().text(\"" + myElement + "\"));"));
 
             while (myLoopStatus == 0) {
                 System.out.println("OVERFLOW SCROLL: " + myCounter);
-                radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().text(\"" + myElement + "\"));"));
 
 
@@ -313,13 +313,13 @@ public class BasePage extends BaseDriver {
 
         if (!checkTextOnPage(myElement)) {
 //            System.out.println(getSourceOfPage());
-            MobileElement list = (MobileElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/recyclerView"));
-            MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+            WebElement list = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/recyclerView"));
+            WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                     + "new UiSelector().text(\"" + myElement + "\"));"));
 
             while (myLoopStatus == 0) {
                 System.out.println("OVERFLOW SCROLL: " + myCounter);
-                radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().text(\"" + myElement + "\"));"));
 
 
@@ -379,13 +379,13 @@ public class BasePage extends BaseDriver {
         int myLoopStatus = 0;
 
         if (!checkTextOnPage(myElement)) {
-            MobileElement list = (MobileElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/navigation_menu"));
-            MobileElement radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+            WebElement list = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/navigation_menu"));
+            WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                     + "new UiSelector().text(\"" + myElement + "\"));"));
 
             while (myLoopStatus == 0) {
                 System.out.println("OVERFLOW SCROLL: " + myCounter);
-                radioGroup = (MobileElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+                radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
                         + "new UiSelector().text(\"" + myElement + "\"));"));
 
 
@@ -480,7 +480,7 @@ public class BasePage extends BaseDriver {
             System.out.println("Distance: " + scrollDistance);
 
 
-            TouchAction actions = new TouchAction(driver.get());
+            TouchAction actions = new TouchAction((PerformsTouchActions) driver.get());
             actions.press(PointOption.point(screenWidth, screenHeight))
                     .moveTo(PointOption.point(screenWidth, scrollDistance))
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
@@ -505,7 +505,7 @@ public class BasePage extends BaseDriver {
 
             //scrollDistance = -scrollDistance;
 
-            TouchAction actions = new TouchAction(driver.get());
+            TouchAction actions = new TouchAction((PerformsTouchActions) driver.get());
             actions.press(PointOption.point(screenWidth, screenHeight))
                     .moveTo(PointOption.point(screenWidth, scrollDistance))
                     .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(2)))
@@ -555,7 +555,7 @@ public class BasePage extends BaseDriver {
 //        System.out.println("Height: " + screenHeight);
 //        System.out.println("Distance: " + scrollDistance);
 
-        TouchAction mySwipe = new TouchAction(driver.get());
+        TouchAction mySwipe = new TouchAction((PerformsTouchActions) driver.get());
         //mySwipe.tap(screenWidth,screenHeight).moveTo(screenWidth, scrollDistance).waitAction(Duration.ofMillis(2000)).release().perform();
         //mySwipe.press(screenWidth,screenHeight).moveTo(screenWidth, scrollDistance).release().perform();
 
@@ -598,7 +598,7 @@ public class BasePage extends BaseDriver {
 
     public boolean checkTextOnPage(String myElement) {
         boolean myReturnStatus;
-        List<MobileElement> options = null;
+        List<WebElement> options = null;
         options = driver.get().findElements(By.xpath("//*[contains(@text, '" + myElement + "')]"));
 
         if (options.isEmpty()) {
@@ -730,9 +730,9 @@ public class BasePage extends BaseDriver {
 //        sa.assertAll();
     }
 
-    public void waitForTextToDisappear(MobileElement myElement) {
+    public void waitForTextToDisappear(WebElement myElement) {
         System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), 60);
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(60));
         wait.until(ExpectedConditions.invisibilityOf(myElement));
         System.out.println("Stop Checking for Element");
     }
@@ -740,7 +740,7 @@ public class BasePage extends BaseDriver {
 
     public void waitUnitlTextIsGone(String myText) {
         //System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), 120);
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(120));
 
         if(getOS().equals("ios")) {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@value, '" + myText + "')]")));
@@ -753,7 +753,7 @@ public class BasePage extends BaseDriver {
 
     public void waitUntilTextIsGonePopUp(String myText) {
         //System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), 180);
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(180));
 
         if(getOS().equals("ios")) {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@label, '" + myText + "')]")));
@@ -772,7 +772,7 @@ public class BasePage extends BaseDriver {
 
     public void waitForText(String myText) {
         //System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), 300);
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(300));
         if(getOS().equals("ios")) {
 //            WebElement iosElement = driver.get().findElement(By.xpath("//*[contains(@value, '" + myText + "')]"));
 //            wait.until(ExpectedConditions.textToBePresentInElement(iosElement, myText));
@@ -788,7 +788,7 @@ public class BasePage extends BaseDriver {
 
     public void waitForTextPopUp(String myText) {
         //System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), 300);
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(300));
         if(getOS().equals("ios")) {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[contains(@label, '" + myText + "')]")));
         } else {
@@ -796,15 +796,15 @@ public class BasePage extends BaseDriver {
         }
     }
 
-    public void waitForElementThenClick(MobileElement myElement) throws Exception {
-        WebDriverWait wait = new WebDriverWait(driver.get(), 60);
+    public void waitForElementThenClick(WebElement myElement) throws Exception {
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(60));
         Thread.sleep(200);
         wait.until(ExpectedConditions.elementToBeClickable(myElement));
         myElement.click();
     }
 
-    public void waitForElement(MobileElement myElement) {
-        WebDriverWait wait = new WebDriverWait(driver.get(), 120);
+    public void waitForElement(WebElement myElement) {
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(120));
         wait.until(ExpectedConditions.visibilityOf(myElement));
     }
 
@@ -826,9 +826,9 @@ public class BasePage extends BaseDriver {
 
     }
 
-    public boolean checkForElement(MobileElement myElement ) {
+    public boolean checkForElement(WebElement myElement ) {
         try {
-            WebDriverWait wait = new WebDriverWait(driver.get(), 1);
+            WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(6));
             wait.until(ExpectedConditions.elementToBeClickable(myElement));
             return true;
         } catch (Exception e) {
@@ -839,7 +839,7 @@ public class BasePage extends BaseDriver {
 
     public Boolean checkElementExists(String textElement) {
         Boolean myReturnStatus;
-        List<MobileElement> options = null;
+        List<WebElement> options = null;
         if (getOS().equals("ios")) {
             //options = driver.get().findElements(By.xpath("//*[@value='" + textElement + "']"));
             options = driver.get().findElements(MobileBy.AccessibilityId(textElement));
@@ -1253,22 +1253,22 @@ public class BasePage extends BaseDriver {
     }
 
     public void clickByCords(String elementName) throws Exception {
-        MobileElement myElement = null;
-        TouchAction myAction = new TouchAction(driver.get());
+        WebElement myElement = null;
+        TouchAction myAction = new TouchAction((PerformsTouchActions) driver.get());
 //        Thread.sleep(2000);
 
         System.out.println("Start Click by Cords");
         System.out.println(getSourceOfPage());
-        myElement = (MobileElement) driver.get().findElement(By.name(elementName));
+        myElement = (WebElement) driver.get().findElement(By.name(elementName));
         Point myPoint = myElement.getLocation();
         myAction.press(PointOption.point(myPoint.x, myPoint.y)).release();
-        driver.get().performTouchAction(myAction);
+        ((PerformsTouchActions) driver.get()).performTouchAction(myAction);
         System.out.println("End Click by Cords");
     }
 
-    public void clickEndOfElementByCords(MobileElement elementName) throws Exception {
-        MobileElement myElement = null;
-        TouchAction myAction = new TouchAction(driver.get());
+    public void clickEndOfElementByCords(WebElement elementName) throws Exception {
+        WebElement myElement = null;
+        TouchAction myAction = new TouchAction((PerformsTouchActions) driver.get());
         int pointToClickX;
         int pointToClickY;
 
@@ -1285,13 +1285,13 @@ public class BasePage extends BaseDriver {
 //        System.out.println("Point To Click X: " + pointToClickX);
 //        System.out.println("Point To Click Y: " + pointToClickY);
         myAction.press(PointOption.point( pointToClickX, pointToClickY )).release();
-        driver.get().performTouchAction(myAction);
+        ((PerformsTouchActions) driver.get()).performTouchAction(myAction);
 //        System.out.println("End Click by Cords");
     }
 
-    public void clickElementByCords(MobileElement elementName) throws Exception {
-        MobileElement myElement = null;
-        TouchAction myAction = new TouchAction(driver.get());
+    public void clickElementByCords(WebElement elementName) throws Exception {
+        WebElement myElement = null;
+        TouchAction myAction = new TouchAction((PerformsTouchActions) driver.get());
 
 
 //        System.out.println("Start Click by Cords");
@@ -1303,7 +1303,7 @@ public class BasePage extends BaseDriver {
 //        System.out.println("Point To Click X: " + pointToClickX);
 //        System.out.println("Point To Click Y: " + pointToClickY);
         myAction.press(PointOption.point( myPoint.x, myPoint.y )).release();
-        driver.get().performTouchAction(myAction);
+        ((PerformsTouchActions) driver.get()).performTouchAction(myAction);
 //        System.out.println("End Click by Cords");
     }
 
@@ -1330,10 +1330,10 @@ public class BasePage extends BaseDriver {
 
         //new TouchAction(driver).tap(useThisLocationX+ useThisLocationWidth + 20, useThisLocationY ).release().perform();
         //new TouchAction(driver).tap(useThisLocationX, useThisLocationY - 50 ).release().perform();
-        new TouchAction(driver.get()).press(PointOption.point(useThisLocationX, useThisLocationY - 50)).release().perform();
+        new TouchAction((PerformsTouchActions) driver.get()).press(PointOption.point(useThisLocationX, useThisLocationY - 50)).release().perform();
     }
 
-    public void clickAboveElement(MobileElement myElement) throws Exception {
+    public void clickAboveElement(WebElement myElement) throws Exception {
         int useThisLocationX;
         int useThisLocationY;
 
@@ -1342,7 +1342,7 @@ public class BasePage extends BaseDriver {
 
         System.out.println("Click above element - X: "  + useThisLocationX + " Y: " + useThisLocationY);
 
-        new TouchAction(driver.get()).press(PointOption.point(useThisLocationX, useThisLocationY - 50)).release().perform(); //50
+        new TouchAction((PerformsTouchActions) driver.get()).press(PointOption.point(useThisLocationX, useThisLocationY - 50)).release().perform(); //50
     }
 
     public String idbConnectDescribeAll(String myUdid) throws Exception {
@@ -1426,8 +1426,8 @@ public class BasePage extends BaseDriver {
 
     public void androidSpinnerList() throws Exception {
         int counter = 0;
-        List<MobileElement> spinnerList = driver.get().findElements(By.id("org.lds.ldstools.alpha:id/categoryAutoCompleteTextView"));
-        for (MobileElement spinnerText : spinnerList) {
+        List<WebElement> spinnerList = driver.get().findElements(By.id("org.lds.ldstools.alpha:id/categoryAutoCompleteTextView"));
+        for (WebElement spinnerText : spinnerList) {
             spinnerText = spinnerList.get(counter);
             System.out.println(spinnerText.getText());
             counter++;

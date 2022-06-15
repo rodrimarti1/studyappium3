@@ -7,8 +7,6 @@ import LDSToolsAppium.Screen.*;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-
 import org.apache.commons.codec.binary.Base64;
 
 import org.jsoup.nodes.Element;
@@ -24,7 +22,7 @@ public class HelperMethods extends BaseDriver {
 
 
 
-//    public HelperMethods(AppiumDriver<MobileElement> driver) {
+//    public HelperMethods(AppiumDriver<WebElement> driver) {
 //
 //    }
 
@@ -169,7 +167,7 @@ public class HelperMethods extends BaseDriver {
             myLoginPage.overflowSettings.click();
             myBasePage.scrollToTextGeneral("Proxy Username");
             mySettings.proxyUsername.click();
-            mySettings.proxyUsernameEditText.setValue(proxyUserName);
+            mySettings.proxyUsernameEditText.sendKeys(proxyUserName);
             mySettings.proxyUsernameEditOK.click();
             myBasePage.backButton.click();
 
@@ -327,7 +325,7 @@ public class HelperMethods extends BaseDriver {
             myLoginPage.overflowSettings.click();
             myBasePage.scrollToTextGeneral("Proxy Username");
             mySettings.proxyUsername.click();
-            mySettings.proxyUsernameEditText.setValue(proxyUserName);
+            mySettings.proxyUsernameEditText.sendKeys(proxyUserName);
             mySettings.proxyUsernameEditOK.click();
             myBasePage.backButton.click();
         }
@@ -530,7 +528,7 @@ public class HelperMethods extends BaseDriver {
             myBasePage.waitForElementThenClick(mySettings.proxyUsername);
 //            mySettings.proxyUsername.click();
             myBasePage.waitForElement(mySettings.proxyEditField);
-            mySettings.proxyEditField.setValue(proxyUserName);
+            mySettings.proxyEditField.sendKeys(proxyUserName);
             mySettings.proxyDone.click();
             myBasePage.waitForElementThenClick(mySettings.networkEnvironment);
             myBasePage.waitForElementThenClick(mySettings.UAT);
@@ -611,7 +609,7 @@ public class HelperMethods extends BaseDriver {
         myBasePage.waitForElement(mySettings.proxyUsername);
         mySettings.proxyUsername.click();
         myBasePage.waitForElement(mySettings.proxyEditField);
-        mySettings.proxyEditField.setValue(proxyUserName);
+        mySettings.proxyEditField.sendKeys(proxyUserName);
         mySettings.proxyDone.click();
         Thread.sleep(1000);
         myBasePage.waitForElementThenClick(myBasePage.backButton);
@@ -643,17 +641,17 @@ public class HelperMethods extends BaseDriver {
 
             myBasePage.scrollDownIOS();
             mySettings.proxyId.click();
-            mySettings.proxyEditField.setValue(myId);
+            mySettings.proxyEditField.sendKeys(myId);
             mySettings.proxyDone.click();
 
             myBasePage.scrollDownIOS();
 
             mySettings.proxyUnits.click();
-            mySettings.proxyEditField.setValue(myUnit);
+            mySettings.proxyEditField.sendKeys(myUnit);
             mySettings.proxyDone.click();
 
             mySettings.proxyPositions.click();
-            mySettings.proxyEditField.setValue(myPosition);
+            mySettings.proxyEditField.sendKeys(myPosition);
             mySettings.proxyDone.click();
             Thread.sleep(1000);
 
@@ -680,19 +678,19 @@ public class HelperMethods extends BaseDriver {
             //scrollToText("px_u");
 
             mySettings.proxyId.click();
-            mySettings.proxyEditField.setValue(myId);
+            mySettings.proxyEditField.sendKeys(myId);
             mySettings.proxyDone.click();
 
             myBasePage.scrollToTextRecyclerView("px_u");
 
             mySettings.proxyUnits.click();
-            mySettings.proxyEditField.setValue(myUnit);
+            mySettings.proxyEditField.sendKeys(myUnit);
             mySettings.proxyDone.click();
 
             myBasePage.scrollToTextRecyclerView("px_p");
 
             mySettings.proxyPositions.click();
-            mySettings.proxyEditField.setValue(myPosition);
+            mySettings.proxyEditField.sendKeys(myPosition);
             mySettings.proxyDone.click();
 
             myBasePage.backButton.click();

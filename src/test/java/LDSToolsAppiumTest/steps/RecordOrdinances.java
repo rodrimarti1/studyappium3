@@ -10,7 +10,6 @@ import LDSToolsAppium.Screen.ReportsScreen;
 import LDSToolsAppium.Screen.TemplesScreen;
 import LDSToolsAppiumTest.HelperMethods;
 
-import io.appium.java_client.MobileElement;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -113,7 +112,7 @@ public class RecordOrdinances extends BaseDriver {
 
     public void searchAndClickMember(String memberRecord) throws Exception {
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myReports.ordinancesSearch.setValue(memberRecord);
+            myReports.ordinancesSearch.sendKeys(memberRecord);
             driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + memberRecord + "']")).click();
         } else {
             //Android code goes here

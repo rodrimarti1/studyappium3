@@ -1,11 +1,12 @@
 package LDSToolsAppium.Screen;
 
 import LDSToolsAppium.BasePage;
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
@@ -25,71 +26,71 @@ public class MinisteringScreen extends BasePage {
     //Ministering
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Ministering']")
     @iOSXCUITFindBy(accessibility = "Ministering")
-    public MobileElement ministeringReport;
+    public WebElement ministeringReport;
 
     //Ministering Brothers
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Ministering Brothers']")
     @iOSXCUITFindBy(accessibility = "Ministering Brothers")
-    public MobileElement ministeringBrothersReport;
+    public WebElement ministeringBrothersReport;
 
     //Ministering Sisters
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Ministering Sisters']")
     @iOSXCUITFindBy(accessibility = "Ministering Sisters")
-    public MobileElement ministeringSistersReport;
+    public WebElement ministeringSistersReport;
 
 
     // ****************** Elders Quorum ******************
     //Unassigned Households
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Unassigned Households']")
     @iOSXCUITFindBy(accessibility = "Unassigned Households")
-    public MobileElement unassignedHouseholds;
+    public WebElement unassignedHouseholds;
 
     //Assigned Households
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Assigned Households']")
     @iOSXCUITFindBy(accessibility = "Assigned Households")
-    public MobileElement assignedHouseholds;
+    public WebElement assignedHouseholds;
 
     //Households
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Households']")
     @iOSXCUITFindBy(accessibility = "Households")
-    public MobileElement households;
+    public WebElement households;
 
     //Companionships Brothers
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Elders Quorum']/../following-sibling::android.widget.LinearLayout//android.widget.TextView[@text='Companionships']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Elders Quorum']/../following-sibling::XCUIElementTypeCell//XCUIElementTypeStaticText[@name='Companionships']")
-    public MobileElement companionshipsBrothers;
+    public WebElement companionshipsBrothers;
 
     //Potential Ministering Brothers
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Potential Ministering Brothers']")
     @iOSXCUITFindBy(accessibility = "Potential Ministering Brothers")
-    public MobileElement potentialMinisteringBrothers;
+    public WebElement potentialMinisteringBrothers;
 
     // ****************** Relief Society ******************
     //Unassigned Sisters
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Unassigned Sisters']")
     @iOSXCUITFindBy(accessibility = "Unassigned Sisters")
-    public MobileElement unassignedSisters;
+    public WebElement unassignedSisters;
 
     //Assigned Sisters
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Assigned Sisters']")
     @iOSXCUITFindBy(accessibility = "Assigned Sisters")
-    public MobileElement assignedSisters;
+    public WebElement assignedSisters;
 
 
     //Sisters
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Sisters']")
     @iOSXCUITFindBy(accessibility = "Sisters")
-    public MobileElement sisters;
+    public WebElement sisters;
 
     //Companionships Relief Society
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Relief Society']/../following-sibling::android.widget.LinearLayout//android.widget.TextView[@text='Companionships']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Relief Society']/../following-sibling::XCUIElementTypeCell//XCUIElementTypeStaticText[@name='Companionships']")
-    public MobileElement companionshipsSisters;
+    public WebElement companionshipsSisters;
 
     //Potential Ministering Sisters
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Potential Ministering Sisters']")
     @iOSXCUITFindBy(accessibility = "Potential Ministering Sisters")
-    public MobileElement potentialMinisteringSisters;
+    public WebElement potentialMinisteringSisters;
 
 
 
@@ -97,83 +98,83 @@ public class MinisteringScreen extends BasePage {
     //Share Button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_share")
     @iOSXCUITFindBy(accessibility = "Share")
-    public MobileElement share;
+    public WebElement share;
 
     //Map Button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_show_on_map")
     @iOSXCUITFindBy(accessibility = "Map")
-    public MobileElement map;
+    public WebElement map;
 
     //Filters Button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_htvt_filter")
     @iOSXCUITFindBy(accessibility = "Filters")
-    public MobileElement filters;
+    public WebElement filters;
 
 
     // ****************** Filters ******************
     //Assigned Ministering Brothers
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_assigned")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Assigned Ministering Brothers' AND type == 'XCUIElementTypeSwitch'")
-    public MobileElement assignedMinisteringBrothers;
+    public WebElement assignedMinisteringBrothers;
 
     //Not Assigned Ministering Brothers
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_not_assigned")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Not Assigned Ministering Brothers' AND type == 'XCUIElementTypeSwitch'")
-    public MobileElement notAssignedMinisteringBrothers;
+    public WebElement notAssignedMinisteringBrothers;
 
     //New & Moved-In Members
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_new_and_moved_in")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'New & Moved-In Members' AND type == 'XCUIElementTypeSwitch'")
-    public MobileElement newAndMovedInMembers;
+    public WebElement newAndMovedInMembers;
 
 
     //Single Sisters
     //Ages 18 to 30
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_single_sisters_eighteen_thirty_years_old")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Single Sisters']/../following-sibling::XCUIElementTypeCell//XCUIElementTypeSwitch[@name='Ages 18 to 30']")
-    public MobileElement singleSistersAges18to30;
+    public WebElement singleSistersAges18to30;
 
     //Ages 31 and older
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_single_sisters_thirty_and_over")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Single Sisters']/../following-sibling::XCUIElementTypeCell//XCUIElementTypeSwitch[@name='Age 31 and older']")
-    public MobileElement singleSistersAge31AndOver;
+    public WebElement singleSistersAge31AndOver;
 
     //Single Brothers
     //Ages 18 to 30
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_single_brothers_eighteen_thirty_years_old")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Single Brothers']/../following-sibling::XCUIElementTypeCell//XCUIElementTypeSwitch[@name='Ages 18 to 30']")
-    public MobileElement singleBrothersAges18to30;
+    public WebElement singleBrothersAges18to30;
 
     //Ages 31 and older
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_single_brothers_thirty_and_over")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Single Brothers']/../following-sibling::XCUIElementTypeCell//XCUIElementTypeSwitch[@name='31 and over']")
-    public MobileElement singleBrothersAge31AndOver;
+    public WebElement singleBrothersAge31AndOver;
 
 
 
     //Assigned Ministering Sisters
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_assigned")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Assigned Ministering Sisters' AND type == 'XCUIElementTypeSwitch'")
-    public MobileElement assignedMinisteringSisters;
+    public WebElement assignedMinisteringSisters;
 
     //Not Assigned Ministering Sisters
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/htvt_filter_not_assigned")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Not Assigned Ministering Sisters' AND type == 'XCUIElementTypeSwitch'")
-    public MobileElement notAssignedMinisteringSisters;
+    public WebElement notAssignedMinisteringSisters;
 
 
 
     //Save Button for Filter
     @AndroidFindBy(id ="menu_item_save")
-    public MobileElement ministeringFilterSave;
+    public WebElement ministeringFilterSave;
 
     //Expand filter button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterHeaderArrow")
-    public MobileElement ministeringExpandFilter;
+    public WebElement ministeringExpandFilter;
 
     //Remove filter button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/removeFiltersButton")
-    public MobileElement ministeringRemoveFilter;
+    public WebElement ministeringRemoveFilter;
 
 
     public boolean validateDistrict( String districtToCheck ) throws Exception {
@@ -198,7 +199,8 @@ public class MinisteringScreen extends BasePage {
         Thread.sleep(2000);
         //String myPageSource;
         if (getOS().equals("ios")) {
-            driver.get().findElementByAccessibilityId(districtToSelect).click();
+//            driver.get().findElementByAccessibilityId(districtToSelect).click();
+            driver.get().findElement(AppiumBy.accessibilityId(districtToSelect)).click();
         } else {
             //myPageSource = getSourceOfPage();
             //System.out.println(myPageSource);

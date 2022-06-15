@@ -2,8 +2,7 @@ package LDSToolsAppium;
 
 import LDSToolsAppium.Screen.*;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
-import org.jsoup.Connection;
+
 
 public class LDSToolsApp {
     private final ThreadLocal<AppiumDriver> driver;

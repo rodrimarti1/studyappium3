@@ -2,11 +2,11 @@ package LDSToolsAppium.Screen;
 
 import LDSToolsAppium.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
@@ -29,177 +29,177 @@ public class DirectoryEditScreen extends BasePage {
 //    @AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, \"individualPhoneEditText\")]//android.widget.EditText[contains(@resource-id, \"edit_phone\")]")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individualPhoneEditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeTextField")
-    public MobileElement directoryEditPersonalPhone;
+    public WebElement directoryEditPersonalPhone;
 
     //Household Edit Phone
 //    @AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, \"householdPhoneEditText\")]//android.widget.EditText[contains(@resource-id, \"edit_phone\")]")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdPhoneEditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[4]/XCUIElementTypeTextField")
-    public  MobileElement directoryEditHouseholdPhone;
+    public  WebElement directoryEditHouseholdPhone;
 
     //Personal Edit Email
 //    @AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, \"individualEmailEditText\")]//android.widget.EditText[contains(@resource-id, \"edit_email\")]")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individualEmailEditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[3]/XCUIElementTypeTextField")
-    public  MobileElement directoryEditPersonalEmail;
+    public  WebElement directoryEditPersonalEmail;
 
     //Household Edit Email
 //    @AndroidFindBy(xpath = "//android.widget.FrameLayout[contains(@resource-id, \"householdEmailEditText\")]//android.widget.EditText[contains(@resource-id, \"edit_email\")]")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdEmailEditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[5]/XCUIElementTypeTextField")
-    public  MobileElement directoryEditHouseholdEmail;
+    public  WebElement directoryEditHouseholdEmail;
 
 
     // ****************** Visibility ******************
     //Household Visibility Limit
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"householdVisibilityEditView\"]//android.widget.TextView[@resource-id=\"visibility_text\"]")
     @iOSXCUITFindBy(accessibility = "HOUSEHOLD VISIBILITY LIMIT Stake Visibility")
-    public  MobileElement directoryHouseholdVisibilityLimitAll;
+    public  WebElement directoryHouseholdVisibilityLimitAll;
 
     //Personal Visibility Limit
     @iOSXCUITFindBy(accessibility = "PERSONAL Stake Visibility")
-    public  MobileElement directoryPersonalVisibilityLimit;
+    public  WebElement directoryPersonalVisibilityLimit;
 
     //Household Visibility Limit
     @iOSXCUITFindBy(accessibility = "HOUSEHOLD Stake Visibility")
-    public  MobileElement directoryHouseholdVisibilityLimit;
+    public  WebElement directoryHouseholdVisibilityLimit;
 
 
     // ****************** Android Only ******************
     //Contact Tab
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"contact\")]")
-    public  MobileElement directoryContactTab;
+    public  WebElement directoryContactTab;
 
     //Photos Tab
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"photos\")]")
-    public  MobileElement directoryPhotosTab;
+    public  WebElement directoryPhotosTab;
 
     //Privacy Tab
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"privacy\")]")
-    public  MobileElement directoryPrivacyTab;
+    public  WebElement directoryPrivacyTab;
 
 
 
     //Save Button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_save")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Save'")
-    public MobileElement menuSave;
+    public WebElement menuSave;
 
     //Cancel Button
     @AndroidFindBy(xpath = "//android.widget.ImageButton")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
-    public MobileElement cancelButton;
+    public WebElement cancelButton;
 
     //Save Failed
     @AndroidFindBy(xpath = "//*[contains(@text, 'Failed to update data')]")
 //    @AndroidFindBy(xpath = "//*[contains(@text, 'Save failed')]")
     //@AndroidFindBy(xpath = "//*[contains(@text, 'provide a valid')]")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Warning'")
-    public MobileElement saveFailedDialog;
+    public WebElement saveFailedDialog;
 
     //Invalid email
     @AndroidFindBy(xpath = "//*[contains(@text, 'You must provide a valid email address.')]")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Warning'")
-    public MobileElement invalidEmail;
+    public WebElement invalidEmail;
 
 
     // **************************** Privacy Settings ****************************
     //Household Visibility Limit
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Household Visibility Limit']/following-sibling::android.widget.TextView")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'HOUSEHOLD VISIBILITY')]")
-    public MobileElement householdVisibilityLimit;
+    public WebElement householdVisibilityLimit;
 
     //Personal Visibility Limit
     @iOSXCUITFindBy(xpath = "//*[@name='PERSONAL Stake Visibility']")
-    public MobileElement personalVisibility;
+    public WebElement personalVisibility;
 
     //Household Visibility
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[8]/XCUIElementTypeStaticText")
-    public MobileElement householdVisibility;
+    public WebElement householdVisibility;
 
     // **************************** Limit visibility for household  ****************************
     //Stake Visibility
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/radio_visibility_stake")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Stake Visibility']")
-    public MobileElement stakeVisibility;
+    public WebElement stakeVisibility;
 
     //Ward Visibility
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/radio_visibility_ward")
     @iOSXCUITFindBy(accessibility = "Ward Visibility")
-    public MobileElement wardVisibility;
+    public WebElement wardVisibility;
 
     //Private—Leadership Only
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/radio_visibility_leader")
     @iOSXCUITFindBy(accessibility = "Private—Leadership Only")
-    public MobileElement privateLeadershipOnly;
+    public WebElement privateLeadershipOnly;
 
     //Cancel - Neverming
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_buttonDefaultNegative")
     @iOSXCUITFindBy(accessibility = "Cancel")
-    public MobileElement visiblityCancel;
+    public WebElement visiblityCancel;
 
     //Set Limit
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_button_positive")
-    public MobileElement setLimit;
+    public WebElement setLimit;
 
     // **************************** Personal Visibility ****************************
     //Set All to
     @iOSXCUITFindBy(accessibility = "Set All to")
-    public MobileElement setAllToPersonal;
+    public WebElement setAllToPersonal;
 
     //Image
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditIndPhoto")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individualPhotoVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Image")
-    public MobileElement imagePersonal;
+    public WebElement imagePersonal;
 
     //Phone
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditIndPhone")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individualPhoneVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Phone")
-    public MobileElement phonePersonal;
+    public WebElement phonePersonal;
 
     //Email
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditIndEmail")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individualEmailVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Email")
-    public MobileElement emailPersonal;
+    public WebElement emailPersonal;
 
     // **************************** Household Visibility ****************************
     // SCROLL DOWN IN ANDROID to show on map
     //Set All to
     @iOSXCUITFindBy(accessibility = "Set All to")
-    public MobileElement setAllToHousehold;
+    public WebElement setAllToHousehold;
 
     //Image
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditHouseholdPhoto")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdPhotoVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Image")
-    public MobileElement imageHousehold;
+    public WebElement imageHousehold;
 
     //Phone
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditHouseholdPhone")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdPhoneVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Phone")
-    public MobileElement phoneHousehold;
+    public WebElement phoneHousehold;
 
     //Email
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditHouseholdEmail")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdEmailVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Email")
-    public MobileElement emailHousehold;
+    public WebElement emailHousehold;
 
     //Address
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditHouseholdAddress")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdAddressVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Address")
-    public MobileElement physicalAddress;
+    public WebElement physicalAddress;
 
     //Show on Map
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/visibilityEditHouseholdMap")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/householdMapVisibilityLineItem")
     @iOSXCUITFindBy(accessibility = "Show on Map")
-    public MobileElement showOnMap;
+    public WebElement showOnMap;
 
 
 
@@ -209,30 +209,30 @@ public class DirectoryEditScreen extends BasePage {
     //Stake Visibility
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Stake Visibility']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Stake Visibility')]")
-    public MobileElement popUpStake;
+    public WebElement popUpStake;
 
     //Ward Visibility
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Ward Visibilit']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'Ward Visibility')]")
-    public MobileElement popUpWard;
+    public WebElement popUpWard;
 
     //Private—Leadership Only Visibility
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Private—Leadership Only']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
-    public MobileElement popUpPrivateLeadershipOnly;
+    public WebElement popUpPrivateLeadershipOnly;
 
 
 
 
     @iOSXCUITFindBy(accessibility = "Done")
-    public MobileElement doneButton;
+    public WebElement doneButton;
 
 
 
     //*********** Tool Bar **************
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow")
     @iOSXCUITFindBy(accessibility = "Directory")
-    public MobileElement unitSelector;
+    public WebElement unitSelector;
 
 
     public void clearPhoneAndEmail() throws Exception {
@@ -374,7 +374,7 @@ public class DirectoryEditScreen extends BasePage {
     }
 
 
-    public void setVisibilityHousehold(MobileElement elementVisiblity) throws Exception {
+    public void setVisibilityHousehold(WebElement elementVisiblity) throws Exception {
 
         if (getOS().equals("ios")) {
             householdVisibilityLimit.click();

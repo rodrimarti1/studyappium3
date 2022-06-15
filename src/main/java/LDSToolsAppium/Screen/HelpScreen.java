@@ -2,10 +2,10 @@ package LDSToolsAppium.Screen;
 
 import LDSToolsAppium.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
@@ -21,45 +21,45 @@ public class HelpScreen extends BasePage {
 
     //Send Feedback
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/feedback_submit")
-    public  MobileElement helpSendFeedback;
+    public WebElement helpSendFeedback;
 
 
 
 
     //What's New
     @AndroidFindBy(xpath = "//*[contains(@text, 'What's New')]")
-    public  MobileElement helpWhatsNew;
+    public  WebElement helpWhatsNew;
 
     //Release Notes
     @AndroidFindBy(xpath = "//*[contains(@text, 'Release Notes')]")
-    public  MobileElement helpReleaseNotes;
+    public  WebElement helpReleaseNotes;
 
     //Frequently Asked Questions
     @AndroidFindBy(xpath = "//*[contains(@text, 'Frequently Asked Questions')]")
-    public  MobileElement helpFrequentlyAskedQuestions;
+    public  WebElement helpFrequentlyAskedQuestions;
 
     //Contact Us
     @AndroidFindBy(xpath = "//*[contains(@text, 'Contact Us')]")
-    public  MobileElement helpContactUs;
+    public  WebElement helpContactUs;
 
         //Name
         @AndroidFindBy(id = "org.lds.ldstools.alpha:id/feedbackNameTextInputEditText")
-        public  MobileElement contactUsName;
+        public  WebElement contactUsName;
 
         //Email
         @AndroidFindBy(id = "org.lds.ldstools.alpha:id/feedbackEmailTextInputEditText")
-        public  MobileElement contactUsEmail;
+        public  WebElement contactUsEmail;
 
         //Category
         @AndroidFindBy(id = "org.lds.ldstools.alpha:id/feedbackCategoryDropdownTextView")
-        public  MobileElement contactUsCategory;
+        public  WebElement contactUsCategory;
 
             //Other
             @AndroidFindBy(xpath = "//*[contains(@text, 'Other')]")
-            public  MobileElement contactUsOther;
+            public  WebElement contactUsOther;
 
 
         //Category
         @AndroidFindBy(id = "org.lds.ldstools.alpha:id/feedbackDescriptionEditText")
-        public  MobileElement contactUsDescription;
+        public  WebElement contactUsDescription;
 }

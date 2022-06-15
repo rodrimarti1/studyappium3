@@ -2,12 +2,12 @@ package LDSToolsAppium.Screen;
 
 import LDSToolsAppium.BasePage;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import java.time.Duration;
@@ -27,55 +27,55 @@ public class CalendarsScreen extends BasePage {
     //Main Title
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendar']")
     @iOSXCUITFindBy(accessibility = "Calendar")
-    public MobileElement calendarTitle;
+    public WebElement calendarTitle;
 
 
     //Edit Button
     @iOSXCUITFindBy(accessibility = "Edit")
-    public MobileElement calendarEdit;
+    public WebElement calendarEdit;
 
     //Done Button
     @iOSXCUITFindBy(accessibility = "Done")
-    public MobileElement calendarDone;
+    public WebElement calendarDone;
 
 
     //Overflow Menu
     @AndroidFindBy(accessibility = "More options")
-    public MobileElement calendarMoreOptions;
+    public WebElement calendarMoreOptions;
 
 
     //Calendars to display
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendars to display']")
-    public MobileElement calendarsToDisplay;
+    public WebElement calendarsToDisplay;
 
 
 
     //Subscriptions Button
     @AndroidFindBy(id ="menu_calendar_subscriptions")
     @iOSXCUITFindBy(accessibility = "Subscriptions")
-    public MobileElement calendarSubscriptions;
+    public WebElement calendarSubscriptions;
 
     //Select None Button
     @AndroidFindBy(id ="menu_calendars_select_all")
     @iOSXCUITFindBy(accessibility = "Select None")
-    public MobileElement calendarsSelectNone;
+    public WebElement calendarsSelectNone;
 
     //Select All Button
     @AndroidFindBy(id ="menu_calendars_select_all")
     @iOSXCUITFindBy(accessibility = "Select All")
-    public MobileElement calendarsSelectAll;
+    public WebElement calendarsSelectAll;
 
 
 
     //Subscriptions Done
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_save")
     @iOSXCUITFindBy(accessibility = "Done")
-    public MobileElement calendarsSubscriptionsDone;
+    public WebElement calendarsSubscriptionsDone;
 
     //Subscriptions Cancel
     @AndroidFindBy(accessibility = "Close")
     @iOSXCUITFindBy(accessibility = "Cancel")
-    public MobileElement calendarsSubscriptionsCancel;
+    public WebElement calendarsSubscriptionsCancel;
 
 
 

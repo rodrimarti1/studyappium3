@@ -7,9 +7,10 @@ import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppium.Screen.MissionaryScreen;
 import LDSToolsAppium.Screen.OrganizationsScreen;
-import io.appium.java_client.MobileElement;
+
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -414,81 +415,81 @@ public class OrganizationsScreenTest extends BaseDriver {
     }
 
 
-    private void getHighPriestsGroupInfo(int rights) throws Exception {
-        String pageSource;
-        BasePage myBasePage = new BasePage(driver);
-        OrganizationsScreen myOrg = new OrganizationsScreen(driver);
-
-
-        //LDSWeb myWeb = new LDSWeb();
-        //Data from Web page
-        List<String> myList = new ArrayList<String>();
-
-        //Data from android list
-        List<String> androidList = new ArrayList<String>();
-
-
-        myOrg.highPriestsOrg.click();
-
-
-        if (rights <= 3) {
-            myOrg.highPriestsLeadership.click();
-            Thread.sleep(1000);
-            //Check web data vs LDS Tools
-            myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "High Priests Group", "HighPriestGroupLeadership", false);
-            myBasePage.compareWebData(myList, androidList, true);
-
-            myBasePage.backAltButton.click();
-            myOrg.highPriestsHTDistrictSuper.click();
-
-            myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "High Priests Group", "HighPriestGroupDistrictSupervisors", false);
-            myBasePage.compareWebData(myList, androidList, true);
-
-            myBasePage.backAltButton.click();
-            myOrg.highPriestsAllMembers.click();
-
-
-            myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "High Priests Group", "HighPriestGroupMembers", false);
-            myBasePage.compareWebData(myList, androidList, true);
-
-        } else {
-            myOrg.highPriestsLeadership.click();
-
-            Thread.sleep(2000);
-            pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Group Leader", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Faamoe", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Panapa", pageSource, "Contains"));
-
-            Assert.assertTrue(myBasePage.checkNoCaseList("First Assistant", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Tools", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("LDS17", pageSource, "Contains"));
-
-            Assert.assertTrue(myBasePage.checkNoCaseList("Second Assistant", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("LDS19", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("LDS18", pageSource, "Contains"));
-
-            myBasePage.backAltButton.click();
-            myOrg.highPriestsHTDistrictSuper.click();
-            Thread.sleep(2000);
-
-            pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Home Teaching District Supervisor", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Tools", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("LDS50", pageSource, "Contains"));
-            myBasePage.backAltButton.click();
-            Thread.sleep(1000);
-        }
-
-
-        if(getRunningOS().equals("ios")) {
-            myBasePage.backAltButton.click();
-            Thread.sleep(1000);
-        }
-        myBasePage.backAltButton.click();
-        Thread.sleep(1000);
-
-    }
+//    private void getHighPriestsGroupInfo(int rights) throws Exception {
+//        String pageSource;
+//        BasePage myBasePage = new BasePage(driver);
+//        OrganizationsScreen myOrg = new OrganizationsScreen(driver);
+//
+//
+//
+//        //Data from Web page
+//        List<String> myList = new ArrayList<String>();
+//
+//        //Data from android list
+//        List<String> androidList = new ArrayList<String>();
+//
+//
+//        myOrg.highPriestsOrg.click();
+//
+//
+//        if (rights <= 3) {
+//            myOrg.highPriestsLeadership.click();
+//            Thread.sleep(1000);
+//            //Check web data vs LDS Tools
+//            myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "High Priests Group", "HighPriestGroupLeadership", false);
+//            myBasePage.compareWebData(myList, androidList, true);
+//
+//            myBasePage.backAltButton.click();
+//            myOrg.highPriestsHTDistrictSuper.click();
+//
+//            myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "High Priests Group", "HighPriestGroupDistrictSupervisors", false);
+//            myBasePage.compareWebData(myList, androidList, true);
+//
+//            myBasePage.backAltButton.click();
+//            myOrg.highPriestsAllMembers.click();
+//
+//
+//            myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "High Priests Group", "HighPriestGroupMembers", false);
+//            myBasePage.compareWebData(myList, androidList, true);
+//
+//        } else {
+//            myOrg.highPriestsLeadership.click();
+//
+//            Thread.sleep(2000);
+//            pageSource = myBasePage.getSourceOfPage();
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Group Leader", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Faamoe", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Panapa", pageSource, "Contains"));
+//
+//            Assert.assertTrue(myBasePage.checkNoCaseList("First Assistant", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Tools", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("LDS17", pageSource, "Contains"));
+//
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Second Assistant", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("LDS19", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("LDS18", pageSource, "Contains"));
+//
+//            myBasePage.backAltButton.click();
+//            myOrg.highPriestsHTDistrictSuper.click();
+//            Thread.sleep(2000);
+//
+//            pageSource = myBasePage.getSourceOfPage();
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Home Teaching District Supervisor", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Tools", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("LDS50", pageSource, "Contains"));
+//            myBasePage.backAltButton.click();
+//            Thread.sleep(1000);
+//        }
+//
+//
+//        if(getRunningOS().equals("ios")) {
+//            myBasePage.backAltButton.click();
+//            Thread.sleep(1000);
+//        }
+//        myBasePage.backAltButton.click();
+//        Thread.sleep(1000);
+//
+//    }
 
 
     private void getEldersQuorum(int rights, String userName) throws Exception {
@@ -551,7 +552,7 @@ public class OrganizationsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         OrganizationsScreen myOrg = new OrganizationsScreen(driver);
         MemberToolsAPI apiTest = new MemberToolsAPI();
-        //LDSWeb myWeb = new LDSWeb();
+
         //Data from Web page
         List<String> myList = new ArrayList<String>();
 
@@ -611,7 +612,7 @@ public class OrganizationsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         OrganizationsScreen myOrg = new OrganizationsScreen(driver);
         MemberToolsAPI apiTest = new MemberToolsAPI();
-        //LDSWeb myWeb = new LDSWeb();
+
         //Data from Web page
         List<String> myList = new ArrayList<String>();
 
@@ -834,32 +835,32 @@ public class OrganizationsScreenTest extends BaseDriver {
 
 
 
-    private void sundaySchoolClassSub(MobileElement className, String subReport) throws Exception {
-        String pageSource;
-        BasePage myBasePage = new BasePage(driver);
-        OrganizationsScreen myOrg = new OrganizationsScreen(driver);
-        List<String> myList = new ArrayList<String>();
-        //Data from android list
-        List<String> androidList = new ArrayList<String>();
-        String macAllMembers = "All " + className + " Members";
-        String classAllMembers = subReport + "Members";
-
-
-        className.click();
-        myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "Sunday School", subReport, false);
-        myBasePage.compareWebData(myList, androidList, true);
-
-        //Select all members
-        myOrg.generalAllMembers.click();
-        myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "Sunday School", classAllMembers, false);
-        myBasePage.compareWebData(myList, androidList, true);
-
-        //Back to Sunday School
-        if (getRunningOS().equals("ios")) {
-            myBasePage.backAltButton.click();
-        }
-        myBasePage.backAltButton.click();
-    }
+//    private void sundaySchoolClassSub(WebElement className, String subReport) throws Exception {
+//        String pageSource;
+//        BasePage myBasePage = new BasePage(driver);
+//        OrganizationsScreen myOrg = new OrganizationsScreen(driver);
+//        List<String> myList = new ArrayList<String>();
+//        //Data from android list
+//        List<String> androidList = new ArrayList<String>();
+//        String macAllMembers = "All " + className + " Members";
+//        String classAllMembers = subReport + "Members";
+//
+//
+//        className.click();
+//        myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "Sunday School", subReport, false);
+//        myBasePage.compareWebData(myList, androidList, true);
+//
+//        //Select all members
+//        myOrg.generalAllMembers.click();
+//        myList = myWeb.getAllMembersInOrganization("OrganizationsMenu", "Sunday School", classAllMembers, false);
+//        myBasePage.compareWebData(myList, androidList, true);
+//
+//        //Back to Sunday School
+//        if (getRunningOS().equals("ios")) {
+//            myBasePage.backAltButton.click();
+//        }
+//        myBasePage.backAltButton.click();
+//    }
 
 
     private void getPrimaryInfo(int rights, String userName) throws Exception {

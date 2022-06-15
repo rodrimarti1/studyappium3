@@ -6,6 +6,7 @@ import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.ListsScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
+import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -316,9 +317,12 @@ public class Lists extends BaseDriver  {
     public void theDeviceIsRotated() throws Exception {
         LOGGER.info("the device is rotated");
         rotateListNameCheck();
-        driver.get().rotate(ScreenOrientation.LANDSCAPE);
+//        driver.get().rotate(ScreenOrientation.LANDSCAPE);
+        driver.get().setSetting("orientation","LANDSCAPE");
+
         rotateListNameCheck();
-        driver.get().rotate(ScreenOrientation.PORTRAIT);
+//        driver.get().rotate(ScreenOrientation.PORTRAIT);
+        driver.get().setSetting("orientation","PORTRAIT");
         rotateListNameCheck();
     }
 
@@ -327,9 +331,11 @@ public class Lists extends BaseDriver  {
         LOGGER.info("the information for the lists setup will be visible");
         myLists.selectListName("My Member List");
         rotateMyMemberListCheck();
-        driver.get().rotate(ScreenOrientation.LANDSCAPE);
+//        driver.get().rotate(ScreenOrientation.LANDSCAPE);
+        driver.get().setSetting("orientation","LANDSCAPE");
         rotateMyMemberListCheck();
-        driver.get().rotate(ScreenOrientation.PORTRAIT);
+//        driver.get().rotate(ScreenOrientation.PORTRAIT);
+        driver.get().setSetting("orientation","PORTRAIT");
         rotateMyMemberListCheck();
         myBasePage.backButton.click();
 

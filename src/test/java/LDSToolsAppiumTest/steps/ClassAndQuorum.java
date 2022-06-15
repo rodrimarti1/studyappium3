@@ -9,7 +9,6 @@ import LDSToolsAppium.Screen.ReportsScreen;
 import LDSToolsAppium.Screen.TemplesScreen;
 import LDSToolsAppiumTest.HelperMethods;
 
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.cucumber.java.en.And;
@@ -218,16 +217,16 @@ public class ClassAndQuorum extends BaseDriver {
 
     public void checkIfMemberIsDisplayed(String memberRecord, String status) throws Exception {
         String foundName = null;
-        MobileElement elementToCheck;
+        WebElement elementToCheck;
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-//            elementToCheck = (MobileElement) driver.get().findElement(By.name(memberRecord));
+//            elementToCheck = (WebElement) driver.get().findElement(By.name(memberRecord));
             if(!driver.get().findElements(By.name(memberRecord)).isEmpty()) {
                 foundName = driver.get().findElement(By.name(memberRecord)).getAttribute("value");
             } else {
                 foundName = "NOT FOUND!";
             }
         } else {
-//            elementToCheck = (MobileElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView"));
+//            elementToCheck = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView"));
             Thread.sleep(1000);
             if(!driver.get().findElements(By.id("org.lds.ldstools.alpha:id/nameTextView")).isEmpty()) {
                 Thread.sleep(1000);
@@ -328,7 +327,7 @@ public class ClassAndQuorum extends BaseDriver {
 
     public String getWeekAttendanceStatus(String weekName, String pageType) throws Exception {
         String returnStatus = null;
-        MobileElement weekCheckBox;
+        WebElement weekCheckBox;
 
         System.out.println("Week: " + weekName);
         System.out.println("Page Type: " + pageType);
@@ -353,15 +352,15 @@ public class ClassAndQuorum extends BaseDriver {
         return returnStatus;
     }
 
-    public MobileElement getWeekElement(String weekName, String pageType) throws Exception{
-        MobileElement returnElement = null;
+    public WebElement getWeekElement(String weekName, String pageType) throws Exception{
+        WebElement returnElement = null;
         List<String> dateToCheck;
         String numberOnly;
         dateToCheck = getVisibleDates();
         switch(weekName) {
             case "week1":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(0) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
@@ -370,7 +369,7 @@ public class ClassAndQuorum extends BaseDriver {
                         System.out.println("Detail check for week 1");
                         numberOnly = dateToCheck.get(0).replaceAll("[^0-9]", "");
                         System.out.println("Number Only: " + numberOnly);
-                        returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
                                 "//android.widget.TextView[@text = '" + numberOnly +"']"));
                     }
 
@@ -378,7 +377,7 @@ public class ClassAndQuorum extends BaseDriver {
                 break;
             case "week2":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(1) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
@@ -387,7 +386,7 @@ public class ClassAndQuorum extends BaseDriver {
                         System.out.println("Detail check for week 2");
                         numberOnly = dateToCheck.get(1).replaceAll("[^0-9]", "");
                         System.out.println("Number Only: " + numberOnly);
-                        returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
                                 "//android.widget.TextView[@text = '" + numberOnly +"']"));
                     }
 
@@ -396,14 +395,14 @@ public class ClassAndQuorum extends BaseDriver {
                 break;
             case "week3":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(2) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
                         returnElement = myReports.classAndQuorumThirdWeek;
                     } else {
                         numberOnly = dateToCheck.get(2).replaceAll("[^0-9]", "");
-                        returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
                                 "//android.widget.TextView[@text = '" + numberOnly +"']"));
                     }
 
@@ -412,14 +411,14 @@ public class ClassAndQuorum extends BaseDriver {
                 break;
             case "week4":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(3) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
                         returnElement = myReports.classAndQuorumFourthWeek;
                     } else {
                         numberOnly = dateToCheck.get(3).replaceAll("[^0-9]", "");
-                        returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
                                 "//android.widget.TextView[@text = '" + numberOnly +"']"));
                     }
 
@@ -429,14 +428,14 @@ public class ClassAndQuorum extends BaseDriver {
 
             case "week5":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                    returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(4) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
                         returnElement = myReports.classAndQuorumFifthWeek;
                     } else {
                         numberOnly = dateToCheck.get(4).replaceAll("[^0-9]", "");
-                        returnElement = (MobileElement) driver.get().findElement(By.xpath(
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
                                 "//android.widget.TextView[@text = '" + numberOnly +"']"));
                     }
 
@@ -452,18 +451,18 @@ public class ClassAndQuorum extends BaseDriver {
 
 
     public void searchClassAndQuorum(String memberToSearch) throws Exception {
-        myReports.classAndQuorumSearch.setValue(memberToSearch);
+        myReports.classAndQuorumSearch.sendKeys(memberToSearch);
         //Done button?
     }
 
-    public MobileElement getVisitorField(String category, String weekNumber) throws Exception{
-        MobileElement myElement = null;
+    public WebElement getVisitorField(String category, String weekNumber) throws Exception{
+        WebElement myElement = null;
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             category = category.toUpperCase();
-            myElement = (MobileElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
+            myElement = (WebElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
         } else {
 //            System.out.println(myBasePage.getSourceOfPage());
-            myElement = (MobileElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
+            myElement = (WebElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
         }
 
         return  myElement;
@@ -488,7 +487,7 @@ public class ClassAndQuorum extends BaseDriver {
     @When("{string} is entered in the {string} in the {string} field")
     public void visitorIsEnteredInTheClassInTheWeekNumberField(String visitorNumber, String visitorClass, String weekNumber) throws Exception {
         LOGGER.info(visitorNumber + " is entered in the " + visitorClass + " in the " + weekNumber + " field");
-        MobileElement myElement = null;
+        WebElement myElement = null;
         if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women") || (visitorClass.equalsIgnoreCase("young men")))) {
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
                 myBasePage.scrollDownIOS();
@@ -501,14 +500,14 @@ public class ClassAndQuorum extends BaseDriver {
         }
         myElement = getVisitorField(visitorClass, weekNumber);
         myElement.clear();
-        myElement.setValue(visitorNumber);
+        myElement.sendKeys(visitorNumber);
 
     }
 
     @Then("{string} will be saved in the {string} {string} field attendance")
     public void visitorWillBeSavedInTheClassWeekNumberFieldAttendance(String visitorNumber, String visitorClass, String weekNumber) throws Exception {
         LOGGER.info(visitorNumber + " will be saved in the " +visitorClass + " " +  weekNumber + " field attendance");
-        MobileElement myElement = null;
+        WebElement myElement = null;
         String foundText;
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
         if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women") || (visitorClass.equalsIgnoreCase("young men")))) {
@@ -610,7 +609,7 @@ public class ClassAndQuorum extends BaseDriver {
 
 
 
-        MobileElement myElement = null;
+        WebElement myElement = null;
         String weekNumber;
 
         Thread.sleep(2000);
@@ -628,7 +627,7 @@ public class ClassAndQuorum extends BaseDriver {
                 weekNumber = String.valueOf(myCounter);
                 myElement = getVisitorField(myClass,weekNumber);
                 myElement.clear();
-                myElement.setValue("0");
+                myElement.sendKeys("0");
             }
         }
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);

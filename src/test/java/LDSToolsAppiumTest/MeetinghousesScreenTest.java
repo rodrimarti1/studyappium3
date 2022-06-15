@@ -6,7 +6,7 @@ import LDSToolsAppium.Screen.CalendarsScreen;
 import LDSToolsAppium.Screen.MeetinghousesScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -79,7 +79,7 @@ public class MeetinghousesScreenTest extends BaseDriver {
 
     }
 
-    public void selectMapType(MobileElement mapElement) throws Exception {
+    public void selectMapType(WebElement mapElement) throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
         MeetinghousesScreen myMeetinghouses = new MeetinghousesScreen(driver);

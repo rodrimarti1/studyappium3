@@ -6,8 +6,8 @@ import LDSToolsAppium.Screen.CalendarsScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppium.Screen.PinScreen;
 import LDSToolsAppium.Screen.WhatsNewScreen;
-import io.appium.java_client.MobileElement;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.List;
@@ -318,8 +318,8 @@ public class CalendarScreenTest extends BaseDriver {
                 myCalendar.calendarsSelectAll.click();
             }
         } else {
-            List<MobileElement> checkBox = driver.get().findElements(By.xpath("//android.widget.CheckBox"));
-            for (MobileElement boxStatus : checkBox ) {
+            List<WebElement> checkBox = driver.get().findElements(By.xpath("//android.widget.CheckBox"));
+            for (WebElement boxStatus : checkBox ) {
                 if (boxStatus.getAttribute("checked").equals(false)) {
                     boxStatus.click();
                 }

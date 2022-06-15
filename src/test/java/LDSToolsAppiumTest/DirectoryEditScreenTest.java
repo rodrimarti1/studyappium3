@@ -627,7 +627,7 @@ public class DirectoryEditScreenTest extends BaseDriver {
         Thread.sleep(2000);
 
         myEditDirectory.directoryEditHouseholdPhone.clear();
-        myEditDirectory.directoryEditHouseholdPhone.setValue("801-867-5309");
+        myEditDirectory.directoryEditHouseholdPhone.sendKeys("801-867-5309");
 
         //Reset Visibility
         myEditDirectory.resetVisibility();

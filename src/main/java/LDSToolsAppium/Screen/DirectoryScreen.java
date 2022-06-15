@@ -3,13 +3,13 @@ package LDSToolsAppium.Screen;
 import LDSToolsAppium.BasePage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import java.time.Duration;
 import java.util.*;
@@ -34,25 +34,25 @@ public class DirectoryScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Directory']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Directory' AND type == 'XCUIElementTypeStaticText'")
 //    @iOSXCUITFindBy(accessibility = "Directory")
-    public MobileElement directoryDropdown;
+    public WebElement directoryDropdown;
 
     //Unit Selected
 //    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resouce-id='ab_toolbar']/android.widget.TextView[2]")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
     @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
-    public MobileElement unitSelected;
+    public WebElement unitSelected;
 
 
     // ****************** Search ******************
     //Search Directory
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
     @iOSXCUITFindBy(accessibility = "Search")
-    public  MobileElement searchBar;
+    public  WebElement searchBar;
 
     //Clear Search
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/clearTextImageButton")
     @iOSXCUITFindBy(accessibility = "Cancel")
-    public  MobileElement searchCancel;
+    public WebElement searchCancel;
 
 
     // ****************** Directory Users ******************
@@ -60,7 +60,7 @@ public class DirectoryScreen extends BasePage {
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/individual_thumbnail_image_view")
 //    @iOSXCUITFindBy(xpath = "//XCUIElementTypeImage[@name='missing'])")
     @iOSXCUITFindBy(accessibility = "missing")
-    public MobileElement thumbNail;
+    public WebElement thumbNail;
 
 
     // ****************** Sort ******************
@@ -69,24 +69,24 @@ public class DirectoryScreen extends BasePage {
     //@AndroidFindBy(xpath = "//*[@resource-id='filterMenuImageButton']")
 //    @iOSXCUITFindBy(accessibility = "Sort")
     @iOSXCUITFindBy(accessibility = "Sort Options")
-    public  MobileElement directorySort;
+    public  WebElement directorySort;
 
     //Households
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Households']")
     @iOSXCUITFindBy(xpath = "//*[contains(@name, \"Household\")]")
-    public  MobileElement sortHousehold;
+    public  WebElement sortHousehold;
 
     //Individuals
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Individuals']")
     @iOSXCUITFindBy(xpath = "//*[contains(@name, \"Individual\")]")
-    public  MobileElement sortIndividual;
+    public  WebElement sortIndividual;
 
 
     // ****************** Edit ******************
     //Edit Button
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/edit_fab")
     @iOSXCUITFindBy(accessibility = "Edit")
-    public  MobileElement directoryEdit;
+    public  WebElement directoryEdit;
 
 
 
@@ -94,63 +94,63 @@ public class DirectoryScreen extends BasePage {
     //Household Members
     //@iOSXCUITFindBy(iOSNsPredicate = "name == 'HOUSEHOLD MEMBERSOpen Drawer' AND type == 'XCUIElementTypeButton'")
     @iOSXCUITFindBy(accessibility = "View Household")
-    public  MobileElement householdMembers;
+    public  WebElement householdMembers;
 
     //Home Teaching Visiting Teaching
     //@iOSXCUITFindBy(iOSNsPredicate = "name == 'HOME AND VISITING TEACHINGOpen Drawer' AND type == 'XCUIElementTypeButton'")
     //@iOSXCUITFindBy(iOSNsPredicate = "name == 'MINISTERINGOpen Drawer' AND type == 'XCUIElementTypeButton'")
     @iOSXCUITFindBy(accessibility = "Ministering")
-    public  MobileElement htvt;
+    public  WebElement htvt;
 
     //Callings and Classes
     //@iOSXCUITFindBy(iOSNsPredicate = "name == 'CALLINGS AND CLASSESOpen Drawer' AND type == 'XCUIElementTypeButton'")
     @iOSXCUITFindBy(accessibility = "Callings and Classes")
-    public  MobileElement callingsAndClasses;
+    public  WebElement callingsAndClasses;
 
     //Membership Information
     //@iOSXCUITFindBy(iOSNsPredicate = "name == 'MEMBERSHIP INFORMATIONOpen Drawer' AND type == 'XCUIElementTypeButton'")
     @iOSXCUITFindBy(accessibility = "Membership Information")
-    public  MobileElement memebershipInformation;
+    public  WebElement memebershipInformation;
 
     //Show Record Number
     @iOSXCUITFindBy(accessibility = "Show Record Number")
-    public MobileElement showRecordNumber;
+    public WebElement showRecordNumber;
 
     //Account Password
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSecureTextField")
-    public MobileElement accountPassword;
+    public WebElement accountPassword;
 
     //OK on Account Password
     @iOSXCUITFindBy(accessibility = "OK")
-    public MobileElement accountPasswordOK;
+    public WebElement accountPasswordOK;
 
     //Cancel on Account Password
     @iOSXCUITFindBy(accessibility = "Cancel")
-    public MobileElement accountPasswordCancel;
+    public WebElement accountPasswordCancel;
 
 
 
     // ********** Android Elements **********
     //Tab Contact
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"contact\")]")
-    public  MobileElement tabContact;
+    public  WebElement tabContact;
 
     //Tab Household
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"household\")]")
-    public  MobileElement tabHousehold;
+    public  WebElement tabHousehold;
 
     //Tab Callings
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"callings and classes\")]")
-    public  MobileElement tabCallings;
+    public  WebElement tabCallings;
 
     //Tab Home and Visiting Teaching
     //@AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"home and visiting teaching\")]")
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"ministering\")]")
-    public  MobileElement tabHTVT;
+    public  WebElement tabHTVT;
 
     //Tab Membership
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"membership information\")]")
-    public  MobileElement tabMembership;
+    public  WebElement tabMembership;
 
 
 
@@ -159,62 +159,62 @@ public class DirectoryScreen extends BasePage {
     // ********** LAT LONG - GPS **********
     //Household Location
     @iOSXCUITFindBy(accessibility = "Household Location")
-    public MobileElement gpsHouseholdLocation;
+    public WebElement gpsHouseholdLocation;
 
     //Household Location Lat Long
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/latLngTextView")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name = 'Household Location']/following-sibling::XCUIElementTypeStaticText")
-    public MobileElement gpsHouseholdLocationLatLong;
+    public WebElement gpsHouseholdLocationLatLong;
 
     //Household Location Pin
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Google Map\"]/android.view.View")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeMap/following-sibling::XCUIElementTypeOther/XCUIElementTypeOther[1]")
-    public MobileElement gpsHouseholdLocationPin;
+    public WebElement gpsHouseholdLocationPin;
 
     //Household Location Legal - Google
     @AndroidFindBy(xpath ="//android.view.View[@content-desc=\"Google Map\"]/android.widget.RelativeLayout/android.widget.ImageView")
     @iOSXCUITFindBy(accessibility = "Legal")
-    public MobileElement gpsHouseholdLocationLegal;
+    public WebElement gpsHouseholdLocationLegal;
 
     //Adjust Household Location
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/adjustHouseholdLocationButton")
 //    @iOSXCUITFindBy(accessibility = "Adjust Household Location")
     @iOSXCUITFindBy(accessibility = "ADJUST HOUSEHOLD LOCATION")
-    public MobileElement gpsAdjustHouseholdLocation;
+    public WebElement gpsAdjustHouseholdLocation;
 
     //Adjust Household Location Lowercase
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/adjustHouseholdLocationButton")
     @iOSXCUITFindBy(accessibility = "Adjust Household Location")
-    public MobileElement gpsAdjustHouseholdLocationLowerCase;
+    public WebElement gpsAdjustHouseholdLocationLowerCase;
 
 
     //LAT LONG MAP Stuff
     //Permission Title Allow
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_buttonDefaultPositive")
     @iOSXCUITFindBy(accessibility = "Allow")
-    public MobileElement gpsAllowOK;
+    public WebElement gpsAllowOK;
 
 
     //iOS Buttons Use my location
     @iOSXCUITFindBy(accessibility = "Use my location")
-    public MobileElement gpsUseMyLocation;
+    public WebElement gpsUseMyLocation;
 
 
     //iOS Buttons Use my location
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Adjust Household Location\"]")
-    public MobileElement gpsAdjustLocationButton;
+    public WebElement gpsAdjustLocationButton;
 
 
     //GPS Search
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
     @iOSXCUITFindBy(accessibility = "Search")
-    public MobileElement gpsSearch;
+    public WebElement gpsSearch;
 
 
     //GPS Use this Location
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/useLocationFab")
     @iOSXCUITFindBy(accessibility = "Use This Location")
-    public MobileElement gpsUseThisLocation;
+    public WebElement gpsUseThisLocation;
 
 
 
@@ -223,12 +223,12 @@ public class DirectoryScreen extends BasePage {
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/latLngTextView")
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Household Location Missing']")
     @iOSXCUITFindBy(accessibility = "Household Location Missing")
-    public MobileElement gpsHouseholdLocationMissing;
+    public WebElement gpsHouseholdLocationMissing;
 
     //Household Location Missing icon
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/warningImageView")
     @iOSXCUITFindBy(accessibility = "icn_error")
-    public MobileElement gpsHouseholdLocationErrorIcon;
+    public WebElement gpsHouseholdLocationErrorIcon;
 
 
 
@@ -236,36 +236,36 @@ public class DirectoryScreen extends BasePage {
     //Adjust Location Title House Name
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']/following-sibling::android.widget.TextView[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='LDS_Tools.PinAdjustMapView']/XCUIElementTypeStaticText/XCUIElementTypeStaticText[1]")
-    public MobileElement gpsAdjustLocationTitleHouseName;
+    public WebElement gpsAdjustLocationTitleHouseName;
 
     //Adjust Location Title
     @AndroidFindBy(xpath = "//android.widget.ImageButton[@content-desc='Navigate up']/following-sibling::android.widget.TextView[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar[@name='LDS_Tools.PinAdjustMapView']/XCUIElementTypeStaticText/XCUIElementTypeStaticText[2]")
-    public MobileElement gpsAdjustLocationTitle;
+    public WebElement gpsAdjustLocationTitle;
 
     //Adjust Location Current Location Icon
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/myLocationFab")
     @iOSXCUITFindBy(accessibility = "icon current location")
-    public MobileElement gpsAdjustLocationCurrentLocation;
+    public WebElement gpsAdjustLocationCurrentLocation;
 
     //Adjust Location Current Location Info
     @iOSXCUITFindBy(accessibility = "icon info")
-    public MobileElement gpsAdjustLocationIconLocation;
+    public WebElement gpsAdjustLocationIconLocation;
 
     //Adjust Location Search
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
     @iOSXCUITFindBy(accessibility = "Empty list")
-    public MobileElement gpsAdjustLocationSearch;
+    public WebElement gpsAdjustLocationSearch;
 
     //Adjust Location Map Pin
     @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Google Map\"]/android.view.View")
     @iOSXCUITFindBy(accessibility = "Map pin")
-    public MobileElement gpsAdjustLocationMapPin;
+    public WebElement gpsAdjustLocationMapPin;
 
     //Adjust Location Legal
     @AndroidFindBy(xpath ="//android.view.View[@content-desc=\"Google Map\"]/android.widget.RelativeLayout/android.widget.ImageView")
     @iOSXCUITFindBy(accessibility = "Legal")
-    public MobileElement gpsAdjustLocationLegal;
+    public WebElement gpsAdjustLocationLegal;
 
 
 
@@ -350,7 +350,7 @@ public class DirectoryScreen extends BasePage {
     public Boolean searchForMemberCheckResults(String myUser) throws Exception {
         String tempMyUser = myUser.toLowerCase();
         Boolean myReturnStatus;
-        List<MobileElement> options;
+        List<WebElement> options;
 
         directorySort.click();
         sortIndividual.click();
@@ -523,7 +523,7 @@ public class DirectoryScreen extends BasePage {
 
     public void checkAllWardDirectories() throws Exception {
         List<String> StakeWard = new ArrayList<String>();
-        List<MobileElement> options;
+        List<WebElement> options;
         String myUnit;
         BasePage myBasePage = new BasePage(driver);
         

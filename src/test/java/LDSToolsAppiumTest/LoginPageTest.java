@@ -4,7 +4,6 @@ import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.*;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -277,13 +276,13 @@ public class LoginPageTest extends BaseDriver {
             myHelper.changePIN("4", "4", "6", "6");
 
             if (getRunningOS().equalsIgnoreCase("ios")) {
-                driver.get().closeApp();
-                driver.get().launchApp();
+//                driver.get().closeApp();
+//                driver.get().launchApp();
 
             } else {
                 myBasePage.backButton.click();
-                driver.get().closeApp();
-                driver.get().launchApp();
+//                driver.get().closeApp();
+//                driver.get().launchApp();
             }
 
 

@@ -6,7 +6,6 @@ import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppium.Screen.MinisteringScreen;
 import LDSToolsAppium.Screen.QuarterlyReportScreen;
 import LDSToolsAppium.Screen.ReportsScreen;
-import io.appium.java_client.MobileElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

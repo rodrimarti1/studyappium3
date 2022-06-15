@@ -4,10 +4,7 @@ import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.*;
-import io.appium.java_client.MobileElement;
-import io.appium.java_client.Setting;
-import org.openqa.selenium.DeviceRotation;
-import org.openqa.selenium.ScreenOrientation;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -1692,7 +1689,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 //
 //
-//    private void clearFilter(MobileElement myElement) throws Exception {
+//    private void clearFilter(WebElement myElement) throws Exception {
 //        MinisteringScreen myMinistering = new MinisteringScreen(driver);
 //        BasePage myBasePage = new BasePage(driver);
 //

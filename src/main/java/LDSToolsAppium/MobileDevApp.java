@@ -2,12 +2,12 @@ package LDSToolsAppium;
 
 import LDSToolsAppium.Screen.*;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
+import org.openqa.selenium.WebElement;
 
 public class MobileDevApp {
-    private final AppiumDriver<MobileElement> driver2;
+    private final AppiumDriver driver2;
 
-    public MobileDevApp(AppiumDriver<MobileElement> driver) {
+    public MobileDevApp(AppiumDriver driver) {
         this.driver2 = driver;
     }
 

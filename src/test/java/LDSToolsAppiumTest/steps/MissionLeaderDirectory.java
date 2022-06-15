@@ -5,11 +5,11 @@ import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.*;
 import LDSToolsAppiumTest.HelperMethods;
-import io.appium.java_client.MobileElement;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -118,7 +118,7 @@ public class MissionLeaderDirectory extends BaseDriver {
 
     public void toggleMissionLeaderAccess(String onOrOff) throws Exception {
         String toggleStatus;
-        List<MobileElement> toggleButton = new ArrayList<>();
+        List<WebElement> toggleButton = new ArrayList<>();
 //        toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[@resource-id='org.lds.ldstools.alpha:id/secondaryTextView']/following-sibling::org.lds.ldstools.alpha:id/switchView"));
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myMenu.selectMenu(myMenu.settings);
@@ -132,7 +132,7 @@ public class MissionLeaderDirectory extends BaseDriver {
             toggleButton = driver.get().findElements(By.xpath("//XCUIElementTypeSwitch"));
         }
 
-        for (MobileElement missionLeaderButton: toggleButton) {
+        for (WebElement missionLeaderButton: toggleButton) {
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
                 toggleStatus = missionLeaderButton.getAttribute("value");
             } else {
@@ -225,7 +225,7 @@ public class MissionLeaderDirectory extends BaseDriver {
     public Boolean searchForMemberCheckResultsMissionary(String myUser) throws Exception {
         String tempMyUser = myUser.toLowerCase();
         Boolean myReturnStatus;
-        List<MobileElement> options;
+        List<WebElement> options;
         myDirectory.searchBar.sendKeys(myUser);
 
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {

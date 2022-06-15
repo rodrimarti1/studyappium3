@@ -4,7 +4,8 @@ import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.*;
-import io.appium.java_client.MobileElement;
+
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -659,7 +660,7 @@ public class ReportsScreenTest extends BaseDriver {
         Thread.sleep(3000);
         pageSource = myBasePage.getSourceOfPage();
 //        System.out.println(pageSource);
-        Assert.assertTrue(myBasePage.checkNoCaseList("Hanis", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Wallace", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
@@ -969,284 +970,284 @@ public class ReportsScreenTest extends BaseDriver {
 
 
 
-    private void checkMissionaryProgressRecord() throws Exception {
-        //*************************************************************************************
-        //********************* Missionary Progress Record ************************************
-        //*************************************************************************************
-        List<String> myList = new ArrayList<String>();
-        List<String> androidList = new ArrayList<String>();
-        String pageSource;
-        BasePage myBasePage = new BasePage(driver);
-        ReportsScreen myReports = new ReportsScreen(driver);
-
-
-        Thread.sleep(2000);
-        myReports.missionaryProgressRecordReport.click();
-        pageSource = myBasePage.getSourceOfPage();
-        //Assert.assertTrue(checkNoCaseList("Potential Investigator", pageSource, "Contains"));
-        Assert.assertFalse(myBasePage.checkNoCaseList("Malcolm Reynolds", pageSource, "Contains"));
-
-        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
-        myList = myWeb.WPRgetUsers("none", false);
-        myList = myBasePage.swapLastName(myList);
-
-
-        myBasePage.compareWebData(myList, androidList, false);
-
-        //Investigators with Baptism Date
-        myReports.missionaryProgressFilter.click();
-        myReports.mpInvestigatorsWithBaptismDate.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsers("Investigators with Baptism Date", false);
-        myList = myBasePage.swapLastName(myList);
-
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("People with Baptism Date", pageSource, "Contains"));
-
-        myReports.mpRemoveFilterButton.click();
-
-
-        //Progressing Investigators
-        myReports.missionaryProgressFilter.click();
-        myReports.mpProgressingInvestigators.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsers("Progressing Investigators", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("People being taught", pageSource, "Contains"));
-        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
-
-        myReports.mpRemoveFilterButton.click();
-
-
-        //New Investigators
-        myReports.missionaryProgressFilter.click();
-        myReports.mpNewInvestigators.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsers("New Investigators", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("New Investigators", pageSource, "Contains"));
-
-        myReports.mpRemoveFilterButton.click();
-
-        //Other Investigators
-        myReports.missionaryProgressFilter.click();
-        myReports.mpOtherInvestigators.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsers("Other Investigators", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Other Investigators", pageSource, "Contains"));
-
-        myReports.mpRemoveFilterButton.click();
-
-
-
-        //Potential Investigators
-        myReports.missionaryProgressFilter.click();
-        myReports.mpPotentialInvestigators.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-
-        myList = myWeb.WPRgetUsers("Potential Investigators", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Potential Investigators", pageSource, "Contains"));
-        if (getRunningOS().equals("ios")) {
-            myBasePage.scrollUpIOS();
-        }
-
-        myReports.mpRemoveFilterButton.click();
-
-        //Recent Converts
-        myReports.missionaryProgressFilter.click();
-        myReports.mpRecentConverts.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-
-        myList = myWeb.WPRgetUsers("Recent Converts", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Recent Converts", pageSource, "Contains"));
-
-        myReports.mpRemoveFilterButton.click();
-
-        //Members Being Taught
-        myReports.missionaryProgressFilter.click();
-        myReports.mpMembersBeingTaught.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsers("Members", true);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Members Being Taught", pageSource, "Contains"));
-
-        myReports.mpRemoveFilterButton.click();
-
-
-        Thread.sleep(1000);
-        myBasePage.backButton.click();
-
-        //*************************************************************************************
-        //*************************************************************************************
-        //*************************************************************************************
-    }
-
-
-    private void checkMissionaryProgressRecordVisits() throws Exception {
-
-        String pageSource;
-        List<String> myList = new ArrayList<String>();
-        List<String> androidList = new ArrayList<String>();
-
-        BasePage myBasePage = new BasePage(driver);
-        ReportsScreen myReports = new ReportsScreen(driver);
-
-
-        Thread.sleep(2000);
-        myReports.missionaryProgressRecordReport.click();
-
-        pageSource = myBasePage.getSourceOfPage();
-
-        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
-
-        //******************
-        //Visits - Last Week
-        //******************
-        myReports.missionaryProgressFilter.click();
-        myReports.mpReceivedAVisit.click();
-        myReports.mpLastWeek.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-
-        myList = myWeb.WPRgetUsersVisits("WPRLastWeek", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        myReports.mpRemoveFilterButton.click();
-
-        //******************
-        //Visits - Last 2 weeks
-        //******************
-        myReports.missionaryProgressFilter.click();
-        myReports.mpReceivedAVisit.click();
-        myReports.mpLast2Weeks.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-
-        myList = myWeb.WPRgetUsersVisits("WPRLast2Weeks", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        myReports.mpRemoveFilterButton.click();
-
-        //******************
-        //Visits - Last 3 weeks
-        //******************
-        myReports.missionaryProgressFilter.click();
-        myReports.mpReceivedAVisit.click();
-        myReports.mpLast3Weeks.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsersVisits("WPRLast3Weeks", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        myReports.mpRemoveFilterButton.click();
-
-        //******************
-        //Visits - Last 4 weeks
-        //******************
-        myReports.missionaryProgressFilter.click();
-        myReports.mpReceivedAVisit.click();
-        myReports.mpLast4Weeks.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsersVisits("WPRLast4Weeks", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        myReports.mpRemoveFilterButton.click();
-
-        //******************
-        //Visits - Last 5 weeks
-        //******************
-        myReports.missionaryProgressFilter.click();
-        myReports.mpReceivedAVisit.click();
-        myReports.mpLast5Weeks.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetUsersVisits("WPRLast5Weeks", true);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        myReports.mpRemoveFilterButton.click();
-
-        Thread.sleep(1000);
-        myBasePage.backButton.click();
-        Thread.sleep(1000);
-
-    }
-
-    private void MissionaryProgressRecordDetails() throws Exception {
-        String pageSource;
-        List<String> myList = new ArrayList<String>();
-        List<String> androidList = new ArrayList<String>();
-        BasePage myBasePage = new BasePage(driver);
-        ReportsScreen myReports = new ReportsScreen(driver);
-
-
-        Thread.sleep(2000);
-        myReports.missionaryProgressRecordReport.click();
-
-        pageSource = myBasePage.getSourceOfPage();
-
-        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
-        myList = myWeb.WPRgetUsers("none", false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        //Todo: need to check for record then select that record
-        //Todo: Wait for Missionary Progress!
-//        for(String oneUser : myList){
-//            myBasePage.scrollDownTEST(400);
-//            clickButton(oneUser, "text", "nameContains");
-//
-//            pageSource = myBasePage.getSourceOfPage();
-//            if (getRunningOS().equals("ios")) {
-//                //Assert.assertTrue(checkNoCaseList("Add to Contacts", pageSource, "Contains"));
-//            } else {
-//                //Assert.assertTrue(checkNoCaseList("Contact Information", pageSource, "Contains"));
-//            }
+//    private void checkMissionaryProgressRecord() throws Exception {
+//        //*************************************************************************************
+//        //********************* Missionary Progress Record ************************************
+//        //*************************************************************************************
+//        List<String> myList = new ArrayList<String>();
+//        List<String> androidList = new ArrayList<String>();
+//        String pageSource;
+//        BasePage myBasePage = new BasePage(driver);
+//        ReportsScreen myReports = new ReportsScreen(driver);
 //
 //
+//        Thread.sleep(2000);
+//        myReports.missionaryProgressRecordReport.click();
+//        pageSource = myBasePage.getSourceOfPage();
+//        //Assert.assertTrue(checkNoCaseList("Potential Investigator", pageSource, "Contains"));
+//        Assert.assertFalse(myBasePage.checkNoCaseList("Malcolm Reynolds", pageSource, "Contains"));
+//
+//        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
+//        myList = myWeb.WPRgetUsers("none", false);
+//        myList = myBasePage.swapLastName(myList);
+//
+//
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        //Investigators with Baptism Date
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpInvestigatorsWithBaptismDate.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsers("Investigators with Baptism Date", false);
+//        myList = myBasePage.swapLastName(myList);
+//
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("People with Baptism Date", pageSource, "Contains"));
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//
+//        //Progressing Investigators
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpProgressingInvestigators.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsers("Progressing Investigators", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("People being taught", pageSource, "Contains"));
+//        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//
+//        //New Investigators
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpNewInvestigators.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsers("New Investigators", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("New Investigators", pageSource, "Contains"));
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //Other Investigators
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpOtherInvestigators.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsers("Other Investigators", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Other Investigators", pageSource, "Contains"));
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//
+//
+//        //Potential Investigators
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpPotentialInvestigators.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//
+//        myList = myWeb.WPRgetUsers("Potential Investigators", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Potential Investigators", pageSource, "Contains"));
+//        if (getRunningOS().equals("ios")) {
+//            myBasePage.scrollUpIOS();
 //        }
-        myBasePage.backButton.click();
-    }
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //Recent Converts
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpRecentConverts.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//
+//        myList = myWeb.WPRgetUsers("Recent Converts", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Recent Converts", pageSource, "Contains"));
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //Members Being Taught
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpMembersBeingTaught.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsers("Members", true);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Members Being Taught", pageSource, "Contains"));
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//
+//        Thread.sleep(1000);
+//        myBasePage.backButton.click();
+//
+//        //*************************************************************************************
+//        //*************************************************************************************
+//        //*************************************************************************************
+//    }
+
+
+//    private void checkMissionaryProgressRecordVisits() throws Exception {
+//
+//        String pageSource;
+//        List<String> myList = new ArrayList<String>();
+//        List<String> androidList = new ArrayList<String>();
+//
+//        BasePage myBasePage = new BasePage(driver);
+//        ReportsScreen myReports = new ReportsScreen(driver);
+//
+//
+//        Thread.sleep(2000);
+//        myReports.missionaryProgressRecordReport.click();
+//
+//        pageSource = myBasePage.getSourceOfPage();
+//
+//        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
+//
+//        //******************
+//        //Visits - Last Week
+//        //******************
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpReceivedAVisit.click();
+//        myReports.mpLastWeek.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//
+//        myList = myWeb.WPRgetUsersVisits("WPRLastWeek", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //******************
+//        //Visits - Last 2 weeks
+//        //******************
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpReceivedAVisit.click();
+//        myReports.mpLast2Weeks.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//
+//        myList = myWeb.WPRgetUsersVisits("WPRLast2Weeks", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //******************
+//        //Visits - Last 3 weeks
+//        //******************
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpReceivedAVisit.click();
+//        myReports.mpLast3Weeks.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsersVisits("WPRLast3Weeks", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //******************
+//        //Visits - Last 4 weeks
+//        //******************
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpReceivedAVisit.click();
+//        myReports.mpLast4Weeks.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsersVisits("WPRLast4Weeks", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        //******************
+//        //Visits - Last 5 weeks
+//        //******************
+//        myReports.missionaryProgressFilter.click();
+//        myReports.mpReceivedAVisit.click();
+//        myReports.mpLast5Weeks.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetUsersVisits("WPRLast5Weeks", true);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        myReports.mpRemoveFilterButton.click();
+//
+//        Thread.sleep(1000);
+//        myBasePage.backButton.click();
+//        Thread.sleep(1000);
+//
+//    }
+
+//    private void MissionaryProgressRecordDetails() throws Exception {
+//        String pageSource;
+//        List<String> myList = new ArrayList<String>();
+//        List<String> androidList = new ArrayList<String>();
+//        BasePage myBasePage = new BasePage(driver);
+//        ReportsScreen myReports = new ReportsScreen(driver);
+//
+//
+//        Thread.sleep(2000);
+//        myReports.missionaryProgressRecordReport.click();
+//
+//        pageSource = myBasePage.getSourceOfPage();
+//
+//        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
+//        myList = myWeb.WPRgetUsers("none", false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        //Todo: need to check for record then select that record
+//        //Todo: Wait for Missionary Progress!
+////        for(String oneUser : myList){
+////            myBasePage.scrollDownTEST(400);
+////            clickButton(oneUser, "text", "nameContains");
+////
+////            pageSource = myBasePage.getSourceOfPage();
+////            if (getRunningOS().equals("ios")) {
+////                //Assert.assertTrue(checkNoCaseList("Add to Contacts", pageSource, "Contains"));
+////            } else {
+////                //Assert.assertTrue(checkNoCaseList("Contact Information", pageSource, "Contains"));
+////            }
+////
+////
+////        }
+//        myBasePage.backButton.click();
+//    }
 
 
 
@@ -1259,74 +1260,74 @@ public class ReportsScreenTest extends BaseDriver {
         }
     }
 
-    private void checkMissionaryProgressFilterVisitsSub(MobileElement appFilter, String webFitler) throws Exception {
-        List<String> myList = new ArrayList<String>();
-        List<String> androidList = new ArrayList<String>();
-        BasePage myBasePage = new BasePage(driver);
-        ReportsScreen myReports = new ReportsScreen(driver);
-
-        myReports.missionaryProgressFilter.click();
-        Thread.sleep(2000);
-        scrollToSacMeetingAttendance();
-        myReports.mpAttendedSacrament.click();
-        appFilter.click();
-
-        myReports.saveMissonaryProgressFilter();
-
-        myList = myWeb.WPRgetSacMeeting(webFitler, false);
-        myList = myBasePage.swapLastName(myList);
-        myBasePage.compareWebData(myList, androidList, false);
-
-        myReports.mpRemoveFilterButton.click();
-    }
-
-
-
-    private void checkMissionaryProgressRecordSacMeeting() throws Exception {
-        String pageSource;
-        List<String> myList = new ArrayList<String>();
-        List<String> androidList = new ArrayList<String>();
-        BasePage myBasePage = new BasePage(driver);
-        ReportsScreen myReports = new ReportsScreen(driver);
+//    private void checkMissionaryProgressFilterVisitsSub(WebElement appFilter, String webFitler) throws Exception {
+//        List<String> myList = new ArrayList<String>();
+//        List<String> androidList = new ArrayList<String>();
+//        BasePage myBasePage = new BasePage(driver);
+//        ReportsScreen myReports = new ReportsScreen(driver);
+//
+//        myReports.missionaryProgressFilter.click();
+//        Thread.sleep(2000);
+//        scrollToSacMeetingAttendance();
+//        myReports.mpAttendedSacrament.click();
+//        appFilter.click();
+//
+//        myReports.saveMissonaryProgressFilter();
+//
+//        myList = myWeb.WPRgetSacMeeting(webFitler, false);
+//        myList = myBasePage.swapLastName(myList);
+//        myBasePage.compareWebData(myList, androidList, false);
+//
+//        myReports.mpRemoveFilterButton.click();
+//    }
 
 
-        Thread.sleep(2000);
-        myReports.missionaryProgressRecordReport.click();
 
-
-        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
-
-        //******************
-        //Sacrament Meeting Attendance - Last Week
-        //******************
-        checkMissionaryProgressFilterVisitsSub(myReports.mpLastWeek, "WPRSacLastSunday");
-
-        //******************
-        //Sacrament Meeting Attendance - Last 2 weeks
-        //******************
-        checkMissionaryProgressFilterVisitsSub(myReports.mpLast2Weeks, "WPRSacLast2Weeks");
-
-        //******************
-        //Sacrament Meeting Attendance - Last 3 weeks
-        //******************
-        checkMissionaryProgressFilterVisitsSub(myReports.mpLast3Weeks, "WPRSacLast3Weeks");
-
-        //******************
-        //Sacrament Meeting Attendance - Last 4 weeks
-        //******************
-        checkMissionaryProgressFilterVisitsSub(myReports.mpLast4Weeks, "WPRSacLast4Weeks");
-
-        //******************
-        //Sacrament Meeting Attendance - Last 5 weeks
-        //******************
-        checkMissionaryProgressFilterVisitsSub(myReports.mpLast5Weeks, "WPRSacLast5Weeks");
-
-
-        Thread.sleep(1000);
-        myBasePage.backButton.click();
-        Thread.sleep(1000);
-
-    }
+//    private void checkMissionaryProgressRecordSacMeeting() throws Exception {
+//        String pageSource;
+//        List<String> myList = new ArrayList<String>();
+//        List<String> androidList = new ArrayList<String>();
+//        BasePage myBasePage = new BasePage(driver);
+//        ReportsScreen myReports = new ReportsScreen(driver);
+//
+//
+//        Thread.sleep(2000);
+//        myReports.missionaryProgressRecordReport.click();
+//
+//
+//        myWeb.WPRopenPageLogIn("https://missionary-stage.lds.org/ward-missionary-tools", "ab253", "pa$$w0rd0");
+//
+//        //******************
+//        //Sacrament Meeting Attendance - Last Week
+//        //******************
+//        checkMissionaryProgressFilterVisitsSub(myReports.mpLastWeek, "WPRSacLastSunday");
+//
+//        //******************
+//        //Sacrament Meeting Attendance - Last 2 weeks
+//        //******************
+//        checkMissionaryProgressFilterVisitsSub(myReports.mpLast2Weeks, "WPRSacLast2Weeks");
+//
+//        //******************
+//        //Sacrament Meeting Attendance - Last 3 weeks
+//        //******************
+//        checkMissionaryProgressFilterVisitsSub(myReports.mpLast3Weeks, "WPRSacLast3Weeks");
+//
+//        //******************
+//        //Sacrament Meeting Attendance - Last 4 weeks
+//        //******************
+//        checkMissionaryProgressFilterVisitsSub(myReports.mpLast4Weeks, "WPRSacLast4Weeks");
+//
+//        //******************
+//        //Sacrament Meeting Attendance - Last 5 weeks
+//        //******************
+//        checkMissionaryProgressFilterVisitsSub(myReports.mpLast5Weeks, "WPRSacLast5Weeks");
+//
+//
+//        Thread.sleep(1000);
+//        myBasePage.backButton.click();
+//        Thread.sleep(1000);
+//
+//    }
 
 
 

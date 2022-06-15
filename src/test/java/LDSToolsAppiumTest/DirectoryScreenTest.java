@@ -763,7 +763,7 @@ public class DirectoryScreenTest extends BaseDriver {
                 myBasePage.allowButton.click();
             }
 
-            myDirectory.gpsSearch.setValue("3732 Bryce Canyon Dr, Riverton, Utah");
+            myDirectory.gpsSearch.sendKeys("3732 Bryce Canyon Dr, Riverton, Utah");
 
             Thread.sleep(10000);
 

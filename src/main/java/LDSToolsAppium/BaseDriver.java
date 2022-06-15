@@ -4,7 +4,6 @@ import LDSToolsAppium.Screen.HelpScreen;
 import LDSToolsAppium.Screen.LoginPageScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 
@@ -13,6 +12,7 @@ import io.cucumber.testng.*;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.logging.*;
@@ -38,12 +38,12 @@ import java.util.logging.Logger;
 
 @CucumberOptions()
 public class BaseDriver extends AbstractTestNGCucumberTests {
-//    public static AppiumDriver<MobileElement> driver;
+//    public static AppiumDriver<WebElement> driver;
     public static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
 
     public static final Logger LOGGER = Logger.getLogger(ClassName.class.getName());
 
-    public static AppiumDriver<MobileElement> driver2;
+    public static AppiumDriver driver2;
     public String deviceSerial = "";
     public String testOS = "";
     public String testngTestDevice = "";
@@ -55,8 +55,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
     
     protected LDSToolsApp app;
     protected MobileDevApp app2;
-    public LDSWeb myWeb = new LDSWeb();
 
+    public String myAppPackage;
 
     public String accessToken = "5b5e50c533cf4e00aa32c8caf1aa1d8fad972f9414a64f71abdce9d06d6a5248";
     public String stfURL = "http://10.109.45.146:7100";
@@ -255,6 +255,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
     @AfterMethod(alwaysRun = true)
     public void teardown(ITestResult result) throws Exception {
         BasePage myBasePage = new BasePage(driver);
+        MenuScreen myMenu = new MenuScreen(driver);
         String testName;
 
         System.out.println("After Method - Start teardown");
@@ -279,14 +280,27 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         }
 
         if(getRunningOS().equals("ios")) {
+
             Thread.sleep(4000);
             System.out.println("Start Reset App");
 //            driver.removeApp("org.lds.ldstools");
 ////            driver.installApp(driver.getCapabilities().getCapability("app").toString());
 //            driver.launchApp();
 
-            getDriver().resetApp();
+//            getDriver().resetApp();
 //            driver.resetApp();
+
+            Map<String, Object> myArgs = new HashMap<>();
+            myArgs.put("bundleId", myAppPackage);
+            driver.get().executeScript("mobile: removeApp", myArgs);
+            Map<String, String> installArgs = new HashMap<>();
+            installArgs.put("app", driver.get().getCapabilities().getCapability("app").toString());
+            driver.get().executeScript("mobile: installApp", installArgs);
+            driver.get().executeScript("mobile: launchApp", myArgs);
+
+
+//            myMenu.menuLogOut();
+
             System.out.println("End Reset App");
             Thread.sleep(5000);
 
@@ -297,7 +311,25 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         } else {
             Thread.sleep(2000);
             System.out.println("Rest App");
-            getDriver().resetApp();
+
+            //Not the best way to do this but Appium changed stuff and reset doesn't work anymore.
+//            myMenu.menuLogOut();
+
+            Map<String, Object> myArgs = new HashMap<>();
+            myArgs.put("appId", myAppPackage);
+            driver.get().executeScript("mobile: clearApp", myArgs);
+
+
+            Map<String, String> installArgs = new HashMap<>();
+            installArgs.put("appId", myAppPackage);
+//            installArgs.put("intent", driver.get().getCapabilities().getCapability("appWaitActivity").toString());
+            installArgs.put("intent", "org.lds.ldstools.alpha/org.lds.ldstools.ux.main.MainActivity");
+            driver.get().executeScript("mobile: startActivity", installArgs);
+
+
+
+//            driver.get().executeScript("mobile: launchApp");
+//            getDriver().resetApp();
 
 //            getDriver().quit();
 //            getDriver().resetApp();
@@ -367,9 +399,9 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
     }
 
-//    private AppiumDriver<MobileElement> appiumCapabilities(String os, String fileName, String testDevice, int myPort) throws Exception {
+//    private AppiumDriver<WebElement> appiumCapabilities(String os, String fileName, String testDevice, int myPort) throws Exception {
     private void appiumCapabilities(String os, String fileName, String testDevice, int myPort, int systemPort) throws Exception {
-        String myAppPackage;
+//        String myAppPackage;
         String myUdid = null;
         int mySystemPort;
 
@@ -452,6 +484,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("app", app.getAbsolutePath());
             myAppPackage = "org.lds.ldstools.alpha";
 
+
 //            if (fileName.contains("android-mobile-dev")) {
 //                capabilities.setCapability("appPackage", "org.lds.dev"); // *** ALPHA ***
 //                myAppPackage = "org.lds.dev";
@@ -481,7 +514,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 //            capabilities.setCapability("espressoServerLaunchTimeout",500000);
 //            capabilities.setCapability("espressoBuildConfig","/Users/zmaxfield/Documents/workspace/qa-membertools-all/AppUnderTest/espressConfig.json");
 
-            capabilities.setCapability("fullReset", true);
+            capabilities.setCapability("fullReset", false);
 //            capabilities.setCapability("autoLaunch", false);
 //            capabilities.setCapability("noReset", false);
 //            capabilities.setCapability("appPackage", myAppPackage);
@@ -499,7 +532,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
 
 
-            capabilities.setCapability("dontStopAppOnReset", true);
+            capabilities.setCapability("appim:dontStopAppOnReset", true);
 
 
             capabilities.setCapability("appium:clearDeviceLogsOnStart", true);
@@ -517,8 +550,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("systemPort", mySystemPort);
 
 
-            driver.set(new AndroidDriver<>(new URL("http://127.0.0.1:" + myPort + "/wd/hub"), capabilities));
-//            driver = new AndroidDriver<>(new URL("http://127.0.0.1:" + myPort + "/wd/hub"), capabilities);
+            driver.set(new AndroidDriver(new URL("http://127.0.0.1:" + myPort + "/wd/hub"), capabilities));
+//            driver.set(new AndroidDriver(new URL("http://127.0.0.1:" + myPort ), capabilities));
 
             Thread.sleep(2000);
 
@@ -591,7 +624,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 //            File appDir = new File(classpathRoot, "../../../Selenium");
             File appDir = new File(classpathRoot, "/AppUnderTest");
             File app = new File(appDir, fileName);
-            myAppPackage = "org.lds.ldstools.alpha";
+            myAppPackage = "org.lds.ldstools";
             
 
 
@@ -646,7 +679,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
                 capabilities.setCapability("appium:waitForQuiescence", false);
             }
 
-            driver.set(new IOSDriver<>(new URL("http://127.0.0.1:" + myPort + "/wd/hub"),capabilities));
+            driver.set(new IOSDriver(new URL("http://127.0.0.1:" + myPort + "/wd/hub"),capabilities));
 //            driver = new IOSDriver<>(new URL("http://127.0.0.1:" + myPort + "/wd/hub"),capabilities);
         }
 
