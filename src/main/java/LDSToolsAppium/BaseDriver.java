@@ -1132,20 +1132,29 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
 
     private void screenshotAndLogs(String testName) throws Exception {
-        LogEntries logEntries;
-        List<String> myLogData = new ArrayList<String>();
-        List<String> logTypes = new ArrayList<String>();
         //Get Random UUID
         String filename= UUID.randomUUID().toString();
         //Make DIR for random UUID
         String imagesLocation = "screenshot/" + filename +"/";
-        String logFile = imagesLocation + testName + ".txt";
+
         new File(imagesLocation).mkdirs(); // Insure directory is there
 
 
         //Take Screen shot
         takeScreenShotDirectory(filename, imagesLocation);
 
+        //Broken in v8 of java-client
+//        getLogData(testName, filename);
+
+
+    }
+
+    private void getLogData(String testName, String filename) throws Exception {
+        LogEntries logEntries;
+        List<String> myLogData = new ArrayList<String>();
+        List<String> logTypes = new ArrayList<String>();
+        String imagesLocation = "screenshot/" + filename +"/";
+        String logFile = imagesLocation + testName + ".txt";
         myLogData.add(testName);
         myLogData.add("******************* LOGS *********************");
 
@@ -1170,7 +1179,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             if (!myLog.contains("performance")) {
                 System.out.println(myLog);
                 myLogData.add(" ******************* " + myLog +  " ******************* " );
-                logEntries = getDriver().manage().logs().get(myLog);
+//                logEntries = getDriver().manage().logs().get(myLog);
+                logEntries = driver.get().manage().logs().get(myLog);
                 for (LogEntry entry : logEntries) {
                     myLogData.add(entry.getMessage());
                     //System.out.println(entry.getMessage());
@@ -1184,13 +1194,11 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
 
 
-
         PrintWriter pw = new PrintWriter(new FileOutputStream(logFile));
         for (String logItem : myLogData) {
             pw.println(logItem);
         }
         pw.close();
-
     }
 
     private String getIOSToolsLog() throws Exception {

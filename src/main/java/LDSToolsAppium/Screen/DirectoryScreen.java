@@ -450,25 +450,38 @@ public class DirectoryScreen extends BasePage {
                 tabMembership.click();
 
                 //The headings are taking a while to load
-                Thread.sleep(1000);
-                myBasePage.scrollDownAndroidUIAutomator("1");
-                myBasePage.scrollDownAndroidUIAutomator("1");
-                Thread.sleep(2000);
-                myBasePage.scrollUpAndroidUIAutomator("1");
-                myBasePage.scrollUpAndroidUIAutomator("1");
-                Thread.sleep(1000);
+//                Thread.sleep(1000);
+//                myBasePage.scrollDownAndroidUIAutomator("1");
+//                myBasePage.scrollDownAndroidUIAutomator("1");
+//                Thread.sleep(2000);
+//                myBasePage.scrollUpAndroidUIAutomator("1");
+//                myBasePage.scrollUpAndroidUIAutomator("1");
+//                Thread.sleep(1000);
 
-                pageSource = pageSource + getSourceOfPage();
-                //scrollDownTEST(800);
-                myBasePage.scrollDownAndroidUIAutomator("1");
-                Thread.sleep(500);
-                pageSource = pageSource + getSourceOfPage();
-                myBasePage.scrollDownAndroidUIAutomator("1");
-                Thread.sleep(500);
-                pageSource = pageSource + getSourceOfPage();
-                myBasePage.scrollDownAndroidUIAutomator("1");
-                Thread.sleep(500);
-                pageSource = pageSource + getSourceOfPage();
+                for (int myCounter = 1; myCounter <= 6 ; myCounter++) {
+                    pageSource = pageSource + getSourceOfPage();
+                    myBasePage.newScrollDown();
+                    Thread.sleep(500);
+                }
+
+//
+//                pageSource = pageSource + getSourceOfPage();
+//                myBasePage.newScrollDown();
+////                myBasePage.scrollDownAndroidUIAutomator("1");
+//                Thread.sleep(500);
+//                pageSource = pageSource + getSourceOfPage();
+//                myBasePage.newScrollDown();
+////                myBasePage.scrollDownAndroidUIAutomator("1");
+//                Thread.sleep(500);
+//                pageSource = pageSource + getSourceOfPage();
+//                myBasePage.newScrollDown();
+////                myBasePage.scrollDownAndroidUIAutomator("1");
+//                Thread.sleep(500);
+//                pageSource = pageSource + getSourceOfPage();
+//                myBasePage.newScrollDown();
+////                myBasePage.scrollDownAndroidUIAutomator("1");
+//                Thread.sleep(500);
+//                pageSource = pageSource + getSourceOfPage();
             }
 
             myCheck = checkForElement(tabCallings);

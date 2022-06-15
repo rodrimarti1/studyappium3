@@ -2,6 +2,7 @@ package LDSToolsAppium;
 
 
 import LDSToolsAppium.Screen.DirectoryScreen;
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.*;
 
 
@@ -401,6 +402,15 @@ public class BasePage extends BaseDriver {
             }
             Assert.assertNotNull(radioGroup.getLocation());
         }
+    }
+
+    public void newScrollDown() throws Exception {
+//        System.out.println("Scrolling down");
+        ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                "left", 100, "top", 200, "width", 200, "height", 600,
+                "direction", "down",
+                "percent", 3.0
+        ));
     }
 
     public void scrollDownAndroidUIAutomator(String myInstance) throws Exception {

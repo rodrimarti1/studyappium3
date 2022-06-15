@@ -325,7 +325,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
+    @Test (groups= { "all", "all4", "daily", "daily1"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 

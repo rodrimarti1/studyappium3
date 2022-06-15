@@ -44,7 +44,7 @@ public class LoginPageTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all3", "all", "login", "smoke", "smoke3", "daily", "daily1"})
+    @Test (groups = {"all3", "all", "login", "smoke", "smoke3", "daily", "daily1", "jft"})
     public void validateLoginPageLinks() throws Exception {
         String myPageSource;
         BasePage myBasePage = new BasePage(driver);
@@ -184,7 +184,7 @@ public class LoginPageTest extends BaseDriver {
 
 
 
-    @Test ( groups = {"all1", "all", "login", "jft"})
+    @Test ( groups = {"all1", "all", "login"})
     public void invalidUsernameTest6() throws Exception {
         invalidCheck("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", "password1");
     }
