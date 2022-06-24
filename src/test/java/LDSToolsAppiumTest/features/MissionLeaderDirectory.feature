@@ -28,7 +28,7 @@
     When they select a missionary under their mission
     Then they should have contact information
 
-  @MQA-5398 @MQA-2223 @all @all2 @daily @daily2
+  @MQA-5398 @MQA-2223 @notValidAnymore
   Scenario: Missionary sign up in Whats New
     Given a member "zsgallafent" logs in
     When the Whats New Page is displayed
