@@ -1,6 +1,7 @@
 package LDSToolsAppium.Screen;
 
 import LDSToolsAppium.BasePage;
+import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -136,7 +137,9 @@ public class MeetinghousesScreen extends BasePage {
         } else {
             waitForElementThenClick(meetinghousesSearchButton);
             meetinghousesSearchField.sendKeys(searchText);
-            driver.get().getKeyboard().pressKey(Keys.ENTER);
+            driver.get().executeScript("mobile: performEditorAction", ImmutableMap.of("action", "done"));
+//            driver.get().getKeyboard().pressKey(Keys.ENTER);
+
         }
 
 
