@@ -1,3 +1,3 @@
-cd /Users/zmaxfield/Documents/workspace/MemberTools-iOS
+\1;95;0ccd /Users/zmaxfield/Documents/workspace/MemberTools-iOS
 git fetch --all
-git reset --hard origin/4_7_0
+git reset --hard origin/master
