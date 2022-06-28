@@ -61,7 +61,8 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsSelectThisPayee;
 
     //Add Purpose
-    @iOSXCUITFindBy(accessibility = "＋ Add Purpose")
+//    @iOSXCUITFindBy(accessibility = "Purpose")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Required']/following-sibling::XCUIElementTypeTextView")
     public WebElement paymentRequestsAddPurpose;
 
     //Purpose
@@ -97,7 +98,7 @@ public class FinanceScreen extends BasePage {
 
     //Add Receipt
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/addReceiptTopButton")
-    @iOSXCUITFindBy(accessibility = "receipt")
+    @iOSXCUITFindBy(accessibility = "Add Receipt, Hand written receipts are also acceptable")
     public WebElement paymentRequestsAddReceipt;
 
     //Take a Picture
@@ -111,12 +112,15 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsChooseAFile;
 
     //Photo Gallery
-    @iOSXCUITFindBy(accessibility = "Photo Gallery")
+    @iOSXCUITFindBy(accessibility = "Photo Library")
     public WebElement paymentRequestsPhotoGallery;
 
     //Image to select
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeImage[3]")
     public WebElement paymentRequestsImageToSelect;
+
+    @iOSXCUITFindBy(accessibility = "Choose")
+    public WebElement paymentRequestsImageToSelectChoose;
 
     //Camera Button
     //TODO: iOS code
@@ -152,7 +156,7 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsCategoryGroup1Spinner;
 
     //Category iOS
-    @iOSXCUITFindBy(accessibility = "Category")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Category']/following-sibling::XCUIElementTypeButton")
     public WebElement paymentRequestsCategoryiOS;
 
     //Amount iOS

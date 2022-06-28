@@ -9,6 +9,7 @@ import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
 import com.google.common.collect.ImmutableMap;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
@@ -21,6 +22,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 
 
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.awt.desktop.SystemEventListener;
@@ -48,7 +50,7 @@ public class PaymentRequests extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.finance);
         Thread.sleep(1000);
-        System.out.println(myBasePage.getSourceOfPage());
+//        System.out.println(myBasePage.getSourceOfPage());
         myFinance.financePaymentRequests.click();
     }
 
@@ -66,17 +68,22 @@ public class PaymentRequests extends BaseDriver {
         categorySub(category);
         categoryAmountSub(categoryAmount);
         Thread.sleep(2000);
-        myFinance.paymentRequestsSaveButton.click();
-//        System.out.println(myBasePage.getSourceOfPage());
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            payeeName = driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]")).getAttribute("name");
-        } else {
+        if(myBasePage.getOS().equalsIgnoreCase("android")) {
+            myFinance.paymentRequestsSaveButton.click();
             payeeName = driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView")).getText();
 //            System.out.println(payeeName);
+        } else {
+            myFinance.paymentRequestsSaveButton.click();
+            Thread.sleep(1000);
+//            System.out.println(myBasePage.getSourceOfPage());
+            WebElement nameElement = driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]"));
+//            payeeName = driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]")).getAttribute("name");
+            payeeName = nameElement.getAttribute("name");
+//            System.out.println(payeeName);
+            nameElement.click();
         }
-
-        myFinance.paymentRequestsSubmitButton.click();
-
+        myBasePage.waitForElementThenClick(myFinance.paymentRequestsSubmitButton);
+//        myFinance.paymentRequestsSubmitButton.click();
         //Todo: Should have a better way to do this.
         Thread.sleep(20000);
     }
@@ -207,7 +214,7 @@ public class PaymentRequests extends BaseDriver {
         LOGGER.info("an unfinished payment request is selected");
         myMenu.selectMenu(myMenu.finance);
         myFinance.financePaymentRequests.click();
-        System.out.println(myBasePage.getSourceOfPage());
+//        System.out.println(myBasePage.getSourceOfPage());
         //Select payment
     }
 
@@ -291,9 +298,13 @@ public class PaymentRequests extends BaseDriver {
             myBasePage.waitForElement(myFinance.paymentRequestsAddPurpose);
             Thread.sleep(500);
             myBasePage.waitForElementThenClick(myFinance.paymentRequestsAddPurpose);
+            myFinance.paymentRequestsAddPurpose.sendKeys(purpose);
+            driver.get().findElement(AppiumBy.accessibilityId("Purpose")).click(); //Get rid of keyboard
+        } else {
+            myFinance.paymentRequestsPurpose.sendKeys(purpose);
+            myBasePage.waitForElementThenClick(myFinance.paymentRequestsPurposeAddButton);
         }
-        myFinance.paymentRequestsPurpose.sendKeys(purpose);
-        myBasePage.waitForElementThenClick(myFinance.paymentRequestsPurposeAddButton);
+
 
     }
 
@@ -311,6 +322,7 @@ public class PaymentRequests extends BaseDriver {
                 Thread.sleep(12000);
                 myBasePage.waitForElement(myFinance.paymentRequestsImageToSelect);
                 myFinance.paymentRequestsImageToSelect.click();
+                myBasePage.waitForElementThenClick(myFinance.paymentRequestsImageToSelectChoose);
 
             } else {
                 myFinance.paymentRequestsTakeAPicture.click();
@@ -412,8 +424,10 @@ public class PaymentRequests extends BaseDriver {
         myFinance.paymentRequestsCategoryGroup1Amount.click();
 
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myFinance.paymentRequestsAmountiOS.clear();
             myFinance.paymentRequestsAmountiOS.sendKeys(categoryAmount);
-            myFinance.paymentRequestsSaveButton.click();
+            driver.get().findElement(AppiumBy.accessibilityId("Purpose")).click(); //Get rid of keyboard
+//            myFinance.paymentRequestsSaveButton.click();
         } else {
             for (int i = 0; i < categoryAmount.length(); i++ ) {
                 enterInAmount(categoryAmount.charAt(i));
