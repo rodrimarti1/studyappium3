@@ -3,39 +3,29 @@ package LDSToolsAppiumTest.steps;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
-import LDSToolsAppium.Screen.DirectoryScreen;
 import LDSToolsAppium.Screen.FinanceScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
-import com.google.common.collect.ImmutableMap;
-
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.PerformsTouchActions;
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.touch.offset.PointOption;
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import java.awt.desktop.SystemEventListener;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 public class PaymentRequests extends BaseDriver {
     BasePage myBasePage = new BasePage(driver);
     HelperMethods myHelper = new HelperMethods();
     MenuScreen myMenu = new MenuScreen(driver);
     FinanceScreen myFinance = new FinanceScreen(driver);
-    DirectoryScreen myDirectory = new DirectoryScreen(driver);
     MemberToolsAPI apiTest = new MemberToolsAPI();
-    List<String> memberList = new ArrayList<String>();
     String pageSource;
     String payeeName = "";
     String purpose = "";
