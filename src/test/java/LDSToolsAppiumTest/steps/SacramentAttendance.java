@@ -259,7 +259,7 @@ public class SacramentAttendance extends BaseDriver {
         switch(elementName) {
             case "First Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-//                    System.out.println(myBasePage.getSourceOfPage());
+                    System.out.println(myBasePage.getSourceOfPage());
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(0) + "']"));
                 } else {
