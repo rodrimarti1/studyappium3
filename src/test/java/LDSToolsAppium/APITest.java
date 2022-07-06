@@ -53,17 +53,21 @@ public class APITest {
 
 //    "a1479b4c-df02-4454-bdb6-576f12473193"
 
-
+    @Test
     public void apiCheck() throws Exception {
         int responseCode = 0;
 
         Map<String, Object> myMap = new HashMap<>();
 
 
-        reportNameToCheck =  apiTest.getAllExpenses("mbthomas74", "21628");
-        for (String listItem : reportNameToCheck) {
-            System.out.println(listItem);
-        }
+//        reportNameToCheck =  apiTest.getAllExpenses("mbthomas74", "21628");
+//        for (String listItem : reportNameToCheck) {
+//            System.out.println(listItem);
+//        }
+
+
+        responseCode = apiTest.createPaymentRequest("mbthomas74");
+        System.out.println("CODE: " + responseCode);
 
 //        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test One");
 //        for (String mapKey: myMap.keySet()) {
@@ -119,7 +123,7 @@ public class APITest {
 
     }
 
-    @Test
+
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;

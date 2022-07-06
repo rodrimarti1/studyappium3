@@ -1033,6 +1033,104 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
+    public int createPaymentRequest(String proxyUser) throws IOException {
+        int responseData = 0;
+        String[] listOfMembers = null;
+
+        String json;
+
+
+
+        JSONObject jsonAddress = new JSONObject();
+        jsonAddress.put("city", "Hawthorne");
+        jsonAddress.put("postalCode", "90250-6906");
+        jsonAddress.put("state", "California");
+        jsonAddress.put("street1", "4480 W 137th P1");
+
+
+
+        JSONObject jsonPayee = new JSONObject();
+        jsonPayee.put("id" , 1264650);
+        jsonPayee.put("name", "Thomas, Mark Barrett");
+        jsonPayee.put("memberUuid", "e463aaf9-573f-4d17-8364-d4f4112cb517");
+        jsonPayee.put("memberMrn", "000-2205-6416");
+        jsonPayee.put("address", jsonAddress);
+
+
+
+
+        JSONObject jsonCharges = new JSONObject();
+        jsonCharges.put("categoryId", 952);
+        jsonCharges.put("amount", 8989);
+
+        JSONObject jsonReceipts = new JSONObject();
+        jsonReceipts.put("id", "{8F39BADA-4B0F-4D54-8DFD-4050A2B9EF22}");
+        jsonReceipts.put("name", "passed.png");
+
+        JSONObject jsonSubmittedBy = new JSONObject();
+        jsonSubmittedBy.put("id" , 1264650);
+        jsonSubmittedBy.put("name", "Thomas, Mark Barrett");
+        jsonSubmittedBy.put("memberUuid", "e463aaf9-573f-4d17-8364-d4f4112cb517");
+        jsonSubmittedBy.put("memberMrn", "000-2205-6416");
+
+
+
+        JSONObject jsonPost = new JSONObject();
+        jsonPost.put("id", 0);
+        jsonPost.put("type", "REIMBURSEMENT_REQUEST");
+        jsonPost.put("unitNumber", 21628);
+//        jsonPost.put("advancement", true);
+        jsonPost.put("accountId", 2921);
+//        jsonPost.put("status", "SUBMITTED");
+        jsonPost.put("payee", jsonPayee);
+        jsonPost.put("purpose", "API Test 123");
+        jsonPost.put("charges", jsonCharges);
+        jsonPost.put("submittedDate", "2022-07-01");
+//        jsonPost.put("receipts", jsonReceipts);
+        jsonPost.put("submittedBy", jsonSubmittedBy);
+
+
+        json = jsonPost.toString();
+
+        System.out.println(json);
+
+
+
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), json);
+
+        MultipartBody multiBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("application/json", json)
+                .addFormDataPart("file", "passed.png",
+                    RequestBody.create(MediaType.parse("image/png"), new File("passed.png")))
+                .build();
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/reimbursement")
+                .addHeader("X-Proxy-User" , proxyUser)
+                .post(multiBody)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: "  + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+    }
+
+
     public List<String> getAccounts(String unitNumber, String accountPosition) throws Exception {
         JsonParser parser = new JsonParser();
         String responseData;
