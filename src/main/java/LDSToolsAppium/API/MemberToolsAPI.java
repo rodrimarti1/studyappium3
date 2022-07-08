@@ -1058,10 +1058,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-
+        JSONArray arrayCharges = new JSONArray();
         JSONObject jsonCharges = new JSONObject();
         jsonCharges.put("categoryId", 952);
         jsonCharges.put("amount", 8989);
+        arrayCharges.put(jsonCharges);
 
         JSONObject jsonReceipts = new JSONObject();
         jsonReceipts.put("id", "{8F39BADA-4B0F-4D54-8DFD-4050A2B9EF22}");
@@ -1076,18 +1077,22 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
         JSONObject jsonPost = new JSONObject();
-        jsonPost.put("id", 0);
-        jsonPost.put("type", "REIMBURSEMENT_REQUEST");
-        jsonPost.put("unitNumber", 21628);
-//        jsonPost.put("advancement", true);
         jsonPost.put("accountId", 2921);
-//        jsonPost.put("status", "SUBMITTED");
-        jsonPost.put("payee", jsonPayee);
+        jsonPost.put("charges", arrayCharges);
+        jsonPost.put("id", "16bdca13-62da-4226-a282-3980fae61666");
+        jsonPost.put("payeeUuid", "e463aaf9-573f-4d17-8364-d4f4112cb517");
         jsonPost.put("purpose", "API Test 123");
-        jsonPost.put("charges", jsonCharges);
-        jsonPost.put("submittedDate", "2022-07-01");
+        jsonPost.put("unitNumber", 21628);
+
+
+
+//        jsonPost.put("type", "REIMBURSEMENT_REQUEST");
+//        jsonPost.put("advancement", true);
+//        jsonPost.put("status", "SUBMITTED");
+//        jsonPost.put("payee", jsonPayee);
+//        jsonPost.put("submittedDate", "2022-07-01");
 //        jsonPost.put("receipts", jsonReceipts);
-        jsonPost.put("submittedBy", jsonSubmittedBy);
+//        jsonPost.put("submittedBy", jsonSubmittedBy);
 
 
         json = jsonPost.toString();
@@ -1102,9 +1107,10 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         MultipartBody multiBody = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
-                .addFormDataPart("application/json", json)
-                .addFormDataPart("file", "passed.png",
-                    RequestBody.create(MediaType.parse("image/png"), new File("passed.png")))
+                .addFormDataPart("request", json)
+//                .addFormDataPart("application/json", json)
+//                .addFormDataPart("receipts", "passed.png",
+//                    RequestBody.create(MediaType.parse("image/png"), new File("passed.png")))
                 .build();
 
         StringBuilder contentBuilder = new StringBuilder();
