@@ -23,7 +23,7 @@ public class MenuScreen extends BasePage {
     }
 
     //Directory
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Directory'][contains(@resource-id, 'titleTextView')]")
+    @AndroidFindBy(xpath = "//androidx.compose.ui.platform.ComposeView[@resource-id='org.lds.ldstools.alpha:id/drawerComposeView']//android.widget.TextView[@text='Directory']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Directory'")
     public WebElement directory;
 

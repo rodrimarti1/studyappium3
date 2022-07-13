@@ -53,6 +53,11 @@ public class APITest {
 
 //    "a1479b4c-df02-4454-bdb6-576f12473193"
 
+    @BeforeTest
+    public void setup() throws Exception {
+        System.setProperty("java.util.logging.SimpleFormatter.format", "%1$tY-%1$tm-%1$td %1$tH:%1$tM:%1$tS.%1$tL %4$-7s [%3$s] %5$s %6$s%n");
+    }
+
     @Test
     public void apiCheck() throws Exception {
         int responseCode = 0;
@@ -66,7 +71,12 @@ public class APITest {
 //        }
 
 
-        responseCode = apiTest.createPaymentRequest("mbthomas74");
+//        "memberUuid": "31bc045c-6907-4897-ac52-3f0b8cdf521f",
+//                "memberMrn": "000-6134-4079",
+//                "name": "Loeb, Andrew Jacob"
+
+
+        responseCode = apiTest.createPaymentRequest(2921, "e463aaf9-573f-4d17-8364-d4f4112cb517", "Test Two", 21628, 952, 776, "mbthomas74");
         System.out.println("CODE: " + responseCode);
 
 //        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test One");

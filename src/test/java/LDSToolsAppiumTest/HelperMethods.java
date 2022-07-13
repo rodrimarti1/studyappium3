@@ -829,11 +829,13 @@ public class HelperMethods extends BaseDriver {
         if (!myBasePage.getOS().equals("ios")) {
             Thread.sleep(2000);
             checkForLater();
-            Thread.sleep(8000);
+            Thread.sleep(500);
 
+            //Todo: may not need this anymore
             if (!myBasePage.checkForElement(myMenuScreen.directory)) {
                 myMenuScreen.drawerButton.click();
             }
+//            System.out.println(myBasePage.getSourceOfPage());
             myBasePage.waitForElement(myMenuScreen.directory);
             myMenuScreen.organizations.click();
             Thread.sleep(1000);
