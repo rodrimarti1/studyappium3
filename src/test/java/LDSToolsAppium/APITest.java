@@ -75,8 +75,44 @@ public class APITest {
 //                "memberMrn": "000-6134-4079",
 //                "name": "Loeb, Andrew Jacob"
 
+//        "memberUuid": "8c4b71ab-3d01-49ff-8699-41ec6116f993",
+//                "memberMrn": "000-4691-5133",
+//                "name": "Iuta, Lafaele Brando"
 
-        responseCode = apiTest.createPaymentRequest(2921, "e463aaf9-573f-4d17-8364-d4f4112cb517", "Test Two", 21628, 952, 776, "mbthomas74");
+//        "memberUuid": "e463aaf9-573f-4d17-8364-d4f4112cb517",
+//                "memberMrn": "000-2205-6416",
+//                "name": "Thomas, Mark Barrett"
+//
+//        "memberUuid": "ff9318a2-0643-428b-b5cf-7ee410aed21a",
+//                "memberMrn": "002-0909-565A",
+//                "name": "Stephenson, Robert Wyman"
+
+//        "uuid": "e7c584ab-cdf8-46c5-add9-898b22b25d1b",       Relief Society Pres
+//                "displayName": "Bridgeman, Pamela Gwenn",
+
+//        "uuid": "e8251ac7-2caf-4e9b-b297-8a8833611bc9", Relief Society 1st Councilor
+//                "displayName": "Olson, Sonja",
+
+//        "uuid": "d33a7122-a7cb-4538-90b0-02436034c610",           EQ Pres
+//                "displayName": "Martinez, Cesar L.",
+
+//        Ward Missionary - 9
+//        Elders Quorum - 22
+//        Relief Socity - 25
+//        Activities - 315
+//        FSY - 952
+
+
+
+//        responseCode = apiTest.createPaymentRequest(2921, "e463aaf9-573f-4d17-8364-d4f4112cb517", "Test Two", 21628, 952, 776, "mbthomas74");
+//        System.out.println("CODE: " + responseCode);
+
+        //Relief Society
+        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test", 21628, 25, 5399, "sonjalacrisolson");
+        System.out.println("CODE: " + responseCode);
+
+        //Elders Quorum
+        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test", 21628, 22, 6743, "clmarti");
         System.out.println("CODE: " + responseCode);
 
 //        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test One");
