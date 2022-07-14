@@ -6,7 +6,8 @@
         <parameter name="fileName" value="LDS Tools.app" />
 <!--        <parameter name="fileName" value="LDSTools.ipa" />-->
 <!--        <parameter name="testDevice" value="iPhone 8" />-->
-        <parameter name="testDevice" value="iPhone 12" />
+<!--        <parameter name="testDevice" value="iPhone 12" />-->
+        <parameter name="testDevice" value="iPhone 11" />
 <!--        <parameter name="testDevice" value="HEADLESS-iPhone 11" />-->
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8266" />
