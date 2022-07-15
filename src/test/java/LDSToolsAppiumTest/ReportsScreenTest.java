@@ -16,7 +16,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -451,7 +451,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
     //There is no API for this
-    @Test (groups = {"all3", "all", "report", "daily", "daily4"})
+    @Test (groups = {"all3", "all", "report", "daily", "daily4", "jft"})
     public void reportsYouthRecommendStatus() throws Exception {
         String pageSource;
 
@@ -486,7 +486,7 @@ public class ReportsScreenTest extends BaseDriver {
         pageSource = myBasePage.getSourceOfPage();
 
         //TEST
-        Assert.assertTrue(myBasePage.checkNoCaseList("Lucas", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Chavez", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Proxy", pageSource, "Contains"));
 
         //TODO: Need a way to test this for iOS. iOS does this very different.
@@ -513,7 +513,7 @@ public class ReportsScreenTest extends BaseDriver {
 
         pageSource = myBasePage.getSourceOfPage();
 
-        Assert.assertTrue(myBasePage.checkNoCaseList("Conteh", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Ethan", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Lucas", pageSource, "Contains"));
 
     }

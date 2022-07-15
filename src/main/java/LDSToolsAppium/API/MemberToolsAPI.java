@@ -1127,6 +1127,56 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
+
+
+    public int updateExpensePurpose(int expenseId, String purpose, String proxyUser) throws IOException {
+        int responseData = 0;
+
+        String json;
+
+        JSONObject jsonPost = new JSONObject();
+        jsonPost.put("purpose", purpose);
+
+
+        json = jsonPost.toString();
+
+        System.out.println(json);
+
+
+        MultipartBody multiBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("request", null, RequestBody.create(MediaType.parse("application/json"), json))
+//                .addFormDataPart("application/json", json)
+//                .addFormDataPart("receipts", "passed.png",
+//                    RequestBody.create(MediaType.parse("image/png"), new File("passed.png")))
+                .build();
+
+//        StringBuilder contentBuilder = new StringBuilder();
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses/" + expenseId)
+                .addHeader("X-Proxy-User" , proxyUser)
+//                .header("Content-Type", "application/json; charset=UTF-8")
+                .put(multiBody)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: "  + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+
+    }
+
+
     public List<String> getAccounts(String unitNumber, String accountPosition) throws Exception {
         JsonParser parser = new JsonParser();
         String responseData;
