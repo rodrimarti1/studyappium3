@@ -55,7 +55,7 @@ public class MissionaryScreenTest extends BaseDriver {
         missionaryTestCheckSub("MEMBER2");
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily2"})
     public void missionaryTest_ELDERS_QUORUM_PRESIDENT() throws Exception {
         missionaryTestCheckSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -202,7 +202,7 @@ public class MissionaryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all4", "all", "daily", "daily2"})
+    @Test(groups = {"all4", "all", "daily", "daily2", "jft"})
     public void missionaryOtherUnits() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();

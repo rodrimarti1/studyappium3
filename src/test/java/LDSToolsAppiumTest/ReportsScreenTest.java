@@ -304,7 +304,7 @@ public class ReportsScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all4", "all", "report", "daily", "daily2"})
+    @Test (groups = {"all4", "all", "report", "daily", "daily2", "jft"})
     public void reportsActionAndInterviewBugCheck() throws Exception {
         String pageSource;
 
@@ -322,7 +322,7 @@ public class ReportsScreenTest extends BaseDriver {
 
         myMenu.selectMenu(myMenu.reports);
         myBasePage.waitForElementThenClick(myReports.actionAndInterviewListReport);
-        myBasePage.waitForElementThenClick(myReports.childrenApproachingBaptismAgeReport);
+        myBasePage.waitForElementThenClick(myReports.unbaptizedMembersReport);
 
         Thread.sleep(2000);
         myBasePage.backButton.click();
@@ -451,7 +451,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
     //There is no API for this
-    @Test (groups = {"all3", "all", "report", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "report", "daily", "daily4"})
     public void reportsYouthRecommendStatus() throws Exception {
         String pageSource;
 
