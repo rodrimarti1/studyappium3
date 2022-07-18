@@ -413,6 +413,30 @@ public class BasePage extends BaseDriver {
         ));
     }
 
+    public boolean newScrollUp() throws Exception {
+//        System.out.println("Scrolling up");
+        boolean canScrollMore;
+        Dimension deviceSize = driver.get().manage().window().getSize();
+        int deviceWidth = deviceSize.getWidth();
+        int deviceHeight = deviceSize.getHeight();
+        int left = deviceWidth / 4;
+        int top = deviceHeight / 3;
+        int width = deviceWidth - 200;
+        int height = deviceHeight - 200;
+
+//        System.out.println("Device Width: " + deviceWidth);
+//        System.out.println("Device Height: " + deviceHeight);
+//        System.out.println("left: " + left + " top: " + top + " width: " + width + " height: " + height);
+
+        canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                "left", left, "top", top, "width", width, "height", height,
+                "direction", "up",
+                "percent", 3.0
+        ));
+
+        return canScrollMore;
+    }
+
     public void scrollDownAndroidUIAutomator(String myInstance) throws Exception {
         if (getOS().equals("ios")) {
             scrollDownIOS();

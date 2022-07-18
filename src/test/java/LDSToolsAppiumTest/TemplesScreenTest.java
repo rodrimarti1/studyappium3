@@ -185,7 +185,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
+    @Test (groups= { "all", "all1", "daily", "daily2"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
@@ -236,7 +236,7 @@ public class TemplesScreenTest extends BaseDriver {
         }
     }
 
-    @Test (groups= { "all", "all2", "daily", "daily3"})
+    @Test (groups= { "all", "all2", "daily", "daily3", "jft"})
     public void templeAllTemples() throws Exception {
         String pageSource;
 
@@ -262,12 +262,22 @@ public class TemplesScreenTest extends BaseDriver {
 
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            boolean scrollCheck;
+            int myCounter = 1;
             Thread.sleep(10000);
             System.out.println("Scroll UP!!!!");
-            myBasePage.scrollUpAndroidUIAutomator("2");
-            myBasePage.scrollUpAndroidUIAutomator("2");
-            myBasePage.scrollUpAndroidUIAutomator("2");
-            myBasePage.scrollUpAndroidUIAutomator("2");
+//            myBasePage.scrollUpAndroidUIAutomator("2");
+//            myBasePage.scrollUpAndroidUIAutomator("2");
+//            myBasePage.scrollUpAndroidUIAutomator("2");
+//            myBasePage.scrollUpAndroidUIAutomator("2");
+            do {
+                myBasePage.newScrollUp();
+                System.out.println("Counter: " + myCounter);
+                myCounter++;
+            }
+            while (myCounter <=15);
+
+
 
         }
 
@@ -278,7 +288,6 @@ public class TemplesScreenTest extends BaseDriver {
             myBasePage.scrollUpIOS();
             Thread.sleep(10000);
         }
-
 
         pageSource = myBasePage.getSourceOfPage();
 
