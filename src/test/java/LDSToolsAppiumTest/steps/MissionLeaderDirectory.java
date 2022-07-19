@@ -52,9 +52,9 @@ public class MissionLeaderDirectory extends BaseDriver {
         Thread.sleep(2000);
 //        System.out.println(myBasePage.getSourceOfPage());
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myDirectory.clickDirectoryUser("Gallafent, Zachary ");
+            myDirectory.searchAndClickReturnedMissionary("Gallafent, Zachary ");
         } else {
-            myDirectory.clickDirectoryUser("Gallafent, Zachary");
+            myDirectory.searchAndClickReturnedMissionary("Gallafent, Zachary");
         }
 
     }

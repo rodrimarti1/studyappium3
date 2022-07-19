@@ -279,6 +279,7 @@ public class DirectoryScreen extends BasePage {
         } else {
             String appPackage = driver.get().getCapabilities().getCapability("appPackage").toString();
             System.out.println("App Package: " + appPackage);
+//            System.out.println(getSourceOfPage());
             driver.get().findElement(By.xpath("//android.widget.TextView[@resource-id='" + appPackage +":id/name'][@text='" + myUser + "']")).click();
 //            driver.findElement(By.xpath("//android.widget.TextView[@id='name'][@text='" + myUser + "']")).click();
         }
@@ -318,6 +319,14 @@ public class DirectoryScreen extends BasePage {
         }
         //Just for testing
         Thread.sleep(2000);
+//        System.out.println(getSourceOfPage());
+        clickDirectoryUser(myUser);
+
+    }
+
+    public void searchAndClickReturnedMissionary(String myUser) throws Exception {
+        searchBar.sendKeys(myUser);
+        Thread.sleep(4000);
 //        System.out.println(getSourceOfPage());
         clickDirectoryUser(myUser);
 

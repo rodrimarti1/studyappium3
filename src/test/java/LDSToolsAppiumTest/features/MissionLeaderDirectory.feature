@@ -10,7 +10,7 @@
 #    A Current Mission President: perezdomingo
 #    His Companion: magdelis1
 #
-  @MQA-5396 @MQA-2223 @daily @daily3 @smoke @smoke3 @all @all3 @jft
+  @MQA-5396 @MQA-2223 @daily @daily3 @smoke @smoke3 @all @all3
   Scenario: Mission President (kumfy) logs in and can view returned missionaries
     Given a member "kumfy" logs in
     When they check their Mission under Directory
@@ -22,7 +22,7 @@
     When they check their Mission under Directory
     Then they should see a list of their missionaries
 
-  @MQA-5397 @MQA-2223 @all @all1 @daily @daily1
+  @MQA-5397 @MQA-2223 @all @all1 @daily @daily1 @jft
   Scenario: Mission President contacts missionary
     Given a member "kumfy" logs in
     When they select a missionary under their mission

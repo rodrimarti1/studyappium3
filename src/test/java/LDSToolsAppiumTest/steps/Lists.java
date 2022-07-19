@@ -6,6 +6,8 @@ import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.ListsScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
