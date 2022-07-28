@@ -29,9 +29,10 @@ public class WhatsNewScreenTest extends BaseDriver {
         Thread.sleep(2000);
         pageSource = myBasePage.getSourceOfPage();
         Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Recording Quorum and Class Visitors", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Manage Records", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Covenant Path Progress", pageSource, "Contains"));
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Covenant Path Progress", pageSource, "Contains"));
         myBasePage.waitForElementThenClick(myWhatsNew.whatsNewDone);
 //        myWhatsNew.whatsNewDone.click();
 
