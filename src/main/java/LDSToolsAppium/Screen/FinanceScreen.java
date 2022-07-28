@@ -272,4 +272,8 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsYesButton;
 
 
+    //Expenses
+
+
+
 }
