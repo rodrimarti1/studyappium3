@@ -1062,8 +1062,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("request", null, RequestBody.create(MediaType.parse("application/json"), json))
 //                .addFormDataPart("application/json", json)
-//                .addFormDataPart("receipts", "passed.png",
-//                    RequestBody.create(MediaType.parse("image/png"), new File("passed.png")))
+                .addFormDataPart("receipts", "cereal-receipt.jpeg",
+                    RequestBody.create(MediaType.parse("image/jpeg"), new File("cereal-receipt.jpeg")))
                 .build();
 
 //        StringBuilder contentBuilder = new StringBuilder();

@@ -132,7 +132,7 @@ public class APITest {
         //TODO: when the finance guys fixes this try again
         //Search for expense id by purpose?
         String value;
-        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Relief Society Automated Test");
+        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test Two");
         for (String mapKey: myMap.keySet()) {
             String key = mapKey.toString();
             if (myMap.get(mapKey) == null) {
