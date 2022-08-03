@@ -106,46 +106,59 @@ public class APITest {
 //  Create Payment Request
 //        responseCode = apiTest.createPaymentRequest(2921, "e463aaf9-573f-4d17-8364-d4f4112cb517", "Test Two", 21628, 952, 776, "mbthomas74");
 //        System.out.println("CODE: " + responseCode);
-
+//
 //        //Relief Society
 //        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test", 21628, 25, 5399, "sonjalacrisolson");
 //        System.out.println("CODE: " + responseCode);
 //
-//        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test #2", 21628, 25, 2299, "sonjalacrisolson");
-//        System.out.println("CODE: " + responseCode);
+////        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test #2", 21628, 25, 2299, "sonjalacrisolson");
+////        System.out.println("CODE: " + responseCode);
 //
 //        //Elders Quorum
 //        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test", 21628, 22, 6743, "clmarti");
 //        System.out.println("CODE: " + responseCode);
 //
-//        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test #2", 21628, 22, 6223, "clmarti");
-//        System.out.println("CODE: " + responseCode);
+////        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test #2", 21628, 22, 6223, "clmarti");
+////        System.out.println("CODE: " + responseCode);
 //
 //        //Bishopric 1st Counselor
 //        responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test", 21628, 315, 14999, "lafaele40");
 //        System.out.println("CODE: " + responseCode);
 //
-//        responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test #2", 21628, 315, 20099, "lafaele40");
-//        System.out.println("CODE: " + responseCode);
+////        responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test #2", 21628, 315, 20099, "lafaele40");
+////        System.out.println("CODE: " + responseCode);
 
 //  Rename payment requests? - change to delete when delete works
         //TODO: when the finance guys fixes this try again
         //Search for expense id by purpose?
         String value;
-        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test Two");
-        for (String mapKey: myMap.keySet()) {
-            String key = mapKey.toString();
-            if (myMap.get(mapKey) == null) {
-                value = "";
-            } else {
-                value = myMap.get(mapKey).toString();
+        int myId = 0;
+        String myType = null;
+        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Relief Society Automated Test");
+        if (!myMap.isEmpty()) {
+            for (String mapKey: myMap.keySet()) {
+                String key = mapKey.toString();
+                if (myMap.get(mapKey) == null) {
+                    value = "";
+                } else {
+                    value = myMap.get(mapKey).toString();
+                }
+                System.out.println(key + " - " + value);
             }
-            System.out.println(key + " - " + value);
+
+            myId = (int) myMap.get("id");
+            myType = (String) myMap.get("type");
+            responseCode = apiTest.expenseDelete(myId, myType, "mbthomas74");
+            System.out.println("CODE: " + responseCode);
+
         }
+
+
+
+
         // Rename purpose
 //        responseCode = apiTest.updateExpensePurpose((Integer) myMap.get("id"), "XXXXXXX -XXXXXX", "mbthomas74");
 //        System.out.println("CODE: " + responseCode);
-
 
 //        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test One");
 //        for (String mapKey: myMap.keySet()) {

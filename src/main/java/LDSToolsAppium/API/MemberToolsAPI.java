@@ -712,7 +712,6 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    //TODO: Need a file check for the date then delete if older than 3 or so days?
     public String getFinanceExpenses(String unitNumber, String proxyLogin) throws IOException {
         String responseData = "";
         File organizationFile = new File("ConfigFiles/expenses" + unitNumber + ".json");
@@ -721,31 +720,13 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
         Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses?units="+ unitNumber, proxyLogin );
 
-        if (!organizationFile.exists()) {
-            try (Response response = httpClient.newCall(request).execute()) {
-                assert response.body() != null;
-                responseData = response.body().string();
-                try  {
-//                    FileWriter myWriter = new FileWriter("organization.json");
-                    FileWriter myWriter = new FileWriter(organizationFile);
-                    myWriter.write(responseData);
-                    myWriter.flush();
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+        try (Response response = httpClient.newCall(request).execute()) {
+            assert response.body() != null;
+            responseData = response.body().string();
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/expenses" + unitNumber + ".json")), StandardCharsets.UTF_8);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
         return responseData;
@@ -1174,6 +1155,32 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         return responseData;
 
+    }
+
+
+    public int expenseDelete(int expenseId, String expenseType, String proxyUser) throws Exception {
+        int responseData = 0;
+        String listUuid = "";
+        HashMap<String, String> listMap = new HashMap<>();
+
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .delete()
+                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses/" + expenseId + "?type=" + expenseType)
+                .addHeader("X-Proxy-User" , proxyUser)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            System.out.println("Response: "  + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
     }
 
 
