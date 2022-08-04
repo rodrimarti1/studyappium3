@@ -9,14 +9,15 @@
 
     #Approve tab
     #Other leaders to approve Stake Pres?
-    Scenario Outline: Approve Expenses
+    @jft
+    Scenario Outline: Expenses to Review to Approve Expenses
       Given a <leader> logs in and is on the Expenses page
-      When an <expenseToApprove> is submitted with the <paymentType>
-      Then the expense will be approved
+      When an <expensePayee> with the <expenseAmount> is submitted with the <paymentType>
+      Then the expense with <expensePayee>, <expenseAmount> and <paymentType> will be under Expenses to Approve
       Examples:
-        | leader   | expenseToApprove  | paymentType               |
-        | "BISHOP" | "Some Name"       | "Check"                   |
-        | "BISHOP" | "Some other name" | "Electronic ACH Transfer" |
+        | leader   | expensePayee                | expenseAmount      | paymentType               |
+        | "BISHOP" | "Stelter, Sharon Siniva"    |   "$53.99"         | "Check"                   |
+
 
     #Other leaders to approve Stake Pres?
     Scenario Outline: Review Expenses

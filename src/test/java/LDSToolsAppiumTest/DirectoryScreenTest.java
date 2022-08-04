@@ -25,7 +25,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
 
 
-    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4"})
+    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4", "jft"})
     public void directoryScreenTest_BISHOP() throws Exception {
         directoryScreenSub("BISHOP");
     }
@@ -351,7 +351,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily2"})
     public void directoryMemberInfoIndividual() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();

@@ -6,8 +6,11 @@ import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.FinanceScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
+import io.appium.java_client.AppiumBy;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.HashMap;
@@ -25,27 +28,22 @@ public class Expenses extends BaseDriver {
 
     @Given("the setup expense for the api is run")
     public void theSetupExpenseForTheApiIsRun() throws Exception {
+        apiCleanUpExpenses();
         //Bishop
         responseCode = apiTest.createPaymentRequest(2921, "e463aaf9-573f-4d17-8364-d4f4112cb517", "FSY Automated Test", 21628, 952, 776, "mbthomas74");
-        System.out.println("CODE: " + responseCode);
+        responseCodeCheck(responseCode);
 
         //Relief Society
-        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test", 21628, 25, 5399, "sonjalacrisolson");
-        responseCodeCheck(responseCode);
-//        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test #2", 21628, 25, 2299, "sonjalacrisolson");
-//        responseCodeCheck(responseCode);
+        responseCode = apiTest.createPaymentRequest(2921, "2ec59248-cb2e-452b-83a3-79fdf4847ea3", "Relief Society Automated Test", 21628, 25, 5399, "sharonstelter");
+        System.out.println("CODE: " + responseCode);
 
         //Elders Quorum
         responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test", 21628, 22, 6743, "clmarti");
         responseCodeCheck(responseCode);
-//        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test #2", 21628, 22, 6223, "clmarti");
-//        responseCodeCheck(responseCode);
 
         //Bishopric 1st Counselor
         responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test", 21628, 315, 14999, "lafaele40");
         responseCodeCheck(responseCode);
-//        responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test #2", 21628, 315, 20099, "lafaele40");
-//        responseCodeCheck(responseCode);
     }
 
     @Then("the default expenses will be setup")
@@ -54,10 +52,79 @@ public class Expenses extends BaseDriver {
         apiCheckForExpense("Relief Society Automated Test");
         apiCheckForExpense("Elders Quorum Automated Test");
         apiCheckForExpense("Activities Automated Test");
+    }
 
-//        apiCheckForExpense("Relief Society Automated Test #2");
-//        apiCheckForExpense("Elders Quorum Automated Test #2");
-//        apiCheckForExpense("Activities Automated Test #2");
+
+
+    @Given("a {string} logs in and is on the Expenses page")
+    public void aLeaderLogsInAndIsOnTheExpensesPage(String memberCalling) throws Exception {
+        LOGGER.info("a " + memberCalling + " logs in and is on the Expenses page");
+        String[] callingRights;
+        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+        myHelper.proxyLogin(callingRights[1]);
+        myHelper.enterPin("1", "1", "3", "3");
+        myMenu.selectMenu(myMenu.finance);
+        Thread.sleep(1000);
+        myBasePage.waitForElementThenClick(myFinance.financeExpenses);
+    }
+
+    @When("an {string} with the {string} is submitted with the {string}")
+    public void anExpensePayeeWithTheExpenseAmountIsSubmittedWithThePaymentType(String expensePayee, String expenseAmount, String paymentType) throws Exception {
+        LOGGER.info("an " +  expensePayee + " with the " + expenseAmount + " is submitted with the " + paymentType);
+
+        String pageSource;
+
+        selectExpenseByAmount(expenseAmount);
+
+        Thread.sleep(500);
+        pageSource = myBasePage.getSourceOfPage();
+
+        Assert.assertTrue(pageSource.contains(expenseAmount));
+        Assert.assertTrue(pageSource.contains(expensePayee));
+
+        myBasePage.waitForElementThenClick(myFinance.financePaymentType);
+        if (paymentType.equalsIgnoreCase("check")) {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeCheck);
+        } else {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeElectronicACHTransfer);
+        }
+
+        myBasePage.waitForElementThenClick(myFinance.financePaymentReceipt);
+        myBasePage.waitForElementThenClick(myFinance.financePaymentReceiptApprove);
+
+        myBasePage.waitForElementThenClick(myFinance.financePaymentApprove);
+
+        //Need a big wait?
+        //maybe a wait for element - text?
+        Thread.sleep(20000);
+
+    }
+
+    @Then("the expense with {string}, {string} and {string} will be under Expenses to Approve")
+    public void theExpenseWithExpensePayeeExpenseAmountAndPaymentTypeWillBeUnderExpensesToApprove(String expensePayee, String expenseAmount, String paymentType) throws Exception {
+        LOGGER.info("the expense with " + expensePayee + ", " + expenseAmount + " and " + paymentType +  "will be under Expenses to Approve");
+        String pageSource;
+        //Make sure filter is on for iOS?
+        selectExpenseByAmount(expenseAmount);
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertTrue(pageSource.contains(expenseAmount));
+        Assert.assertTrue(pageSource.contains(expensePayee));
+        Assert.assertTrue(pageSource.contains(paymentType));
+
+        apiCleanUpExpenses();
+    }
+
+
+
+    public void selectExpenseByAmount(String expenseAmount) throws Exception {
+        WebElement amountElement;
+        myBasePage.newScrollToText(expenseAmount);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            amountElement = driver.get().findElement(AppiumBy.accessibilityId(expenseAmount));
+        } else {
+            amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='" + expenseAmount + "']"));
+        }
+        amountElement.click();
     }
 
 

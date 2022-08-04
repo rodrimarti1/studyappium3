@@ -63,7 +63,8 @@ public class BasePage extends BaseDriver {
     public WebElement backAltButton;
 
 //    @AndroidFindBy(accessibility = "Navigate up")
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+//    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+    @AndroidFindBy(xpath = "//*[@content-desc='Open navigation drawer']")
     public WebElement drawerButton;
 
     @AndroidFindBy(id = "clearTextImageButton")
@@ -404,13 +405,39 @@ public class BasePage extends BaseDriver {
         }
     }
 
-    public void newScrollDown() throws Exception {
-//        System.out.println("Scrolling down");
-        ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
-                "left", 100, "top", 200, "width", 200, "height", 600,
+    public boolean newScrollDown() throws Exception {
+        System.out.println("Scrolling down");
+        boolean canScrollMore;
+        Dimension deviceSize = driver.get().manage().window().getSize();
+        int deviceWidth = deviceSize.getWidth();
+        int deviceHeight = deviceSize.getHeight();
+        int left = deviceWidth / 5;
+        int top = deviceHeight / 5; //6
+//        int width = deviceWidth / 8;
+        int width = 1;
+        int height = deviceHeight / 3; //4
+
+//        System.out.println("Device Width: " + deviceWidth);
+//        System.out.println("Device Height: " + deviceHeight);
+//        System.out.println("left: " + left + " top: " + top + " width: " + width + " height: " + height);
+
+        canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                "left", left, "top", top, "width", width, "height", height,
                 "direction", "down",
                 "percent", 3.0
         ));
+
+//        System.out.println("Can Scroll More: " + canScrollMore);
+
+        return canScrollMore;
+
+
+////        System.out.println("Scrolling down");
+//        ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+//                "left", 100, "top", 200, "width", 200, "height", 600,
+//                "direction", "down",
+//                "percent", 3.0
+//        ));
     }
 
     public boolean newScrollUp() throws Exception {
@@ -435,6 +462,37 @@ public class BasePage extends BaseDriver {
         ));
 
         return canScrollMore;
+    }
+
+
+    public void newScrollToText(String myText) throws Exception {
+        String pageSource;
+        boolean textCheck = false;
+        int myCounter = 1;
+
+        if (getSourceOfPage().equalsIgnoreCase("ios")) {
+            scrollDownToTextIOS(myText);
+        } else {
+            do {
+                pageSource = getSourceOfPage();
+                textCheck = pageSource.contains(myText);
+//            textCheck = checkTextOnPage(myText);
+//            System.out.println("Check: " + textCheck);
+                if (!textCheck) {
+                    newScrollDown();
+                }
+                if (myCounter > 7) {
+                    textCheck = true;
+                    System.out.println("TEXT: " + myText + " Not Found!");
+                }
+                myCounter++;
+
+            } while (!textCheck) ;
+        }
+
+
+
+
     }
 
     public void scrollDownAndroidUIAutomator(String myInstance) throws Exception {

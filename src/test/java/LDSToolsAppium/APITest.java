@@ -108,7 +108,7 @@ public class APITest {
 //        System.out.println("CODE: " + responseCode);
 //
 //        //Relief Society
-//        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test", 21628, 25, 5399, "sonjalacrisolson");
+//        responseCode = apiTest.createPaymentRequest(2921, "2ec59248-cb2e-452b-83a3-79fdf4847ea3", "Relief Society Automated Test", 21628, 25, 5399, "sharonstelter");
 //        System.out.println("CODE: " + responseCode);
 //
 ////        responseCode = apiTest.createPaymentRequest(2921, "e8251ac7-2caf-4e9b-b297-8a8833611bc9", "Relief Society Automated Test #2", 21628, 25, 2299, "sonjalacrisolson");
@@ -134,7 +134,7 @@ public class APITest {
         String value;
         int myId = 0;
         String myType = null;
-        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Relief Society Automated Test");
+        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test Two");
         if (!myMap.isEmpty()) {
             for (String mapKey: myMap.keySet()) {
                 String key = mapKey.toString();
@@ -214,7 +214,7 @@ public class APITest {
 
     }
 
-
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -267,7 +267,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("39373", callingId);
+            memberList = apiTest.getAccounts("21628", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );

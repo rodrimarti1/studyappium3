@@ -273,7 +273,57 @@ public class FinanceScreen extends BasePage {
 
 
     //Expenses
+    //Expenses
+    @AndroidFindBy(xpath = "//*[@text='Expenses']")
+    @iOSXCUITFindBy(accessibility = "Expenses")
+    public WebElement financeExpenses;
 
+    //Payment Type
+    @AndroidFindBy(xpath = "//*[@text='Payment Type']")
+    @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Payment Type')]")
+    public WebElement financePaymentType;
+
+    //Payment Type Check
+    @AndroidFindBy(xpath = "//*[@text='Check']")
+    @iOSXCUITFindBy(xpath = "//*[@name='Check']")
+    public WebElement financePaymentTypeCheck;
+
+    //Payment Type Electronic ACH Transfer
+    @AndroidFindBy(xpath = "//*[@text='Electronic ACH Transfer']")
+    @iOSXCUITFindBy(xpath = "//*[@name='Electronic ACH Transfer']")
+    public WebElement financePaymentTypeElectronicACHTransfer;
+
+    //Edit Purpose
+    @AndroidFindBy(xpath = "//*[@text='Purpose']/../../EditText")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
+    public WebElement financePaymentEditPurpose;
+
+    //Receipt
+    @AndroidFindBy(xpath = "//*[@content-desc='Review Image']")
+    @iOSXCUITFindBy(accessibility = "Close, Selected")
+    public WebElement financePaymentReceipt;
+
+        //Receipt Approve
+        @AndroidFindBy(xpath = "//*[@text='APPROVE']")
+        @iOSXCUITFindBy(accessibility = "Approve")
+        public WebElement financePaymentReceiptApprove;
+
+        //This may change for iOS
+        //Receipt Reject
+        @AndroidFindBy(xpath = "//*[@text='Reject']")
+        @iOSXCUITFindBy(accessibility = "Delete")
+        public WebElement financePaymentReceiptReject;
+
+    //Expense Submit
+    @AndroidFindBy(xpath = "//*[@text='SUBMIT']")
+    @iOSXCUITFindBy(accessibility = "Submit")
+    public WebElement financePaymentApprove;
+
+    //This may change for iOS
+    //Expense Delete or Reject
+    @AndroidFindBy(xpath = "//*[@text='DELETE']")
+    @iOSXCUITFindBy(accessibility = "Reject")
+    public WebElement financePaymentReject;
 
 
 }
