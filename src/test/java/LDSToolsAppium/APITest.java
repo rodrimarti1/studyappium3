@@ -10,6 +10,7 @@ import LDSToolsAppium.API.MemberToolsAPI;
 //import io.restassured.RestAssured;
 //import io.restassured.response.Response;
 
+import LDSToolsAppiumTest.steps.Expenses;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import org.testng.Assert;
@@ -63,6 +64,8 @@ public class APITest {
         int responseCode = 0;
 
         Map<String, Object> myMap = new HashMap<>();
+        Expenses myExpense = new Expenses();
+        myExpense.apiCleanUpExpenses();
 
 
 //        reportNameToCheck =  apiTest.getAllExpenses("mbthomas74", "21628");
@@ -131,27 +134,27 @@ public class APITest {
 //  Rename payment requests? - change to delete when delete works
         //TODO: when the finance guys fixes this try again
         //Search for expense id by purpose?
-        String value;
-        int myId = 0;
-        String myType = null;
-        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test Two");
-        if (!myMap.isEmpty()) {
-            for (String mapKey: myMap.keySet()) {
-                String key = mapKey.toString();
-                if (myMap.get(mapKey) == null) {
-                    value = "";
-                } else {
-                    value = myMap.get(mapKey).toString();
-                }
-                System.out.println(key + " - " + value);
-            }
-
-            myId = (int) myMap.get("id");
-            myType = (String) myMap.get("type");
-            responseCode = apiTest.expenseDelete(myId, myType, "mbthomas74");
-            System.out.println("CODE: " + responseCode);
-
-        }
+//        String value;
+//        int myId = 0;
+//        String myType = null;
+//        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test Two");
+//        if (!myMap.isEmpty()) {
+//            for (String mapKey: myMap.keySet()) {
+//                String key = mapKey.toString();
+//                if (myMap.get(mapKey) == null) {
+//                    value = "";
+//                } else {
+//                    value = myMap.get(mapKey).toString();
+//                }
+//                System.out.println(key + " - " + value);
+//            }
+//
+//            myId = (int) myMap.get("id");
+//            myType = (String) myMap.get("type");
+//            responseCode = apiTest.expenseDelete(myId, myType, "mbthomas74");
+//            System.out.println("CODE: " + responseCode);
+//
+//        }
 
 
 

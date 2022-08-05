@@ -74,7 +74,7 @@ public class Expenses extends BaseDriver {
 
         String pageSource;
 
-        selectExpenseByAmount(expenseAmount);
+        selectExpenseByAmount(expenseAmount, "review");
 
         Thread.sleep(500);
         pageSource = myBasePage.getSourceOfPage();
@@ -96,6 +96,8 @@ public class Expenses extends BaseDriver {
 
         //Need a big wait?
         //maybe a wait for element - text?
+        myBasePage.newScrollUp();
+
         Thread.sleep(20000);
 
     }
@@ -105,7 +107,7 @@ public class Expenses extends BaseDriver {
         LOGGER.info("the expense with " + expensePayee + ", " + expenseAmount + " and " + paymentType +  "will be under Expenses to Approve");
         String pageSource;
         //Make sure filter is on for iOS?
-        selectExpenseByAmount(expenseAmount);
+        selectExpenseByAmount(expenseAmount, "approve");
         pageSource = myBasePage.getSourceOfPage();
         Assert.assertTrue(pageSource.contains(expenseAmount));
         Assert.assertTrue(pageSource.contains(expensePayee));
@@ -116,14 +118,26 @@ public class Expenses extends BaseDriver {
 
 
 
-    public void selectExpenseByAmount(String expenseAmount) throws Exception {
-        WebElement amountElement;
+
+
+
+    public void selectExpenseByAmount(String expenseAmount, String approveOrReview) throws Exception {
+        WebElement amountElement = null;
         myBasePage.newScrollToText(expenseAmount);
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            amountElement = driver.get().findElement(AppiumBy.accessibilityId(expenseAmount));
+        if (approveOrReview.equalsIgnoreCase("approve")) {
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='EXPENSES TO APPROVE']/following-sibling::XCUIElementTypeButton/XCUIElementTypeStaticText[@name='"+ expenseAmount +"']"));
+            } else {
+                amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='Expenses to Approve']/..//*[@text='" + expenseAmount + "']"));
+            }
         } else {
-            amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='" + expenseAmount + "']"));
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='EXPENSES TO REVIEW']/following-sibling::XCUIElementTypeButton/XCUIElementTypeStaticText[@name='"+ expenseAmount +"']"));
+            } else {
+                amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='Expenses to Review']/..//*[@text='" + expenseAmount + "']"));
+            }
         }
+
         amountElement.click();
     }
 
@@ -162,24 +176,28 @@ public class Expenses extends BaseDriver {
         String value;
         int myId = 0;
         String myType = null;
-        myMap = apiTest.getExpensesDetail(proxyUser, unitNumber, purpose);
-        if (!myMap.isEmpty()) {
-            for (String mapKey: myMap.keySet()) {
-                String key = mapKey.toString();
-                if (myMap.get(mapKey) == null) {
-                    value = "";
-                } else {
-                    value = myMap.get(mapKey).toString();
+        int myCounter = 0;
+        do {
+            myMap = apiTest.getExpensesDetail(proxyUser, unitNumber, purpose);
+            if (!myMap.isEmpty()) {
+                for (String mapKey: myMap.keySet()) {
+                    String key = mapKey.toString();
+                    if (myMap.get(mapKey) == null) {
+                        value = "";
+                    } else {
+                        value = myMap.get(mapKey).toString();
+                    }
+                    System.out.println(key + " - " + value);
                 }
-                System.out.println(key + " - " + value);
+
+                myId = (int) myMap.get("id");
+                myType = (String) myMap.get("type");
+                responseCode = apiTest.expenseDelete(myId, myType, proxyUser);
+                System.out.println("CODE: " + responseCode);
             }
+            myCounter++;
+        } while (!myMap.isEmpty() && myCounter < 6);
 
-            myId = (int) myMap.get("id");
-            myType = (String) myMap.get("type");
-            responseCode = apiTest.expenseDelete(myId, myType, proxyUser);
-            System.out.println("CODE: " + responseCode);
-
-        }
     }
 
 
