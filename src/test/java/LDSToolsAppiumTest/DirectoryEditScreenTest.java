@@ -25,7 +25,7 @@ public class DirectoryEditScreenTest extends BaseDriver {
         myHelper.proxyLogin(callingRights[1]);
         myHelper.enterPin("1", "1", "3", "3");
 
-        myDirectory.searchAndClick("Beeson, Adam");
+        myDirectory.searchAndClick("Martinez, Cesar L.");
 
         Assert.assertTrue(myDirectory.directoryEdit.isDisplayed());
         myEditDirectory.editUserOpen();
