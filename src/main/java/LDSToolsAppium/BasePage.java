@@ -58,7 +58,8 @@ public class BasePage extends BaseDriver {
     public WebElement navigateUp;
 
 //    @AndroidFindBy(accessibility = "Navigate up")
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+//    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
     public WebElement backAltButton;
 

@@ -366,10 +366,10 @@ public class OrganizationsScreenTest extends BaseDriver {
 //        myOrg.bishopricOrg.click();
 
 
-
+        //TODO: Get JSON then check to see what tools shows
         bishopricData();
 
-        //TODO: Get JSON then check to see what tools shows
+
 //        if (rights <= 3) {
 //            //Go to web and get all users
 //            myList = myWeb.getAllMembersOnPage("OrganizationsMenu", "Bishopric", false);
@@ -379,6 +379,7 @@ public class OrganizationsScreenTest extends BaseDriver {
 //            bishopricData();
 //        }
 
+//        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.backAltButton.click();
         Thread.sleep(1000);
     }
