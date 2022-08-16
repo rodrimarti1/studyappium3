@@ -190,10 +190,13 @@ public class PaymentRequests extends BaseDriver {
         Thread.sleep(2000);
         myBasePage.backButton.click();
         Thread.sleep(2000);
+        //may not be needed anymore
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myFinance.paymentRequestsYesButton.click();
-            Thread.sleep(1000);
-            myBasePage.backButton.click();
+            if (myBasePage.checkForElement(myFinance.paymentRequestsYesButton)) {
+                myFinance.paymentRequestsYesButton.click();
+                Thread.sleep(1000);
+                myBasePage.backButton.click();
+            }
         }
         myMenu.selectMenu(myMenu.directory);
 
@@ -226,11 +229,16 @@ public class PaymentRequests extends BaseDriver {
 //        choosePurpose(purpose, "TEST 1234");
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myBasePage.waitForElement(myFinance.paymentRequestsAddPurpose);
-            Thread.sleep(1000);
-            myFinance.paymentRequestsAddPurpose.click();
+            Thread.sleep(500);
+            myBasePage.waitForElementThenClick(myFinance.paymentRequestsAddPurpose);
+            Thread.sleep(500);
+            myFinance.paymentRequestsAddPurpose.sendKeys(purpose);
+        } else {
+            myFinance.paymentRequestsPurpose.sendKeys(purpose);
         }
 
-        myFinance.paymentRequestsPurpose.sendKeys(purpose);
+
+
         Thread.sleep(2000);
 //        System.out.println(myBasePage.getSourceOfPage());
 //        Thread.sleep(2000);
@@ -249,10 +257,10 @@ public class PaymentRequests extends BaseDriver {
 //        Assert.assertTrue(myFinance.paymentRequestsPurposeSubmit.getAttribute("enabled").equalsIgnoreCase("false"));
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
 //            purposeCheck = myFinance.paymentRequestsAddPurpose.getText();
-            purposeCheck = myFinance.paymentRequestsPurpose.getAttribute("value").toString();
+            purposeCheck = myFinance.paymentRequestsAddPurpose.getAttribute("value").toString();
 //            System.out.println(purposeCheck);
 //            System.out.println("LENGTH: " + purposeCheck.length());
-            Assert.assertEquals(purposeCheck.length(), 100);
+            Assert.assertEquals(purposeCheck.length(), 445);
         } else {
             Assert.assertTrue(myFinance.paymentRequestsCounter.getText().contains("445"));
         }
