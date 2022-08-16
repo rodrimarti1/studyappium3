@@ -22,7 +22,7 @@
       When the device is rotated
       Then the information for the lists setup will be visible
 
-    @MQA-5722 @MQA-2215 @all @all2 @daily @daily2
+    @MQA-5722 @MQA-2215 @all @all2 @daily @daily2 @jft
     Scenario: Change the name of a list
       When a list name is changed
       Then the list name will be updated

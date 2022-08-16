@@ -141,9 +141,10 @@ public class MenuScreen extends BasePage {
         BasePage myBase = new BasePage(driver);
 
         if (myBase.getOS().equalsIgnoreCase("ios")) {
-            WebElement cancelButton = driver.get().findElement(AppiumBy.accessibilityId("Cancel"));
-            if (myBase.checkForElement(cancelButton)) {
-                cancelButton.click();
+//            WebElement cancelButton = driver.get().findElement(AppiumBy.accessibilityId("Cancel"));
+
+            if (myBase.checkForElement(myBase.cancel)) {
+                myBase.cancel.click();
                 Thread.sleep(500);
             }
 
