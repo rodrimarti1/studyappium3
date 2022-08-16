@@ -316,7 +316,8 @@ public class TemplesScreenTest extends BaseDriver {
 
 
         myMenu.selectMenu(myMenu.temples);
-        myTemple.yesRemindMe.click();
+        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+//        myTemple.yesRemindMe.click();
         myTemple.chooseDifferentTab(myTemple.allTab);
         Thread.sleep(8000);
 
