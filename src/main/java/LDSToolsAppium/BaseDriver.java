@@ -669,7 +669,10 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 //            capabilities.setCapability("simpleIsVisibleCheck", true);
 
             capabilities.setCapability("wdaLocalPort", tempPort);
+
+            //This is needed so HEADLESS will have a location set.
             capabilities.setCapability("locationServicesEnabled", true);
+            capabilities.setCapability("locationServicesAuthorized", true);
 
             if (myUdid != null) {
                 capabilities.setCapability("xcodeOrgId", "U3SP4KMCK6");
