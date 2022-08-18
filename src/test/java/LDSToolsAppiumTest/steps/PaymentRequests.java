@@ -354,6 +354,14 @@ public class PaymentRequests extends BaseDriver {
                     myFinance.paymentRequestsCameraButtonDone.click();
                 }
 
+                if (myBasePage.checkForElement(myFinance.paymentRequestsCameraButton4)) {
+                    myFinance.paymentRequestsCameraButton4.click();
+                    Thread.sleep(500);
+//                    System.out.println(myBasePage.getSourceOfPage());
+                    myBasePage.waitForElement(myFinance.paymentRequestsCameraButtonDone);
+                    myFinance.paymentRequestsCameraButtonDone.click();
+                }
+
 
             }
         } else {

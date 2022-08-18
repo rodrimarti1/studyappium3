@@ -140,6 +140,12 @@ public class FinanceScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Payment Requests")
     public WebElement paymentRequestsCameraButton3;
 
+    //Camera Button #4
+    //TODO: iOS code
+    @AndroidFindBy(xpath = "//*[@content-desc='Shutter']")
+    @iOSXCUITFindBy(accessibility = "Payment Requests")
+    public WebElement paymentRequestsCameraButton4;
+
     //Camera Done
     @AndroidFindBy(xpath = "//*[@content-desc='Done']")
     public WebElement paymentRequestsCameraButtonDone;

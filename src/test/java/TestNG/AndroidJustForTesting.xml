@@ -27,7 +27,7 @@
 
         <classes>
 <!--            <class name="LDSToolsAppiumTest.testrunner.SacramentAttendanceRunner"> </class>-->
-            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
 
         </classes>
     </test > <!-- Default test -->
