@@ -278,8 +278,8 @@ public class Lists extends BaseDriver  {
         membersToAdd.add("barker, susan");
         membersToAdd.add("barton, reilly");
         membersToAdd.add("bearden, olivia");
-        membersToAdd.add("beeson, adam");
-        membersToAdd.add("beeson, melanie");
+        membersToAdd.add("carter, earon");
+        membersToAdd.add("carter, tanya");
         membersToAdd.add("benn, hattie");
         iAddAList("Large Number Of Members");
         membersAreAddedToTheList(membersToAdd );
