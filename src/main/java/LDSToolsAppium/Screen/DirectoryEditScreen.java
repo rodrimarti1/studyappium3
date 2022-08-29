@@ -252,6 +252,7 @@ public class DirectoryEditScreen extends BasePage {
 
     public void editUserOpen() throws Exception {
         DirectoryScreen myDirectory = new DirectoryScreen(driver);
+        BasePage myBasePage = new BasePage(driver);
         Boolean myErrorTest;
         int myCounter = 1;
         myDirectory.directoryEdit.click();
@@ -262,8 +263,10 @@ public class DirectoryEditScreen extends BasePage {
 
         while ((myErrorTest) && (myCounter < 4)) {
             System.out.println("Not connected to the Internet: " + myErrorTest + " Count: "+ myCounter);
-            alertOK.click();
-            myDirectory.directoryEdit.click();
+            myBasePage.waitForElementThenClick(alertOK);
+            myBasePage.waitForElementThenClick(myDirectory.directoryEdit);
+//            alertOK.click();
+//            myDirectory.directoryEdit.click();
             waitUnitlTextIsGone("Downloading");
             myErrorTest = checkTextOnPage("Not Connected");
             myCounter++;
