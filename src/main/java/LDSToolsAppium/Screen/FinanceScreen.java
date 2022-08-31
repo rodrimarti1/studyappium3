@@ -122,6 +122,10 @@ public class FinanceScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Choose")
     public WebElement paymentRequestsImageToSelectChoose;
 
+    //Location button
+    @AndroidFindBy(xpath = "//*[contains(@text, 'While using the app')]")
+    public WebElement paymentRequestsCameraLocation;
+
     //Camera Button
     //TODO: iOS code
     @AndroidFindBy(xpath = "//*[contains(@content-desc, 'picture')]")

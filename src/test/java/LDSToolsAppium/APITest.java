@@ -213,7 +213,7 @@ public class APITest {
 
     }
 
-//    @Test
+    @Test
     public void createExpense() throws Exception {
         int responseCode = 0;
         //  Create Payment Request
@@ -235,7 +235,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void deleteExpenses() throws Exception {
         Expenses myExpense = new Expenses();
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "FSY Automated Test");

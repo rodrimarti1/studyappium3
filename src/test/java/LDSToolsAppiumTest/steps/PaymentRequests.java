@@ -326,6 +326,10 @@ public class PaymentRequests extends BaseDriver {
                 myFinance.paymentRequestsTakeAPicture.click();
                 //Need to hit the button twice
                 Thread.sleep(500);
+                //Hit the location button if it shows up
+                if (myBasePage.checkForElement(myFinance.paymentRequestsCameraLocation)) {
+                    myFinance.paymentRequestsCameraLocation.click();
+                }
 
 //                System.out.println(myBasePage.getSourceOfPage());
                 if (myBasePage.checkForElement(myFinance.paymentRequestsCameraButton)) {
