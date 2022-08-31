@@ -7,6 +7,7 @@ import LDSToolsAppium.Screen.FinanceScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
 import io.appium.java_client.AppiumBy;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -68,9 +69,10 @@ public class Expenses extends BaseDriver {
         myBasePage.waitForElementThenClick(myFinance.financeExpenses);
     }
 
-    @When("an {string} with the {string} is submitted with the {string}")
-    public void anExpensePayeeWithTheExpenseAmountIsSubmittedWithThePaymentType(String expensePayee, String expenseAmount, String paymentType) throws Exception {
-        LOGGER.info("an " +  expensePayee + " with the " + expenseAmount + " is submitted with the " + paymentType);
+
+    @When("an {string} with the {string} is Reviewed with the {string}")
+    public void anExpensePayeeWithTheExpenseAmountIsReviewedWithThePaymentType(String expensePayee, String expenseAmount, String paymentType) throws Exception {
+        LOGGER.info("an " +  expensePayee + " with the " + expenseAmount + " is Reviewed with the " + paymentType);
 
         String pageSource;
 
@@ -101,6 +103,39 @@ public class Expenses extends BaseDriver {
         Thread.sleep(20000);
 
     }
+
+    @When("the {string} with the {string} is Approved with the {string}")
+    public void theExpensePayeeWithTheExpenseAmountIsApprovedWithThePaymentType(String expensePayee, String expenseAmount, String paymentType) throws Exception {
+        LOGGER.info("an " +  expensePayee + " with the " + expenseAmount + " is Approved with the " + paymentType);
+        String pageSource;
+
+        selectExpenseByAmount(expenseAmount, "approve");
+
+        Thread.sleep(500);
+        pageSource = myBasePage.getSourceOfPage();
+
+        Assert.assertTrue(pageSource.contains(expenseAmount));
+        Assert.assertTrue(pageSource.contains(expensePayee));
+
+        myBasePage.waitForElementThenClick(myFinance.financePaymentType);
+        if (paymentType.equalsIgnoreCase("check")) {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeCheck);
+        } else {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeElectronicACHTransfer);
+        }
+
+        myBasePage.waitForElementThenClick(myFinance.financePaymentReceipt);
+        myBasePage.waitForElementThenClick(myFinance.financePaymentReceiptApprove);
+        myBasePage.waitForElementThenClick(myFinance.financePaymentApprove);
+
+        //Need a big wait?
+        //maybe a wait for element - text?
+        myBasePage.newScrollUp();
+
+        Thread.sleep(20000);
+    }
+
+
 
     @Then("the expense with {string}, {string} and {string} will be under Expenses to Approve")
     public void theExpenseWithExpensePayeeExpenseAmountAndPaymentTypeWillBeUnderExpensesToApprove(String expensePayee, String expenseAmount, String paymentType) throws Exception {
@@ -200,6 +235,13 @@ public class Expenses extends BaseDriver {
 
     }
 
+
+    @And("the user logs out")
+    public void theUserLogsOut() throws Exception {
+        LOGGER.info("the user logs out");
+        myBasePage.backToDirectory();
+        myMenu.menuLogOut();
+    }
 
 
 }

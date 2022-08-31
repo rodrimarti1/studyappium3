@@ -12,14 +12,15 @@
     @jft
     Scenario Outline: Expenses to Review to Approve Expenses
       Given a <leader> logs in and is on the Expenses page
-      When an <expensePayee> with the <expenseAmount> is submitted with the <paymentType>
+      When an <expensePayee> with the <expenseAmount> is Reviewed with the <paymentType>
       Then the expense with <expensePayee>, <expenseAmount> and <paymentType> will be under Expenses to Approve
-      And a <anotherLeader> logs in and is on the Expenses page
-      When the <expensePayee> expense is approved
+      And the user logs out
+      When a <differentLeader> logs in and is on the Expenses page
+      When the <expensePayee> with the <expenseAmount> is Approved with the <paymentType>
       Then the expense will be approved
       Examples:
-        | leader   | expensePayee                | expenseAmount      | paymentType               | anotherLeader |
-        | "BISHOP" | "Stelter, Sharon Siniva"    |   "$53.99"         | "Check"                   | "WARD_CLERK"  |
+        | leader   | expensePayee                | expenseAmount      | paymentType               | differentLeader |
+        | "BISHOP" | "Stelter, Sharon Siniva"    |   "$53.99"         | "Check"                   | "WARD_CLERK"   |
 
 
     #Other leaders to approve Stake Pres?

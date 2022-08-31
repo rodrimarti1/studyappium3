@@ -13,11 +13,10 @@
         </classes>
     </test>
 
-    <test name="Android Smoke Test 2 Cucumber - Emulator" thread-count="1" parallel="false" >
+    <test name="Android Smoke Test 2 Cucumber - Samsung Galaxy A20s" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
         <parameter name="fileName" value="ldstools-master.apk" />
-<!--        <parameter name="testDevice" value="R9TN80AQ57J" />-->
-        <parameter name="testDevice" value="emulator-5554" />
+        <parameter name="testDevice" value="R9TN80AQ57J" /> <!-- Samsung Galaxy A20s -->
         <parameter name="startSleepTime" value="60000" />
         <parameter name="systemPort" value="8202" />
         <classes>
