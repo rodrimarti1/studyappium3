@@ -14,7 +14,7 @@
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8555" />
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.PaymentRequestsRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.PrayerRollRunner"> </class>
         </classes>
     </test >
 

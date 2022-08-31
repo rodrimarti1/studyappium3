@@ -159,10 +159,6 @@ public class APITest {
 
 
 
-        // Rename purpose
-//        responseCode = apiTest.updateExpensePurpose((Integer) myMap.get("id"), "XXXXXXX -XXXXXX", "mbthomas74");
-//        System.out.println("CODE: " + responseCode);
-
 //        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test One");
 //        for (String mapKey: myMap.keySet()) {
 //            String key = mapKey.toString();

@@ -7,14 +7,10 @@
         <listener class-name="LDSToolsAppium.TestListener" />
     </listeners>
 
-    <test name="Android Smoke Test 1 - Emulator" thread-count="1" parallel="false" >
+    <test name="Android Smoke Test 1 - Pixel 3 " thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
-<!--                <parameter name="fileName" value="ldstools-beta.apk" />-->
-<!--        <parameter name="fileName" value="ldstools-release.apk" />-->
-<!--        <parameter name="testDevice" value="HT69D0204296" />-->
-        <parameter name="testDevice" value="emulator-5554" />
-        <!--<parameter name="testDevice" value="STF-Pool" />-->
+        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="testDevice" value="89RY0AB92" />  <!-- Pixel 3 -->
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
 

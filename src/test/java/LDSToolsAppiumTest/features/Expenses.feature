@@ -14,9 +14,12 @@
       Given a <leader> logs in and is on the Expenses page
       When an <expensePayee> with the <expenseAmount> is submitted with the <paymentType>
       Then the expense with <expensePayee>, <expenseAmount> and <paymentType> will be under Expenses to Approve
+      And a <anotherLeader> logs in and is on the Expenses page
+      When the <expensePayee> expense is approved
+      Then the expense will be approved
       Examples:
-        | leader   | expensePayee                | expenseAmount      | paymentType               |
-        | "BISHOP" | "Stelter, Sharon Siniva"    |   "$53.99"         | "Check"                   |
+        | leader   | expensePayee                | expenseAmount      | paymentType               | anotherLeader |
+        | "BISHOP" | "Stelter, Sharon Siniva"    |   "$53.99"         | "Check"                   | "WARD_CLERK"  |
 
 
     #Other leaders to approve Stake Pres?

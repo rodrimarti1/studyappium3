@@ -2,11 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Android Smoke Test Cucumber" configfailurepolicy="continue" verbose="1" parallel="tests" thread-count="4">
 
-    <test name="Android Smoke Test 1 Cucumber - Emulator" thread-count="1" parallel="false" >
+    <test name="Android Smoke Test 1 Cucumber - Pixel 3" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
         <parameter name="fileName" value="ldstools-master.apk" />
-<!--        <parameter name="testDevice" value="HT69D0204296" />-->
-        <parameter name="testDevice" value="emulator-5554" />
+        <parameter name="testDevice" value="89RY0AB92" />  <!-- Pixel 3 -->
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
         <classes>
