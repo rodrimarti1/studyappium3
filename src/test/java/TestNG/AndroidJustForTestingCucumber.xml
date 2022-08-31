@@ -7,10 +7,10 @@
 <!--        <parameter name="testDevice" value="09251FDD4003MU" />-->
 <!--        <parameter name="testDevice" value="HT69D0204296" />-->
 <!--        <parameter name="testDevice" value="09251FDD4003MU" /> &lt;!&ndash; Pixel 5 &ndash;&gt;-->
-        <parameter name="testDevice" value="19281FDEE00D8D" /> <!-- Pixel 6 -->
+<!--        <parameter name="testDevice" value="19281FDEE00D8D" /> &lt;!&ndash; Pixel 6 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="R5CN3032NSW" />-->
 <!--        <parameter name="testDevice" value="emulator-5554" />-->
-<!--        <parameter name="testDevice" value="RFCN80KVV5P" />  &lt;!&ndash; Samsung S20 &ndash;&gt;-->
+        <parameter name="testDevice" value="RFCN80KVV5P" />  <!-- Samsung S20 -->
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8555" />
         <classes>

@@ -41,12 +41,13 @@
         </classes>
     </test>
 
-    <test name="Android daily Test 2 - Samsung Galaxy A20s" thread-count="1" parallel="false" >
+    <test name="Android daily Test 2 - Emulator" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="ldstools-master.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
-        <parameter name="testDevice" value="R9TN80AQ57J" />
+<!--        <parameter name="testDevice" value="R9TN80AQ57J" />-->
+        <parameter name="testDevice" value="emulator-5554" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->
         <parameter name="startSleepTime" value="60000" />
         <parameter name="systemPort" value="8202" />
