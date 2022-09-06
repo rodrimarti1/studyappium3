@@ -470,6 +470,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
                 adbRemoteConnect(testDevice);
             }
 
+
+
             mySystemPort = systemPort;
             mySystemPort = getRandomPort(8500, 8999);
 
@@ -480,6 +482,18 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             File app = new File(appDir, fileName);
 
             DesiredCapabilities capabilities = new DesiredCapabilities();
+
+            if (testDevice.contains("HEADLESS")) {
+                String[] parts = testDevice.split(",");
+                //String part1 = parts[0];
+                //Remove all whitespace
+                //part1 = part1.trim();
+                //part2 = part2.trim();
+                testDevice = parts[1];
+                capabilities.setCapability("isHeadless", true);
+            }
+
+//            System.out.println("TEST DEVICE: " + testDevice);
 
             capabilities.setCapability("app", app.getAbsolutePath());
             myAppPackage = "org.lds.ldstools.alpha";
