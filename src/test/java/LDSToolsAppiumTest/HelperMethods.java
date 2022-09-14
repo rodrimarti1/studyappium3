@@ -170,7 +170,7 @@ public class HelperMethods extends BaseDriver {
             myBasePage.waitForElement(mySettings.proxyUsernameEditText);
             mySettings.proxyUsernameEditText.sendKeys(proxyUserName);
             mySettings.proxyUsernameEditOK.click();
-            myBasePage.backButton.click();
+            myBasePage.navigateUp.click();
 
 
 
