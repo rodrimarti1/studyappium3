@@ -167,6 +167,7 @@ public class HelperMethods extends BaseDriver {
             myLoginPage.overflowSettings.click();
             myBasePage.scrollToTextGeneral("Proxy Username");
             mySettings.proxyUsername.click();
+            myBasePage.waitForElement(mySettings.proxyUsernameEditText);
             mySettings.proxyUsernameEditText.sendKeys(proxyUserName);
             mySettings.proxyUsernameEditOK.click();
             myBasePage.backButton.click();

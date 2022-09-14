@@ -49,6 +49,7 @@ public class Expenses extends BaseDriver {
 
     @Then("the default expenses will be setup")
     public void theDefaultExpensesWillBeSetup() throws Exception {
+        Thread.sleep(4000);
         apiCheckForExpense("FSY Automated Test");
         apiCheckForExpense("Relief Society Automated Test");
         apiCheckForExpense("Elders Quorum Automated Test");
@@ -244,4 +245,9 @@ public class Expenses extends BaseDriver {
     }
 
 
+    @Then("the expense will be approved")
+    public void theExpenseWillBeApproved() throws Exception {
+        LOGGER.info("the expense will be approved");
+        System.out.println("Something here!");
+    }
 }

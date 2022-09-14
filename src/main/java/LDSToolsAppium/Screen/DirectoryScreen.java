@@ -7,6 +7,7 @@ import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 
+import io.cucumber.java.en_scouse.An;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
@@ -149,7 +150,9 @@ public class DirectoryScreen extends BasePage {
     public  WebElement tabHTVT;
 
     //Tab Membership
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"membership information\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"membership information\")]")
+//    @AndroidFindBy(xpath = "//*[@text='Membership Information']")
+    @AndroidFindBy(accessibility = "Membership Information")
     public  WebElement tabMembership;
 
 
@@ -457,6 +460,7 @@ public class DirectoryScreen extends BasePage {
             myCheck = checkForElement(tabMembership);
             if (myCheck) {
                 tabMembership.click();
+                tabMembership.click();
 
                 //The headings are taking a while to load
 //                Thread.sleep(1000);
@@ -466,8 +470,9 @@ public class DirectoryScreen extends BasePage {
 //                myBasePage.scrollUpAndroidUIAutomator("1");
 //                myBasePage.scrollUpAndroidUIAutomator("1");
 //                Thread.sleep(1000);
-
+                myBasePage.newScrollUp();
                 for (int myCounter = 1; myCounter <= 6 ; myCounter++) {
+
                     pageSource = pageSource + getSourceOfPage();
                     myBasePage.newScrollDown();
                     Thread.sleep(500);

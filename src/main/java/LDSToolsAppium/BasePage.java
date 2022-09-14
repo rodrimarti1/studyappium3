@@ -48,7 +48,8 @@ public class BasePage extends BaseDriver {
 
 
     //Universal Elements
-    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+//    @AndroidFindBy(xpath = "//*[contains(@resource-id, 'toolbar')]/android.widget.ImageButton")
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
     public WebElement backButton;
 
@@ -140,39 +141,41 @@ public class BasePage extends BaseDriver {
         if (getOS().contains("ios")) {
             scrollToTextiOS(myElement);
         } else {
-            List<String> scrollArea = new ArrayList<String>();
-            String pageSource;
-            pageSource = driver.get().getPageSource();
-            Document doc = Jsoup.parse(pageSource);
-            Elements myElements = doc.getElementsByAttributeValueStarting("scrollable", "true");
-            List<Attribute> elementAttributes = new ArrayList<Attribute>();
 
-            for (Element foundElement : myElements ) {
-                elementAttributes = foundElement.attributes().asList();
-                for (Attribute myAttribute : elementAttributes ) {
-
-
-                    if (myAttribute.getKey().equals("resource-id")) {
-                        if (myAttribute.getValue().isEmpty()) {
-                            System.out.println("Resource ID is blank skipping");
-                        } else {
-                            scrollArea.add(myAttribute.getValue());
-                        }
-                    }
-                }
-
-            }
-
-            if (!scrollArea.isEmpty()) {
-                for (String areaToScroll : scrollArea ) {
-                    WebElement list = (WebElement) driver.get().findElement(By.id(areaToScroll));
-                    WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-                            + "new UiSelector().text(\"" + myElement + "\"));"));
-                    if (radioGroup.getLocation().toString().isEmpty()) {
-                        System.out.println("Text not found in: " + areaToScroll);
-                    }
-                }
-            }
+            newScrollToText(myElement);
+//            List<String> scrollArea = new ArrayList<String>();
+//            String pageSource;
+//            pageSource = driver.get().getPageSource();
+//            Document doc = Jsoup.parse(pageSource);
+//            Elements myElements = doc.getElementsByAttributeValueStarting("scrollable", "true");
+//            List<Attribute> elementAttributes = new ArrayList<Attribute>();
+//
+//            for (Element foundElement : myElements ) {
+//                elementAttributes = foundElement.attributes().asList();
+//                for (Attribute myAttribute : elementAttributes ) {
+//
+//
+//                    if (myAttribute.getKey().equals("resource-id")) {
+//                        if (myAttribute.getValue().isEmpty()) {
+//                            System.out.println("Resource ID is blank skipping");
+//                        } else {
+//                            scrollArea.add(myAttribute.getValue());
+//                        }
+//                    }
+//                }
+//
+//            }
+//
+//            if (!scrollArea.isEmpty()) {
+//                for (String areaToScroll : scrollArea ) {
+//                    WebElement list = (WebElement) driver.get().findElement(By.id(areaToScroll));
+//                    WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
+//                            + "new UiSelector().text(\"" + myElement + "\"));"));
+//                    if (radioGroup.getLocation().toString().isEmpty()) {
+//                        System.out.println("Text not found in: " + areaToScroll);
+//                    }
+//                }
+//            }
         }
 
     }
