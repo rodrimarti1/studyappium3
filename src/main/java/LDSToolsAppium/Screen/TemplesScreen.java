@@ -64,12 +64,14 @@ public class TemplesScreen extends BasePage {
 
 
     //No Thanks
+    @AndroidFindBy(xpath = "//*[@text='NO THANKS']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'No thanks'")
     public WebElement noThanks;
 
     //Yes, remind me
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_button_positive")
-    @AndroidFindBy(id = "android:id/button1")
+//    @AndroidFindBy(id = "android:id/button1")
+    @AndroidFindBy(xpath = "//*[@text='YES, REMIND ME']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Yes, remind me'")
     public WebElement yesRemindMe;
 
