@@ -471,10 +471,11 @@ public class DirectoryScreen extends BasePage {
 //                myBasePage.scrollUpAndroidUIAutomator("1");
 //                Thread.sleep(1000);
                 myBasePage.newScrollUp();
-                for (int myCounter = 1; myCounter <= 6 ; myCounter++) {
+                for (int myCounter = 1; myCounter <= 8 ; myCounter++) {
 
                     pageSource = pageSource + getSourceOfPage();
-                    myBasePage.newScrollDown();
+//                    myBasePage.newScrollDown();
+                    myBasePage.newScrollDownSlow();
                     Thread.sleep(500);
                 }
 

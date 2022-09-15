@@ -444,6 +444,35 @@ public class BasePage extends BaseDriver {
 //        ));
     }
 
+    public boolean newScrollDownSlow() throws Exception {
+        System.out.println("Scrolling down");
+        boolean canScrollMore;
+        Dimension deviceSize = driver.get().manage().window().getSize();
+        int deviceWidth = deviceSize.getWidth();
+        int deviceHeight = deviceSize.getHeight();
+        int left = deviceWidth / 5;
+        int top = deviceHeight / 5; //6
+//        int width = deviceWidth / 8;
+        int width = 1;
+        int height = deviceHeight / 4; //4
+
+//        System.out.println("Device Width: " + deviceWidth);
+//        System.out.println("Device Height: " + deviceHeight);
+//        System.out.println("left: " + left + " top: " + top + " width: " + width + " height: " + height);
+
+        canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                "left", left, "top", top, "width", width, "height", height,
+                "direction", "down",
+                "percent", 1.0
+        ));
+
+//        System.out.println("Can Scroll More: " + canScrollMore);
+
+        return canScrollMore;
+
+
+    }
+
     public boolean newScrollUp() throws Exception {
 //        System.out.println("Scrolling up");
         boolean canScrollMore;
