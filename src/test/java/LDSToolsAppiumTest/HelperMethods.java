@@ -774,50 +774,21 @@ public class HelperMethods extends BaseDriver {
 
 
 
-//        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-//            Thread.sleep(2000);
-//
-//            pressPinKeys(firstNumber);
-//            pressPinKeys(secondNumber);
-//            pressPinKeys(thirdNumber);
-//            pressPinKeys(fourthNumber);
-//
-//            Thread.sleep(2000);
-//
-//            pressPinKeys(firstNumber);
-//            pressPinKeys(secondNumber);
-//            pressPinKeys(thirdNumber);
-//            pressPinKeys(fourthNumber);
-//
-//            Thread.sleep(2000);
-//        } else {
-//            Thread.sleep(4000);
-//            LOGGER.info("Enter PIN!!!");
-//            deviceName = driver.get().getCapabilities().getCapability("deviceName").toString();
-//            myBaseDriver.adbEnterPIN(deviceName);
-//
-////            ((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.BUTTON_1));
-////            ((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.BUTTON_1));
-////            ((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.BUTTON_3));
-////            ((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.BUTTON_3));
-////            ((AndroidDriver)driver).pressKey(new KeyEvent(AndroidKey.ENTER));
-//        }
-
 
 
         //Sometimes there is a warning before the Whats new screen
-        LOGGER.info("Check for Alerts AFTER PIN");
-        if (!myBasePage.getOS().equalsIgnoreCase("ios")) {
-            //Android needs this.
-            checkForAlertsAfterPin();
-            Thread.sleep(2000);
-
-            //Android needs this.
-            dismissWhatsNewPage();
-
-            //Android needs this.
-            checkForAlertsAfterPin();
-        }
+//        LOGGER.info("Check for Alerts AFTER PIN");
+//        if (!myBasePage.getOS().equalsIgnoreCase("ios")) {
+//            //Android needs this.
+//            checkForAlertsAfterPin();
+//            Thread.sleep(2000);
+//
+//            //Android needs this.
+//            dismissWhatsNewPage();
+//
+//            //Android needs this.
+//            checkForAlertsAfterPin();
+//        }
 
         //iOS may need this.
         dismissWhatsNewPage();
@@ -826,24 +797,22 @@ public class HelperMethods extends BaseDriver {
 
 
 
-        // Click on Later then Directory
-        if (!myBasePage.getOS().equals("ios")) {
-            Thread.sleep(2000);
-            checkForLater();
-            Thread.sleep(500);
-
-            //Todo: may not need this anymore
-            if (!myBasePage.checkForElement(myMenuScreen.directory)) {
-                myMenuScreen.drawerButton.click();
-            }
-//            System.out.println(myBasePage.getSourceOfPage());
-            myBasePage.waitForElement(myMenuScreen.directory);
-            myMenuScreen.organizations.click();
-            Thread.sleep(1000);
-            myMenuScreen.selectMenu(myMenuScreen.directory);
-//            myMenuScreen.directory.click();
-            Thread.sleep(2000);
-        }
+//        // Click on Later then Directory
+//        if (!myBasePage.getOS().equals("ios")) {
+////            Thread.sleep(2000);
+////            checkForLater();
+//            Thread.sleep(500);
+//
+//            //Todo: may not need this anymore
+//            if (!myBasePage.checkForElement(myMenuScreen.directory)) {
+//                myMenuScreen.drawerButton.click();
+//            }
+//            myBasePage.waitForElement(myMenuScreen.directory);
+//            myMenuScreen.organizations.click();
+//            Thread.sleep(1000);
+//            myMenuScreen.selectMenu(myMenuScreen.directory);
+//            Thread.sleep(2000);
+//        }
 
     }
 
