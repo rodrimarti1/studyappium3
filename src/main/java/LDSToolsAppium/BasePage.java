@@ -454,7 +454,7 @@ public class BasePage extends BaseDriver {
         int top = deviceHeight / 5; //6
 //        int width = deviceWidth / 8;
         int width = 1;
-        int height = deviceHeight / 4; //4
+        int height = deviceHeight / 3; //4
 
 //        System.out.println("Device Width: " + deviceWidth);
 //        System.out.println("Device Height: " + deviceHeight);
@@ -463,7 +463,8 @@ public class BasePage extends BaseDriver {
         canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
                 "left", left, "top", top, "width", width, "height", height,
                 "direction", "down",
-                "percent", 1.0
+                "percent", 1.0,
+                "speed", 600
         ));
 
 //        System.out.println("Can Scroll More: " + canScrollMore);
