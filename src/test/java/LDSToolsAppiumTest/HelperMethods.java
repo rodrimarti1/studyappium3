@@ -777,18 +777,18 @@ public class HelperMethods extends BaseDriver {
 
 
         //Sometimes there is a warning before the Whats new screen
-//        LOGGER.info("Check for Alerts AFTER PIN");
-//        if (!myBasePage.getOS().equalsIgnoreCase("ios")) {
+        LOGGER.info("Check for Alerts AFTER PIN");
+        if (!myBasePage.getOS().equalsIgnoreCase("ios")) {
 //            //Android needs this.
 //            checkForAlertsAfterPin();
-//            Thread.sleep(2000);
+            Thread.sleep(2000);
 //
 //            //Android needs this.
-//            dismissWhatsNewPage();
+            dismissWhatsNewPage();
 //
 //            //Android needs this.
 //            checkForAlertsAfterPin();
-//        }
+        }
 
         //iOS may need this.
         dismissWhatsNewPage();

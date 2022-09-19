@@ -13,8 +13,8 @@
 <!--        <parameter name="testDevice" value="R5CN3032NSW" /> &lt;!&ndash; Samsung S20 + &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="19281FDEE00D8D" /> &lt;!&ndash; Pixel 6 Pro &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="HEADLESS,emulator-5556" />-->
-        <parameter name="testDevice" value="emulator-5554" />
-<!--        <parameter name="testDevice" value="RFCN80KVV5P" />  &lt;!&ndash; Samsung S20 &ndash;&gt;-->
+<!--        <parameter name="testDevice" value="emulator-5554" />-->
+        <parameter name="testDevice" value="RFCN80KVV5P" />  <!-- Samsung S20 -->
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8277" />
 
