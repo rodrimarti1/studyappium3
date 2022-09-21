@@ -513,9 +513,9 @@ public class BasePage extends BaseDriver {
 //            textCheck = checkTextOnPage(myText);
 //            System.out.println("Check: " + textCheck);
                 if (!textCheck) {
-                    newScrollDown();
+                    newScrollDownSlow();
                 }
-                if (myCounter > 7) {
+                if (myCounter > 9) {
                     textCheck = true;
                     System.out.println("TEXT: " + myText + " Not Found!");
                 }

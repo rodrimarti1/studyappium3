@@ -28,7 +28,8 @@ public class TemplesScreen extends BasePage {
     // Days till expiration
 //    @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='android:id/input']")
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_input_message")
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/editText")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/editText")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     @iOSXCUITFindBy(xpath ="//XCUIElementTypeTextField[@value='Days until expiration']")
     public WebElement templeDaysExpiration;
 
@@ -257,7 +258,8 @@ public class TemplesScreen extends BasePage {
             //Open Settings
             myMenu.selectMenu(myMenu.settings);
             //Scroll down and Reset Temple Preferences
-            myMenu.scrollToTextRecyclerViewSettings("Temple Recommend Status");
+//            myMenu.scrollToTextRecyclerViewSettings("Temple Recommend Status");
+            myBasePage.newScrollToText("Temple Recommend Status");
 //            myMenu.scrollToText("Temple Recommend Status");
             mySettings.resetAllTempelPreferences.click();
             Thread.sleep(500);
@@ -272,7 +274,7 @@ public class TemplesScreen extends BasePage {
             Thread.sleep(3000);
             templeDaysExpiration.sendKeys(numberOfDays);
             mySettings.alertOK.click();
-            myBasePage.backButton.click();
+            myBasePage.navigateUp.click();
             //Open Settings and enable Recommend
             Thread.sleep(2000);
             myMenu.selectMenu(myMenu.settings);

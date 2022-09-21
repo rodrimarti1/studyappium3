@@ -15,7 +15,7 @@
 <!--        <parameter name="testDevice" value="HEADLESS,emulator-5556" />-->
 <!--        <parameter name="testDevice" value="emulator-5554" />-->
         <parameter name="testDevice" value="RFCN80KVV5P" />  <!-- Samsung S20 -->
-        <parameter name="startSleepTime" value="0200" />
+        <parameter name="startSleepTime" value= "0200" />
         <parameter name="systemPort" value="8277" />
 
         <groups>
@@ -28,7 +28,7 @@
 
         <classes>
 <!--            <class name="LDSToolsAppiumTest.testrunner.SacramentAttendanceRunner"> </class>-->
-            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
 
         </classes>
     </test > <!-- Default test -->
