@@ -480,6 +480,7 @@ public class ClassAndQuorum extends BaseDriver {
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
 //        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
+        Thread.sleep(1000);
         clearVisitor(memberCalling);
     }
 
@@ -510,6 +511,7 @@ public class ClassAndQuorum extends BaseDriver {
         WebElement myElement = null;
         String foundText;
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
+        Thread.sleep(2000);
         if (visitorClass.equalsIgnoreCase("men") || (visitorClass.equalsIgnoreCase("women") || (visitorClass.equalsIgnoreCase("young men")))) {
             myBasePage.scrollDownAndroidUIAutomator("0");
             Thread.sleep(1000);
@@ -619,7 +621,8 @@ public class ClassAndQuorum extends BaseDriver {
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
                     myBasePage.scrollDownIOS();
                 } else {
-                    myBasePage.scrollDownAndroidUIAutomator("0");
+//                    myBasePage.scrollDownAndroidUIAutomator("0");
+                    myBasePage.newScrollDownSlow();
                 }
                 Thread.sleep(1000);
             }
