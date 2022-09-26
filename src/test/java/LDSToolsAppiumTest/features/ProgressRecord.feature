@@ -12,7 +12,7 @@
         | "BISHOP" | "Chaney, Dustin John" | "true" |
 
 
-    @MQA-3193 @MQA-2225 @all @all3 @all @daily @daily3 @jft
+    @MQA-3193 @MQA-2225 @all @all3 @all @daily @daily3
     Scenario Outline: As a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
@@ -38,22 +38,22 @@
 #        | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "Johnson, Jasean Marvin" | "false" |
 #        | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "Johnson, Sophia Joeann" | "false" |
 
-    @MQA-5157 @MQA-2225 @all @all3 @all @daily @daily3
+    @MQA-5157 @MQA-2225 @all @all3 @daily @daily3 @jft
     Scenario Outline: As a STAKE leader I should have access to the New Members under Progress Record
       Given a <leader> logs in selects a <unit> and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
       Then the <memberRecord> will be displayed
       And the members record <can> be edited
       Examples:
-        | leader                            | memberRecord             | can     | unit     |
-        | "STAKE_PRESIDENT"                 | "Hanneman, Daniel James" | "false" | "Maize"  |
-        | "STAKE_PRESIDENT_FIRST_COUNSELOR" | "Smith, Barbara Aletha"  | "false" | "Newton" |
+        | leader                            | memberRecord            | can     | unit         |
+        | "STAKE_PRESIDENT"                 | "Young, Kenneth"        | "false" | "Wellington" |
+        | "STAKE_PRESIDENT_FIRST_COUNSELOR" | "Smith, Barbara Aletha" | "false" | "Newton"     |
 #        | "STAKE_PRESIDENT_SECOND_COUNSELOR" | "Richards, Gabe"         | "false" | "Wellington"   |
 #        | "STAKE_CLERK"                      | "Davis, Keith"           | "false" | "Valley"       |
 #        | "STAKE_EXECUTIVE_SECRETARY"        | "Chaney, Dustin John"    | "false" | "Auburn Hills" |
 
 
-    @MQA-3194 @MQA-2225 @all @all1 @all @daily @daily1
+    @MQA-3194 @MQA-2225 @all @all1 @daily @daily1
     Scenario Outline: As a leader I should have access to the People Being Taught under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the People Being Taught tab
@@ -78,7 +78,7 @@
 #        | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "Buzo, Robert"   | "false" |
 #        | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "Cubbage, Ron"   | "false" |
 
-    @MQA-5158 @MQA-2225 @all @all4 @all @daily @daily4
+    @MQA-5158 @MQA-2225 @all @all4 @daily @daily4
     Scenario Outline: As a STAKE leader I should have access to the People Being Taught under Progress Record
       Given a <leader> logs in selects a <unit> and is on the Progress Record Page
       When a <memberRecord> is selected under the People Being Taught tab
