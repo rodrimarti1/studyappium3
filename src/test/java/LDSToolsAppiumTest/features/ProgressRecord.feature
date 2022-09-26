@@ -1,7 +1,7 @@
 @ProgressRecord
   Feature: Progress Record tests - Used to be Missionary Progress Record
 
-    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4 @jft
+    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4
     Scenario Outline: SMOKE as a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
@@ -12,7 +12,7 @@
         | "BISHOP" | "Chaney, Dustin John" | "true" |
 
 
-    @MQA-3193 @MQA-2225 @all @all3 @all @daily @daily3
+    @MQA-3193 @MQA-2225 @all @all3 @all @daily @daily3 @jft
     Scenario Outline: As a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab

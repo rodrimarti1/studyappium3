@@ -229,6 +229,12 @@ public class ProgressRecord extends BaseDriver {
             myBasePage.scrollDownAndroidUIAutomator("0");
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
+            myBasePage.scrollDownAndroidUIAutomator("0");
+            Thread.sleep(500);
+            pageSource = pageSource + myBasePage.getSourceOfPage();
+            myBasePage.scrollDownAndroidUIAutomator("0");
+            Thread.sleep(500);
+            pageSource = pageSource + myBasePage.getSourceOfPage();
         }
 
         return pageSource;
