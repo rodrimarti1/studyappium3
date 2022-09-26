@@ -95,7 +95,9 @@ public class MissionLeaderDirectory extends BaseDriver {
     public void theSettingsPageIsSelected() throws Exception {
         myMenu.selectMenu(myMenu.settings);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
-            myBasePage.scrollToTextGeneral("Mission Leader Access");
+//            myBasePage.scrollToTextGeneral("Mission Leader Access");
+//            myBasePage.newScrollToText("Mission Leader Access");
+            myBasePage.newScrollToText("Refresh Data");
         } else {
             //select ios menu but it doesn't always show up.
             myBasePage.waitForElementThenClick(mySettings.missionLeaderLimitedVisibility);

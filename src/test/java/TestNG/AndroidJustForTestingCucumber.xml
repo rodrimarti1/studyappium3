@@ -14,7 +14,7 @@
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8555" />
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.ProgressRecordRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.MissionLeaderDirectory"> </class>
         </classes>
     </test >
 

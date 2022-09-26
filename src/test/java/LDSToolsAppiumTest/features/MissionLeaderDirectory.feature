@@ -22,7 +22,7 @@
     When they check their Mission under Directory
     Then they should see a list of their missionaries
 
-  @MQA-5397 @MQA-2223 @all @all1 @daily @daily1 @jft
+  @MQA-5397 @MQA-2223 @all @all1 @daily @daily1
   Scenario: Mission President contacts missionary
     Given a member "kumfy" logs in
     When they select a missionary under their mission
@@ -49,7 +49,7 @@
     Then the Mission President will not see the Returned Missionary
 
 
-  @MQA-5399 @MQA-2223 @all @all4 @daily @daily4
+  @MQA-5399 @MQA-2223 @all @all4 @daily @daily4 @jft
   Scenario: Missionary sign up in Settings
     Given a member "zsgallafent" logs in
     When the Settings page is selected
