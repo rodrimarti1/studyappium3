@@ -160,7 +160,6 @@ public class Lists extends BaseDriver  {
         //Check the list members
         checkListMembers();
 
-        //Todo: this should be its own sub.
         //Logout - Login
         myMenu.menuLogOut();
 //        myHelper.loginUAT("LDSTools25", "password1");
@@ -197,7 +196,6 @@ public class Lists extends BaseDriver  {
     }
 
 
-    //Todo: change this to API setup
     @And("sample lists are setup")
     public void sampleListsAreSetup() throws Exception {
         LOGGER.info("sample lists are setup");

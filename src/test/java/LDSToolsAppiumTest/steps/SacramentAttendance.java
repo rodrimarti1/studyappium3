@@ -256,10 +256,11 @@ public class SacramentAttendance extends BaseDriver {
     public WebElement getSunday(String elementName) throws Exception {
         WebElement returnElement = null;
         List<String> sundayNumber = getSundaysInCurrentMonth();
+        Thread.sleep(1000);
         switch(elementName) {
             case "First Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                    System.out.println(myBasePage.getSourceOfPage());
+//                    System.out.println(myBasePage.getSourceOfPage());
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(0) + "']"));
                 } else {
