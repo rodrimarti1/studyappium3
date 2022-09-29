@@ -100,10 +100,10 @@
         </classes>
     </test>
 
-    <test name="iOS Smoke Test - iPhone 8" thread-count="1" parallel="false" >
+    <test name="iOS Smoke Test - iPhone 14" thread-count="1" parallel="false" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="HEADLESS-iPhone 8" />
+        <parameter name="testDevice" value="HEADLESS-iPhone 14" />
         <parameter name="startSleepTime" value="180000" />
         <parameter name="systemPort" value="8267" />
 
