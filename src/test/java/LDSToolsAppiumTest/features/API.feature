@@ -1,6 +1,7 @@
 @API
   Feature: API tests
 
+    #Calendars have been turned off for now.
     @jft
     Scenario Outline: Check <url> status code for <member>
       Given a <member> goes to the <url>
@@ -15,7 +16,7 @@
         | "BISHOP"  | "referrals"                         | "Success" |
         | "BISHOP"  | "temples"                           | "Success" |
         | "BISHOP"  | "finances/accounts"                 | "Success" |
-        | "BISHOP"  | "calendars?timeZone=America/Denver" | "Success" |
+#        | "BISHOP"  | "calendars?timeZone=America/Denver" | "Success" |
         | "MEMBER1" | "user"                              | "Success" |
         | "MEMBER1" | "units"                             | "Success" |
         | "MEMBER1" | "reports?units=39373"               | "Error"   |
@@ -24,7 +25,7 @@
         | "MEMBER1" | "referrals"                         | "Success" |
         | "MEMBER1" | "temples"                           | "Success" |
         | "MEMBER1" | "finances/accounts"                 | "Success" |
-        | "MEMBER1" | "calendars?timeZone=America/Denver" | "Success" |
+#        | "MEMBER1" | "calendars?timeZone=America/Denver" | "Success" |
 
     #    @MQA-3518 @all @smoke @all1 @daily @daily2
     @jft

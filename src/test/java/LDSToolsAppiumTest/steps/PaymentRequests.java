@@ -59,9 +59,11 @@ public class PaymentRequests extends BaseDriver {
         categoryAmountSub(categoryAmount);
         Thread.sleep(2000);
         if(myBasePage.getOS().equalsIgnoreCase("android")) {
-            myFinance.paymentRequestsSaveButton.click();
-            payeeName = driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView")).getText();
-//            System.out.println(payeeName);
+            //No more save button
+//            myFinance.paymentRequestsSaveButton.click();
+//            payeeName = driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView")).getText();
+            payeeName = driver.get().findElement(By.xpath("//*[@text='Payee']/../following-sibling::android.view.View/android.widget.TextView")).getText();
+            System.out.println(payeeName);
         } else {
             myFinance.paymentRequestsSaveButton.click();
             Thread.sleep(1000);
@@ -300,7 +302,7 @@ public class PaymentRequests extends BaseDriver {
             driver.get().findElement(AppiumBy.accessibilityId("Purpose")).click(); //Get rid of keyboard
         } else {
             myFinance.paymentRequestsPurpose.sendKeys(purpose);
-            myBasePage.waitForElementThenClick(myFinance.paymentRequestsPurposeAddButton);
+//            myBasePage.waitForElementThenClick(myFinance.paymentRequestsPurposeAddButton);
         }
 
 
@@ -323,7 +325,9 @@ public class PaymentRequests extends BaseDriver {
                 myBasePage.waitForElementThenClick(myFinance.paymentRequestsImageToSelectChoose);
 
             } else {
-                myFinance.paymentRequestsTakeAPicture.click();
+//                System.out.println(myBasePage.getSourceOfPage());
+                myFinance.paymentRequestsTakeAPictureSmall.click();
+//                myFinance.paymentRequestsTakeAPicture.click();
                 //Need to hit the button twice
                 Thread.sleep(500);
                 //Hit the location button if it shows up
@@ -391,13 +395,25 @@ public class PaymentRequests extends BaseDriver {
             Thread.sleep(2000);
             driver.get().findElement(By.id(category)).click();
         } else {
-            x = myFinance.paymentRequestsCategoryGroup1Spinner.getLocation().getX();
-            y = myFinance.paymentRequestsCategoryGroup1Spinner.getLocation().getY();
+            Thread.sleep(500);
+//            System.out.println(myBasePage.getSourceOfPage());
+            myFinance.paymentRequestsCategoryAndroid.click();
+//            myBasePage.waitForElementThenClick(myFinance.paymentRequestsCategoryAndroid);
+            myBasePage.waitForElement(myFinance.paymentRequestsCategorySearch);
+            myFinance.paymentRequestsCategorySearch.sendKeys(category);
+            Thread.sleep(1000);
+            driver.get().findElement(By.xpath("//android.widget.TextView[@text='" + category + "']")).click();
+//
+//            System.out.println(myBasePage.getSourceOfPage());
+//            x = myFinance.paymentRequestsCategoryGroup1Spinner.getLocation().getX();
+//            y = myFinance.paymentRequestsCategoryGroup1Spinner.getLocation().getY();
+//
+//            TouchAction action = new TouchAction((PerformsTouchActions) driver.get())
+//                    .press(PointOption.point(x + 60, y + 250))
+//                    .release();
+//            action.perform();
 
-            TouchAction action = new TouchAction((PerformsTouchActions) driver.get())
-                    .press(PointOption.point(x + 60, y + 250))
-                    .release();
-            action.perform();
+
         }
     }
 
@@ -478,6 +494,7 @@ public class PaymentRequests extends BaseDriver {
                 myFinance.paymentRequestsKey4.click();
                 break;
             case '5':
+//                System.out.println(myBasePage.getSourceOfPage());
                 myFinance.paymentRequestsKey5.click();
                 break;
             case '6':
