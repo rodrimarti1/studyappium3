@@ -656,7 +656,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("nativeInstrumentsLib", false);
             capabilities.setCapability("appium:clearSystemFiles", true);
             //capabilities.setCapability("allowTouchIdEnroll", true);
-//            capabilities.setCapability("appium:maxTypingFrequency", 20);
+            capabilities.setCapability("appium:maxTypingFrequency", 20);
 //            capabilities.setCapability("sendKeyStrategy", "grouped");
 
 //            capabilities.setCapability("interKeyDelay", 50);

@@ -50,6 +50,8 @@ public class MoveInMoveOut extends BaseDriver {
     public void theMoveInElementsShouldBeCorrect() throws Exception {
         LOGGER.info("Then the move in elements should be correct");
         //Move Records In - MRN
+        Thread.sleep(500);
+//        System.out.println(myBasePage.getSourceOfPage());
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsMRNField));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsCancelButton));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsMoreSearchOptions));
@@ -61,7 +63,8 @@ public class MoveInMoveOut extends BaseDriver {
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsCountry));
         //Enter in a MRN
         myBasePage.waitForElementThenClick(myReports.moveRecordsMoreSearchOptions);
-        Thread.sleep(500);
+//        Thread.sleep(1000);
+        myBasePage.waitForElementThenClick(myReports.moveRecordsMRNField);
         myReports.moveRecordsMRNField.sendKeys("00004179234");
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsNext));
         myBasePage.waitForElementThenClick(myReports.moveRecordsNext);
@@ -79,6 +82,7 @@ public class MoveInMoveOut extends BaseDriver {
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsAddressSelector));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsLocateOnMap));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsCountry2));
+        System.out.println(myBasePage.getSourceOfPage());
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsAddress1));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsAddress2));
         if (myBasePage.getOS().equalsIgnoreCase("android")) {

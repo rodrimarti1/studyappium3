@@ -724,12 +724,12 @@ public class ReportsScreen extends BasePage {
 
     //More Options Switch
     @AndroidFindBy(xpath = "//android.widget.Switch")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@name='More Search Options']/XCUIElementTypeSwitch[@name='More Search Options']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@name='More Search Options']")
     public  WebElement moveRecordsMoreSearchOptions;
 
     //Name
     @AndroidFindBy(xpath = "//*[@text='Name']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Name']//XCUIElementTypeTextView")
+    @iOSXCUITFindBy(xpath = "//*[@name='Name']")
     public  WebElement moveRecordsName;
 
     //Birth Date
@@ -801,27 +801,30 @@ public class ReportsScreen extends BasePage {
 
     //Address 1
     @AndroidFindBy(xpath = "//*[@text='Address 1']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Address 1']//XCUIElementTypeTextView")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Address 1']")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'Address 1' AND type == 'XCUIElementTypeStaticText'")
     public  WebElement moveRecordsAddress1;
 
     //Address 2
     @AndroidFindBy(xpath = "//*[@text='Address 2']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Address 2']//XCUIElementTypeTextView")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Address 2']")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'Address 2' AND type == 'XCUIElementTypeStaticText'")
     public  WebElement moveRecordsAddress2;
 
     //City
     @AndroidFindBy(xpath = "//*[@text='City']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='City']//XCUIElementTypeTextView")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='City']//XCUIElementTypeTextView")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'City' AND type == 'XCUIElementTypeStaticText'")
     public  WebElement moveRecordsCity;
 
     //State or Province
     @AndroidFindBy(xpath = "//*[@text='State or Province']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='State or Province, Select']/XCUIElementTypeButton")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='State or Province, Select']")
     public  WebElement moveRecordsStateOrProvince;
 
     //Postal Code
     @AndroidFindBy(xpath = "//*[@text='Postal Code']")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[@name='Postal Code']//XCUIElementTypeTextView")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Postal Code']")
     public  WebElement moveRecordsPostalCode;
 
 
