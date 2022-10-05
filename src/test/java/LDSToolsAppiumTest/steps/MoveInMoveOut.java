@@ -82,7 +82,7 @@ public class MoveInMoveOut extends BaseDriver {
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsAddressSelector));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsLocateOnMap));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsCountry2));
-        System.out.println(myBasePage.getSourceOfPage());
+//        System.out.println(myBasePage.getSourceOfPage());
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsAddress1));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsAddress2));
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
