@@ -371,7 +371,7 @@ public class DirectoryScreenTest extends BaseDriver {
         checkMemberInfoKenRyan();
     }
 
-    @Test(groups = {"goat"}, invocationCount = 5)
+    @Test(groups = {"goat"}, invocationCount = 10)
     public void directoryLoginTest() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();

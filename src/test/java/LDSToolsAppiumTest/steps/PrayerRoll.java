@@ -43,7 +43,7 @@ public class PrayerRoll extends BaseDriver {
         if(myBasePage.checkForElement(myTemple.yesRemindMe)) {
             myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
         }
-        
+
         myBasePage.waitForText("Los Angeles");
         Thread.sleep(2000);
     }

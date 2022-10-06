@@ -304,6 +304,11 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             System.out.println("End Reset App");
             Thread.sleep(5000);
 
+            if (myBasePage.checkForElement(myBasePage.allowWhileUsingApp)) {
+                myBasePage.allowWhileUsingApp.click();
+                Thread.sleep(500);
+            }
+
             if (myBasePage.checkForElement(myBasePage.allowButton)) {
                 myBasePage.allowButton.click();
             }

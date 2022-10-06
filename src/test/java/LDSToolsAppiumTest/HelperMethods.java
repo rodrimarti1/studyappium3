@@ -144,6 +144,12 @@ public class HelperMethods extends BaseDriver {
 
         LOGGER.info("Start Proxy Login");
 
+        if (myBasePage.checkForElement(myBasePage.allowWhileUsingApp)) {
+//            System.out.println(myBasePage.getSourceOfPage());
+//            Thread.sleep(2000);
+            myBasePage.allowWhileUsingApp.click();
+            Thread.sleep(500);
+        }
 
         if (myBasePage.checkForElement(myBasePage.allowButton)) {
 //            System.out.println(myBasePage.getSourceOfPage());
