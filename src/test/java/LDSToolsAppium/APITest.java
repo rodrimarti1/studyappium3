@@ -67,6 +67,14 @@ public class APITest {
     }
 
 //    @Test
+    public void ResponseCheck() throws Exception {
+        int urlStatus;
+        urlStatus = apiTest.getApiResponseCode("households", "mbthomas74");
+        System.out.println("STATUS: " + urlStatus);
+    }
+
+
+//    @Test
     public void apiCheck() throws Exception {
         int responseCode = 0;
 
@@ -408,6 +416,8 @@ public class APITest {
 
 
     }
+
+
 
 
 

@@ -7,25 +7,41 @@
       Given a <member> goes to the <url>
       Then the status should be <status>
       Examples:
-        | member    | url                                 | status    |
-        | "BISHOP"  | "user"                              | "Success" |
-        | "BISHOP"  | "units"                             | "Success" |
-        | "BISHOP"  | "reports?units=39373"               | "Success" |
-        | "BISHOP"  | "subscriptions"                     | "Success" |
-        | "BISHOP"  | "reports/access"                    | "Success" |
-        | "BISHOP"  | "referrals"                         | "Success" |
-        | "BISHOP"  | "temples"                           | "Success" |
-        | "BISHOP"  | "finances/accounts"                 | "Success" |
-#        | "BISHOP"  | "calendars?timeZone=America/Denver" | "Success" |
-        | "MEMBER1" | "user"                              | "Success" |
-        | "MEMBER1" | "units"                             | "Success" |
-        | "MEMBER1" | "reports?units=39373"               | "Error"   |
-        | "MEMBER1" | "subscriptions"                     | "Success" |
-        | "MEMBER1" | "reports/access"                    | "Success" |
-        | "MEMBER1" | "referrals"                         | "Success" |
-        | "MEMBER1" | "temples"                           | "Success" |
-        | "MEMBER1" | "finances/accounts"                 | "Success" |
+        | member    | url                                     | status    |
+        | "BISHOP"  | "user"                                  | "Success" |
+        | "BISHOP"  | "units"                                 | "Success" |
+        | "BISHOP"  | "reports?units=39373"                   | "Success" |
+        | "BISHOP"  | "subscriptions"                         | "Success" |
+        | "BISHOP"  | "reports/access"                        | "Success" |
+        | "BISHOP"  | "referrals"                             | "Success" |
+        | "BISHOP"  | "temples"                               | "Success" |
+        | "BISHOP"  | "finances/accounts"                     | "Success" |
+        | "BISHOP"  | "finances/participants"                 | "Success" |
+        | "BISHOP"  | "finances/expenses"                     | "Success" |
+        | "BISHOP"  | "households"                            | "Success" |
+        | "BISHOP"  | "covenant-path/user"                    | "Success" |
+        | "BISHOP"  | "covenant-path"                         | "Success" |
+        | "BISHOP"  | "life-resources"                        | "Success" |
+        | "BISHOP"  | "lists"                                 | "Success" |
+        | "BISHOP"  | "ministering"                           | "Success" |
+        | "BISHOP"  | "ministering/organizations"             | "Success" |
+        | "BISHOP"  | "mission-leaders"                       | "Success" |
+        | "BISHOP"  | "mission-leaders/returned-missionaries" | "Success" |
+        | "BISHOP"  | "mission-leaders/missions"              | "Success" |
+        | "BISHOP"  | "missionaries"                          | "Success" |
+        | "BISHOP"  | "missionaries/serving"                  | "Success" |
+        | "BISHOP"  | "missionaries/assigned"                 | "Success" |
+        | "BISHOP"  | "notifications"                         | "Success" |
+        | "MEMBER1" | "user"                                  | "Success" |
+        | "MEMBER1" | "units"                                 | "Success" |
+        | "MEMBER1" | "reports?units=39373"                   | "Error"   |
+        | "MEMBER1" | "subscriptions"                         | "Success" |
+        | "MEMBER1" | "reports/access"                        | "Success" |
+        | "MEMBER1" | "referrals"                             | "Success" |
+        | "MEMBER1" | "temples"                               | "Success" |
+        | "MEMBER1" | "finances/accounts"                     | "Success" |
 #        | "MEMBER1" | "calendars?timeZone=America/Denver" | "Success" |
+#        | "BISHOP"  | "calendars?timeZone=America/Denver" | "Success" |
 
     #    @MQA-3518 @all @smoke @all1 @daily @daily2
     @jft
@@ -87,7 +103,8 @@
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"  |
         | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "true"  |
         | "YOUNG_WOMEN_PRESIDENT"           | "true"  |
-        | "YOUNG_WOMEN_SECOND_COUNSELOR"    | "true"  |
+#        | "YOUNG_WOMEN_FIRST_COUNSELOR"     | ""true" |
+#        | "YOUNG_WOMEN_SECOND_COUNSELOR"    | "true"  |
         | "SUNDAY_SCHOOL_PRESIDENT"         | "true"  |
         | "MEMBER1"                         | "false" |
         | "MEMBER2"                         | "false" |
