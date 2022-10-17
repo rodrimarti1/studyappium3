@@ -689,6 +689,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
             capabilities.setCapability("wdaLocalPort", tempPort);
 
+            capabilities.setCapability("appium:useNewWDA", true);
+
             //This is needed so HEADLESS will have a location set.
             capabilities.setCapability("locationServicesEnabled", true);
             capabilities.setCapability("locationServicesAuthorized", true);
