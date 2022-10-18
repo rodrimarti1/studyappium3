@@ -23,15 +23,6 @@
         | "BISHOP" | "Stelter, Sharon Siniva"    |   "$53.99"         | "Check"                   | "WARD_CLERK"   |
 
 
-    #Other leaders to approve Stake Pres?
-    Scenario Outline: Review Expenses
-      Given a <leader> logs in and is on the Expenses page
-      When an <expenseToReview> is submitted with the <paymentType>
-      Then the expense will be approved
-      Examples:
-        | leader   | expenseToReview   | paymentType               |
-        | "BISHOP" | "Some Name"       | "Check"                   |
-        | "BISHOP" | "Some other name" | "Electronic ACH Transfer" |
 
     Scenario: Approve Expenses change the category
       Given a "BISHOP" logs in and is on the Expenses page
