@@ -296,7 +296,7 @@ public class OrganizationsScreen extends BasePage {
     public WebElement youngWomenPresidency;
 
     //Young Women 12-18
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Young Women 12-18']")
+    @AndroidFindBy(xpath = "//*[@text='Young Women 12-18']")
     @iOSXCUITFindBy(accessibility = "Young Women 12-18")
     public WebElement youngWomen12to18;
 
