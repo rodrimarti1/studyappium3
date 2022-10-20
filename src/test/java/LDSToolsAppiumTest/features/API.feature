@@ -103,7 +103,7 @@
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"  |
         | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "true"  |
         | "YOUNG_WOMEN_PRESIDENT"           | "true"  |
-#        | "YOUNG_WOMEN_FIRST_COUNSELOR"     | ""true" |
+#        | "YOUNG_WOMEN_FIRST_COUNSELOR"     | "true" |
 #        | "YOUNG_WOMEN_SECOND_COUNSELOR"    | "true"  |
         | "SUNDAY_SCHOOL_PRESIDENT"         | "true"  |
         | "MEMBER1"                         | "false" |
