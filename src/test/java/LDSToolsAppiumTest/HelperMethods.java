@@ -540,10 +540,10 @@ public class HelperMethods extends BaseDriver {
             myBasePage.waitForElementThenClick(mySettings.networkEnvironment);
             myBasePage.waitForElementThenClick(mySettings.UAT);
             Thread.sleep(1000);
-//            myBasePage.waitForElementThenClick(myBasePage.backButton);
-//            Thread.sleep(500);
-////            System.out.println(myBasePage.getSourceOfPage());
-//            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
+            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            Thread.sleep(500);
+//            System.out.println(myBasePage.getSourceOfPage());
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
 
 
         } else {

@@ -28,6 +28,7 @@ import java.lang.reflect.Type;
 public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     Response householdAPI = null;
+    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/";
 
 
     //Login credentials for the API
@@ -494,8 +495,10 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         int responseCode = 0;
 
         OkHttpClient httpClient = loginCred();
-//        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/reports?units="+ unitNumber, proxyLogin );
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin);
+        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin); //Stage
+//        Request request = requestProxyURL("https://wam-membertools-api-test.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin); //Test
+//        Request request = requestProxyURL("https://wam-membertools-api.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin); //Prod - doesn't work
+
         Headers resHeader;
 
 
