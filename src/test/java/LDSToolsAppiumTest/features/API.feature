@@ -2,7 +2,7 @@
   Feature: API tests
 
     #Calendars have been turned off for now.
-    @all @jft
+    @MQA-6342 @MQA-6341 @all @jft
     Scenario Outline: Check <url> status code for <member>
       Given a <member> goes to the <url>
       Then the status should be <status>
@@ -69,7 +69,7 @@
 #        | "BISHOP"  | "calendars?timeZone=America/Denver" | "Success" |
 
     #    @MQA-3518 @all @smoke @all1 @daily @daily2
-    @all
+    @MQA-6343 @MQA-6341 @all
     Scenario Outline: Check <member> rights in the API for Class and Quorum Attendance
       Given a <member> account checks the Class and Quorum Attendance right
       Then the Class and Quorum editable field is <status>
@@ -100,7 +100,7 @@
         | "PRIMARY_SECOND_COUNSELOR"        | "true"  |
 
 #    Lists Tests
-    @all
+    @MQA-6344 @MQA-6341 @all
     Scenario: Check the creation and deleting of lists
       Given a member creates a list
       Then the new list will be displayed
@@ -109,7 +109,7 @@
 
 
 #      Reports
-    @all
+    @MQA-6345 @MQA-6341 @all
     Scenario Outline: Check <member> rights to Reports
       Given a <member> account checks the Reports
       Then the Reports <status> are visible
