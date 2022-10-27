@@ -723,7 +723,7 @@ public class ReportsScreen extends BasePage {
     public  WebElement moveRecordsMRNField;
 
     //More Options Switch
-    @AndroidFindBy(xpath = "//android.widget.Switch")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='More Search Options']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeSwitch[@name='More Search Options']")
     public  WebElement moveRecordsMoreSearchOptions;
 
