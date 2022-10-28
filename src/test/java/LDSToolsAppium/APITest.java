@@ -235,18 +235,18 @@ public class APITest {
         responseCode = apiTest.createPaymentRequest(2921, "e463aaf9-573f-4d17-8364-d4f4112cb517", "Test Two", 21628, 952, 776, "mbthomas74");
         System.out.println("CODE: " + responseCode);
 
-//        //Relief Society
-//        responseCode = apiTest.createPaymentRequest(2921, "2ec59248-cb2e-452b-83a3-79fdf4847ea3", "Relief Society Automated Test", 21628, 25, 5399, "sharonstelter");
-//        System.out.println("CODE: " + responseCode);
-//
-//        //Elders Quorum
-//        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test", 21628, 22, 6743, "clmarti");
-//        System.out.println("CODE: " + responseCode);
-//
-//
-//        //Bishopric 1st Counselor
-//        responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test", 21628, 315, 14999, "lafaele40");
-//        System.out.println("CODE: " + responseCode);
+        //Relief Society
+        responseCode = apiTest.createPaymentRequest(2921, "2ec59248-cb2e-452b-83a3-79fdf4847ea3", "Relief Society Automated Test", 21628, 25, 5399, "sharonstelter");
+        System.out.println("CODE: " + responseCode);
+
+        //Elders Quorum
+        responseCode = apiTest.createPaymentRequest(2921, "d33a7122-a7cb-4538-90b0-02436034c610", "Elders Quorum Automated Test", 21628, 22, 6743, "clmarti");
+        System.out.println("CODE: " + responseCode);
+
+
+        //Bishopric 1st Counselor
+        responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test", 21628, 315, 14999, "lafaele40");
+        System.out.println("CODE: " + responseCode);
 
     }
 

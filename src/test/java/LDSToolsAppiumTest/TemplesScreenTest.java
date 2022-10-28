@@ -45,7 +45,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= {"all", "all1", "daily", "daily4", "jft"})
+    @Test (groups= {"all", "all1", "daily", "daily4"})
     public void templeRecommendReminder25Days() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -59,16 +59,19 @@ public class TemplesScreenTest extends BaseDriver {
         myTemple.enableTempleRecommendReminder("25", mySettings.active, mySettings.temple4Weeks);
         //Check the temple reminder
         Thread.sleep(6000);
-//        Assert.assertTrue(myBasePage.checkForElement(myTemple.remindMeLater));
-        Assert.assertTrue(myBasePage.checkForElement(myTemple.contactBishopric));
-        Assert.assertTrue(myBasePage.checkForElement(myTemple.gotItThanks));
-        myBasePage.waitForElementThenClick(myTemple.contactBishopric);
-        //Verify Bishopric
-        Thread.sleep(2000);
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Bishop", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Bishopric First Counselor", pageSource, "Contains"));
-        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Temple Recommend expiring next month", pageSource, "Contains"));
+
+
+//        Assert.assertTrue(myBasePage.checkForElement(myTemple.contactBishopric));
+//        Assert.assertTrue(myBasePage.checkForElement(myTemple.gotItThanks));
+//        myBasePage.waitForElementThenClick(myTemple.contactBishopric);
+//        //Verify Bishopric
+//        Thread.sleep(2000);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Bishop", pageSource, "Contains"));
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Bishopric First Counselor", pageSource, "Contains"));
+//        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
     }
 
     @Test (groups= { "all", "all2"})
@@ -93,22 +96,27 @@ public class TemplesScreenTest extends BaseDriver {
 
         //Check the temple reminder
         Thread.sleep(6000);
-        Assert.assertFalse(myBasePage.checkForElement(myTemple.remindMeLater));
-        Assert.assertTrue(myBasePage.checkForElement(myTemple.contactBishopric));
-        Assert.assertTrue(myBasePage.checkForElement(myTemple.gotItThanks));
-
-        myTemple.contactBishopric.click();
-
-
-        //Verify Bishopric
-        Thread.sleep(2000);
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Bishop", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Bishopric First Counselor", pageSource, "Contains"));
-        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
-    }
+        Assert.assertTrue(myBasePage.checkNoCaseList("Temple Recommend expiring next month", pageSource, "Contains"));
 
-    @Test (groups= { "all", "all3"})
+
+
+//
+//        Assert.assertTrue(myBasePage.checkForElement(myTemple.contactBishopric));
+//        Assert.assertTrue(myBasePage.checkForElement(myTemple.gotItThanks));
+//
+//        myTemple.contactBishopric.click();
+//
+//
+//        //Verify Bishopric
+//        Thread.sleep(2000);
+//        pageSource = myBasePage.getSourceOfPage();
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Bishop", pageSource, "Contains"));
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Bishopric First Counselor", pageSource, "Contains"));
+//        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
+    }
+// NOT Valid anymore
+//    @Test (groups= { "all", "all3"})
     public void templeRecommendReminderRemindLater() throws Exception {
         String pageSource;
 
@@ -146,7 +154,8 @@ public class TemplesScreenTest extends BaseDriver {
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
     }
 
-    @Test (groups= { "all", "all4"})
+    // NOT Valid anymore
+//    @Test (groups= { "all", "all4"})
     public void templeRecommendReminderGoItThanks() throws Exception {
         String pageSource;
 
@@ -184,7 +193,8 @@ public class TemplesScreenTest extends BaseDriver {
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
     }
 
-
+    //Broken in iOS for Proxy
+    //https://jira.churchofjesuschrist.org/browse/MMIP-6476
     @Test (groups= { "all", "all1", "daily", "daily2"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
@@ -376,7 +386,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= { "all", "all4", "daily", "daily2"})
+    @Test (groups= { "all", "all4", "daily", "daily2", "jft"})
     public void templeOrdinanceSchedule() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();

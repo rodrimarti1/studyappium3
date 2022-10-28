@@ -51,7 +51,7 @@ public class TemplesScreen extends BasePage {
 
 
     //iOS Temple Selector
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '▾')]")
     public WebElement templePullDown;
 
 
@@ -239,9 +239,12 @@ public class TemplesScreen extends BasePage {
             //Open Settings
             Thread.sleep(2000);
             myMenu.selectMenu(myMenu.settings);
-            myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
-            Thread.sleep(2000);
-            numberOfWeeks.click();
+
+//            System.out.println(myBasePage.getSourceOfPage());
+//            myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
+//            Thread.sleep(2000);
+//            numberOfWeeks.click();
+
             myMenu.selectMenu(myMenu.temples);
             Thread.sleep(10000);
             myBasePage.waitForText("Set a Temple Recommend Expiration Reminder");
@@ -259,10 +262,14 @@ public class TemplesScreen extends BasePage {
             myMenu.selectMenu(myMenu.settings);
             //Scroll down and Reset Temple Preferences
 //            myMenu.scrollToTextRecyclerViewSettings("Temple Recommend Status");
+            myBasePage.scrollTextIntoViewAndroid("Show Temple Recommend Expiration", 4);
+            myBasePage.waitForElementThenClick(mySettings.templeShowTempleRecommendExpiration);
+
+
             myBasePage.newScrollToText("Temple Recommend Status");
 //            myMenu.scrollToText("Temple Recommend Status");
-            mySettings.resetAllTempelPreferences.click();
-            Thread.sleep(500);
+//            mySettings.resetAllTempelPreferences.click();
+//            Thread.sleep(500);
             //Set the Recommend Status
             myBasePage.waitForElementThenClick(mySettings.templeRecommendStatus);
             Thread.sleep(500);
@@ -275,20 +282,24 @@ public class TemplesScreen extends BasePage {
             templeDaysExpiration.sendKeys(numberOfDays);
             mySettings.alertOK.click();
             myBasePage.navigateUp.click();
-            //Open Settings and enable Recommend
-            Thread.sleep(2000);
-            myMenu.selectMenu(myMenu.settings);
-            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
-            } else {
-                myBasePage.scrollTextIntoViewAndroid("Show Temple Recommend Expiration", 4);
-            }
 
-            myBasePage.waitForElementThenClick(mySettings.templeShowTempleRecommendExpiration);
-            myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
-            myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
-            myBasePage.checkForElement(numberOfWeeks);
-            numberOfWeeks.click();
+
+            //Open Settings and enable Recommend
+//            Thread.sleep(2000);
+//            myMenu.selectMenu(myMenu.settings);
+//            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+//                myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
+//            } else {
+//
+//            }
+//
+//
+//            myBasePage.scrollTextIntoViewAndroid("Remind me", 4);
+//            myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
+//            myBasePage.checkForElement(numberOfWeeks);
+//            numberOfWeeks.click();
+
+
             myBasePage.backButton.click();
             myMenu.selectMenu(myMenu.temples);
         }
