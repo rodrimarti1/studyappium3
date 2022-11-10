@@ -28,6 +28,7 @@ public class HelpScreen extends BasePage {
 
     //What's New
     @AndroidFindBy(xpath = "//*[contains(@text, 'What's New')]")
+    @iOSXCUITFindBy(accessibility = "What's New")
     public  WebElement helpWhatsNew;
 
     //Release Notes
