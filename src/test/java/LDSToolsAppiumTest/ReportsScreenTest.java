@@ -650,7 +650,7 @@ public class ReportsScreenTest extends BaseDriver {
 
     }*/
 
-
+    //todo: scroll down in android to get a bigger list
     private void getMembersMovedInReport(int rights) throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
