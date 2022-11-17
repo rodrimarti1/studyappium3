@@ -959,7 +959,9 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             for(ApiFinance unit : testExpenses) {
                 List<Expense> myExpenses = unit.getExpenses();
                 for (Expense myFinanceRequest: myExpenses) {
-                    foundExpense.add(myFinanceRequest.getPurpose());
+//                    foundExpense.add(myFinanceRequest.getPurpose());
+                    foundExpense.add(myFinanceRequest.getStatus());
+                    System.out.println(myFinanceRequest.getType());
                 }
             }
         }
@@ -1014,6 +1016,75 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         }
 
         return myMap;
+    }
+
+    public List<ApiFinanceDetail> getExpensesByStatus(String proxyLogin, String unitNumber, String expenseStatus) throws Exception {
+        JsonParser parser = new JsonParser();
+        String responseData;
+        Gson gson = new Gson();
+        List<ApiFinanceDetail> expenseList = new ArrayList<ApiFinanceDetail>();
+        ApiFinance myFinance = new ApiFinance();
+        ApiFinanceDetail expenseDetail = new ApiFinanceDetail();
+//        HashMap myMap = new HashMap();
+        Map<String, Object> myMap = new HashMap<>();
+//        ArrayList<String> memberNames = new ArrayList<String>();
+        List<String> foundExpense = null;
+        Type apiFinance = new TypeToken<ArrayList<ApiFinance>>(){}.getType();
+        responseData = getFinanceExpenses(unitNumber, proxyLogin);
+//        System.out.println("Response String: " + responseData);
+        JsonElement jsonElement = parser.parse(responseData);
+
+        if (jsonElement instanceof JsonObject) {
+//            System.out.println("JSON Object!");
+            myFinance = gson.fromJson(jsonElement, ApiFinance.class);
+
+
+        } else if (jsonElement instanceof JsonArray) {
+            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+            List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
+            for(ApiFinance unit : testExpenses) {
+                List<Expense> myExpenses = unit.getExpenses();
+                for (Expense myFinanceRequest: myExpenses) {
+                    if (myFinanceRequest.getStatus().equalsIgnoreCase(expenseStatus)) {
+//                        System.out.println(myFinanceRequest.getId());
+//                        System.out.println(myFinanceRequest.getStatus());
+//                        expenseList.add(myFinanceRequest.getId().toString());
+
+                        expenseDetail.setPurpose(myFinanceRequest.getPurpose());
+                        expenseDetail.setId(myFinanceRequest.getId());
+                        expenseDetail.setSubmittedDate(myFinanceRequest.getSubmittedDate());
+                        expenseDetail.setApproveRejectedDate(myFinanceRequest.getApprovedRejectedDate());
+//                        expenseDetail.setReceiptCount(myFinanceRequest.getReceiptCount()); //todo: check for null
+                        expenseDetail.setAccountId(myFinanceRequest.getAccountId());
+//                        expenseDetail.setPaymentMethodId(myFinanceRequest.getPaymentMethodId()); //todo: check for null
+//                        expenseDetail.setPayeeId(myFinanceRequest.getPayee());
+                        expenseDetail.setStatus(myFinanceRequest.getStatus());
+                        expenseDetail.setType(myFinanceRequest.getType());
+
+                        expenseList.add(expenseDetail);
+                    }
+//                    System.out.println(myFinanceRequest.getPurpose());
+//                    System.out.println(myFinanceRequest.getStatus());
+//                    myMap.put("status", myFinanceRequest.getStatus());
+//                    myMap.put("prupose", myFinanceRequest.getPurpose());
+//                    myMap.put("id", myFinanceRequest.getId());
+//                    myMap.put("date", myFinanceRequest.getSubmittedDate());
+//                    myMap.put("receiptCount", myFinanceRequest.getReceiptCount());
+//                    myMap.put("payeeId", myFinanceRequest.getPayee().getId());
+//                    myMap.put("payeeName", myFinanceRequest.getPayee().getName());
+//                    myMap.put("unitNumber", myFinanceRequest.getUnitNumber());
+//                    myMap.put("type", myFinanceRequest.getType());
+//                    List<Charge> myCharge = myFinanceRequest.getCharges();
+//                    for (Charge chargeData : myCharge) {
+//                        myMap.put("categoryId", chargeData.getCategoryId());
+//                        myMap.put("amount", chargeData.getAmount());
+//                    }
+                }
+            }
+        }
+
+        return expenseList;
     }
 
 

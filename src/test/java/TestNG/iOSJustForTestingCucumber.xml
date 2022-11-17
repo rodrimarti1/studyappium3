@@ -13,7 +13,7 @@
         <parameter name="systemPort" value="8251" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.MoveInMoveOutRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.PaymentRequestsRunner"> </class>
         </classes>
     </test>
 </suite>

@@ -1,5 +1,6 @@
 package LDSToolsAppium;
 
+import LDSToolsAppium.API.ApiFinanceDetail;
 import LDSToolsAppium.API.MemberToolsAPI;
 //import LDSToolsAppium.API.ApiFinance;
 //import com.google.gson.Gson;
@@ -228,7 +229,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void createExpense() throws Exception {
         int responseCode = 0;
         //  Create Payment Request
@@ -249,6 +250,70 @@ public class APITest {
         System.out.println("CODE: " + responseCode);
 
     }
+
+//    @Test
+    public void getAllExpensesForUnit() throws Exception {
+        Map<String, Object> myMap = new HashMap<>();
+        List<String> expenseList = new ArrayList<>();
+        //Search for expense id by purpose?
+        String value;
+
+        expenseList = apiTest.getAllExpenses("mbthomas74", "21628");
+        if (!expenseList.isEmpty()) {
+            for (String expenseStatus: expenseList) {
+                System.out.println(expenseStatus);
+            }
+        }
+
+    }
+
+//            PENDING_PRINT
+//            SUBMITTED
+//            APPROVED
+//            REJECTED?
+
+    @Test
+    public void listExpensesAndDelete() throws Exception {
+        Map<String, Object> myMap = new HashMap<>();
+        List<ApiFinanceDetail> expenseDetailList = new ArrayList<>();
+        int responseCode = 0;
+        //Search for expense id by purpose?
+        String value;
+        int myId = 0;
+        String myType = null;
+        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "SUBMITTED");
+        if (!expenseDetailList.isEmpty()) {
+            for (ApiFinanceDetail expenseDetail: expenseDetailList) {
+                System.out.println(expenseDetail.getPurpose());
+//                int myInt = Integer.parseInt(idName);
+
+                responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
+                System.out.println("Response: "  + responseCode);
+            }
+        }
+
+
+            //        if (!myMap.isEmpty()) {
+//            for (String mapKey: myMap.keySet()) {
+//                String key = mapKey.toString();
+//                if (myMap.get(mapKey) == null) {
+//                    value = "";
+//                } else {
+//                    value = myMap.get(mapKey).toString();
+//                }
+//                System.out.println(key + " - " + value);
+//            }
+//
+////            myId = (int) myMap.get("id");
+////            myType = (String) myMap.get("type");
+////            responseCode = apiTest.expenseDelete(myId, myType, "mbthomas74");
+////            System.out.println("CODE: " + responseCode);
+//
+//        }
+    }
+
+
+
 
 //    @Test
     public void deleteExpenses() throws Exception {
