@@ -285,6 +285,8 @@ public class APITest {
         if (!expenseDetailList.isEmpty()) {
             for (ApiFinanceDetail expenseDetail: expenseDetailList) {
                 System.out.println(expenseDetail.getPurpose());
+                System.out.println(expenseDetail.getId());
+                System.out.println(expenseDetail.getType());
 //                int myInt = Integer.parseInt(idName);
 
                 responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
@@ -381,7 +383,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("2038552", callingId);
+            memberList = apiTest.getAccounts("198854", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );

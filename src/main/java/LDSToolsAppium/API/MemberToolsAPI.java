@@ -1024,7 +1024,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         Gson gson = new Gson();
         List<ApiFinanceDetail> expenseList = new ArrayList<ApiFinanceDetail>();
         ApiFinance myFinance = new ApiFinance();
-        ApiFinanceDetail expenseDetail = new ApiFinanceDetail();
+
 //        HashMap myMap = new HashMap();
         Map<String, Object> myMap = new HashMap<>();
 //        ArrayList<String> memberNames = new ArrayList<String>();
@@ -1046,9 +1046,12 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             for(ApiFinance unit : testExpenses) {
                 List<Expense> myExpenses = unit.getExpenses();
                 for (Expense myFinanceRequest: myExpenses) {
+//                    System.out.println(myFinanceRequest.getStatus());
                     if (myFinanceRequest.getStatus().equalsIgnoreCase(expenseStatus)) {
+                        ApiFinanceDetail expenseDetail = new ApiFinanceDetail();
 //                        System.out.println(myFinanceRequest.getId());
 //                        System.out.println(myFinanceRequest.getStatus());
+//                        System.out.println(myFinanceRequest.getPurpose());
 //                        expenseList.add(myFinanceRequest.getId().toString());
 
                         expenseDetail.setPurpose(myFinanceRequest.getPurpose());
@@ -1064,25 +1067,17 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
                         expenseList.add(expenseDetail);
                     }
-//                    System.out.println(myFinanceRequest.getPurpose());
-//                    System.out.println(myFinanceRequest.getStatus());
-//                    myMap.put("status", myFinanceRequest.getStatus());
-//                    myMap.put("prupose", myFinanceRequest.getPurpose());
-//                    myMap.put("id", myFinanceRequest.getId());
-//                    myMap.put("date", myFinanceRequest.getSubmittedDate());
-//                    myMap.put("receiptCount", myFinanceRequest.getReceiptCount());
-//                    myMap.put("payeeId", myFinanceRequest.getPayee().getId());
-//                    myMap.put("payeeName", myFinanceRequest.getPayee().getName());
-//                    myMap.put("unitNumber", myFinanceRequest.getUnitNumber());
-//                    myMap.put("type", myFinanceRequest.getType());
-//                    List<Charge> myCharge = myFinanceRequest.getCharges();
-//                    for (Charge chargeData : myCharge) {
-//                        myMap.put("categoryId", chargeData.getCategoryId());
-//                        myMap.put("amount", chargeData.getAmount());
-//                    }
                 }
             }
         }
+
+//        System.out.println("************************************************");
+//        for (ApiFinanceDetail expenseDetailItem: expenseList) {
+//            System.out.println(expenseDetailItem.getPurpose());
+//            System.out.println(expenseDetailItem.getId());
+//            System.out.println(expenseDetailItem.getType());
+//        }
+//        System.out.println("************************************************");
 
         return expenseList;
     }
