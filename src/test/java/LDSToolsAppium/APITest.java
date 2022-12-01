@@ -74,6 +74,11 @@ public class APITest {
         System.out.println("STATUS: " + urlStatus);
     }
 
+    @Test
+    public void QRTest() throws Exception {
+        apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 3);
+    }
+
 
 //    @Test
     public void apiCheck() throws Exception {
@@ -272,7 +277,7 @@ public class APITest {
 //            APPROVED
 //            REJECTED?
 
-    @Test
+//    @Test
     public void listExpensesAndDelete() throws Exception {
         Map<String, Object> myMap = new HashMap<>();
         List<ApiFinanceDetail> expenseDetailList = new ArrayList<>();

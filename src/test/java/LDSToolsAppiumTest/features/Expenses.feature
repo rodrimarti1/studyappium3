@@ -22,7 +22,7 @@
       Examples:
         | leader       | expensePayee                      | expenseAmount | paymentType | differentLeader              |
         | "BISHOP"     | "Stelter, Sharon Siniva"          | "$53.99"      | "Check"     | "WARD_CLERK"                 |
-        | "WARD_CLERK" | "Martinez Salguero, Cesar Leonel" | "$67.43"      | "Check"     | "BISHOPRIC_SECOND_COUNSELOR" |
+#        | "WARD_CLERK" | "Martinez Salguero, Cesar Leonel" | "$67.43"      | "Check"     | "BISHOPRIC_SECOND_COUNSELOR" |
 
 
 
