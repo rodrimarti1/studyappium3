@@ -10,7 +10,7 @@
 
     <test name="Android All Tests">
         <parameter name="os" value="android" />
-               <parameter name="fileName" value="ldstools-master.apk" />
+               <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="HT69D0204296" />

@@ -9,7 +9,7 @@
 
     <test name="Android Org Page Test 1" thread-count="2" parallel="false" >
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="HT69D0204296" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
@@ -27,7 +27,7 @@
 
     <test name="Directory Screen JFT" thread-count="2" parallel="false">
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="emulator-5554" />
         <parameter name="startSleepTime" value="20000" />
         <parameter name="systemPort" value="8202" />
@@ -45,7 +45,7 @@
 
     <test name="Sacrament Attendance Smoke" thread-count="2" parallel="true">
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="HT69D0204296" />
         <parameter name="startSleepTime" value="20000" />
         <parameter name="systemPort" value="8203" />

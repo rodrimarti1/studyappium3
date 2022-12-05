@@ -9,7 +9,7 @@
 
     <test name="Android Smoke Test 1 - Pixel XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
                 <parameter name="fileName" value="ldstools-beta.apk" />
         <parameter name="testDevice" value="HT69D0204296" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->
@@ -45,7 +45,7 @@
 
     <test name="Android Smoke Test 2 - Samsung Galaxy A20s" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
                 <parameter name="fileName" value="ldstools-beta.apk" />
         <parameter name="testDevice" value="R9TN80AQ57J" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->
@@ -81,7 +81,7 @@
 
     <test name="Android Smoke Test 3 - Pixel 2 XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
                 <parameter name="fileName" value="ldstools-beta.apk" />
         <parameter name="testDevice" value="710KPFX0305667" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->
@@ -117,7 +117,7 @@
 
     <test name="Android Smoke Test 4 - Pixel 3 XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
                 <parameter name="fileName" value="ldstools-beta.apk" />
         <parameter name="testDevice" value="89UY0C037" />
         <!--<parameter name="testDevice" value="STF-Pool" />-->

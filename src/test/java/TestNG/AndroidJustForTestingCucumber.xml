@@ -3,7 +3,7 @@
 <suite name="Android Just For Testing Suite" configfailurepolicy="continue" verbose="2">
     <test name="Android Just For Testing - Cucumber">
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="testDevice" value="09251FDD4003MU" />-->
 <!--        <parameter name="testDevice" value="HT69D0204296" />-->
 <!--        <parameter name="testDevice" value="09251FDD4003MU" /> &lt;!&ndash; Pixel 5 &ndash;&gt;-->
@@ -15,7 +15,7 @@
         <parameter name="systemPort" value="8555" />
         <classes>
 
-            <class name="LDSToolsAppiumTest.testrunner.Expenses"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.PrayerRollRunner"> </class>
         </classes>
     </test >
 

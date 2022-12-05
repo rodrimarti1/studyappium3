@@ -3,8 +3,8 @@
 <suite name="Android Just For Testing Suite" configfailurepolicy="continue" verbose="2">
     <test name="Android Just For Testing">
         <parameter name="os" value="android" />
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
-        <parameter name="fileName" value="ldstools-master.apk" />
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
 <!--        <parameter name="testDevice" value="HT69D0204296" />-->

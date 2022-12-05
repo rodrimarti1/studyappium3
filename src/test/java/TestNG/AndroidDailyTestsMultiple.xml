@@ -9,7 +9,7 @@
 
     <test name="Android daily Test 1 - Emulator" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="testDevice" value="89RY0AB92" />  &lt;!&ndash; Pixel 3 &ndash;&gt;-->
         <parameter name="testDevice" value="emulator-5554" />
         <parameter name="startSleepTime" value="0200" />
@@ -44,7 +44,7 @@
 
     <test name="Android daily Test 2 - Samsung Galaxy A20s" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="R9TN80AQ57J" /> <!-- Samsung Galaxy A20s -->
         <parameter name="startSleepTime" value="60000" />
         <parameter name="systemPort" value="8202" />
@@ -78,7 +78,7 @@
 
     <test name="Android daily Test 3 - Pixel 5" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="09251FDD4003MU" />
@@ -115,7 +115,7 @@
 
     <test name="Android daily Test 4 - Samsung Galaxy S20 Plus" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="R5CN3032NSW" />
@@ -154,7 +154,7 @@
 
 <!--    <test name="Android daily Test 5 - Samsung Galaxy S20 Plus - Cucumber Tests" thread-count="2" parallel="true">-->
 <!--        <parameter name="os" value="android" />-->
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
 <!--        &lt;!&ndash;        <parameter name="fileName" value="ldstools-beta.apk" />&ndash;&gt;-->
 <!--&lt;!&ndash;        <parameter name="fileName" value="ldstools-release.apk" />&ndash;&gt;-->
 <!--        <parameter name="testDevice" value="R5CN3032NSW" />-->

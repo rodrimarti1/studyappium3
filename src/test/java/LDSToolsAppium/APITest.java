@@ -97,7 +97,7 @@ public class APITest {
     }
 
     //Life Resource
-    @Test
+//    @Test
     public void LifeResourceTest() throws Exception {
         LifeResource testLR = new LifeResource();
         testLR = apiTest.getLifeResource("dsoneil", "39373");
@@ -363,7 +363,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-//    @Test
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -420,7 +420,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("198854", callingId);
+            memberList = apiTest.getAccounts("111074", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );

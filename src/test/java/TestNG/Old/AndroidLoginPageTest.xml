@@ -4,7 +4,7 @@
 
     <test name="Android Login Page Test ">
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="STF-Pool" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />

@@ -4,7 +4,7 @@
 
     <test name="Android All Test - Pixel XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="HT69D0204296" />
@@ -41,7 +41,7 @@
 
     <test name="Android All Test - Samsung Galaxy A20s" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--                <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="R9TN80AQ57J" />
@@ -78,7 +78,7 @@
 
     <test name="Android All Test - Pixel 2 XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="710KPFX0305667" />
@@ -115,7 +115,7 @@
 
     <test name="Android All Test - Pixel 3 XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="89UY0C037" />
@@ -154,7 +154,7 @@
 
     <test name="Android All Test 5 - Pixel 3 XL - Cucumber Tests" thread-count="2" parallel="true">
         <parameter name="os" value="android" />
-        <!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+        <!--       <parameter name="fileName" value="app-alpha.apk" />-->
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
         <parameter name="fileName" value="ldstools-release.apk" />
         <parameter name="testDevice" value="89UY0C037" />

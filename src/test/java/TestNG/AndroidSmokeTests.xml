@@ -9,7 +9,7 @@
 
     <test name="Android Smoke Test">
         <parameter name="os" value="android" />
-       <parameter name="fileName" value="ldstools-master.apk" />
+       <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
         <parameter name="testDevice" value="STF-Pool" />
         <parameter name="startSleepTime" value="0200" />

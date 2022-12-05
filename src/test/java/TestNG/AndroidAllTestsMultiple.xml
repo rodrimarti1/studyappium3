@@ -9,8 +9,8 @@
 
     <test name="Android All Test 1 - Pixel XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <!--       <parameter name="fileName" value="ldstools-master.apk" />-->
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <!--       <parameter name="fileName" value="app-alpha.apk" />-->
+        <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="HT69D0204296" />
@@ -47,8 +47,8 @@
 
     <test name="Android All Test 2 - Samsung Galaxy A20s" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <!--       <parameter name="fileName" value="ldstools-master.apk" />-->
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <!--       <parameter name="fileName" value="app-alpha.apk" />-->
+        <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--                <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="R9TN80AQ57J" />
@@ -85,8 +85,8 @@
 
     <test name="Android All Test 3 - Pixel 5" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <!--       <parameter name="fileName" value="ldstools-master.apk" />-->
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <!--       <parameter name="fileName" value="app-alpha.apk" />-->
+        <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--                <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="09251FDD4003MU" />
@@ -123,8 +123,8 @@
 
     <test name="Android All Test 4 - Samsung Galaxy S20 Plus" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <!--       <parameter name="fileName" value="ldstools-master.apk" />-->
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <!--       <parameter name="fileName" value="app-alpha.apk" />-->
+        <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--                <parameter name="fileName" value="ldstools-release.apk" />-->
         <parameter name="testDevice" value="R5CN3032NSW" />
@@ -161,7 +161,7 @@
 
 <!--    <test name="Android All - Samsung Galaxy S20 Plus - Cucumber Tests" thread-count="1" parallel="false">-->
 <!--        <parameter name="os" value="android" />-->
-<!--       <parameter name="fileName" value="ldstools-master.apk" />-->
+<!--       <parameter name="fileName" value="app-alpha.apk" />-->
 <!--&lt;!&ndash;        <parameter name="testDevice" value="09251FDD4003MU" />&ndash;&gt;-->
 <!--        <parameter name="testDevice" value="R5CN3032NSW" />-->
 <!--        <parameter name="startSleepTime" value="0200" />-->

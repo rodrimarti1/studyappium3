@@ -4,7 +4,7 @@
 
     <test name="Android All Test 1 Cucumber - Pixel XL" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="HT69D0204296" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
@@ -15,7 +15,7 @@
 
     <test name="Android All Test 2 Cucumber - Samsung Galaxy A20s" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="R9TN80AQ57J" />
         <parameter name="startSleepTime" value="60000" />
         <parameter name="systemPort" value="8202" />
@@ -26,7 +26,7 @@
 
     <test name="Android All Test 3 Cucumber - Pixel 5" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="09251FDD4003MU" />
         <parameter name="startSleepTime" value="120000" />
         <parameter name="systemPort" value="8203" />
@@ -37,7 +37,7 @@
 
     <test name="Android All Test 4 Cucumber - Samsung Galaxy S20 Plus" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
-        <parameter name="fileName" value="ldstools-master.apk" />
+        <parameter name="fileName" value="app-alpha.apk" />
         <parameter name="testDevice" value="R5CN3032NSW" />
         <parameter name="startSleepTime" value="180000" />
         <parameter name="systemPort" value="8204" />
