@@ -1,6 +1,8 @@
 package LDSToolsAppium.API;
 
 
+import LDSToolsAppium.API.LifeResources.LifeResource;
+import LDSToolsAppium.API.QuarterlyReport.Convert;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
 import LDSToolsAppium.API.QuarterlyReport.Section;
 import com.google.gson.reflect.TypeToken;
@@ -497,6 +499,21 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/quarterly-reports?units="+ unitNumber + "&year=" + year + "&quarter=" + quarter, proxyLogin );
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            assert response.body() != null;
+            responseData = response.body().string();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return responseData;
+    }
+
+    public String getLifeResourceJson(String unitNumber, String proxyLogin) throws IOException {
+        String responseData = "";
+
+        OkHttpClient httpClient = loginCred();
+        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources?units="+ unitNumber, proxyLogin );
 
         try (Response response = httpClient.newCall(request).execute()) {
             assert response.body() != null;
@@ -2313,52 +2330,61 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    public void getQuarterlyReport(String proxyLogin, String unitNumber, String year, int quarter) throws Exception {
+    public QuarterlyReport getQuarterlyReport(String proxyLogin, String unitNumber, String year, int quarter) throws Exception {
         JsonParser parser = new JsonParser();
         String responseData;
         Gson gson = new Gson();
         QuarterlyReport myQuarterlyReport = new QuarterlyReport();
-        ApiReports myReport = new ApiReports();
-
-        ArrayList<String> memberNames = new ArrayList<String>();
-
-
         Type QuarterlyReport = new TypeToken<ArrayList<QuarterlyReport>>(){}.getType();
 
+        //Get the data
         responseData = getQRJson(unitNumber, proxyLogin, year, quarter);
-//        System.out.println("Response String: " + responseData);
         JsonElement jsonElement = parser.parse(responseData);
 
-
-//            System.out.println("Json element to String ORG: " + jsonElement.toString());
+        //Check if the json is an object or array
         if (jsonElement instanceof JsonObject) {
 //            System.out.println("JSON Object!");
-//            myReport = gson.fromJson(jsonElement, ApiReports.class);
-
-//            if (myReport.getNewMembers() != null ) {
-//                for (ReportNewMember myNewMember : myReport.getNewMembers()) {
-//                    memberNames.add(getNameFromUuid( myNewMember.getUuid(), unitNumber, proxyLogin, "personal"));
-//                }
-//            }
-
 
         } else if (jsonElement instanceof JsonArray) {
-            System.out.println("JSON Array!");
+//            System.out.println("JSON Array!");
             JsonArray jsonData = jsonElement.getAsJsonArray();
             List<QuarterlyReport> testReport = gson.fromJson(jsonElement, QuarterlyReport);
             for (QuarterlyReport quarterlyReport: testReport) {
-//                myQuarterlyReport.setQuarter(quarterlyReport.getQuarter());
-                System.out.println(quarterlyReport.getQuarter());
-                System.out.println(quarterlyReport.getSubmitDate());
-                System.out.println(quarterlyReport.getEditable());
-                System.out.println(quarterlyReport.getUnitNumber());
-                System.out.println(quarterlyReport.getVersion());
-                System.out.println(quarterlyReport.getYear());
+                myQuarterlyReport = quarterlyReport;
             }
 
         }
 
+        return myQuarterlyReport;
 
+    }
+
+    public LifeResource getLifeResource(String proxyLogin, String unitNumber) throws Exception {
+        JsonParser parser = new JsonParser();
+        String responseData;
+        Gson gson = new Gson();
+        LifeResource myLifeResource = new LifeResource();
+        Type LifeResource = new TypeToken<ArrayList<LifeResource>>(){}.getType();
+
+        //Get the data
+        responseData = getLifeResourceJson(unitNumber, proxyLogin);
+        JsonElement jsonElement = parser.parse(responseData);
+
+        //Check if the json is an object or array
+        if (jsonElement instanceof JsonObject) {
+//            System.out.println("JSON Object!");
+
+        } else if (jsonElement instanceof JsonArray) {
+//            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+            List<LifeResource> testReport = gson.fromJson(jsonElement, LifeResource);
+            for (LifeResource lrReport: testReport) {
+                myLifeResource = lrReport;
+            }
+
+        }
+
+        return myLifeResource;
 
     }
 

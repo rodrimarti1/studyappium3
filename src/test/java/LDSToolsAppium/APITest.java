@@ -1,6 +1,9 @@
 package LDSToolsAppium;
 
 import LDSToolsAppium.API.ApiFinanceDetail;
+import LDSToolsAppium.API.LifeResources.LifeResource;
+import LDSToolsAppium.API.LifeResources.Resource;
+import LDSToolsAppium.API.LifeResources.Tag;
 import LDSToolsAppium.API.MemberToolsAPI;
 //import LDSToolsAppium.API.ApiFinance;
 //import com.google.gson.Gson;
@@ -11,6 +14,9 @@ import LDSToolsAppium.API.MemberToolsAPI;
 //import io.restassured.RestAssured;
 //import io.restassured.response.Response;
 
+import LDSToolsAppium.API.QuarterlyReport.Convert;
+import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
+import LDSToolsAppium.API.QuarterlyReport.Section;
 import LDSToolsAppiumTest.steps.Expenses;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -24,6 +30,7 @@ import java.io.File;
 import java.lang.reflect.Type;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
+import java.security.Permission;
 import java.util.*;
 import java.util.List;
 
@@ -74,9 +81,34 @@ public class APITest {
         System.out.println("STATUS: " + urlStatus);
     }
 
-    @Test
+    //Quarterly Reports
+//    @Test
     public void QRTest() throws Exception {
-        apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 3);
+        QuarterlyReport testQR = new QuarterlyReport();
+        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 3);
+        System.out.println(testQR.getQuarter());
+        System.out.println(testQR.getYear());
+        for (Section mySection: testQR.getSections()) {
+            System.out.println( mySection.getName());
+        }
+        for (Convert myConvert: testQR.getConverts()) {
+            System.out.println(myConvert.getDisplayName());
+        }
+    }
+
+    //Life Resource
+    @Test
+    public void LifeResourceTest() throws Exception {
+        LifeResource testLR = new LifeResource();
+        testLR = apiTest.getLifeResource("dsoneil", "39373");
+
+        for (Resource myResource: testLR.getResources()) {
+            System.out.println(myResource.getName());
+            for (String myTag: myResource.getTags()) {
+                System.out.println(myTag);
+            }
+        }
+
     }
 
 
