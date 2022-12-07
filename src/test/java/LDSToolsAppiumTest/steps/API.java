@@ -1,5 +1,7 @@
 package LDSToolsAppiumTest.steps;
 
+import LDSToolsAppium.API.LifeResources.LifeResource;
+import LDSToolsAppium.API.LifeResources.Resource;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BasePage;
 import LDSToolsAppium.Screen.DirectoryScreen;
@@ -9,6 +11,7 @@ import LDSToolsAppiumTest.HelperMethods;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ public class API {
     int responseCode;
     int urlStatus;
     HashMap<String, String> listMap = new HashMap<>();
+    LifeResource testLR = new LifeResource();
 
 
     @Given("a {string} account checks the Class and Quorum Attendance right")
@@ -104,7 +108,42 @@ public class API {
         Assert.assertFalse(listMap.containsKey("TEST API"));
     }
 
+    @When("a {string} gets the life resources for the {string}")
+    public void aMemberGetsTheLifeResourcesForTheUnit(String member, String unit) throws Exception {
+        testLR = apiTest.getLifeResource("dsoneil", "502278");
+    }
 
+    @Then("the {string} {string} {string} {string} will match")
+    public void theLRtoCheckPhoneEmailUrlWillMatch(String LRtoCheck, String phone, String email, String url) {
+        String myPhone = null;
+        String myEmail = null;
+        String myUrl = null;
+
+        for (Resource myResource: testLR.getResources()) {
+//            System.out.println(myResource.getName());
+            if (myResource.getName().equalsIgnoreCase(LRtoCheck)) {
+//                System.out.println(myResource.getUrl());
+                if (myResource.getPhone() == null) {
+                    myPhone = "";
+                } else {
+                    myPhone = myResource.getPhone();
+                }
+                if (myResource.getEmail() == null) {
+                    myEmail = "";
+                } else {
+                    myEmail = myResource.getEmail();
+                }
+                if (myResource.getUrl() == null) {
+                    myUrl = "";
+                } else {
+                    myUrl = myResource.getUrl();
+                }
+            }
+        }
+        Assert.assertEquals(myPhone, phone);
+        Assert.assertEquals(myEmail, email);
+        Assert.assertEquals(myUrl, url);
+    }
 
 
 //    public API() {

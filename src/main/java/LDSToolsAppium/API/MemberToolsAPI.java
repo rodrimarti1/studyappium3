@@ -2,6 +2,7 @@ package LDSToolsAppium.API;
 
 
 import LDSToolsAppium.API.LifeResources.LifeResource;
+import LDSToolsAppium.API.LifeResources.Resource;
 import LDSToolsAppium.API.QuarterlyReport.Convert;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
 import LDSToolsAppium.API.QuarterlyReport.Section;
@@ -2387,6 +2388,80 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return myLifeResource;
 
     }
+
+    public int createLifeResource(String unitNumber, String proxyUser, Resource lifeResource) throws IOException {
+        int responseData = 0;
+        Gson gsonTest = new Gson();
+        String json;
+
+//        JSONArray arrayCharges = new JSONArray();
+//        JSONObject jsonCharges = new JSONObject();
+//        JSONObject jsonPost = new JSONObject();
+//        json = jsonPost.toString();
+
+        json = gsonTest.toJson(lifeResource);
+        System.out.println(json);
+
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), json);
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources")
+                .addHeader("X-Proxy-User", proxyUser)
+                .post(body)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: " + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+
+    }
+
+    public int lifeResourceDelete(Resource myResource, String proxyUser) throws Exception {
+        int responseData = 0;
+        String listUuid = "";
+
+
+
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .delete()
+                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources/" + myResource.getUuid())
+                .addHeader("X-Proxy-User" , proxyUser)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+            System.out.println("Response: "  + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+    }
+
+
+
+
+
+
+
 
 
 }

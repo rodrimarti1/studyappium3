@@ -1,6 +1,7 @@
 package LDSToolsAppium;
 
 import LDSToolsAppium.API.ApiFinanceDetail;
+import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
 import LDSToolsAppium.API.LifeResources.Tag;
@@ -96,19 +97,99 @@ public class APITest {
         }
     }
 
-    //Life Resource
+    //Life Resource make sure the unit it the Stake
 //    @Test
     public void LifeResourceTest() throws Exception {
         LifeResource testLR = new LifeResource();
-        testLR = apiTest.getLifeResource("dsoneil", "39373");
+        testLR = apiTest.getLifeResource("dsoneil", "502278");
+        Map<String, Object> myMap = new HashMap<>();
+        String value;
 
         for (Resource myResource: testLR.getResources()) {
-            System.out.println(myResource.getName());
-            for (String myTag: myResource.getTags()) {
-                System.out.println(myTag);
+            System.out.println("Name: " + myResource.getName());
+            System.out.println("Church Resource: " + myResource.getChurchResource());
+            System.out.println("Uuid: " + myResource.getUuid());
+            System.out.println("Limited Visibility: " + myResource.getLimitedVisibility());
+            if (myResource.getTags() != null) {
+                for (String myTag: myResource.getTags()) {
+                    System.out.println(myTag);
+                }
+            }
+
+            myMap = myResource.getAdditionalProperties();
+            if (!myMap.isEmpty()) {
+                for (String mapKey: myMap.keySet()) {
+                    String key = mapKey.toString();
+                    if (myMap.get(mapKey) == null) {
+                        value = "";
+                    } else {
+                        value = myMap.get(mapKey).toString();
+                    }
+                    System.out.println(key + " - " + value);
+                }
             }
         }
+    }
 
+//    @Test
+    public void createLifeResourceTest() throws Exception {
+        int responseCode = 0;
+        LifeResource testLR = new LifeResource();
+        Resource myResource = new Resource();
+        Contact myContact = new Contact();
+        List<String> tagList = new ArrayList<>();
+        List<Resource> resourceList = new ArrayList<>();
+
+        //Create Contact
+        myContact.setDisplayName("Test Contact");
+        myContact.setPhone("801-867-5309");
+
+        //Create Tag
+        tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
+
+        //Create the Resource
+        myResource.setName("Automated Test One");
+        myResource.setChurchResource(false);
+        myResource.setAddress("3740 W Market Center Dr, Riverton, UT 84065");
+        myResource.setContact(myContact);
+        myResource.setDescription("Automated test one description");
+        myResource.setEmail("testemail@gmail.com");
+        myResource.setLimitedVisibility(false);
+        myResource.setNotes("Automated Notes");
+        myResource.setPhone("999-888-7777");
+        myResource.setUrl("https://www.google.com");
+        myResource.setTags(tagList);
+
+        resourceList.add(myResource);
+
+        //Create the Life Resource
+        testLR.setUnitNumber(502278);
+        testLR.setResources(resourceList);
+
+
+        responseCode = apiTest.createLifeResource("502278", "deanandrewandersen", myResource);
+        System.out.println("CODE: " + responseCode);
+
+    }
+
+    @Test
+    public void findLifeResourceAndDelete() throws Exception {
+//        String unitNumber, String proxyLogin, String resourceName
+        int responseCode = 0;
+        String unitNumber = "502278";
+        String proxyLogin = "deanandrewandersen";
+        String resourceName = "string";
+        LifeResource testLR = new LifeResource();
+        testLR = apiTest.getLifeResource(proxyLogin, unitNumber);
+        for (Resource myResource: testLR.getResources()) {
+            System.out.println("Name: " + myResource.getName());
+            if (myResource.getName().equalsIgnoreCase(resourceName)) {
+                System.out.println("Name: " + myResource.getName());
+                System.out.println("Uuid: " + myResource.getUuid());
+                responseCode = apiTest.lifeResourceDelete(myResource, proxyLogin);
+            }
+        }
+        System.out.println("CODE: " + responseCode);
     }
 
 
@@ -363,7 +444,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
