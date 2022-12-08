@@ -1,5 +1,6 @@
 package LDSToolsAppiumTest.steps;
 
+import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
 import LDSToolsAppium.API.MemberToolsAPI;
@@ -110,7 +111,9 @@ public class API {
 
     @When("a {string} gets the life resources for the {string}")
     public void aMemberGetsTheLifeResourcesForTheUnit(String member, String unit) throws Exception {
-        testLR = apiTest.getLifeResource("dsoneil", "502278");
+        String myUser;
+        myUser = getUsername(member);
+        testLR = apiTest.getLifeResource(myUser, unit);
     }
 
     @Then("the {string} {string} {string} {string} will match")
@@ -144,6 +147,199 @@ public class API {
         Assert.assertEquals(myEmail, email);
         Assert.assertEquals(myUrl, url);
     }
+
+    @Given("a {string} creates a {string} in the {string}")
+    public void aStakeLeadershipCreatesALifeResourceInTheUnit(String proxyName, String lifeResourceName, String unit) throws Exception {
+        String myUser;
+        Resource myResource = new Resource();
+        myUser = getUsername(proxyName);
+
+        myResource = createResource(lifeResourceName);
+        responseCode = apiTest.createLifeResource(unit, myUser, myResource);
+        System.out.println("CODE: " + responseCode);
+    }
+
+    @Then("the {string} will be correct")
+    public void theLifeResourceWillBeCorrect(String lifeResourceName) throws Exception {
+        String myUser;
+        String unit = "502278";
+        Resource myResource = new Resource();
+        myUser = getUsername("STAKE_PRESIDENT");
+
+        myResource = createResource(lifeResourceName);
+
+        testLR = apiTest.getLifeResource(myUser, unit);
+
+        System.out.println("Resource name to look for: " + myResource.getName());
+
+        for (Resource apiResource: testLR.getResources()) {
+            System.out.println(apiResource.getName());
+            if (apiResource.getName().equalsIgnoreCase(myResource.getName())) {
+                Assert.assertEquals(apiResource.getName(), (myResource.getName()));
+                Assert.assertEquals(apiResource.getAddress(), (myResource.getAddress()));
+                Assert.assertEquals(apiResource.getDescription(), (myResource.getDescription()));
+                Assert.assertEquals(apiResource.getAddress(), (myResource.getAddress()));
+                Assert.assertEquals(apiResource.getEmail(), (myResource.getEmail()));
+                Assert.assertEquals(apiResource.getLimitedVisibility(), (myResource.getLimitedVisibility()));
+                Assert.assertEquals(apiResource.getNotes(), (myResource.getNotes()));
+                Assert.assertEquals(apiResource.getPhone(), (myResource.getPhone()));
+                Assert.assertEquals(apiResource.getUrl(), (myResource.getUrl()));
+            }
+        }
+    }
+
+    @And("the {string} is deleted")
+    public void theLifeResourceIsDeleted(String resourceName) throws Exception {
+        int responseCode = 0;
+        String unitNumber = "502278";
+        String myUser = getUsername("STAKE_PRESIDENT");
+        Resource resourceToDelete = createResource(resourceName);
+        LifeResource testLR = new LifeResource();
+        testLR = apiTest.getLifeResource(myUser, unitNumber);
+        for (Resource myResource: testLR.getResources()) {
+            System.out.println("Name: " + myResource.getName());
+            if (myResource.getName().equalsIgnoreCase(resourceToDelete.getName())) {
+                System.out.println("Name: " + myResource.getName());
+                System.out.println("Uuid: " + myResource.getUuid());
+                responseCode = apiTest.lifeResourceDelete(myResource, myUser);
+            }
+        }
+        System.out.println("CODE: " + responseCode);
+    }
+
+    @Then("the {string} will be deleted")
+    public void theLifeResourceWillBeDeleted(String resourceName) throws Exception {
+        String myStatus = "";
+        String unitNumber = "502278";
+        String myUser = getUsername("STAKE_PRESIDENT");
+        LifeResource testLR = new LifeResource();
+        testLR = apiTest.getLifeResource(myUser, unitNumber);
+        for (Resource myResource: testLR.getResources()) {
+            System.out.println("Name: " + myResource.getName());
+            if (myResource.getName().equalsIgnoreCase(resourceName)) {
+                myStatus = "found";
+            } else {
+                myStatus = "notfound";
+            }
+        }
+        Assert.assertTrue(myStatus.equalsIgnoreCase("notfound"));
+    }
+
+    @And("the {string} is edited")
+    public void theIsEdited(String resourceName) throws Exception {
+        Resource myResource = new Resource();
+        String unitNumber = "502278";
+        String myUser = getUsername("STAKE_PRESIDENT");
+
+        myResource = createResource(resourceName);
+        Resource editedLifeResource = createResource("editedLifeResource");
+
+        //Get the Uuid for the Life Resource to change
+        testLR = apiTest.getLifeResource(myUser, unitNumber);
+        for (Resource foundResource: testLR.getResources()) {
+            System.out.println("Name: " + foundResource.getName());
+            if (foundResource.getName().equalsIgnoreCase(myResource.getName())) {
+                System.out.println("Name: " + foundResource.getName());
+                System.out.println("Uuid: " + foundResource.getUuid());
+                editedLifeResource.setUuid(foundResource.getUuid());
+            }
+        }
+
+
+
+        responseCode = apiTest.putLifeResource(myUser, editedLifeResource);
+        System.out.println("CODE: " + responseCode);
+    }
+
+
+    public String getUsername(String member) throws Exception {
+        String[] callingRights;
+        String userName = "";
+        callingRights = myHelper.getMemberNameFromList(member, "Maplewood 2nd");
+        userName = callingRights[1];
+        return userName;
+    }
+
+    public Resource createResource(String lifeResourceName) throws Exception {
+
+        Resource myResource = new Resource();
+        Contact myContact = new Contact();
+        List<String> tagList = new ArrayList<>();
+
+        if (lifeResourceName.equalsIgnoreCase("lifeResourceOne")) {
+            //Create Contact
+            myContact.setDisplayName("Test Contact");
+            myContact.setPhone("801-867-5309");
+
+            //Create Tag
+            tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
+
+            //Create the Resource
+            myResource.setName("Automated Test One");
+            myResource.setChurchResource(false);
+            myResource.setAddress("3740 W Market Center Dr, Riverton, UT 84065");
+            myResource.setContact(myContact);
+            myResource.setDescription("Automated test one description");
+            myResource.setEmail("testemail@gmail.com");
+            myResource.setLimitedVisibility(false);
+            myResource.setNotes("Automated Notes");
+            myResource.setPhone("999-888-7777");
+            myResource.setUrl("https://www.google.com");
+            myResource.setTags(tagList);
+        }
+
+        if (lifeResourceName.equalsIgnoreCase("lifeResourceTwo")) {
+            //Create Contact
+            myContact.setDisplayName("Test Two Contact");
+            myContact.setPhone("801-867-7777");
+
+            //Create Tag
+            tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
+
+            //Create the Resource
+            myResource.setName("Automated Test Two");
+            myResource.setChurchResource(false);
+            myResource.setAddress("50 E North Temple Street, Salt Lake City, Utah 84150");
+            myResource.setContact(myContact);
+            myResource.setDescription("Automated test Two description");
+            myResource.setEmail("testemail@gmail.com");
+            myResource.setLimitedVisibility(true);
+            myResource.setNotes("Test Two automated test notes");
+            myResource.setPhone("111-222-3333");
+            myResource.setUrl("https://www.churchofjesuschrist.org");
+            myResource.setTags(tagList);
+        }
+
+        if (lifeResourceName.equalsIgnoreCase("editedLifeResource")) {
+            //Create Contact
+            myContact.setDisplayName("Edit Test Two Contact");
+            myContact.setPhone("555-555-5555");
+
+            //Create Tag
+            tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
+
+            //Create the Resource
+            myResource.setName("Edit Automated Test Two");
+            myResource.setChurchResource(false);
+            myResource.setAddress("501 E North Temple Street, Salt Lake City, Utah 84150");
+            myResource.setContact(myContact);
+            myResource.setDescription("Edit Automated test Two description");
+            myResource.setEmail("editl@gmail.com");
+            myResource.setLimitedVisibility(true);
+            myResource.setNotes("Edit Test Two automated test notes");
+            myResource.setPhone("777-777-7777");
+            myResource.setUrl("https://www.cnn.com");
+            myResource.setTags(tagList);
+        }
+
+
+
+        return myResource;
+
+
+    }
+
+
 
 
 //    public API() {

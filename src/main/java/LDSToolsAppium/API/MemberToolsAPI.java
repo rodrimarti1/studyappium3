@@ -2394,10 +2394,6 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         Gson gsonTest = new Gson();
         String json;
 
-//        JSONArray arrayCharges = new JSONArray();
-//        JSONObject jsonCharges = new JSONObject();
-//        JSONObject jsonPost = new JSONObject();
-//        json = jsonPost.toString();
 
         json = gsonTest.toJson(lifeResource);
         System.out.println(json);
@@ -2456,7 +2452,42 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return responseData;
     }
 
+    public int putLifeResource( String proxyUser, Resource lifeResource) throws IOException {
+        int responseData = 0;
+        Gson gsonTest = new Gson();
+        String json;
 
+
+        json = gsonTest.toJson(lifeResource);
+        System.out.println(json);
+
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), json);
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources/" + lifeResource.getUuid())
+                .addHeader("X-Proxy-User", proxyUser)
+                .put(body)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: " + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+
+    }
 
 
 
