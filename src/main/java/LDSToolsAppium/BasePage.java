@@ -940,7 +940,14 @@ public class BasePage extends BaseDriver {
         } else {
             driver.get().findElement(By.xpath("//*[@text='" + myText + "']")).click();
         }
+    }
 
+    public void clickByTextName(String myText) {
+        if(getOS().equals("ios")) {
+            driver.get().findElement(By.xpath("//*[@name='" + myText + "']")).click();
+        } else {
+            driver.get().findElement(By.xpath("//*[@text='" + myText + "']")).click();
+        }
     }
 
     public void clickByTextContains(String myText) {

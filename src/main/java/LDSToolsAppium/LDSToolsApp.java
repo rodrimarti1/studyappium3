@@ -94,4 +94,9 @@ public class LDSToolsApp {
     public HelpScreen helpScreen() { return new HelpScreen(driver);
     }
 
+    //Life Resources
+    public LifeResources lifeResources() {
+        return new LifeResources(driver);
+    }
+
 }
