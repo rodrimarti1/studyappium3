@@ -332,6 +332,50 @@ public class API {
             myResource.setTags(tagList);
         }
 
+        if (lifeResourceName.equalsIgnoreCase("lifeResourceSampleOne")) {
+            //Create Contact
+            myContact.setDisplayName("Sample One");
+            myContact.setPhone("801-867-5309");
+
+            //Create Tag
+            tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
+
+            //Create the Resource
+            myResource.setName("Sample One");
+            myResource.setChurchResource(false);
+            myResource.setAddress("3740 W Market Center Dr, Riverton, UT 84065");
+            myResource.setContact(myContact);
+            myResource.setDescription("Sample one description");
+            myResource.setEmail("sample@gmail.com");
+            myResource.setLimitedVisibility(true);
+            myResource.setNotes("Sample Notes");
+            myResource.setPhone("999-888-7777");
+            myResource.setUrl("https://www.google.com");
+            myResource.setTags(tagList);
+        }
+
+        if (lifeResourceName.equalsIgnoreCase("lifeResourceSampleTwo")) {
+            //Create Contact
+            myContact.setDisplayName("Sample Two");
+            myContact.setPhone("385-232-2233");
+
+            //Create Tag
+            tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
+
+            //Create the Resource
+            myResource.setName("Sample Test Two");
+            myResource.setChurchResource(false);
+            myResource.setAddress("3740 W Market Center Dr, Riverton, UT 84065");
+            myResource.setContact(myContact);
+            myResource.setDescription("Sample two description");
+            myResource.setEmail("sampleTWO@gmail.com");
+            myResource.setLimitedVisibility(false);
+            myResource.setNotes("Sample two Notes");
+            myResource.setPhone("123-456-7890");
+            myResource.setUrl("https://www.google.com");
+            myResource.setTags(tagList);
+        }
+
 
 
         return myResource;

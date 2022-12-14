@@ -95,8 +95,8 @@ public class LDSToolsApp {
     }
 
     //Life Resources
-    public LifeResources lifeResources() {
-        return new LifeResources(driver);
+    public LifeResourcesScreen lifeResources() {
+        return new LifeResourcesScreen(driver);
     }
 
 }

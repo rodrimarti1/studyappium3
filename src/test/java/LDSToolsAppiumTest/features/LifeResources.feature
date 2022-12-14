@@ -26,8 +26,22 @@ Feature: Test Life Resources
       | Employment Resource Center Manager            |
 #      | Church Resource                               |
 
-    #Lots of different categories - use an API test to test all?
-  @jft
+    #Stake Pres
+  #Todo: iOS is not seeing the elements correctly. Need appium 2.0?
+  Scenario: Create a Life Resource
+    Given a "STAKE_PRESIDENT" logs in and is on the Life Resources page
+    When a Life Resource is created "Appium Test One"
+    And a "Appium Test One" is searched for in Life Resources
+    Then the Life Resource "Appium Test One" will be displayed
+
+    #Todo: iOS not seeing the elements correctly
+  Scenario: Edit a LR
+
+  Scenario: Delete a LR
+  Scenario: Create a LR - Leadership only
+
+        #Lots of different categories - use an API test to test all?
+  #Todo: iOS cannot select a category, Appium sees the element but cannot click on it.
   Scenario Outline: Select different categories
     Given a <member> logs in and is on the Life Resources page
     When a <category> is selected in Life Resources
@@ -37,7 +51,7 @@ Feature: Test Life Resources
       | member   | category    | categoryResource             | notDisplayed                                         |
       | "BISHOP" | "Addiction" | "Addiction Recovery Program" | "Finding Strength in the Lord: Emotional Resilience" |
 
-
+    #todo: distance is not working yet
     #This may not work on simulator. OR need to set sim to local address?
     #Distances: All, 5.0, 10, 25, 50, 100
   Scenario Outline: Select different distances
@@ -48,26 +62,13 @@ Feature: Test Life Resources
       | member   | distance   | distanceResource |
       | "BISHOP" | "25 miles" | "Some resource"  |
 
-
+ #todo: distance is not working yet
     #Combine the top 3 tests at once... May want to rethink on how to do this.
   Scenario: Distance Category and Search?
     Given a <member> logs in and is on the Life Resources page
     When a <distance> <category> and <LifeResource> is selected
     Then the <LifeResource> will be displayed
 
-    #May include more info fields for Category and distance
-    #Different callings get different resources?
-  Scenario Outline: Select items and verify
-    Given a <member> logs in and is on the Life Resources page
-    When a <LifeResource> is slected
-    Then the correct <LifeResourceInfo> will be displayed
-    Examples:
-      | member   | LifeResource                 | LifeResourceInfo                                              |
-      | "BISHOP" | "Addiction Recovery Program" | "https://addictionrecovery.churchofjesuschrist.org/?lang=eng" |
 
 
-    #Stake Pres
-    Scenario: Create a LR
-    Scenario: Edit a LR
-    Scenario: Delete a LR
-    Scenario: Create a LR - Leadership only
+
