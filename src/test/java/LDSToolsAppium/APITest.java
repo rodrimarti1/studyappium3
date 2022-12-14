@@ -98,7 +98,7 @@ public class APITest {
     }
 
     //Life Resource make sure the unit it the Stake
-//    @Test
+    @Test
     public void LifeResourceTest() throws Exception {
         LifeResource testLR = new LifeResource();
         testLR = apiTest.getLifeResource("dsoneil", "502278");
@@ -172,7 +172,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void findLifeResourceAndDelete() throws Exception {
 //        String unitNumber, String proxyLogin, String resourceName
         int responseCode = 0;
@@ -268,7 +268,7 @@ public class APITest {
 //  Rename payment requests? - change to delete when delete works
         //TODO: when the finance guys fixes this try again
         //Search for expense id by purpose?
-//        String value;
+//        String TestAuthenticationInterceptor@2b037cfc returned a response with no body;
 //        int myId = 0;
 //        String myType = null;
 //        myMap = apiTest.getExpensesDetail("mbthomas74", "21628", "Test Two");
