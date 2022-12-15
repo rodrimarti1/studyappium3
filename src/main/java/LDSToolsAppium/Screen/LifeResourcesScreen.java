@@ -173,4 +173,19 @@ public class LifeResourcesScreen extends BasePage {
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Cancel' AND type == 'XCUIElementTypeOther'")
     public WebElement lifeResourceCancel;
 
+    //Edit Button
+    @AndroidFindBy(xpath = "//*[@content-desc='Edit Life Resource']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Edit\"]")
+    public WebElement lifeResourceEdit;
+
+    //Delete Button
+    @AndroidFindBy(xpath = "//*[@content-desc='Delete Life Resource']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Trash\"]")
+    public WebElement lifeResourceDelete;
+
+   //Delete Confirm Button
+   @AndroidFindBy(xpath = "//*[@text=\"DELETE\"]")
+   @iOSXCUITFindBy(accessibility = "Delete Life Resource")
+   public WebElement lifeResourceConfirmDelete;
+
 }

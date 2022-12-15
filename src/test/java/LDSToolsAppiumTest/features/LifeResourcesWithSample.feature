@@ -5,17 +5,18 @@ Feature: Test Life Resources with Samples
     Given The sample life resources are created
     Then The sample life resource will be displayed
 
-  @cleanup @jft
+  @cleanup
   Scenario: A non leader views a Leadership only resource
     Given a "MEMBER1" logs in and is on the Life Resources page
     When a "Sample One" is searched for in Life Resources
     And a "Sample One" is selected
     Then the information will be displayed
-      | Please contact your Relief Society or Elders Quorum President for help with this resource |
+      | Please contact your Relief Society or elders quorum president for help with this resource |
       | Sample One                                                                                |
 
+
   @cleanup
-  Scenario: A non leader views a Leadership only resource
+  Scenario: A leader views a Leadership only resource
     Given a "BISHOP" logs in and is on the Life Resources page
     When a "Sample One" is searched for in Life Resources
     And a "Sample One" is selected
@@ -30,8 +31,13 @@ Feature: Test Life Resources with Samples
 
 
 
+  @cleanup @jft
+  Scenario: A Stake Leader deletes a Life Resource
+    Given a "STAKE_PRESIDENT" logs in and is on the Life Resources page
+    When a "Sample Two" is searched for in Life Resources
+    And a "Sample Two" is selected
+    And the delete button is pressed
+    Then the "Sample Two" will be deleted
 
-  Scenario: Delete a LR
 
-  Scenario: View LR - Leadership only - leader and non leader
 

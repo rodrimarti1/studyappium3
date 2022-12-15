@@ -363,7 +363,7 @@ public class API {
             tagList.add("f6638875-aa67-45ae-bb62-60290bfa6d53");
 
             //Create the Resource
-            myResource.setName("Sample Test Two");
+            myResource.setName("Sample Two");
             myResource.setChurchResource(false);
             myResource.setAddress("3740 W Market Center Dr, Riverton, UT 84065");
             myResource.setContact(myContact);

@@ -56,7 +56,9 @@ public class LifeResources extends BaseDriver {
     @Then("the information will be displayed")
     public void theInformationWillBeDisplayed(List<String> infoToCheck) throws Exception {
         pageSource = myBasePage.getSourceOfPage();
+        pageSource = pageSource.toLowerCase();
         for (String oneItem : infoToCheck ) {
+            oneItem = oneItem.toLowerCase();
             Assert.assertTrue(pageSource.contains(oneItem));
         }
     }
@@ -169,10 +171,20 @@ public class LifeResources extends BaseDriver {
     @After("@cleanup")
     public void cleanupBackground() throws Exception {
         API myAPI = new API();
-        myAPI.theLifeResourceWillBeDeleted("lifeResourceSampleOne");
-        myAPI.theLifeResourceWillBeDeleted("lifeResourceSampleTwo");
+        System.out.println("Running Cleanup");
+        myAPI.theLifeResourceIsDeleted("lifeResourceSampleOne");
+        myAPI.theLifeResourceIsDeleted("lifeResourceSampleTwo");
     }
 
 
-
+    @And("the delete button is pressed")
+    public void theDeleteButtonIsPressed() throws Exception {
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myBasePage.waitForElementThenClick(myLifeResourcesScreen.lifeResourceEdit);
+        }
+        myBasePage.waitForElementThenClick(myLifeResourcesScreen.lifeResourceDelete);
+        myBasePage.waitForElementThenClick(myLifeResourcesScreen.lifeResourceConfirmDelete);
+        //Wait for 10 seconds for the resource to be deleted
+        Thread.sleep(10000);
+    }
 }
