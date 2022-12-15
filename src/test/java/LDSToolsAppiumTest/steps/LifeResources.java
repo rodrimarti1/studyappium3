@@ -49,6 +49,7 @@ public class LifeResources extends BaseDriver {
 
     @When("a {string} is selected")
     public void aIsSelected(String lifeResourceName) throws Exception {
+        Thread.sleep(500);
         myBasePage.clickByText(lifeResourceName);
         Thread.sleep(500);
     }
