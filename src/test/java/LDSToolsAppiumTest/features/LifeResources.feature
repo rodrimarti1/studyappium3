@@ -1,7 +1,7 @@
 @LifeResources
 Feature: Test Life Resources
 
-  @MQA-6683 @MQA-6682 @all @all2 @daily @daily2 @smoke @smoke2 @jft
+  @MQA-6683 @MQA-6682 @all @all2 @daily @daily2 @smoke @smoke2
   Scenario: Life Resource check correct data
     Given a "MEMBER1" logs in and is on the Life Resources page
     When a "Addiction Recovery Program" is selected
@@ -51,7 +51,7 @@ Feature: Test Life Resources
 
         #Lots of different categories - use an API test to test all?
   #Todo: iOS cannot select a category, Appium sees the element but cannot click on it.
-  @MQA-6687 @MQA-6682
+  @MQA-6687 @MQA-6682 @jft
   Scenario Outline: Select different categories
     Given a <member> logs in and is on the Life Resources page
     When a <category> is selected in Life Resources

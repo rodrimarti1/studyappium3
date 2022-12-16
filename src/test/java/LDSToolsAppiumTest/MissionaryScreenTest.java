@@ -90,7 +90,7 @@ public class MissionaryScreenTest extends BaseDriver {
         missionaryTestCheckSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all4", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"all4", "all", "daily", "daily4"})
     public void missionaryTest_YOUNG_WOMEN_PRESIDENT() throws Exception {
         missionaryTestCheckSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -202,7 +202,7 @@ public class MissionaryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all4", "all", "daily", "daily2"})
+    @Test(groups = {"all4", "all", "daily", "daily2", "jft"})
     public void missionaryOtherUnits() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -225,9 +225,9 @@ public class MissionaryScreenTest extends BaseDriver {
         unitNumber = "21628";
         checkMissionaryByUnit(unitNumber);
 
-        chooseUnit("Centinela 2nd Ward (Tongan)");
-        unitNumber = "129798";
-        checkMissionaryByUnit(unitNumber);
+//        chooseUnit("Centinela 2nd Ward (Tongan)");
+//        unitNumber = "129798";
+//        checkMissionaryByUnit(unitNumber);
 
         chooseUnit("El Segundo Ward");
         unitNumber = "76228";
@@ -241,18 +241,13 @@ public class MissionaryScreenTest extends BaseDriver {
         unitNumber = "141399";
         checkMissionaryByUnit(unitNumber);
 
-        //iOS has 2 spaces between ward name and 1st ward
-        if (getRunningOS().equalsIgnoreCase("ios")) {
-            chooseUnit("Westchester  1st Ward");
-        } else {
-            chooseUnit("Westchester 1st Ward");
-        }
+        chooseUnit("Westchester Ward");
         unitNumber = "21970";
         checkMissionaryByUnit(unitNumber);
 
-        chooseUnit("Westchester 3rd Ward (Tongan)");
-        unitNumber = "179388";
-        checkMissionaryByUnit(unitNumber);
+//        chooseUnit("Westchester 3rd Ward (Tongan)");
+//        unitNumber = "179388";
+//        checkMissionaryByUnit(unitNumber);
 
     }
 

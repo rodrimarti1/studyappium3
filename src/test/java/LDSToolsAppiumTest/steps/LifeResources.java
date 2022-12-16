@@ -74,14 +74,25 @@ public class LifeResources extends BaseDriver {
 
     @When("a {string} is selected in Life Resources")
     public void aCategoryIsSelectedInLifeResources(String category) throws Exception {
+        driver.get().setSetting("includeNonModalElements", true);
+        driver.get().setSetting("snapshotMaxDepth", 150);
+
+
         myBasePage.waitForElementThenClick( myLifeResourcesScreen.lifeResourceCategory);
         Thread.sleep(1000);
         Map<String, Object> myMap = new HashMap<>();
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            Thread.sleep(2000);
+            System.out.println("Wait to see if page loads");
+
+//            Thread.sleep(20000);
+            System.out.println("Done waiting get source of page");
+
             System.out.println(myBasePage.getSourceOfPage());
+            System.out.println("Try to click element");
             WebElement categoryName = driver.get().findElement(By.xpath("//XCUIElementTypeButton[@label='" + category + "']"));
             categoryName.click();
+            driver.get().setSetting("includeNonModalElements", false);
+            driver.get().setSetting("snapshotMaxDepth", 50);
 //            myBasePage.clickElementByCords(categoryName);
         } else {
             myBasePage.clickByTextName(category);

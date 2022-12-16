@@ -119,11 +119,11 @@ public class DeviceApi {
             int myCounter = myJsonList.size();
             System.out.println("LIST SIZE: " + myCounter);
             for ( int i = 0 ; i < myCounter ; i++ ) {
-            	//System.out.println("************ TEST ****************");
+            	System.out.println("************ TEST ****************");
             	JsonElement oneJsonObject = myJsonList.get(i);
-            	//System.out.println("JSON: " + i + ": " + oneJsonObject);
-            	//System.out.println("Serial: " + oneJsonObject.getAsJsonObject().get("serial"));
-            	//System.out.println("************  END TEST ****************");
+            	System.out.println("JSON: " + i + ": " + oneJsonObject);
+            	System.out.println("Serial: " + oneJsonObject.getAsJsonObject().get("serial"));
+            	System.out.println("************  END TEST ****************");
             	String mySerial = oneJsonObject.getAsJsonObject().get("serial").toString();
                 boolean present = oneJsonObject.getAsJsonObject().get("present").getAsBoolean();
                 boolean ready = oneJsonObject.getAsJsonObject().get("ready").getAsBoolean();
@@ -142,10 +142,25 @@ public class DeviceApi {
                 }
 
 
+
+
                 if (myVersionConvert.contains("4.")) {
                    // oldVersion = true;
                     System.out.println("Found Older Version: "  + myVersionConvert);
                 }
+
+                if (myVersionConvert.contains("5.")) {
+                    // oldVersion = true;
+                    System.out.println("Found Older Version: "  + myVersionConvert);
+                    myVersionConvert = "4.";
+                }
+
+                if (myVersionConvert.contains("6.")) {
+                    // oldVersion = true;
+                    System.out.println("Found Older Version: "  + myVersionConvert);
+                    myVersionConvert = "4.";
+                }
+
                 //System.out.println("********** Device ************");
                 //System.out.println("Serial: " + mySerial);
                 //System.out.println("Present: " + present);

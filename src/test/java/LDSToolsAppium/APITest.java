@@ -16,6 +16,7 @@ import LDSToolsAppium.API.MemberToolsAPI;
 //import io.restassured.response.Response;
 
 import LDSToolsAppium.API.QuarterlyReport.Convert;
+import LDSToolsAppium.API.QuarterlyReport.Entry;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
 import LDSToolsAppium.API.QuarterlyReport.Section;
 import LDSToolsAppiumTest.steps.Expenses;
@@ -83,14 +84,19 @@ public class APITest {
     }
 
     //Quarterly Reports
-//    @Test
+    @Test
     public void QRTest() throws Exception {
         QuarterlyReport testQR = new QuarterlyReport();
-        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 3);
+        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 2);
         System.out.println(testQR.getQuarter());
         System.out.println(testQR.getYear());
         for (Section mySection: testQR.getSections()) {
             System.out.println( mySection.getName());
+            for (Entry myEntry : mySection.getEntries()) {
+                System.out.println(myEntry.getName() + " " + myEntry.getActual());
+                System.out.println("Editable: " + myEntry.getEditable());
+            }
+            System.out.println("******************************************");
         }
         for (Convert myConvert: testQR.getConverts()) {
             System.out.println(myConvert.getDisplayName());
@@ -98,7 +104,7 @@ public class APITest {
     }
 
     //Life Resource make sure the unit it the Stake
-    @Test
+//    @Test
     public void LifeResourceTest() throws Exception {
         LifeResource testLR = new LifeResource();
         testLR = apiTest.getLifeResource("dsoneil", "502278");

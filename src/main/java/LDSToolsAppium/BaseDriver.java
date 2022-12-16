@@ -389,6 +389,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             if (!deviceSerial.isEmpty()) {
 
                 System.out.println("After All Tests - SERIAL NUMBER: " + deviceSerial);
+                adbUninstallChurchMobileDev();
                 myDevice.releaseDevice(deviceSerial);
                 Thread.sleep(3000);
                 killProcess("adb");
@@ -414,20 +415,23 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         if (os.equals("android")) {
             List<String> deviceList;
 
-            if (testDevice.contains("STFZade")) {
-                accessToken = "c6c814d0122047ab98c2af2a84eb09022a3dd0e82e944526896e9016eb121844";
-                stfURL = "http://10.109.45.162:7100";
-            }
+//            if (testDevice.contains("STFZade")) {
+//                accessToken = "c6c814d0122047ab98c2af2a84eb09022a3dd0e82e944526896e9016eb121844";
+//                stfURL = "http://10.109.45.162:7100";
+//            }
+//
+//            if (testDevice.contains("STFMain")) {
+//                accessToken = "7a51e3b2af8d4cdca761035facd677569b8c3fa4f04f491ca3ed7591372361c1";
+//                stfURL = "https://serenity.ldschurch.org";
+//            }
 
-            if (testDevice.contains("STFMain")) {
-                accessToken = "7a51e3b2af8d4cdca761035facd677569b8c3fa4f04f491ca3ed7591372361c1";
-                stfURL = "https://serenity.ldschurch.org";
-            }
 
 
 
 
             if (testDevice.contains("STF")) {
+                accessToken = "8f12579578684a2ba0ebdae08c1800c20c6c5b591c49433884200657ca59fd69";
+                stfURL = "https://stf.churchofjesuschrist.org/";
 
                 String deviceIPPort;
 
@@ -821,6 +825,48 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         // = "adb shell am force-stop org.lds.ldstools.alpha";
         Runtime run = Runtime.getRuntime();
         Process pr = run.exec(new String[] {pathToADB, "disconnect", ipPort});
+        //Process pr = run.exec(cmd);
+        pr.waitFor();
+        BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String line;
+
+        while ((line=buf.readLine())!=null) {
+            System.out.println(line);
+        }
+    }
+
+    public void adbInstallChurchMobileDev() throws Exception {
+        //String pathToADB = "../../../android-sdks/platform-tools/adb";
+        //String androidHome = getAndroidHomePath();
+        String androidHome = System.getenv("ANDROID_HOME");
+        String pathToADB = androidHome + "/platform-tools/adb";
+
+        //String cmd
+        // = "adb shell am force-stop org.lds.ldstools.alpha";
+        Runtime run = Runtime.getRuntime();
+
+        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "install", "AppUnderTest/app-release.apk" });
+        //Process pr = run.exec(cmd);
+        pr.waitFor();
+        BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String line;
+
+        while ((line=buf.readLine())!=null) {
+            System.out.println(line);
+        }
+    }
+
+    public void adbUninstallChurchMobileDev() throws Exception {
+        //String pathToADB = "../../../android-sdks/platform-tools/adb";
+        //String androidHome = getAndroidHomePath();
+        String androidHome = System.getenv("ANDROID_HOME");
+        String pathToADB = androidHome + "/platform-tools/adb";
+
+        //String cmd
+        // = "adb shell am force-stop org.lds.ldstools.alpha";
+        Runtime run = Runtime.getRuntime();
+
+        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "uninstall", "AppUnderTest/app-release.apk" });
         //Process pr = run.exec(cmd);
         pr.waitFor();
         BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
