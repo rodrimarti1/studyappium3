@@ -3,6 +3,7 @@ package LDSToolsAppiumTest.testrunner;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import io.cucumber.testng.CucumberOptions;
+import org.testng.annotations.DataProvider;
 
 
 @CucumberOptions(
@@ -17,6 +18,10 @@ import io.cucumber.testng.CucumberOptions;
                 "rerun:src/test/java/Reports/cucumber-reports/rerun.txt"
         })
 public class APIRunner extends MemberToolsAPI {
-
+        @Override
+        @DataProvider(parallel = true)
+        public Object[][] scenarios() {
+                return super.scenarios();
+        }
 
 }
