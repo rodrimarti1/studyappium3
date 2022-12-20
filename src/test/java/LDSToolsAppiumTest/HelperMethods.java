@@ -237,6 +237,17 @@ public class HelperMethods extends BaseDriver {
         } else {
             myBasePage.waitUnitlTextIsGone("Authenticating");
             unavailableCheck();
+            pageSource = myBasePage.getSourceOfPage();
+
+            //"Not now"
+            if (pageSource.contains("Not now")) {
+                driver.get().findElement(By.xpath("//*[@text='Not now']")).click();
+            }
+
+            //"Never"
+            if (pageSource.contains("Never")) {
+                driver.get().findElement(By.xpath("//*[@text='Never']")).click();
+            }
 
             myBasePage.waitUnitlTextIsGone("Updating");
             Thread.sleep(1000);

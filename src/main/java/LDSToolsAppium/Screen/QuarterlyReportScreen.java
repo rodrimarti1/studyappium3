@@ -26,39 +26,44 @@ public class QuarterlyReportScreen extends BasePage {
 // ****************** Quarterly Report Main Screen ******************
 
     //	Indicators of Conversion and Church Growth
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Indicators of Conversion and Church Growth']")
-    @iOSXCUITFindBy(accessibility = "Indicators of Conversion and Church Growth")
-    public WebElement indicatorsOfConversionAndChurchGrowth;
+    @AndroidFindBy(xpath = "//*[@text='Indicators of Conversion and Church Growth']")
+    @iOSXCUITFindBy(xpath = "//*[@name=\"Indicators of Conversion and Church Growth\"]")
+    public WebElement quarterlyReportIndicatorsOfConversionAndChurchGrowth;
 
     // ****************** Members / Families ******************
-    //Unassigned Households
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Members / Families']")
-    @iOSXCUITFindBy(accessibility = "Members / Families")
-    public WebElement membersFamilies;
+    //Members / Famailes
+    @AndroidFindBy(xpath = "//*[@text='Members / Families']")
+    @iOSXCUITFindBy(xpath = "//*[@name='Members / Families']")
+    public WebElement quarterlyReportMembersFamilies;
 
     //Adults
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Adults']")
-    @iOSXCUITFindBy(accessibility = "Adults")
-    public WebElement adults;
+    @AndroidFindBy(xpath = "//*[@text='Adults']")
+    @iOSXCUITFindBy(xpath = "//*[@name='Adults']")
+    public WebElement quarterlyReportAdults;
 
     //Youth
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Youth']")
-    @iOSXCUITFindBy(accessibility = "Youth")
-    public WebElement youth;
+    @AndroidFindBy(xpath = "//*[@text='Youth']")
+    @iOSXCUITFindBy(xpath = "//*[@name='Youth']")
+    public WebElement quarterlyReportYouth;
 
     //Children
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Children']")
-    @iOSXCUITFindBy(accessibility = "Children")
-    public WebElement children;
+    @AndroidFindBy(xpath = "//*[@text='Children']")
+    @iOSXCUITFindBy(xpath = "//*[@text='Children']")
+    public WebElement quarterlyReportChildren;
 
-    //Converts (past 12 months)
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Converts (past 12 months)']")
-    @iOSXCUITFindBy(accessibility = "Converts (past 12 months)")
-    public WebElement convertsPast12Months;
-
-
+    //Converts
+    @AndroidFindBy(xpath = "//*[@text=\"Converts\"]")
+    @iOSXCUITFindBy(xpath = "//*[@name=\"Converts\"]")
+    public WebElement quarterlyReportConverts;
 
 
+    //Review and Submit button
+    @AndroidFindBy(xpath = "//*[@content-desc=\"Review and Submit\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Review and Submit\"]")
+    public WebElement quarterlyReportReviewAndSubmit;
 
+    //Todo: search for quarter then get the year and quarter number
+
+    //Todo: get name of report then get info from that - using API?
 
 }

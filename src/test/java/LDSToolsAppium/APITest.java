@@ -87,14 +87,19 @@ public class APITest {
     @Test
     public void QRTest() throws Exception {
         QuarterlyReport testQR = new QuarterlyReport();
-        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 2);
+//        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 2);
+        testQR = apiTest.getQuarterlyReport("mbthomas74", "21628", "2022", 3);
         System.out.println(testQR.getQuarter());
         System.out.println(testQR.getYear());
+        System.out.println(testQR.getSubmitDate());
         for (Section mySection: testQR.getSections()) {
             System.out.println( mySection.getName());
             for (Entry myEntry : mySection.getEntries()) {
                 System.out.println(myEntry.getName() + " " + myEntry.getActual());
-                System.out.println("Editable: " + myEntry.getEditable());
+                System.out.println("Potential: " + myEntry.getPotential());
+                System.out.println("Type: " + myEntry.getType());
+
+//                System.out.println("Editable: " + myEntry.getEditable());
             }
             System.out.println("******************************************");
         }
@@ -507,7 +512,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("111074", callingId);
+            memberList = apiTest.getAccounts("39373", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
