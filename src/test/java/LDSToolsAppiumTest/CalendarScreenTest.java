@@ -47,6 +47,7 @@ public class CalendarScreenTest extends BaseDriver {
         Assert.assertTrue(myCalendar.calendarSubscriptions.isDisplayed());
 
         myBasePage.waitForElementThenClick(myCalendar.calendarSubscriptions);
+        Thread.sleep(2000);
         pageSource = myBasePage.getSourceOfPage();
 
         Assert.assertTrue(pageSource.contains("All calendars"));
