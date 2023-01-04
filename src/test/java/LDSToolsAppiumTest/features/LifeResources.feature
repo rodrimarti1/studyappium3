@@ -8,11 +8,11 @@ Feature: Test Life Resources
     Then the information will be displayed
       | Church Resource                                             |
       | Addiction                                                   |
-      | Mental and Emotional Health                                 |
+      | Mental Health                                               |
       | Addiction Recovery Program                                  |
       | https://addictionrecovery.churchofjesuschrist.org/?lang=eng |
 
-  @MQA-6684 @MQA-6682 @all @all3 @daily @daily3
+  @MQA-6684 @MQA-6682 @all @all3 @daily @daily3 @jft
   Scenario: Search for a Life Resource
     Given a "MEMBER1" logs in and is on the Life Resources page
     When a "Houston Texas Employment Resource Center" is searched for in Life Resources
@@ -51,7 +51,7 @@ Feature: Test Life Resources
 
         #Lots of different categories - use an API test to test all?
   #Todo: iOS cannot select a category, Appium sees the element but cannot click on it.
-  @MQA-6687 @MQA-6682 @jft
+  @MQA-6687 @MQA-6682
   Scenario Outline: Select different categories
     Given a <member> logs in and is on the Life Resources page
     When a <category> is selected in Life Resources

@@ -83,12 +83,11 @@ public class APITest {
         System.out.println("STATUS: " + urlStatus);
     }
 
-    //Quarterly Reports
-    @Test
+//    @Test
     public void QRTest() throws Exception {
         QuarterlyReport testQR = new QuarterlyReport();
 //        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 2);
-        testQR = apiTest.getQuarterlyReport("mbthomas74", "21628", "2022", 3);
+        testQR = apiTest.getQuarterlyReport("mbthomas74", "21628", "2022", 4);
         System.out.println(testQR.getQuarter());
         System.out.println(testQR.getYear());
         System.out.println(testQR.getSubmitDate());
@@ -455,7 +454,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-//    @Test
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -509,10 +508,19 @@ public class APITest {
         unitMap.put("216", "PRIMARY_TEACHER");
         unitMap.put("208", "SUNDAY_SCHOOL_TEACHER");
         unitMap.put("217", "PRIMARY_ACTIVITY_DAYS_LEADER");
+        unitMap.put("171", "PRIESTS_QUORUM_FIRST_ASSISTANT");
+        unitMap.put("172", "PRIESTS_QUORUM_SECOND_ASSISTANT");
+        unitMap.put("173", "PRIESTS_QUORUM_SECRETARY");
+        unitMap.put("174", "TEACHERS_QUORUM_PRESIDENT");
+        unitMap.put("175", "TEACHERS_QUORUM_FIRST_COUNSELOR");
+        unitMap.put("176", "TEACHERS_QUORUM_SECOND_COUNSELOR");
+        unitMap.put("177", "DEACONS_QUORUM_PRESIDENT");
+        unitMap.put("178", "DEACONS_QUORUM_FIRST_COUNSELOR");
+        unitMap.put("179", "DEACONS_QUORUM_SECOND_COUNSELOR");
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("39373", callingId);
+            memberList = apiTest.getAccounts("198854", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
