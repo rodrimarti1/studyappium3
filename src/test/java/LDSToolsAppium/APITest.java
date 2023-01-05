@@ -83,11 +83,11 @@ public class APITest {
         System.out.println("STATUS: " + urlStatus);
     }
 
-//    @Test
+    @Test
     public void QRTest() throws Exception {
         QuarterlyReport testQR = new QuarterlyReport();
-//        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 2);
-        testQR = apiTest.getQuarterlyReport("mbthomas74", "21628", "2022", 4);
+        testQR = apiTest.getQuarterlyReport("dsoneil", "39373", "2022", 4);
+//        testQR = apiTest.getQuarterlyReport("mbthomas74", "21628", "2022", 4);
         System.out.println(testQR.getQuarter());
         System.out.println(testQR.getYear());
         System.out.println(testQR.getSubmitDate());
@@ -454,7 +454,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
