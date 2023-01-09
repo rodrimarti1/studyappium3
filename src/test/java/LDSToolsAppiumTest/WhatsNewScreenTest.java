@@ -34,14 +34,14 @@ public class WhatsNewScreenTest extends BaseDriver {
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Quarterly Report", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Recording Quorum and Class Visitors", pageSource, "Contains"));
         } else {
             myHelper.enterPinKeepWhatsNew("1", "1", "3", "3");
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Quarterly Report", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Recording Quorum and Class Visitors", pageSource, "Contains"));
             myBasePage.waitForElementThenClick(myWhatsNew.whatsNewDone);
         }
