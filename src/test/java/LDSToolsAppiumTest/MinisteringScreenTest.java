@@ -812,7 +812,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("Lambson", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Smith", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Fitzgerald", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Vader", pageSource, "Contains"));
 
             myBasePage.backButton.click();
