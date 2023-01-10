@@ -97,7 +97,9 @@ public class PrayerRoll extends BaseDriver {
         myHelper.proxyLogin("mbthomas74");
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.temples);
-        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        if (myBasePage.checkForElement(myTemple.yesRemindMe)) {
+            myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        }
         myBasePage.waitForText("Los Angeles");
         myTemple.prayerRollButton.click();
     }
