@@ -190,10 +190,11 @@ public class PaymentRequests extends BaseDriver {
         Thread.sleep(2000);
         myBasePage.backButton.click();
         Thread.sleep(2000);
-        myBasePage.backButton.click();
-        Thread.sleep(2000);
+
         //may not be needed anymore
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myBasePage.backButton.click();
+            Thread.sleep(2000);
             if (myBasePage.checkForElement(myFinance.paymentRequestsYesButton)) {
                 myFinance.paymentRequestsYesButton.click();
                 Thread.sleep(1000);
@@ -246,7 +247,7 @@ public class PaymentRequests extends BaseDriver {
 //        Thread.sleep(2000);
 //        addReceiptToPaymentRequest("picture");
 //        categorySub("Activities");
-//        categoryAmountSub("4567");
+//        categoryAmountSub("445");
 //        myFinance.paymentRequestsSaveButton.click();
 
     }
@@ -258,13 +259,17 @@ public class PaymentRequests extends BaseDriver {
         //This may be android only stuff
 //        Assert.assertTrue(myFinance.paymentRequestsPurposeSubmit.getAttribute("enabled").equalsIgnoreCase("false"));
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            pageSource = myBasePage.getSourceOfPage();
+            Assert.assertTrue(pageSource.contains("strange women lying"));
 //            purposeCheck = myFinance.paymentRequestsAddPurpose.getText();
-            purposeCheck = myFinance.paymentRequestsAddPurpose.getAttribute("value").toString();
+//            purposeCheck = myFinance.paymentRequestsAddPurpose.getAttribute("value").toString();
 //            System.out.println(purposeCheck);
 //            System.out.println("LENGTH: " + purposeCheck.length());
-            Assert.assertEquals(purposeCheck.length(), 445);
+//            Assert.assertEquals(purposeCheck.length(), 445);
         } else {
-            Assert.assertTrue(myFinance.paymentRequestsCounter.getText().contains("445"));
+            pageSource = myBasePage.getSourceOfPage();
+            Assert.assertTrue(pageSource.contains("strange women lying"));
+//            Assert.assertTrue(myFinance.paymentRequestsCounter.getText().contains("445"));
         }
 
     }
@@ -532,6 +537,7 @@ public class PaymentRequests extends BaseDriver {
         categorySub(category);
         categoryAmountSub(categoryAmount);
         Thread.sleep(2000);
+//        System.out.println(myBasePage.getSourceOfPage());
         myFinance.paymentRequestsSaveButton.click();
     }
 

@@ -290,7 +290,8 @@ public class FinanceScreen extends BasePage {
 
 
     //Save Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/saveButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/saveButton")
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
     @iOSXCUITFindBy(accessibility = "Save")
     public WebElement paymentRequestsSaveButton;
 
