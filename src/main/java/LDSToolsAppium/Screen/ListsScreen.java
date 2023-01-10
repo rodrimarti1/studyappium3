@@ -318,6 +318,7 @@ public class ListsScreen extends BasePage {
             elementX = listsAddMemberName.getLocation().getX();
             elementY = listsAddMemberName.getLocation().getY();
 
+            Thread.sleep(1000);
             TouchAction nameField = new TouchAction((PerformsTouchActions) driver.get()).press(PointOption.point(elementX, elementY)).release();
             nameField.perform();
 

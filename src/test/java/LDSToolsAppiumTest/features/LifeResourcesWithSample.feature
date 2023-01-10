@@ -15,7 +15,7 @@ Feature: Test Life Resources with Samples
       | Sample One                                                                                |
 
 
-  @cleanup @MQA-6691 @MQA-6682 @all @all1 @daily @daily1
+  @cleanup @MQA-6691 @MQA-6682 @all @all1 @daily @daily1 @jft
   Scenario: A leader views a Leadership only resource
     Given a "BISHOP" logs in and is on the Life Resources page
     When a "Sample One" is searched for in Life Resources
