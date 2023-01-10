@@ -38,7 +38,8 @@ public class SacramentAttendance extends BaseDriver {
         LOGGER.info("a " + memberCalling + " is on the Sacrament Attendance page");
         String[] callingRights;
         HelperMethods myHelper = new HelperMethods();
-        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+//        callingRights = myHelper.getMemberNameFromList(memberCalling, "Centinela 1st");
+        callingRights = myHelper.getMemberNameFromList(memberCalling, "Maplewood 2nd");
         myHelper.proxyLogin(callingRights[1]);
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.reports);
