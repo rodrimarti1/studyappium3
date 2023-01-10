@@ -13,9 +13,9 @@
 <!--        <parameter name="testDevice" value="RFCN80KVV5P" />  &lt;!&ndash; Samsung S20 &ndash;&gt;-->
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8555" />
-        <classes>
 
-            <class name="LDSToolsAppiumTest.testrunner.MoveInMoveOutRunner"> </class>
+        <classes>
+            <class name="LDSToolsAppiumTest.testrunner.LifeResourcesRunner"> </class>
         </classes>
     </test >
 
