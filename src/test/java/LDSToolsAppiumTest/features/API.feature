@@ -21,7 +21,6 @@
         | "BISHOP"  | "reports/sacrament-attendance"            | "Success" |
         | "BISHOP"  | "reports/class-quorum-attendance"         | "Success" |
         | "BISHOP"  | "reports/unit-statistics"                 | "Success" |
-        | "BISHOP"  | "reports/quarterly-report"                | "Success" |
         | "BISHOP"  | "reports/new-members"                     | "Success" |
         | "BISHOP"  | "reports/ministering-sisters"             | "Success" |
         | "BISHOP"  | "reports/ministering-brothers"            | "Success" |
@@ -52,7 +51,6 @@
         | "BISHOP"  | "organizations"                           | "Success" |
         | "BISHOP"  | "photos/members"                          | "Success" |
         | "BISHOP"  | "photos/returned-missionaries"            | "Success" |
-        | "BISHOP"  | "quarterly-reports"                       | "Success" |
         | "BISHOP"  | "record/access"                           | "Success" |
         | "BISHOP"  | "record/households"                       | "Success" |
         | "BISHOP"  | "record/ordinances/priesthood/recommends" | "Success" |
