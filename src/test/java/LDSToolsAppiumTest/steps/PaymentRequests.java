@@ -209,7 +209,8 @@ public class PaymentRequests extends BaseDriver {
     public void anUnfinishedPaymentRequestIsSelected() throws Exception {
         LOGGER.info("an unfinished payment request is selected");
         myMenu.selectMenu(myMenu.finance);
-        myFinance.financePaymentRequests.click();
+        myBasePage.waitForElementThenClick(myFinance.financePaymentRequests);
+//        myFinance.financePaymentRequests.click();
 //        System.out.println(myBasePage.getSourceOfPage());
         //Select payment
     }

@@ -15,7 +15,7 @@
         <parameter name="systemPort" value="8555" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.LifeResourceSampleRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.ListsRunner"> </class>
         </classes>
     </test >
 

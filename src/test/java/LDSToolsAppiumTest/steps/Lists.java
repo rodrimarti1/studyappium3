@@ -96,7 +96,9 @@ public class Lists extends BaseDriver  {
     public void iAddAList(String listName) throws Exception {
         myBasePage.waitForElementThenClick(myLists.listsAddList);
         myLists.listsName.sendKeys(listName);
-        myLists.listsOk.click();
+        myBasePage.waitForElementThenClick(myLists.listsOk);
+//        myLists.listsOk.click();
+        Thread.sleep(500);
     }
 
 

@@ -12,7 +12,7 @@
         | barker, susan |
       Then the "New Automated List" with the members should be displayed.
 
-    @MQA-5712 @MQA-2215 @all @all2 @daily @daily2
+    @MQA-5712 @MQA-2215 @all @all2 @daily @daily2 @jft
     Scenario: Create a list and add multiple members
       When I add a List "Test List 1"
       And members are added to the list
@@ -31,7 +31,7 @@
         | barker, susan |
       Then the "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" with the members should be displayed.
 
-    @MQA-5715 @MQA-2215 @all @all4 @daily @daily4 @jft
+    @MQA-5715 @MQA-2215 @all @all4 @daily @daily4
     Scenario: Create a list with odd characters
       When I add a List "!@#$%^&*(){}[]~~//??.,<>;;;;;"
       And members are added to the list

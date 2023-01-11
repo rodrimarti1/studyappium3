@@ -331,6 +331,7 @@ public class ListsScreen extends BasePage {
 
             TouchAction clickElement = new TouchAction((PerformsTouchActions) driver.get()).press(PointOption.point(elementX + 60, elementY + 200)).release();
             clickElement.perform();
+            Thread.sleep(500);
         }
     }
 

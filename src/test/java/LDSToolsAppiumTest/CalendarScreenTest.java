@@ -61,7 +61,7 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all4", "all", "smoke", "smoke4", "daily", "daily1", "jft"})
+    @Test (groups = {"all4", "all", "smoke", "smoke4", "daily", "daily1"})
     public void calendarSimple_BISHOP() throws Exception {
         calendarSimpleSub("BISHOP");
     }
@@ -208,7 +208,7 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all", "all4", "daily", "daily3"})
+    @Test (groups = {"all", "all4", "daily", "daily3", "jft"})
     public void calenderSubscriptions() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -235,6 +235,7 @@ public class CalendarScreenTest extends BaseDriver {
         myCalendar.checkCalendarToDisplay("Stake Calendar", "check");
         myBasePage.waitForElementThenClick(myCalendar.calendarsSubscriptionsDone);
         myBasePage.waitUnitlTextIsGone("Syncing");
+        myBasePage.waitUnitlTextIsGone("Saving");
         //Go back to the Calendar Main Page
         if (getRunningOS().equals("ios")) {
             myBasePage.waitForElementThenClick(myCalendar.calendarDone);
@@ -245,6 +246,7 @@ public class CalendarScreenTest extends BaseDriver {
         //Scroll up to refresh the calendar
         myBasePage.scrollUp(500);
         //Check the page source for Stake Event
+        Thread.sleep(5000);
 
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             pageSource = myBasePage.getSourceOfPage();
