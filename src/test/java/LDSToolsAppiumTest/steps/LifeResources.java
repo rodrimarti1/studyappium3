@@ -57,6 +57,10 @@ public class LifeResources extends BaseDriver {
     @Then("the information will be displayed")
     public void theInformationWillBeDisplayed(List<String> infoToCheck) throws Exception {
         pageSource = myBasePage.getSourceOfPage();
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.newScrollDownSlow();
+            pageSource = pageSource + myBasePage.getSourceOfPage();
+        }
         pageSource = pageSource.toLowerCase();
         for (String oneItem : infoToCheck ) {
             oneItem = oneItem.toLowerCase();
