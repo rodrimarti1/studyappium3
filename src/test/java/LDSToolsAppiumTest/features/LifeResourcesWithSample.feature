@@ -15,7 +15,7 @@ Feature: Test Life Resources with Samples
       | Sample One                                                                                |
 
 
-  @cleanup @MQA-6691 @MQA-6682 @all @all1 @daily @daily1 @jft
+  @cleanup @MQA-6691 @MQA-6682 @all @all1 @daily @daily1
   Scenario: A leader views a Leadership only resource
     Given a "BISHOP" logs in and is on the Life Resources page
     When a "Sample One" is searched for in Life Resources
@@ -31,7 +31,7 @@ Feature: Test Life Resources with Samples
 
 
 
-  @cleanup @MQA-6692 @MQA-6682 @all @all2 @daily @daily2
+  @cleanup @MQA-6692 @MQA-6682 @all @all2 @daily @daily2 @jft
   Scenario: A Stake Leader deletes a Life Resource
     Given a "STAKE_PRESIDENT" logs in and is on the Life Resources page
     When a "Sample Two" is searched for in Life Resources

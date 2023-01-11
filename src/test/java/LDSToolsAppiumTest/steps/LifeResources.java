@@ -64,7 +64,7 @@ public class LifeResources extends BaseDriver {
         pageSource = pageSource.toLowerCase();
         for (String oneItem : infoToCheck ) {
             oneItem = oneItem.toLowerCase();
-            System.out.println("Searcing for: " + oneItem);
+            System.out.println("Searching for: " + oneItem);
             Assert.assertTrue(pageSource.contains(oneItem));
         }
     }
