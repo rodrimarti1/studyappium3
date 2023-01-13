@@ -1,7 +1,7 @@
 @API
   Feature: API test for Quarterly Reports
 
-    @MQA-6724 @MQA-6341 @all @jft
+    @MQA-6724 @MQA-6341 @all
     Scenario Outline: Check <url> status code for <member>
       Given a <member> goes to the <url>
       Then the status should be <status>
