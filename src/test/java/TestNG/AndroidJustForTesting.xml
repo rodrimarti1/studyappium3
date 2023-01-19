@@ -16,7 +16,7 @@
 <!--        <parameter name="testDevice" value="emulator-5554" />-->
 <!--        <parameter name="testDevice" value="RFCN80KVV5P" />  &lt;!&ndash; Samsung S20 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="STF-Pool" />-->
-<!--        <parameter name="testDevice" value="STF-3656574f39553098" />-->
+<!--        <parameter name="testDevice" value="STF-R38M40A2GVM" />-->
         <parameter name="startSleepTime" value= "0200" />
         <parameter name="systemPort" value="8277" />
 
@@ -30,7 +30,7 @@
 
         <classes>
 <!--            <class name="LDSToolsAppiumTest.testrunner.SacramentAttendanceRunner"> </class>-->
-            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
 
         </classes>
     </test > <!-- Default test -->
