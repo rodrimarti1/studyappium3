@@ -30,7 +30,7 @@
 
         <classes>
 <!--            <class name="LDSToolsAppiumTest.testrunner.SacramentAttendanceRunner"> </class>-->
-            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
 
         </classes>
     </test > <!-- Default test -->
