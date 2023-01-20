@@ -2,6 +2,7 @@ package LDSToolsAppium;
 
 
 import LDSToolsAppium.Screen.DirectoryScreen;
+import LDSToolsAppium.Screen.MissionaryScreen;
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.*;
 
@@ -112,6 +113,10 @@ public class BasePage extends BaseDriver {
     //Return Key
     @iOSXCUITFindBy(accessibility = "Return")
     public WebElement keyboardReturn;
+
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
+    @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
+    public WebElement unitSelected;
 
 
 
@@ -1566,6 +1571,21 @@ public class BasePage extends BaseDriver {
             counter++;
         }
      }
+
+
+    public void changeUnit(String myUnit) throws Exception {
+        BasePage myBase = new BasePage(driver);
+
+        //Choose different Unit
+        unitSelected.click();
+        Thread.sleep(2000);
+        if (myBase.getOS().equalsIgnoreCase("ios")) {
+            driver.get().findElement(By.xpath("//*[contains(@name,'" + myUnit + "')]")).click();
+        } else {
+            driver.get().findElement(By.xpath("//*[contains(@text,'" + myUnit + "')]")).click();
+        }
+
+    }
 
 
 }

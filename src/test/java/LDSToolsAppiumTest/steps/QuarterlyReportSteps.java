@@ -59,28 +59,43 @@ public class QuarterlyReportSteps extends BaseDriver {
             myBasePage.clickByText(mySection.getName());
             pageSource = myBasePage.getSourceOfPage();
             if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                myBasePage.newScrollDown();
                 pageSource = pageSource + myBasePage.getSourceOfPage();
             }
             for (Entry myEntry : mySection.getEntries()) {
-                if (myEntry.getPotential().equals(null)) {
-                    String myActual = String.valueOf(myEntry.getActual());
-                    Assert.assertTrue(pageSource.contains(myActual));
-                } else {
-                    String myActual = String.valueOf(myEntry.getActual());
-                    String myPotential = String.valueOf(myEntry.getPotential());
-                    String actPot = myActual + " / " + myPotential + " Potential";
-                    Assert.assertTrue(pageSource.contains(actPot));
-                }
-
                 System.out.println(myEntry.getName());
                 System.out.println("Actual: "+ myEntry.getActual());
                 System.out.println("Potential: " + myEntry.getPotential());
+                if (myEntry.getActual() == null ) {
+                    System.out.println("Actual is NULL - skipping");
+                } else {
+                    if (myEntry.getPotential() == null) {
+                        String myActual = String.valueOf(myEntry.getActual());
+                        Assert.assertTrue(pageSource.contains(myActual));
+                    } else {
+                        String myActual = String.valueOf(myEntry.getActual());
+                        String myPotential = String.valueOf(myEntry.getPotential());
+                        String actPot = myActual + " / " + myPotential + " Potential";
+                        Assert.assertTrue(pageSource.contains(actPot));
+                    }
+                }
+
+
+
             }
-            System.out.println("******************************************");
+            myBasePage.backAltButton.click();
+            Thread.sleep(1000);
         }
     }
 
-
+    @Then("a {string} is selected for {string} the info will be correct")
+    public void aUnitNameIsSelectedForUnitNumberTheInfoWillBeCorrect(String unitName, String unitNumber) throws Exception {
+        myBasePage.waitForText("Adults"); //Sometimes the report takes a while to load.
+        myBasePage.changeUnit(unitName);
+        theQuarterlyReportInfoIsReceivedFor(unitNumber);
+        theQuarterlyReportInfoWillMatch();
+        Thread.sleep(500);
+    }
 
 
 
