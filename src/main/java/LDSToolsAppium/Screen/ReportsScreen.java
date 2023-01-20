@@ -844,7 +844,10 @@ public class ReportsScreen extends BasePage {
     public  WebElement moveRecordsDiscardButton;
 
 
-
+    //Quarterly Report Unit Selector
+    @AndroidFindBy(xpath ="//*[@text='Quarterly Report']")
+    @iOSXCUITFindBy(xpath ="//*[contains(@name, 'Quarterly Report')]")
+    public  WebElement unitSelectorQR;
 
 
 

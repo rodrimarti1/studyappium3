@@ -14,6 +14,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.time.LocalDate;
@@ -91,7 +92,7 @@ public class QuarterlyReportSteps extends BaseDriver {
     @Then("a {string} is selected for {string} the info will be correct")
     public void aUnitNameIsSelectedForUnitNumberTheInfoWillBeCorrect(String unitName, String unitNumber) throws Exception {
         myBasePage.waitForText("Adults"); //Sometimes the report takes a while to load.
-        myBasePage.changeUnit(unitName);
+        changeUnitQR(unitName);
         theQuarterlyReportInfoIsReceivedFor(unitNumber);
         theQuarterlyReportInfoWillMatch();
         Thread.sleep(500);
@@ -124,6 +125,21 @@ public class QuarterlyReportSteps extends BaseDriver {
         myQR = apiTest.getQuarterlyReport(userName, unit, yearString, quarter);
 
 //        return myQR;
+
+    }
+
+    public void changeUnitQR(String myUnit) throws Exception {
+        BasePage myBase = new BasePage(driver);
+
+        //Choose different Unit
+
+        myReports.unitSelectorQR.click();
+        Thread.sleep(2000);
+        if (myBase.getOS().equalsIgnoreCase("ios")) {
+            driver.get().findElement(By.xpath("//*[contains(@name,'" + myUnit + "')]")).click();
+        } else {
+            driver.get().findElement(By.xpath("//*[contains(@text,'" + myUnit + "')]")).click();
+        }
 
     }
 

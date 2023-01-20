@@ -2,7 +2,7 @@
   Feature: Test Quarterly Report and Report Submission
 
 
-    Scenario: Verify Quarterly Report info
+    Scenario: Verify Quarterly Report info Bishop
       Given a "BISHOP" logs in
       And is on the Quarterly Report page
       When the Quarterly Report info is received for "39373"
@@ -24,8 +24,9 @@
       And is on the Quarterly Report page
       Then a <unitName> is selected for <unitNumber> the info will be correct
       Examples:
-        | unitName    | unitNumber |
-        | "MacGregor" | "221562"   |
+        | unitName      | unitNumber |
+        | "MacGregor"   | "221562"   |
+#        | "Braes Bayou" | "230324"   |
 
       #Not sure about this. I don't want to send a bunch of reminders out, maybe just verify that it is possible
     Scenario: Stake member send reminder
