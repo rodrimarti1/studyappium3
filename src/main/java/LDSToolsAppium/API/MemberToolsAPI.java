@@ -1320,6 +1320,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 myMap.put("username", foundMember.getUsername());
                 myMap.put("member", foundMember.getMember());
                 myMap.put("homeUnits", foundMember.getHomeUnits());
+//                System.out.println("USERNAME: " + foundMember.getUsername());
+//                System.out.println("MEMBER: " +  foundMember.getMember());
                 for(PositionAccount positions: foundMember.getPositions()) {
                     if (positions.getId().equals(accountInt)) {
                         memberNames.add(foundMember.getUsername());

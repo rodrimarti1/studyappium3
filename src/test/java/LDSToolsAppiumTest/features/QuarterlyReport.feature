@@ -19,14 +19,21 @@
       Then the Quarterly Report will be sent
 
     @jft
-    Scenario Outline: Stake member verify info
+    Scenario: Stake member verify info
       Given a "STAKE_PRESIDENT" logs in
       And is on the Quarterly Report page
-      Then a <unitName> is selected for <unitNumber> the info will be correct
-      Examples:
-        | unitName      | unitNumber |
-        | "MacGregor"   | "221562"   |
-#        | "Braes Bayou" | "230324"   |
+      Then a unit is selected the info will be correct
+        | MacGregor,221562          |
+        | Braes Bayou,230324        |
+        | Hermann Park,354538        |
+        | Houston 1st,140732        |
+        | Houston 2nd,167002        |
+        | Houston 9th,239372        |
+        | Maplewood 2nd,39373       |
+        | Memorial Park 1st,157007  |
+        | Memorial Park 2nd,2023806 |
+        | West University,2099969   |
+
 
       #Not sure about this. I don't want to send a bunch of reminders out, maybe just verify that it is possible
     Scenario: Stake member send reminder

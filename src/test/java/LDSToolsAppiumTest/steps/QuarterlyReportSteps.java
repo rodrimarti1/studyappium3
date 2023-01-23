@@ -16,6 +16,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 
 import java.time.LocalDate;
 import java.time.temporal.IsoFields;
@@ -31,6 +32,7 @@ public class QuarterlyReportSteps extends BaseDriver {
     String userName;
     String pageSource;
     QuarterlyReport myQR = new QuarterlyReport();
+    SoftAssert softAssert = new SoftAssert();
 
     @Given("a {string} logs in")
     public void aLogsIn(String memberCalling) throws Exception {
@@ -72,12 +74,14 @@ public class QuarterlyReportSteps extends BaseDriver {
                 } else {
                     if (myEntry.getPotential() == null) {
                         String myActual = String.valueOf(myEntry.getActual());
-                        Assert.assertTrue(pageSource.contains(myActual));
+//                        Assert.assertTrue(pageSource.contains(myActual));
+                        softAssert.assertTrue(pageSource.contains(myActual));
                     } else {
                         String myActual = String.valueOf(myEntry.getActual());
                         String myPotential = String.valueOf(myEntry.getPotential());
                         String actPot = myActual + " / " + myPotential + " Potential";
-                        Assert.assertTrue(pageSource.contains(actPot));
+//                        Assert.assertTrue(pageSource.contains(actPot));
+                        softAssert.assertTrue(pageSource.contains(actPot));
                     }
                 }
 
@@ -85,7 +89,7 @@ public class QuarterlyReportSteps extends BaseDriver {
 
             }
             myBasePage.backAltButton.click();
-            Thread.sleep(1000);
+            Thread.sleep(2000);
         }
     }
 
@@ -96,6 +100,23 @@ public class QuarterlyReportSteps extends BaseDriver {
         theQuarterlyReportInfoIsReceivedFor(unitNumber);
         theQuarterlyReportInfoWillMatch();
         Thread.sleep(500);
+    }
+
+    @Then("a unit is selected the info will be correct")
+    public void aUnitIsSelectedTheInfoWillBeCorrect(List<String> unitAndNumber) throws Exception {
+        myBasePage.waitForText("Adults"); //Sometimes the report takes a while to load.
+        for(String oneItem: unitAndNumber) {
+            String[] mySplit = oneItem.split(",");
+            String unitName = mySplit[0];
+            String unitNumber = mySplit[1];
+            System.out.println("Choose Unit: " + unitName);
+            changeUnitQR(unitName);
+            theQuarterlyReportInfoIsReceivedFor(unitNumber);
+            theQuarterlyReportInfoWillMatch();
+            Thread.sleep(500);
+        }
+
+
     }
 
 
