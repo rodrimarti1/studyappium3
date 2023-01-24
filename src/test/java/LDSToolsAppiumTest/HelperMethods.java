@@ -115,7 +115,7 @@ public class HelperMethods extends BaseDriver {
             driver.get().findElement(By.xpath("//XCUIElementTypeButton[@name='Clear text']")).click();
             Thread.sleep(6000);
 
-            driver.get().findElement(By.xpath("//XCUIElementTypeTextField[@label='Address']")).sendKeys("membertools://user/" + proxyUserName);
+            driver.get().findElement(By.xpath("//XCUIElementTypeTextField[@label='Address']")).sendKeys("membertools://user/" + proxyUserName + "/stage");
             Thread.sleep(2000);
             driver.get().findElement(By.xpath("//*[@name='Go']")).click();
             Thread.sleep(6000);
@@ -123,7 +123,7 @@ public class HelperMethods extends BaseDriver {
         } else {
             driver.get().get("https://www.google.com");
             Thread.sleep(2000);
-            driver.get().get("membertools://user/" + proxyUserName);
+            driver.get().get("membertools://user/" + proxyUserName + "/stage");
             Thread.sleep(3000);
         }
     }
