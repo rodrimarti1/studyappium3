@@ -127,5 +127,6 @@
     <orderEntry type="library" name="Maven: org.json:json:20220924" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.11.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: commons-lang:commons-lang:2.6" level="project" />
+    <orderEntry type="library" name="Maven: org.jboss.aerogear:aerogear-otp-java:1.0.0" level="project" />
   </component>
 </module>

@@ -9,6 +9,7 @@ import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
 import org.apache.commons.codec.binary.Base64;
 
+import org.jboss.aerogear.security.otp.Totp;
 import org.jsoup.nodes.Element;
 
 import org.openqa.selenium.By;
@@ -40,11 +41,15 @@ public class HelperMethods extends BaseDriver {
         setupUAT(myTemp);
 
         myLoginPage.loginName.clear();
-        myLoginPage.passWord.clear();
-
         myLoginPage.loginName.sendKeys(userName);
+
+        myLoginPage.nextButton.click();
+
+        myLoginPage.passWord.clear();
         myLoginPage.passWord.sendKeys(password);
-        myLoginPage.signInButton.click();
+
+        myLoginPage.nextButton.click();
+//        myLoginPage.signInButton.click();
         Thread.sleep(1000);
 
         long startTime = System.nanoTime();
@@ -81,8 +86,8 @@ public class HelperMethods extends BaseDriver {
     }
 
     private void iosDeepLink(String proxyUserName) throws Exception {
-        setupUAT(proxyUserName);
-//        deepLinkSelector(proxyUserName);
+//        setupUAT(proxyUserName);
+        deepLinkSelector(proxyUserName);
     }
 
     private void iosDeepLinkProd(String proxyUserName) throws Exception {
@@ -125,6 +130,7 @@ public class HelperMethods extends BaseDriver {
             Thread.sleep(2000);
             driver.get().get("membertools://user/" + proxyUserName + "/stage");
             Thread.sleep(3000);
+//            driver.get().findElement(By.xpath("//*[@name='Open']")).click();
         }
     }
 
@@ -136,6 +142,7 @@ public class HelperMethods extends BaseDriver {
         LoginPageScreen myLoginPage = new LoginPageScreen(driver);
         SettingsScreen mySettings = new SettingsScreen(driver);
         String loginName = "zmaxfield";
+//        String loginName = "membertoolsqa";
 
 
         String deviceName;
@@ -156,6 +163,7 @@ public class HelperMethods extends BaseDriver {
 //            Thread.sleep(2000);
             myBasePage.allowButton.click();
         }
+
 
         byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
@@ -194,12 +202,19 @@ public class HelperMethods extends BaseDriver {
         LOGGER.info("Clear login and password");
         myBasePage.waitForElement(myLoginPage.loginName);
         myLoginPage.loginName.clear();
-        myLoginPage.passWord.clear();
-
-
         myLoginPage.loginName.sendKeys(loginName);
+        myLoginPage.nextButton.click();
+
+        myBasePage.waitForElement(myLoginPage.passWord);
         myLoginPage.passWord.sendKeys(new String(decodeBytes));
-        myLoginPage.signInButton.click();
+        myLoginPage.nextButton.click();
+
+        myBasePage.waitForElement(myLoginPage.twoFactorEdit);
+        myLoginPage.twoFactorEdit.sendKeys(twoFactorTest()); //GET CODE
+        myLoginPage.nextButton.click();
+
+
+//        myLoginPage.signInButton.click();
         Thread.sleep(500);
 
         long startTime = System.nanoTime();
@@ -266,6 +281,16 @@ public class HelperMethods extends BaseDriver {
 
 
         Thread.sleep(1000);
+    }
+
+    public String twoFactorTest() throws Exception {
+
+        String otpKeyStr = "UUNGBUABKKZUUENH"; // <- this 2FA secret key.
+
+        Totp totp = new Totp(otpKeyStr);
+        String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
+        System.out.println(twoFactorCode);
+        return twoFactorCode;
     }
 
     public void syncTimeWriter( long duration) throws Exception {

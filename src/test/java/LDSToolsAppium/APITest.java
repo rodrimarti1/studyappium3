@@ -22,6 +22,7 @@ import LDSToolsAppium.API.QuarterlyReport.Section;
 import LDSToolsAppiumTest.steps.Expenses;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
+import org.jboss.aerogear.security.otp.Totp;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -455,7 +456,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -619,6 +620,28 @@ public class APITest {
 //        memberList = apiTest.getReportNames("bradyduck", "111074");
 
 
+    }
+
+    @Test
+    public void encodeDecodeTest() throws Exception {
+        // Encode data on your side using BASE64
+        String str = "Sn@k3Sp172022";
+        byte[] bytesEncoded = Base64.encodeBase64(str.getBytes());
+        System.out.println("encoded value is " + new String(bytesEncoded));
+
+         // Decode data on other side, by processing encoded data
+        byte[] valueDecoded = Base64.decodeBase64(bytesEncoded);
+        System.out.println("Decoded value is " + new String(valueDecoded));
+    }
+
+//    @Test
+    public void twoFactorTest() throws Exception {
+
+        String otpKeyStr = "UUNGBUABKKZUUENH"; // <- this 2FA secret key.
+
+        Totp totp = new Totp(otpKeyStr);
+        String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
+        System.out.println(twoFactorCode);
     }
 
 

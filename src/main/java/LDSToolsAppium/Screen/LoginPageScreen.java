@@ -50,6 +50,17 @@ public class LoginPageScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther/XCUIElementTypeSecureTextField")
     public  WebElement passWord;
 
+    //Next Button
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/nextButton")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Next\"]")
+    public  WebElement nextButton;
+
+    //2Factor Edit Field
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/codeEditText")
+    @iOSXCUITFindBy(iOSNsPredicate = "type == \"XCUIElementTypeTextField\"")
+    public  WebElement twoFactorEdit;
+
+
     //Sign In Button
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/ldsAccountSignInButton")
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/ldsAccountSignInButton")
