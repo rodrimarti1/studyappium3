@@ -544,7 +544,9 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("newCommandTimeout", 5000);
 
 
-            capabilities.setCapability("appWaitActivity", "org.lds.ldstools.ux.auth.AuthenticationSignInActivity");
+//            capabilities.setCapability("appWaitActivity", "org.lds.ldstools.ux.auth.AuthenticationSignInActivity");
+            capabilities.setCapability("appWaitActivity", "org.lds.ldstools.ux.auth.SignInActivity");
+
 //            capabilities.setCapability("appWaitActivity", "org.lds.ldstools.ux.main.MainActivity");
             capabilities.setCapability("appWaitDuration", 300000);
 //            capabilities.setCapability("normalizeTagNames", true);

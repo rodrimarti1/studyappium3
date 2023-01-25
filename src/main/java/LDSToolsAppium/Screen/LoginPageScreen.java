@@ -24,7 +24,8 @@ public class LoginPageScreen extends BasePage {
 
 
     //Member Tools Heading
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Member Tools']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Member Tools']")
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/lane_change")
 //    @AndroidFindBy(xpath = "//*[@text='Member Tools']")
     public WebElement titleMemberTools;
 

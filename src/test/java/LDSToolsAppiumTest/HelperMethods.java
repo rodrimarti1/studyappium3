@@ -170,9 +170,11 @@ public class HelperMethods extends BaseDriver {
             iosDeepLink(proxyUserName);
 //            loginName = "zmaxfield/stage/" + proxyUserName;
         } else {
-            while(!myBasePage.checkForElement(myLoginPage.titleMemberToolsSTAGE)|| myCounter > 4) {
+            String myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
+            while(!myLane.equalsIgnoreCase("STAGE")|| myCounter > 4) {
 //                System.out.println(myBasePage.getSourceOfPage());
                 myBasePage.waitForElementThenClick(myLoginPage.titleMemberTools);
+                myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
 //                myLoginPage.titleMemberTools.click();
                 myCounter++;
             }
