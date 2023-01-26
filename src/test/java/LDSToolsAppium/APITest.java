@@ -456,7 +456,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-//    @Test
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -474,6 +474,7 @@ public class APITest {
 
 //         *********************************
         List<String> callingAndLoginName = new ArrayList<String>();
+        List<String> deepLink = new ArrayList<String>();
         Map<String, String> unitMap = new HashMap<String, String>();
         unitMap.put("4", "BISHOP");
         unitMap.put("54", "BISHOPRIC_FIRST_COUNSELOR");
@@ -525,14 +526,24 @@ public class APITest {
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
+                deepLink.add(unitMap.get(callingId) + " MemberTools://user/" + myUsername + "/stage");
             }
         }
 
         Collections.sort(callingAndLoginName);
+        Collections.sort(deepLink);
 
         for (String loginWithCalling : callingAndLoginName) {
             System.out.println(loginWithCalling);
         }
+
+        System.out.println("*********************************************************");
+
+        for (String deepLinkMember : deepLink) {
+            System.out.println(deepLinkMember);
+        }
+
+
 
         //        //Accounts!!
 ////        memberList = apiTest.getAccounts("39373", "183");
@@ -622,10 +633,10 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void encodeDecodeTest() throws Exception {
         // Encode data on your side using BASE64
-        String str = "Sn@k3Sp172022";
+        String str = "ldsM0b1l3";
         byte[] bytesEncoded = Base64.encodeBase64(str.getBytes());
         System.out.println("encoded value is " + new String(bytesEncoded));
 

@@ -98,6 +98,8 @@ public class HelperMethods extends BaseDriver {
 
     private void deepLinkSelector(String proxyUserName) throws Exception {
         String appName;
+        BasePage myBasePage = new BasePage(driver);
+        LoginPageScreen myLoginPage = new LoginPageScreen(driver);
         appName = driver.get().getCapabilities().getCapability("app").toString();
         System.out.println("App: "  + appName);
 
@@ -130,7 +132,9 @@ public class HelperMethods extends BaseDriver {
             Thread.sleep(2000);
             driver.get().get("membertools://user/" + proxyUserName + "/stage");
             Thread.sleep(3000);
-//            driver.get().findElement(By.xpath("//*[@name='Open']")).click();
+            if (myBasePage.checkForElement(myLoginPage.deepLinkOpen)) {
+                myLoginPage.deepLinkOpen.click();
+            }
         }
     }
 
@@ -200,6 +204,10 @@ public class HelperMethods extends BaseDriver {
         if (myBasePage.checkForElement(myLoginPage.cancelPass)){
             myLoginPage.cancelPass.click();
         }
+
+//        if (myBasePage.checkForElement(myLoginPage.startPageSignInButton)) {
+//            myLoginPage.startPageSignInButton.click();
+//        }
 
         LOGGER.info("Clear login and password");
         myBasePage.waitForElement(myLoginPage.loginName);

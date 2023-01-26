@@ -33,6 +33,10 @@ public class LoginPageScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Member Tools - STAGE']")
     public WebElement titleMemberToolsSTAGE;
 
+    //Start Page Sign In Button
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton/XCUIElementTypeStaticText[@name=\" Sign In \"]")
+    public WebElement startPageSignInButton;
+
 
     //Member Tools Heading TEST
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Member Tools - TEST']")
@@ -61,6 +65,10 @@ public class LoginPageScreen extends BasePage {
     @iOSXCUITFindBy(iOSNsPredicate = "type == \"XCUIElementTypeTextField\"")
     public  WebElement twoFactorEdit;
 
+
+    //Deep Link Open
+    @iOSXCUITFindBy(xpath = "//*[@name='Open']")
+    public  WebElement deepLinkOpen;
 
     //Sign In Button
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/ldsAccountSignInButton")
