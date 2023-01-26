@@ -175,9 +175,11 @@ public class HelperMethods extends BaseDriver {
 //            loginName = "zmaxfield/stage/" + proxyUserName;
         } else {
             String myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
+            Thread.sleep(500);
             while(!myLane.equalsIgnoreCase("STAGE")|| myCounter > 4) {
 //                System.out.println(myBasePage.getSourceOfPage());
                 myBasePage.waitForElementThenClick(myLoginPage.titleMemberTools);
+                Thread.sleep(500);
                 myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
 //                myLoginPage.titleMemberTools.click();
                 myCounter++;
