@@ -77,11 +77,12 @@ public class API {
 
     @Then("the status should be {string}")
     public void theStatusShouldBeStatus(String status) throws Exception {
+
         if (status.equalsIgnoreCase("Success")) {
-            Assert.assertTrue(urlStatus >= 200 && urlStatus <= 299);
+            Assert.assertTrue(urlStatus >= 200 && urlStatus <= 299, "STATUS: " + urlStatus);
         }
         if (status.equalsIgnoreCase("Error")) {
-            Assert.assertTrue(urlStatus >= 400);
+            Assert.assertTrue(urlStatus >= 400, "STATUS: " + urlStatus);
         }
     }
 
