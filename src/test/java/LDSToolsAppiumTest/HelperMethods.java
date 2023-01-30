@@ -223,10 +223,35 @@ public class HelperMethods extends BaseDriver {
         myLoginPage.nextButton.click();
         Thread.sleep(1300);
 
-        myBasePage.waitForElement(myLoginPage.twoFactorEdit);
-        myLoginPage.twoFactorEdit.sendKeys(twoFactorTest()); //GET CODE
-        myLoginPage.nextButton.click();
-        Thread.sleep(1300);
+        boolean twoFactor = true;
+        int twoFactorCounter = 1;
+
+        do {
+            myBasePage.waitForElement(myLoginPage.twoFactorEdit);
+            myLoginPage.twoFactorEdit.clear();
+            myLoginPage.twoFactorEdit.sendKeys(twoFactorTest()); //GET CODE
+            myLoginPage.nextButton.click();
+            Thread.sleep(2000);
+            pageSource = myBasePage.getSourceOfPage();
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                if (pageSource.contains("Invalid Passcode")) {
+                    twoFactor = true;
+                    twoFactorCounter++;
+                } else {
+                    twoFactor = false;
+                }
+            } else {
+                if (pageSource.contains("Try another way to sign in")) {
+                    twoFactor = true;
+                    twoFactorCounter++;
+                    myLoginPage.twoFactorBack.click();
+                } else {
+                    twoFactor = false;
+                }
+            }
+        } while ((twoFactor) && (twoFactorCounter < 4));
+
+
 
 
 //        myLoginPage.signInButton.click();

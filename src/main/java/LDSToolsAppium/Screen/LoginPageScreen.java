@@ -65,6 +65,9 @@ public class LoginPageScreen extends BasePage {
     @iOSXCUITFindBy(iOSNsPredicate = "type == \"XCUIElementTypeTextField\"")
     public  WebElement twoFactorEdit;
 
+    //2Factory Back Button
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/backButton")
+    public WebElement twoFactorBack;
 
     //Deep Link Open
     @iOSXCUITFindBy(xpath = "//*[@name='Open']")

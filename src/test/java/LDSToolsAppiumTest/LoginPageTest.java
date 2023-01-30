@@ -33,7 +33,7 @@ public class LoginPageTest extends BaseDriver {
             Assert.assertTrue(myPageSource.contains("Sign In"));
         } else {
             Assert.assertTrue(myPageSource.contains("Tools"));
-            //Have to do a case insensitive test for Android 5.0 doesn't handle case correctly
+            //Have to do a case-insensitive test for Android 5.0 doesn't handle case correctly
             Assert.assertTrue(myPageSource.toLowerCase().contains("sign in"));
             Assert.assertTrue(myPageSource.toLowerCase().contains("having trouble signing in"));
             Assert.assertTrue(myPageSource.toLowerCase().contains("create an account"));
