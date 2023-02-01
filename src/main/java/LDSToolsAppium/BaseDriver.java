@@ -694,6 +694,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 //            capabilities.setCapability("simpleIsVisibleCheck", true);
 
             capabilities.setCapability("wdaLocalPort", tempPort);
+            capabilities.setCapability("showXcodeLog", false);
 
 //            capabilities.setCapability("appium:useNewWDA", true);
 

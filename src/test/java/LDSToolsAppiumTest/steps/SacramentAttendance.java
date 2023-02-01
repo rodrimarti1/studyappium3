@@ -257,7 +257,7 @@ public class SacramentAttendance extends BaseDriver {
     public WebElement getSunday(String elementName) throws Exception {
         WebElement returnElement = null;
         List<String> sundayNumber = getSundaysInCurrentMonth();
-        Thread.sleep(1000);
+        Thread.sleep(1500);
         switch(elementName) {
             case "First Date Field":
                 if (myBasePage.getOS().equalsIgnoreCase("ios")) {
@@ -312,7 +312,7 @@ public class SacramentAttendance extends BaseDriver {
         return returnElement;
     }
 
-    public List<String> getSundaysInCurrentMonth() {
+    public List<String> getSundaysInCurrentMonth() throws Exception {
         List<Date> disable = new ArrayList<>();
         List<String> sundayNumber = new ArrayList<>();
         String myDay;
@@ -320,6 +320,10 @@ public class SacramentAttendance extends BaseDriver {
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.DAY_OF_MONTH, 1);
         int month = cal.get(Calendar.MONTH);
+        System.out.println("MONTH: " + month);
+        //Override the month for last week of the current month loads the next month
+//        month = findMonthFromApp();
+
         do {
             int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
             if (dayOfWeek == Calendar.SUNDAY)
@@ -334,12 +338,37 @@ public class SacramentAttendance extends BaseDriver {
 //            fmt.format(date).toString();
 //            System.out.println(justDay.format(date));
             myDay = justDay.format(date);
-//            System.out.println("Day: " + myDay);
+            System.out.println("Day: " + myDay);
             sundayNumber.add(myDay);
         }
 
         return sundayNumber;
 
+    }
+
+    public int findMonthFromApp() throws Exception {
+        int monthNumber = 0;
+        int myCounter = 0;
+        String[] monthName = {"january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"};
+
+        List<WebElement> findMonthName = driver.get().findElements(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeStaticText"));
+
+        for (WebElement oneElement: findMonthName) {
+            String nameAttribute = oneElement.getAttribute("name");
+            nameAttribute = nameAttribute.toLowerCase();
+//            System.out.println("Name: " + nameAttribute);
+            while (myCounter <= 11) {
+//                System.out.println("Checking: " + monthName[myCounter]);
+                if (nameAttribute.contains(monthName[myCounter])) {
+                    monthNumber = myCounter + 1;
+                    System.out.println("Found Month: " + monthName[myCounter] + " Number: " + monthNumber);
+
+                }
+                myCounter++;
+            }
+            myCounter = 0;
+        }
+        return monthNumber;
     }
 
     public void sacramentAttendanceCleanUp() throws Exception {
