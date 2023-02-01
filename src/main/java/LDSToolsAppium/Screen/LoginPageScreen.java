@@ -113,7 +113,7 @@ public class LoginPageScreen extends BasePage {
     public WebElement loginErrorMessage;
 
     //Trouble Signing In?
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/ldsAccountLoginForgotCredentialsButton")
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/forgotButton")
 //    @iOSXCUITFindBy(accessibility = "Having trouble signing in?")
     @iOSXCUITFindBy(accessibility = "Need help signing in?")
     public  WebElement troubleSigningIn;
