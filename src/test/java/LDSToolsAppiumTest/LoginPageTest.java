@@ -14,7 +14,7 @@ public class LoginPageTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all2", "all", "login", "daily", "daily1"})
+    @Test (groups = {"deprecated"})
     public void validateLoginPage() throws Exception {
         String myPageSource;
         BasePage myBasePage = new BasePage(driver);
@@ -44,7 +44,7 @@ public class LoginPageTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all3", "all", "login", "smoke", "smoke3", "daily", "daily1", "jft"})
+    @Test (groups = {"deprecated"})
     public void validateLoginPageLinks() throws Exception {
         String myPageSource;
         BasePage myBasePage = new BasePage(driver);
@@ -111,37 +111,37 @@ public class LoginPageTest extends BaseDriver {
     }
 
     // ******************* Invalid Password Tests *******************
-    @Test (groups = {"all3", "all", "login"})
+    @Test (groups = {"deprecated"})
     public void invalidPasswordTest1() throws Exception {
         invalidCheck("zmaxfield", "<login>");
     }
 
-    @Test ( groups = {"all4", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidPasswordTest2() throws Exception {
         invalidCheck("zmaxfield", "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     }
 
-    @Test ( groups = {"all1", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidPasswordTest3() throws Exception {
         invalidCheck("zmaxfield", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     }
 
-    @Test ( groups = {"all2", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidPasswordTest4() throws Exception {
         invalidCheck("zmaxfield", "/password/");
     }
 
-    @Test ( groups = {"all3", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidPasswordTest5() throws Exception {
         invalidCheck("zmaxfield", "!@#$%%^&**())__+_!@@!#!$%#@%^*&%&*(^*()(&(&*(%^&$#%@$!#$%$#^#$%^^&*(^%}|{|{|}{|}{|}{}|{|}{}|{|}{||||}|{}{|}{");
     }
 
-    @Test ( groups = {"all4", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidPasswordTest6() throws Exception {
         invalidCheck("zmaxfield", "select * from directory");
     }
 
-    @Test ( groups = {"all1", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidPasswordTest7() throws Exception {
         invalidCheck("zmaxfield", " toolstester");
     }
@@ -150,41 +150,41 @@ public class LoginPageTest extends BaseDriver {
     // ******************* Invalid Username Tests *******************
 
 
-    @Test ( groups = {"all4", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameTest1() throws Exception {
         invalidCheck("Invalidtest1234", "toolstester");
     }
 
 
 
-    @Test ( groups = {"all1", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameTest2() throws Exception {
         invalidCheck("Invalidtest1234123123", "password1");
     }
 
 
 
-    @Test ( groups = {"all2", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameTest3() throws Exception {
         invalidCheck("********", "isjlsdkj");
     }
 
 
 
-    @Test ( groups = {"all3", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameTest4() throws Exception {
         invalidCheck("select * from directory", "password1");
     }
 
 
-    @Test ( groups = {"all4", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameTest5() throws Exception {
         invalidCheck("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&", "password1");
     }
 
 
 
-    @Test ( groups = {"all1", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameTest6() throws Exception {
         invalidCheck("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", "password1");
     }
@@ -201,32 +201,32 @@ public class LoginPageTest extends BaseDriver {
 
 
     // ******************* Invalid Username and Password Tests *******************
-    @Test ( groups = {"all1", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameAndPasswordTest1() throws Exception {
         invalidCheck("sfjksdjissldjskldjslfjslfj", "toolste@#@$#^#$&%*%*&ster");
     }
 
-    @Test ( groups = {"all2", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameAndPasswordTest2() throws Exception {
         invalidCheck("HanSolo", "<><><><><><><><><>");
     }
 
-    @Test ( groups = {"all3", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameAndPasswordTest3() throws Exception {
         invalidCheck("This is a bad username test", "This is a bad password test");
     }
 
-    @Test ( groups = {"all4", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameAndPasswordTest4() throws Exception {
         invalidCheck("select * from directory", "^^^^^^^^^^^^");
     }
 
-    @Test ( groups = {"all1", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameAndPasswordTest5() throws Exception {
         invalidCheck("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&", "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
     }
 
-    @Test ( groups = {"all2", "all", "login"})
+    @Test ( groups = {"deprecated"})
     public void invalidUsernameAndPasswordTest6() throws Exception {
         invalidCheck("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%");
     }

@@ -6,8 +6,10 @@ import LDSToolsAppium.BasePage;
 
 import LDSToolsAppium.Screen.LoginPageScreen;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.apache.commons.codec.binary.Base64;
 import org.testng.Assert;
 
@@ -30,7 +32,6 @@ public class OktaLoginSteps extends BaseDriver {
     @Then("the elements will be displayed")
     public void theElementsWillBeDisplayed() throws Exception {
         pageSource = myBasePage.getSourceOfPage();
-        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
 
         Assert.assertTrue(pageSource.contains("Sign In"));
         Assert.assertTrue(pageSource.contains("Username"));
@@ -40,10 +41,8 @@ public class OktaLoginSteps extends BaseDriver {
         } else {
             Assert.assertTrue(pageSource.contains("Forgot your username?"));
         }
-        myLogin.loginName.clear();
-        myLogin.loginName.sendKeys("zmaxfield");
-        myLogin.nextButton.click();
-        Thread.sleep(1300);
+
+        goodUserName("zmaxfield");
 
         //Password Page
         pageSource = myBasePage.getSourceOfPage();
@@ -58,11 +57,7 @@ public class OktaLoginSteps extends BaseDriver {
             Assert.assertTrue(pageSource.contains("NEXT"));
         }
 
-
-        myBasePage.waitForElement(myLogin.passWord);
-        myLogin.passWord.sendKeys(new String(decodeBytes));
-        myLogin.nextButton.click();
-        Thread.sleep(1300);
+        goodPassword();
 
         //2-Step Verification
         pageSource = myBasePage.getSourceOfPage();
@@ -87,19 +82,71 @@ public class OktaLoginSteps extends BaseDriver {
         browserBack();
         myBasePage.waitForText("Sign In");
         //Terms of use
+        Thread.sleep(500);
         myLogin.termsOfUse.click();
+        Thread.sleep(1000);
         myBasePage.waitForText("Terms of Use");
         Assert.assertTrue(pageSource.contains("Terms of Use"));
+        Thread.sleep(500);
         browserBack();
         myBasePage.waitForText("Sign In");
         //Privacy Notice
         myLogin.privacyNotice.click();
+        Thread.sleep(1000);
         myBasePage.waitForText("Privacy Notice");
         Assert.assertTrue(pageSource.contains("Privacy Notice"));
         browserBack();
         myBasePage.waitForText("Sign In");
 
 
+    }
+
+    @When("user name {string} is entered")
+    public void userNameUserNameIsEntered(String userName) throws Exception {
+        goodUserName(userName);
+    }
+
+    @And("a password {string} is entered")
+    public void aPasswordInvalidPasswordIsEntered(String passWord) throws Exception {
+        customPassword(passWord);
+    }
+
+    @Then("an invalid password error will be displayed")
+    public void anInvalidPasswordErrorWillBeDisplayed() throws Exception {
+        pageSource = myBasePage.getSourceOfPage();
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            Assert.assertTrue(pageSource.contains("Invalid Password"));
+        } else {
+            Assert.assertTrue(pageSource.contains("Invalid password"));
+        }
+        myLogin.passWord.clear();
+    }
+
+    @When("a valid username and password are entered")
+    public void aValidUsernameAndPasswordAreEntered() throws Exception {
+        goodUserName("zmaxfield");
+        goodPassword();
+    }
+
+    @And("an {string} is entered")
+    public void anInvalidTwoFactorIsEntered(String twoFactor) throws Exception {
+        myBasePage.waitForElement(myLogin.twoFactorEdit);
+        myLogin.twoFactorEdit.clear();
+        myLogin.twoFactorEdit.sendKeys(twoFactor);
+        myLogin.nextButton.click();
+        Thread.sleep(2000);
+    }
+
+    @Then("an invalid two factor error will be displayed")
+    public void anInvalidTwoFactorErrorWillBeDisplayed() throws Exception {
+        pageSource = myBasePage.getSourceOfPage();
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            Assert.assertTrue(pageSource.contains("Invalid Passcode"));
+        } else {
+            Assert.assertTrue(pageSource.contains("Try another way to sign in"));
+            myLogin.twoFactorBack.click();
+        }
+        myLogin.twoFactorEdit.clear();
     }
 
     public void browserBack() throws Exception {
@@ -109,6 +156,29 @@ public class OktaLoginSteps extends BaseDriver {
             myLogin.doneButton.click();
         }
     }
+
+    public void goodUserName(String userName) throws Exception {
+        myLogin.loginName.clear();
+        myLogin.loginName.sendKeys(userName);
+        myLogin.nextButton.click();
+        Thread.sleep(1300);
+    }
+
+    public void goodPassword() throws Exception {
+        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
+        myBasePage.waitForElement(myLogin.passWord);
+        myLogin.passWord.sendKeys(new String(decodeBytes));
+        myLogin.nextButton.click();
+        Thread.sleep(1300);
+    }
+
+    public void customPassword(String passWord) throws Exception {
+        myBasePage.waitForElement(myLogin.passWord);
+        myLogin.passWord.sendKeys(passWord);
+        myLogin.nextButton.click();
+        Thread.sleep(1300);
+    }
+
 
 
 }

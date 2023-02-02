@@ -126,9 +126,9 @@ public class LoginPageScreen extends BasePage {
     public  WebElement privacyNotice;
 
     //Terms of Use
-    @AndroidFindBy(xpath = "//*[contains(@text, 'Terms of Use (Updated 2018-09-01)')]")
-//    @iOSXCUITFindBy(accessibility = "Terms of Use (Updated 2018-09-01)")
-    @iOSXCUITFindBy(accessibility = "Terms of Use (Updated 2021-04-13)")
+    @AndroidFindBy(xpath = "//*[contains(@text, 'Terms of Use')]")
+//    @iOSXCUITFindBy(accessibility = "Terms of Use (Updated 2021-04-13)")
+    @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Terms of Use')]")
     public  WebElement termsOfUse;
 
     //Cancel Button
