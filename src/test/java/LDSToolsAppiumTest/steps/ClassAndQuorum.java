@@ -103,9 +103,9 @@ public class ClassAndQuorum extends BaseDriver {
     public void weekOneIsMarkedAttended() throws Exception {
         LOGGER.info("week one is marked attended");
         Thread.sleep(1000);
-        clearAllAttendance("Anderson, Lisa");
+        clearAllAttendance("Barton, Reilly");
         Thread.sleep(1000);
-        searchClassAndQuorum("Anderson, Lisa");
+        searchClassAndQuorum("Barton, Reilly");
         Thread.sleep(500);
         getWeekElement("week1", "main").click();
     }
@@ -116,7 +116,7 @@ public class ClassAndQuorum extends BaseDriver {
         LOGGER.info("week one will have a check mark");
         myBasePage.backButton.click();
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
-        searchClassAndQuorum("Anderson, Lisa");
+        searchClassAndQuorum("Barton, Reilly");
         Assert.assertTrue(getWeekAttendanceStatus("week1", "main").equalsIgnoreCase("attended"));
         //Clean Up
         Thread.sleep(500);
