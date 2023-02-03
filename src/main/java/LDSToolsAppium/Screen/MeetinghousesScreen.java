@@ -52,7 +52,8 @@ public class MeetinghousesScreen extends BasePage {
 
     //Current Location
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/my_location_fab")
-    @iOSXCUITFindBy(accessibility = "icon current location")
+//    @iOSXCUITFindBy(accessibility = "icon current location")
+    @iOSXCUITFindBy(accessibility = "location services")
     public WebElement meetinghousesCurrentLocation;
 
 
@@ -62,7 +63,7 @@ public class MeetinghousesScreen extends BasePage {
 
     //Map Types
     @AndroidFindBy(xpath ="//android.widget.TextView[@text='Map Types']")
-    @iOSXCUITFindBy(accessibility = "icon info")
+    @iOSXCUITFindBy(accessibility = "info")
     public WebElement meetinghousesMapTypes;
 
         //Map Types - Road

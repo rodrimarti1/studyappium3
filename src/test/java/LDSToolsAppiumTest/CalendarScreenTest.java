@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class CalendarScreenTest extends BaseDriver {
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily3"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily3", "jft"})
     public void calendarScreenCheck() throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
@@ -48,8 +48,10 @@ public class CalendarScreenTest extends BaseDriver {
 
         myBasePage.waitForElementThenClick(myCalendar.calendarSubscriptions);
         Thread.sleep(2000);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myBasePage.waitUnitlTextIsGone("Downloading");
+        }
         pageSource = myBasePage.getSourceOfPage();
-
         Assert.assertTrue(pageSource.contains("All calendars"));
         Assert.assertTrue(myCalendar.calendarsSubscriptionsDone.isDisplayed());
         Assert.assertTrue(myCalendar.calendarsSubscriptionsCancel.isDisplayed());
@@ -208,7 +210,7 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all", "all4", "daily", "daily3", "jft"})
+    @Test (groups = {"all", "all4", "daily", "daily3"})
     public void calenderSubscriptions() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();

@@ -41,6 +41,7 @@ public class MeetinghousesScreenTest extends BaseDriver {
             myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesAllowAndroidPermissions);
         }
 
+
         myBasePage.waitForElement(myMeetinghouses.meetinghousesCurrentLocation);
         Assert.assertTrue(myMeetinghouses.meetinghousesCurrentLocation.isDisplayed());
         myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesCurrentLocation);
@@ -48,6 +49,7 @@ public class MeetinghousesScreenTest extends BaseDriver {
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMoreOptions);
         }
+//        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMapTypes);
 
         Assert.assertTrue(myMeetinghouses.meetinghousesMapTypesRoad.isDisplayed());
