@@ -15,7 +15,7 @@ import java.util.List;
 public class MinisteringScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"})
     public void ministeringScreenCheck() throws Exception {
         String pageSource;
         List<String> memberList = new ArrayList<String>();
@@ -33,7 +33,8 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
         myMenu.selectMenu(myMenu.reports);
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+        myBasePage.waitForElement(myMinistering.ministeringBrothersReport);
         pageSource = myBasePage.getSourceOfPage();
 
 
@@ -678,7 +679,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4"})
     public void companionshipsElders_BISHOP() throws Exception {
         companionshipsEldersSub("BISHOP");
     }
