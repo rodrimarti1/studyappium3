@@ -1,13 +1,13 @@
 @OktaLogin
   Feature: Test Login with Okta
 
-    @MQA-6790 @MQA-2214 @all @all4 @daily @daily4 @smoke @smoke4 @jft
+    @MQA-6790 @MQA-2214 @all @all4 @daily @daily4 @smoke @smoke4
     Scenario: Validate login page elements
       When a user opens the app
       Then the elements will be displayed
 
       #Bug in Android - links are not loading
-    @MQA-6791 @MQA-2214 @all @all3 @daily @daily3 @smoke @smoke3
+    @MQA-6791 @MQA-2214 @all @all3 @daily @daily3 @smoke @smoke3 @jft
     Scenario: Validate login page links
       When a user opens the app
       Then the links will be valid
