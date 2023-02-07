@@ -25,6 +25,7 @@ import okhttp3.RequestBody;
 import org.jboss.aerogear.security.otp.Totp;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import io.restassured.path.json.JsonPath;
 

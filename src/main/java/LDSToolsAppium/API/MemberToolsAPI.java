@@ -18,6 +18,10 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -33,7 +37,9 @@ import java.lang.reflect.Type;
 public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     Response householdAPI = null;
-    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/";
+    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"; //OLD
+//    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/"; //NEW
+//    String baseURL;
 
 
     //Login credentials for the API
@@ -70,9 +76,9 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     public Request requestURL() {
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/organizations?units=21628")
+                .url(baseURL + "organizations?units=21628")
 //                .url("https://identity-util-service-int.churchofjesuschrist.org/api/checkSession")
-//                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/user")
+//                .url(baseURL + "user")
                 .addHeader("X-Proxy-User" , "mbthomas74")
                 .build();
         return request;
@@ -342,7 +348,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/organizations?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "organizations?units="+ unitNumber, proxyLogin );
 
         if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -381,7 +387,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestURLNoProxyUser("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/admin/users/accounts?positions=" + position + "&units="+ unitNumber );
+        Request request = requestURLNoProxyUser(baseURL + "admin/users/accounts?positions=" + position + "&units="+ unitNumber );
 
 //        if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -422,7 +428,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/households?units=" + unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
 
 
         if (!householdFile.exists()) {
@@ -463,7 +469,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/reports?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "reports?units="+ unitNumber, proxyLogin );
 
         if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -499,7 +505,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         String responseData = "";
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/quarterly-reports?units="+ unitNumber + "&year=" + year + "&quarter=" + quarter, proxyLogin );
+        Request request = requestProxyURL(baseURL + "quarterly-reports?units="+ unitNumber + "&year=" + year + "&quarter=" + quarter, proxyLogin );
 
         try (Response response = httpClient.newCall(request).execute()) {
             assert response.body() != null;
@@ -514,7 +520,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         String responseData = "";
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "life-resources?units="+ unitNumber, proxyLogin );
 
         try (Response response = httpClient.newCall(request).execute()) {
             assert response.body() != null;
@@ -530,7 +536,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         int responseCode = 0;
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin); //Stage
+        Request request = requestProxyURL(baseURL + apiService, proxyLogin); //Stage
 //        Request request = requestProxyURL("https://wam-membertools-api-test.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin); //Test
 //        Request request = requestProxyURL("https://wam-membertools-api.churchofjesuschrist.org/api/v4/"+apiService, proxyLogin); //Prod - doesn't work
 
@@ -558,7 +564,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         String responseData = "";
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/reports?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "reports?units="+ unitNumber, proxyLogin );
         Headers resHeader;
 
 
@@ -597,7 +603,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/reports/unit-statistics?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "reports/unit-statistics?units="+ unitNumber, proxyLogin );
 
         if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -637,7 +643,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/reports/action-interviews?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "reports/action-interviews?units="+ unitNumber, proxyLogin );
 
         if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -677,7 +683,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/missionaries?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "missionaries?units="+ unitNumber, proxyLogin );
 
         if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -717,7 +723,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/covenant-path?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "covenant-path?units="+ unitNumber, proxyLogin );
 
         if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -756,7 +762,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "finances/expenses?units="+ unitNumber, proxyLogin );
 
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -813,7 +819,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/lists")
+                .url(baseURL + "lists")
                 .addHeader("X-Proxy-User" , proxyUser)
                 .post(body)
                 .build();
@@ -848,7 +854,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .delete()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/lists/" + listUuid)
+                .url(baseURL + "lists/" + listUuid)
                 .addHeader("X-Proxy-User" , proxyUser)
                 .build();
 
@@ -876,7 +882,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
 
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/lists")
+                .url(baseURL + "lists")
                 .addHeader("X-Proxy-User" , proxyLogin)
                 .build();
 
@@ -912,7 +918,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/reports/class-quorum-attendance?units="+ unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "reports/class-quorum-attendance?units="+ unitNumber, proxyLogin );
 
 
         try (Response response = httpClient.newCall(request).execute()) {
@@ -1155,8 +1161,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/reimbursement")
-//                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses")
+                .url(baseURL + "finances/reimbursement")
+//                .url(baseURL + "finances/expenses")
                 .addHeader("X-Proxy-User" , proxyUser)
 //                .header("Content-Type", "application/json; charset=UTF-8")
                 .post(multiBody)
@@ -1241,7 +1247,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses/" + expenseId)
+                .url(baseURL + "finances/expenses/" + expenseId)
                 .addHeader("X-Proxy-User" , proxyUser)
 //                .header("Content-Type", "application/json; charset=UTF-8")
                 .put(multiBody)
@@ -1272,7 +1278,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .delete()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/finances/expenses/" + expenseId + "?type=" + expenseType)
+                .url(baseURL + "finances/expenses/" + expenseId + "?type=" + expenseType)
                 .addHeader("X-Proxy-User" , proxyUser)
                 .build();
 
@@ -1546,7 +1552,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     public String getNameFromUuid( String uuidPersonal, String unitNumber, String proxyLogin, String returnType) throws IOException {
         proxyLogin = "mbthomas74";
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/households?units=" + unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
         JsonParser parser = new JsonParser();
         String responseData;
 //        String myPositions = "";
@@ -1614,7 +1620,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     //TODO: make this return MAP to get all info?
     public List<String> getPersonalInfoFromName( String memberToFind, String unitNumber, String proxyLogin) throws IOException {
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/households?units=" + unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
         JsonParser parser = new JsonParser();
         String responseData;
 //        String myPositions = "";
@@ -1666,7 +1672,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     public String getUdidFromName( String memberToFind, String unitNumber, String proxyLogin) throws IOException {
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/households?units=" + unitNumber, proxyLogin );
+        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
         JsonParser parser = new JsonParser();
         String responseData;
 //        String myPositions = "";
@@ -1758,7 +1764,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/admin/ordinances/priesthood")
+                .url(baseURL + "admin/ordinances/priesthood")
                 .addHeader("X-Proxy-User" , "mbthomas74")
                 .post(body)
                 .build();
@@ -2408,7 +2414,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources")
+                .url(baseURL + "life-resources")
                 .addHeader("X-Proxy-User", proxyUser)
                 .post(body)
                 .build();
@@ -2438,7 +2444,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .delete()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources/" + myResource.getUuid())
+                .url(baseURL + "life-resources/" + myResource.getUuid())
                 .addHeader("X-Proxy-User" , proxyUser)
                 .build();
 
@@ -2471,7 +2477,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
-                .url("https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/life-resources/" + lifeResource.getUuid())
+                .url(baseURL + "life-resources/" + lifeResource.getUuid())
                 .addHeader("X-Proxy-User", proxyUser)
                 .put(body)
                 .build();
