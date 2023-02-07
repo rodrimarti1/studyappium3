@@ -29,7 +29,7 @@
 
 
 
-    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2 @jft
+    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2
     Scenario: As a Bishopric member I should be able to mark a members attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When week one is marked attended
@@ -49,7 +49,7 @@
       When a member record is selected
       Then the individual attendance should be displayed
 
-    @MQA-3522 @all @all1 @daily @daily1
+    @MQA-3522 @all @all1 @daily @daily1  @jft
     Scenario Outline: As a leader I should be able to search for members in Class and Quorum Attendance
       Given a <leader> logs in and is on the Class and Quorum Attendance page
       When a <memberRecordElder> is searched for
@@ -64,10 +64,10 @@
       Then the member <memberRecordPrimary> will <willPrimary> be displayed
       Examples:
         | leader                     | memberRecordElder | willElder | memberRecordRS   | willRS  | memberRecordAaronic | willAaronic | memberRecordYW     | willYW  | memberRecordPrimary | willPrimary |
-        | "BISHOP"                   | "Bryson, David"   | "true"    | "Anderson, Lisa" | "true"  | "Crumby, Traevon"   | "true"      | "Chappell, Audrey" | "true"  | "Sosa, Kailey"      | "true"      |
-        | "ELDERS_QUORUM_PRESIDENT"  | "Bryson, David"   | "true"    | "Anderson, Lisa" | "false" | "Crumby, Traevon"   | "false"     | "Chappell, Audrey" | "false" | "Sosa, Kailey"      | "false"     |
-        | "RELIEF_SOCIETY_PRESIDENT" | "Bryson, David"   | "false"   | "Anderson, Lisa" | "true"  | "Crumby, Traevon"   | "false"     | "Chappell, Audrey" | "false" | "Sosa, Kailey"      | "false"     |
-        | "YOUNG_WOMEN_PRESIDENT"    | "Bryson, David"   | "false"   | "Anderson, Lisa" | "false" | "Crumby, Traevon"   | "false"     | "Chappell, Audrey" | "true"  | "Sosa, Kailey"      | "true"      |
+        | "BISHOP"                   | "Bryson, David"   | "true"    | "Carter, Tanya" | "true"  | "Crumby, Traevon"   | "true"      | "Chappell, Audrey" | "true"  | "Sosa, Kailey"      | "true"      |
+        | "ELDERS_QUORUM_PRESIDENT"  | "Bryson, David"   | "true"    | "Carter, Tanya" | "false" | "Crumby, Traevon"   | "false"     | "Chappell, Audrey" | "false" | "Sosa, Kailey"      | "false"     |
+        | "RELIEF_SOCIETY_PRESIDENT" | "Bryson, David"   | "false"   | "Carter, Tanya" | "true"  | "Crumby, Traevon"   | "false"     | "Chappell, Audrey" | "false" | "Sosa, Kailey"      | "false"     |
+        | "YOUNG_WOMEN_PRESIDENT"    | "Bryson, David"   | "false"   | "Carter, Tanya" | "false" | "Crumby, Traevon"   | "false"     | "Chappell, Audrey" | "true"  | "Sosa, Kailey"      | "true"      |
 #        | "YOUNG_WOMEN_SECOND_COUNSELOR"    | "Bryson, David"       | "false"    |  "Adams, Maegan Fudge" | "false" | "Crumby, Traevon"      | "false"      |"Chappell, Audrey" | "true"    | "Sosa, Kailey"       | "true"      |
 #        | "SUNDAY_SCHOOL_PRESIDENT"         | "Bryson, David"       | "true"     |  "Adams, Maegan Fudge" | "true"  | "Crumby, Traevon"      | "true"       |"Chappell, Audrey" | "true"    | "Sosa, Kailey"       | "false"      |
 #        | "SUNDAY_SCHOOL_FIRST_COUNSELOR"   | "Bryson, David"       | "true"     |  "Adams, Maegan Fudge" | "true"  | "Crumby, Traevon"      | "true"       |"Chappell, Audrey" | "true"    | "Sosa, Kailey"       | "false"      |
