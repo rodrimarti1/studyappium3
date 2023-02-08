@@ -1,11 +1,10 @@
 package LDSToolsAppium.API;
 
 
+import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
-import LDSToolsAppium.API.QuarterlyReport.Convert;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
-import LDSToolsAppium.API.QuarterlyReport.Section;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.*;
 
@@ -18,10 +17,6 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import org.apache.commons.codec.binary.Base64;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -1008,6 +1003,56 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         }
 
         return foundExpense;
+    }
+
+    // ZZZZZZZZZZZZz
+    public List<ApiFinanceMethod> getAllExpenses2(String proxyLogin, String unitNumber) throws Exception {
+        JsonParser parser = new JsonParser();
+        String responseData;
+        List<String> foundExpense = null;
+        Gson gson = new Gson();
+        LDSToolsAppium.API.Expenses.Expense allExpense = new LDSToolsAppium.API.Expenses.Expense();
+        List<ApiFinanceMethod> getAllTheExpenses = null;
+
+//        Type apiFinance = new TypeToken<ArrayList<LDSToolsAppium.API.Expenses.Expense>>(){}.getType();
+        Type apiFinance = new TypeToken<ArrayList<ApiFinanceMethod>>() {
+        }.getType();
+        responseData = getFinanceExpenses(unitNumber, proxyLogin);
+
+        JsonElement jsonElement = parser.parse(responseData);
+
+
+        if (jsonElement instanceof JsonObject) {
+            allExpense = gson.fromJson(jsonElement, LDSToolsAppium.API.Expenses.Expense.class);
+        } else if (jsonElement instanceof JsonArray) {
+            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+//            List<LDSToolsAppium.API.Expenses.Expense> getAllTheExpenses = gson.fromJson(jsonElement, apiFinance);
+            getAllTheExpenses = gson.fromJson(jsonElement, apiFinance);
+//            System.out.println(getAllTheExpenses);
+//            System.out.println("SIZE: " + getAllTheExpenses.size());
+
+//            for (ApiFinanceMethod oneExpense : getAllTheExpenses) {
+//                System.out.println("Unit Number: " + oneExpense.getUnitNumber());
+//                System.out.println("Month: " + oneExpense.getMonth());
+//                for (LDSToolsAppium.API.Expenses.Expense testExp : oneExpense.getExpenses()) {
+//                    System.out.println("ID: " + testExp.getId());
+//                    System.out.println("Status: " + testExp.getStatus());
+//                    System.out.println("Purpose: " + testExp.getPurpose());
+//                    System.out.println("Payee: " + testExp.getPayee());
+//                    System.out.println("Account ID: " + testExp.getAccountId());
+//                    System.out.println("Submitted By: " + testExp.getSubmittedBy());
+//                    System.out.println("Submitted Date: " + testExp.getSubmittedDate());
+//                }
+//
+//
+//            }
+
+
+        }
+
+
+        return getAllTheExpenses;
     }
 
     public Map<String, Object> getExpensesDetail(String proxyLogin, String unitNumber, String purposeSearch) throws Exception {

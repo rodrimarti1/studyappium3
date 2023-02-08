@@ -30,7 +30,7 @@
 
         <classes>
 <!--            <class name="LDSToolsAppiumTest.testrunner.SacramentAttendanceRunner"> </class>-->
-            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
 
         </classes>
     </test > <!-- Default test -->

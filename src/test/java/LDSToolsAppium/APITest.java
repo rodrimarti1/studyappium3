@@ -1,12 +1,14 @@
 package LDSToolsAppium;
 
 import LDSToolsAppium.API.ApiFinanceDetail;
+import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
+import LDSToolsAppium.API.Expenses.Payee;
 import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
 import LDSToolsAppium.API.LifeResources.Tag;
 import LDSToolsAppium.API.MemberToolsAPI;
-//import LDSToolsAppium.API.ApiFinance;
+//import LDSToolsAppium.API.ApiFinanceMethod;
 //import com.google.gson.Gson;
 //import com.google.gson.JsonElement;
 //import com.google.gson.JsonParser;
@@ -382,19 +384,41 @@ public class APITest {
 
     }
 
-//    @Test
+    @Test
     public void getAllExpensesForUnit() throws Exception {
         Map<String, Object> myMap = new HashMap<>();
-        List<String> expenseList = new ArrayList<>();
+//        List<String> expenseList = new ArrayList<>();
+        List<ApiFinanceMethod> expenseList = null;
         //Search for expense id by purpose?
         String value;
 
-        expenseList = apiTest.getAllExpenses("mbthomas74", "21628");
-        if (!expenseList.isEmpty()) {
-            for (String expenseStatus: expenseList) {
-                System.out.println(expenseStatus);
+//        expenseList = apiTest.getAllExpenses("mbthomas74", "21628");
+//        if (!expenseList.isEmpty()) {
+//            for (String expenseStatus: expenseList) {
+//                System.out.println(expenseStatus);
+//            }
+//        }
+
+        expenseList = apiTest.getAllExpenses2("mbthomas74", "21628");
+
+        for (ApiFinanceMethod oneMonthExpense : expenseList) {
+            System.out.println("Unit Number: " + oneMonthExpense.getUnitNumber());
+            System.out.println("Month: " + oneMonthExpense.getMonth());
+            System.out.println("*****************************************");
+            for (LDSToolsAppium.API.Expenses.Expense testExp : oneMonthExpense.getExpenses()) {
+                System.out.println("ID: " + testExp.getId());
+                System.out.println("Status: " + testExp.getStatus());
+                System.out.println("Purpose: " + testExp.getPurpose());
+                System.out.println("Account ID: " + testExp.getAccountId());
+//                System.out.println("Submitted By Name: " + testExp.getSubmittedBy().getName()); //Can be null
+                System.out.println("Submitted Date: " + testExp.getSubmittedDate());
+                System.out.println("Payee Name: " + testExp.getPayee().getName());
+                System.out.println("Payee ID: " + testExp.getPayee().getId());
             }
+
+
         }
+
 
     }
 
@@ -457,7 +481,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;

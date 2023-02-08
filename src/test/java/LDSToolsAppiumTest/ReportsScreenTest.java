@@ -16,7 +16,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -325,9 +325,11 @@ public class ReportsScreenTest extends BaseDriver {
         myBasePage.waitForElementThenClick(myReports.unbaptizedMembersReport);
 
         Thread.sleep(2000);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(2000);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(2000);
 
         pageSource = myBasePage.getSourceOfPage();
@@ -339,7 +341,7 @@ public class ReportsScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all2", "all", "report", "daily", "daily3"})
+    @Test (groups = {"all2", "all", "report", "daily", "daily3", "jft"})
     public void reportsActionAndInterviewReports() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -361,13 +363,15 @@ public class ReportsScreenTest extends BaseDriver {
         Thread.sleep(2000);
 
         checkActionAndInterviewApi("Children Approaching Baptism Age",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         //Unbaptized Members
         myBasePage.waitForElementThenClick(myReports.unbaptizedMembersReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Unbaptized Members",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
 
         //Overdue Aaronic Priesthood Ordinations
@@ -375,7 +379,8 @@ public class ReportsScreenTest extends BaseDriver {
         myBasePage.waitForElementThenClick(myReports.overdueAaronicPriesthoodOrdinationsReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Overdue Aaronic Priesthood Ordinations",memberLogin,unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         //Young Single Adult Interview
 //        myBasePage.scrollToText("Young Single Adult Interview");
@@ -385,38 +390,44 @@ public class ReportsScreenTest extends BaseDriver {
         myBasePage.waitForElementThenClick(myReports.youngSingleAdultInterviewsReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Young Single Adult Interviews",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         //Bishops Youth Interviews
         myBasePage.waitForElementThenClick(myReports.bishopsYouthInterviewsReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Bishop’s Youth Interviews",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         //Bishops Counselor Youth Interviews
         myBasePage.waitForElementThenClick(myReports.bishopricCounselorYouthInterviewsReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Bishopric Counselor Youth Interviews",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         //Young Men Approaching Mission Age
         myBasePage.waitForElementThenClick(myReports.youngMenApproachingMissionAgeReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Young Men Approaching Mission Age",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         //Men Who Have Not Served a Mission
         myBasePage.waitForElementThenClick(myReports.menWhoHaveNotServedaMissionReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Men Who Have Not Served a Mission",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
 
         //Potential Missionary Couples
         myBasePage.waitForElementThenClick(myReports.potentialMissionaryCouplesReport);
         Thread.sleep(2000);
         checkActionAndInterviewApi("Potential Missionary Couples",memberLogin, unitNumber);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
     }
 
