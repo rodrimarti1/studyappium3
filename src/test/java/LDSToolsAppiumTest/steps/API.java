@@ -387,8 +387,5 @@ public class API {
 
 
 
-//    public API() {
-//        Given("^a <member> account checks the Class and Quorum Attendance right$", () -> {
-//        });
-//    }
+
 }

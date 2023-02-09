@@ -1,8 +1,8 @@
 @API
   Feature: API test for Life Resources
 
-    @MQA-6669 @MQA-6341 @all @jft
-    Scenario Outline: Check <url> status code for <member>
+    @MQA-6669 @MQA-6341 @all
+    Scenario Outline: Check <url> status code for <member> Life Resource
       Given a <member> goes to the <url>
       Then the status should be <status>
       Examples:

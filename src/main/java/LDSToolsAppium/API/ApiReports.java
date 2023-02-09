@@ -1,6 +1,8 @@
 package LDSToolsAppium.API;
 
 import java.util.List;
+
+import LDSToolsAppium.API.Households.Member;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

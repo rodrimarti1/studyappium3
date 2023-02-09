@@ -4,7 +4,7 @@
     <test name="API Testing - Cucumber" >
         <classes>
 <!--            <class name="LDSToolsAppiumTest.testrunner.APIRunner"> </class>-->
-            <class name="LDSToolsAppiumTest.testrunner.APIRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.APIRunnerJFT"> </class>
         </classes>
     </test >
 </suite>

@@ -1,13 +1,13 @@
 package LDSToolsAppium;
 
-import LDSToolsAppium.API.ApiFinanceDetail;
+import LDSToolsAppium.API.*;
 import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
-import LDSToolsAppium.API.Expenses.Payee;
+import LDSToolsAppium.API.Expenses.Charge;
+import LDSToolsAppium.API.Households.ApiHousehold;
+import LDSToolsAppium.API.Households.Member;
 import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
-import LDSToolsAppium.API.LifeResources.Tag;
-import LDSToolsAppium.API.MemberToolsAPI;
 //import LDSToolsAppium.API.ApiFinanceMethod;
 //import com.google.gson.Gson;
 //import com.google.gson.JsonElement;
@@ -22,29 +22,14 @@ import LDSToolsAppium.API.QuarterlyReport.Entry;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
 import LDSToolsAppium.API.QuarterlyReport.Section;
 import LDSToolsAppiumTest.steps.Expenses;
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import org.jboss.aerogear.security.otp.Totp;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import io.restassured.path.json.JsonPath;
 
-import java.awt.*;
-import java.io.File;
-import java.lang.reflect.Type;
-import java.math.BigInteger;
-import java.nio.charset.StandardCharsets;
-import java.security.Permission;
 import java.util.*;
 import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
-
-
-import static io.restassured.RestAssured.*;
-import static org.hamcrest.Matchers.*;
 
 
 public class APITest {
@@ -399,7 +384,7 @@ public class APITest {
 //            }
 //        }
 
-        expenseList = apiTest.getAllExpenses2("mbthomas74", "21628");
+        expenseList = apiTest.getAllExpenses2("dsoneil", "39373");
 
         for (ApiFinanceMethod oneMonthExpense : expenseList) {
             System.out.println("Unit Number: " + oneMonthExpense.getUnitNumber());
@@ -414,12 +399,31 @@ public class APITest {
                 System.out.println("Submitted Date: " + testExp.getSubmittedDate());
                 System.out.println("Payee Name: " + testExp.getPayee().getName());
                 System.out.println("Payee ID: " + testExp.getPayee().getId());
+                System.out.println("Member Uuid ID: " + testExp.getPayee().getMemberUuid());
+                System.out.println("Member MRN: " + testExp.getPayee().getMemberMrn());
+
+                for(Charge testCharge : testExp.getCharges()) {
+                    System.out.println("Category ID: " + testCharge.getCategoryId());
+                    System.out.println("Amount: " + testCharge.getAmount());
+                }
             }
-
-
         }
+    }
 
-
+//    @Test
+    public void getExpenseDetail() throws Exception {
+        String value;
+        Map<String, Object> myMap = new HashMap<>();
+        myMap =  apiTest.getExpensesDetail("mbthomas74", "21628", "zzz test zzz");
+        for (String mapKey: myMap.keySet()) {
+                String key = mapKey.toString();
+                if (myMap.get(mapKey) == null) {
+                    value = "";
+                } else {
+                    value = myMap.get(mapKey).toString();
+                }
+                System.out.println(key + " - " + value);
+            }
     }
 
 //            PENDING_PRINT
@@ -681,6 +685,25 @@ public class APITest {
         Totp totp = new Totp(otpKeyStr);
         String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
         System.out.println(twoFactorCode);
+    }
+
+//    @Test
+    public void getHouseholdInfoForUnit() throws Exception {
+        List<ApiHousehold> allHouseholds = new ArrayList<>();
+        allHouseholds =  apiTest.getHouseholdInfo( "39373", "dsoneil");
+//        System.out.println(allHouseholds);
+        for(ApiHousehold household: allHouseholds) {
+            System.out.println(" ");
+            System.out.println("************************************************");
+            System.out.println("Household Display Name: " + household.getDisplayName());
+            System.out.println("Household Uuid: " + household.getUuid());
+            for(Member oneMember: household.getMembers()) {
+                System.out.println("Display Name: " + oneMember.getDisplayName());
+                System.out.println("Uuid: " + oneMember.getUuid());
+            }
+            System.out.println("************************************************");
+            System.out.println(" ");
+        }
     }
 
 

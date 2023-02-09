@@ -2,6 +2,11 @@ package LDSToolsAppium.API;
 
 
 import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
+import LDSToolsAppium.API.Expenses.Expense;
+import LDSToolsAppium.API.Households.ApiHousehold;
+import LDSToolsAppium.API.Households.Member;
+import LDSToolsAppium.API.Households.Ordinance;
+import LDSToolsAppium.API.Households.Position;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
@@ -417,7 +422,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     public String getHouseholdJson (String unitNumber, String proxyLogin) throws IOException {
-        proxyLogin = "mbthomas74";
+//        proxyLogin = "mbthomas74";
         String responseData = "";
         File householdFile = new File("ConfigFiles/households" + unitNumber + ".json");
         StringBuilder contentBuilder = new StringBuilder();
@@ -968,42 +973,42 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return listMap;
     }
 
-    public List<String> getAllExpenses(String proxyLogin, String unitNumber) throws Exception {
-        JsonParser parser = new JsonParser();
-        String responseData;
-        Gson gson = new Gson();
-        ApiFinance myFinance = new ApiFinance();
-//        HashMap myMap = new HashMap();
-        Map<String, Object> myMap = new HashMap<>();
-//        ArrayList<String> memberNames = new ArrayList<String>();
-//        List<String> foundExpense = null;
-        List<String> foundExpense = new ArrayList<String>();
-        Type apiFinance = new TypeToken<ArrayList<ApiFinance>>(){}.getType();
-        responseData = getFinanceExpenses(unitNumber, proxyLogin);
-//        System.out.println("Response String: " + responseData);
-        JsonElement jsonElement = parser.parse(responseData);
-
-        if (jsonElement instanceof JsonObject) {
-//            System.out.println("JSON Object!");
-            myFinance = gson.fromJson(jsonElement, ApiFinance.class);
-
-
-        } else if (jsonElement instanceof JsonArray) {
-            System.out.println("JSON Array!");
-            JsonArray jsonData = jsonElement.getAsJsonArray();
-            List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
-            for(ApiFinance unit : testExpenses) {
-                List<Expense> myExpenses = unit.getExpenses();
-                for (Expense myFinanceRequest: myExpenses) {
-//                    foundExpense.add(myFinanceRequest.getPurpose());
-                    foundExpense.add(myFinanceRequest.getStatus());
-                    System.out.println(myFinanceRequest.getType());
-                }
-            }
-        }
-
-        return foundExpense;
-    }
+//    public List<String> getAllExpenses(String proxyLogin, String unitNumber) throws Exception {
+//        JsonParser parser = new JsonParser();
+//        String responseData;
+//        Gson gson = new Gson();
+//        ApiFinance myFinance = new ApiFinance();
+////        HashMap myMap = new HashMap();
+//        Map<String, Object> myMap = new HashMap<>();
+////        ArrayList<String> memberNames = new ArrayList<String>();
+////        List<String> foundExpense = null;
+//        List<String> foundExpense = new ArrayList<String>();
+//        Type apiFinance = new TypeToken<ArrayList<ApiFinance>>(){}.getType();
+//        responseData = getFinanceExpenses(unitNumber, proxyLogin);
+////        System.out.println("Response String: " + responseData);
+//        JsonElement jsonElement = parser.parse(responseData);
+//
+//        if (jsonElement instanceof JsonObject) {
+////            System.out.println("JSON Object!");
+//            myFinance = gson.fromJson(jsonElement, ApiFinance.class);
+//
+//
+//        } else if (jsonElement instanceof JsonArray) {
+//            System.out.println("JSON Array!");
+//            JsonArray jsonData = jsonElement.getAsJsonArray();
+//            List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
+//            for(ApiFinance unit : testExpenses) {
+//                List<Expense> myExpenses = unit.getExpenses();
+//                for (Expense myFinanceRequest: myExpenses) {
+////                    foundExpense.add(myFinanceRequest.getPurpose());
+//                    foundExpense.add(myFinanceRequest.getStatus());
+//                    System.out.println(myFinanceRequest.getType());
+//                }
+//            }
+//        }
+//
+//        return foundExpense;
+//    }
 
     // ZZZZZZZZZZZZz
     public List<ApiFinanceMethod> getAllExpenses2(String proxyLogin, String unitNumber) throws Exception {
@@ -1055,44 +1060,46 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return getAllTheExpenses;
     }
 
+    //Todo: change to return an object
     public Map<String, Object> getExpensesDetail(String proxyLogin, String unitNumber, String purposeSearch) throws Exception {
         JsonParser parser = new JsonParser();
         String responseData;
         Gson gson = new Gson();
-        ApiFinance myFinance = new ApiFinance();
+        ApiFinanceMethod myFinance = new ApiFinanceMethod();
 //        HashMap myMap = new HashMap();
         Map<String, Object> myMap = new HashMap<>();
 //        ArrayList<String> memberNames = new ArrayList<String>();
         List<String> foundExpense = null;
-        Type apiFinance = new TypeToken<ArrayList<ApiFinance>>(){}.getType();
+        Type apiFinance = new TypeToken<ArrayList<ApiFinanceMethod>>(){}.getType();
         responseData = getFinanceExpenses(unitNumber, proxyLogin);
 //        System.out.println("Response String: " + responseData);
         JsonElement jsonElement = parser.parse(responseData);
 
         if (jsonElement instanceof JsonObject) {
 //            System.out.println("JSON Object!");
-            myFinance = gson.fromJson(jsonElement, ApiFinance.class);
+            myFinance = gson.fromJson(jsonElement, ApiFinanceMethod.class);
 
 
         } else if (jsonElement instanceof JsonArray) {
             System.out.println("JSON Array!");
             JsonArray jsonData = jsonElement.getAsJsonArray();
-            List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
-            for(ApiFinance unit : testExpenses) {
-                List<Expense> myExpenses = unit.getExpenses();
-                for (Expense myFinanceRequest: myExpenses) {
+            List<ApiFinanceMethod> testExpenses = gson.fromJson(jsonElement, apiFinance);
+            for(ApiFinanceMethod unit : testExpenses) {
+                List<LDSToolsAppium.API.Expenses.Expense> myExpenses = unit.getExpenses();
+                for (LDSToolsAppium.API.Expenses.Expense myFinanceRequest: myExpenses) {
                     if (myFinanceRequest.getPurpose().equalsIgnoreCase(purposeSearch)) {
 //                        System.out.println(myFinanceRequest.getPurpose());
                         myMap.put("prupose", myFinanceRequest.getPurpose());
                         myMap.put("id", myFinanceRequest.getId());
                         myMap.put("date", myFinanceRequest.getSubmittedDate());
-                        myMap.put("receiptCount", myFinanceRequest.getReceiptCount());
+//                        myMap.put("receiptCount", myFinanceRequest.getReceiptCount());
+                        myMap.put("receiptCount", myFinanceRequest.getReceipts().size());
                         myMap.put("payeeId", myFinanceRequest.getPayee().getId());
                         myMap.put("payeeName", myFinanceRequest.getPayee().getName());
                         myMap.put("unitNumber", myFinanceRequest.getUnitNumber());
                         myMap.put("type", myFinanceRequest.getType());
-                        List<Charge> myCharge = myFinanceRequest.getCharges();
-                        for (Charge chargeData : myCharge) {
+                        List<LDSToolsAppium.API.Expenses.Charge> myCharge = myFinanceRequest.getCharges();
+                        for (LDSToolsAppium.API.Expenses.Charge chargeData : myCharge) {
                             myMap.put("categoryId", chargeData.getCategoryId());
                             myMap.put("amount", chargeData.getAmount());
                         }
@@ -1109,27 +1116,27 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         String responseData;
         Gson gson = new Gson();
         List<ApiFinanceDetail> expenseList = new ArrayList<ApiFinanceDetail>();
-        ApiFinance myFinance = new ApiFinance();
+        ApiFinanceMethod myFinance = new ApiFinanceMethod();
 
 //        HashMap myMap = new HashMap();
         Map<String, Object> myMap = new HashMap<>();
 //        ArrayList<String> memberNames = new ArrayList<String>();
         List<String> foundExpense = null;
-        Type apiFinance = new TypeToken<ArrayList<ApiFinance>>(){}.getType();
+        Type apiFinance = new TypeToken<ArrayList<ApiFinanceMethod>>(){}.getType();
         responseData = getFinanceExpenses(unitNumber, proxyLogin);
 //        System.out.println("Response String: " + responseData);
         JsonElement jsonElement = parser.parse(responseData);
 
         if (jsonElement instanceof JsonObject) {
 //            System.out.println("JSON Object!");
-            myFinance = gson.fromJson(jsonElement, ApiFinance.class);
+            myFinance = gson.fromJson(jsonElement, ApiFinanceMethod.class);
 
 
         } else if (jsonElement instanceof JsonArray) {
             System.out.println("JSON Array!");
             JsonArray jsonData = jsonElement.getAsJsonArray();
-            List<ApiFinance> testExpenses = gson.fromJson(jsonElement, apiFinance);
-            for(ApiFinance unit : testExpenses) {
+            List<ApiFinanceMethod> testExpenses = gson.fromJson(jsonElement, apiFinance);
+            for(ApiFinanceMethod unit : testExpenses) {
                 List<Expense> myExpenses = unit.getExpenses();
                 for (Expense myFinanceRequest: myExpenses) {
 //                    System.out.println(myFinanceRequest.getStatus());
@@ -1756,6 +1763,51 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         }
 
         return memberName;
+    }
+
+    public List<ApiHousehold> getHouseholdInfo( String unitNumber, String proxyLogin) throws IOException {
+        OkHttpClient httpClient = loginCred();
+        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin);
+        JsonParser parser = new JsonParser();
+        String responseData;
+        List<ApiHousehold> testHouseHold = null;
+//        String myPositions = "";
+        ArrayList<String> myPositions = new ArrayList<String>();
+        Gson gson = new Gson();
+
+        Type apiHousehold = new TypeToken<ArrayList<ApiHousehold>>() {}.getType();
+
+
+        String memberName = "";
+
+        responseData = getHouseholdJson(unitNumber, proxyLogin);
+
+//        System.out.println("Response String: " + responseData);
+        JsonElement jsonElement = parser.parse(responseData);
+//        System.out.println("Json element to String GET NAME FROM UUID: " + jsonElement.toString());
+
+        if (jsonElement instanceof JsonObject) {
+//            System.out.println("JSON Object!");
+//            System.out.println("Name: " + ((JsonObject) jsonElement).get("name").getAsString());
+        } else if (jsonElement instanceof JsonArray) {
+//            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+            testHouseHold = gson.fromJson(jsonElement, apiHousehold);
+
+//            for (ApiHousehold household : testHouseHold) {
+////                System.out.println(household.getDisplayName());
+////                System.out.println(household.getUuid());
+//                for (Member searchForMember : household.getMembers()) {
+////                    System.out.println("Household: uuid - Search For Member: " + searchForMember.getUuid());
+////                    System.out.println("Household: Display Name - Search For Member: " + searchForMember.getDisplayName());
+//                    if (searchForMember.getDisplayName().contains(memberToFind)) {
+//                        memberName = searchForMember.getUuid();
+//                    }
+//                }
+//            }
+        }
+
+        return testHouseHold;
     }
 
 //TODO: This needs help

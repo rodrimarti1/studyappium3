@@ -31,9 +31,6 @@
         | "BISHOP"  | "temples"                                                                      | "Success" |
         | "BISHOP"  | "temples/schedules"                                                            | "Success" |
         | "BISHOP"  | "referrals"                                                                    | "Success" |
-        | "BISHOP"  | "finances/accounts"                                                            | "Success" |
-        | "BISHOP"  | "finances/participants"                                                        | "Success" |
-        | "BISHOP"  | "finances/expenses"                                                            | "Success" |
         | "BISHOP"  | "households"                                                                   | "Success" |
         | "BISHOP"  | "covenant-path/user"                                                           | "Success" |
         | "BISHOP"  | "covenant-path"                                                                | "Success" |
@@ -62,7 +59,6 @@
         | "MEMBER1" | "reports/access"                                                               | "Success" |
         | "MEMBER1" | "referrals"                                                                    | "Success" |
         | "MEMBER1" | "temples"                                                                      | "Success" |
-        | "MEMBER1" | "finances/accounts"                                                            | "Success" |
         | "MEMBER1" | "calendars?timeZone=America/Denver"                                            | "Success" |
         | "BISHOP"  | "calendars?timeZone=America/Denver"                                            | "Success" |
         | "BISHOP"  | "calendars/events?start=2022-09-01T00%3A12%3A28Z&end=2022-12-01T00%3A12%3A28Z" | "Success" |
