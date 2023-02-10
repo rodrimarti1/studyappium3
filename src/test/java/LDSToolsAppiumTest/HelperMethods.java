@@ -227,6 +227,8 @@ public class HelperMethods extends BaseDriver {
         int twoFactorCounter = 1;
 
         do {
+
+
             myBasePage.waitForElement(myLoginPage.twoFactorEdit);
             myLoginPage.twoFactorEdit.clear();
             myLoginPage.twoFactorEdit.sendKeys(twoFactorTest()); //GET CODE
@@ -237,6 +239,7 @@ public class HelperMethods extends BaseDriver {
                 if (pageSource.contains("Invalid Passcode")) {
                     twoFactor = true;
                     twoFactorCounter++;
+                    twoFactorWait();
                 } else {
                     twoFactor = false;
                 }
@@ -244,7 +247,9 @@ public class HelperMethods extends BaseDriver {
                 if (pageSource.contains("Try another way to sign in")) {
                     twoFactor = true;
                     twoFactorCounter++;
+                    twoFactorWait();
                     myLoginPage.twoFactorBack.click();
+
                 } else {
                     twoFactor = false;
                 }
@@ -321,6 +326,17 @@ public class HelperMethods extends BaseDriver {
 
 
         Thread.sleep(1000);
+    }
+
+    public void twoFactorWait() throws Exception {
+        Date myDate = new Date();
+        int currentSeconds = myDate.getSeconds();
+//        System.out.println("Current Seconds: "  + currentSeconds);
+        int waitTime = currentSeconds - 60;
+//        System.out.println("Wait time: "  + waitTime);
+        waitTime = waitTime * 1000;
+//        System.out.println("Wait time in ms: "  + waitTime);
+        Thread.sleep(waitTime);
     }
 
     public String twoFactorTest() throws Exception {

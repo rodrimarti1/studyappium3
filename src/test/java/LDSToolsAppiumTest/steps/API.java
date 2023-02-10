@@ -1,5 +1,8 @@
 package LDSToolsAppiumTest.steps;
 
+import LDSToolsAppium.API.Expenses.Charge;
+import LDSToolsAppium.API.Expenses.Expense;
+import LDSToolsAppium.API.Expenses.Payee;
 import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
@@ -9,10 +12,12 @@ import LDSToolsAppium.Screen.DirectoryScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppium.Screen.ReportsScreen;
 import LDSToolsAppiumTest.HelperMethods;
+import io.cucumber.java.an.E;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.checkerframework.checker.units.qual.C;
 import org.testng.Assert;
 
 import java.util.ArrayList;
@@ -385,6 +390,107 @@ public class API {
     }
 
 
+    @When("an expense is created for {string}")
+    public void anExpenseIsCreatedFor(String expenseName) throws Exception {
+        Expense expenseToCreate = createExpense(expenseName);
+        int categoryID = 0;
+        int categoryAmount = 0;
+        for(Charge oneCharge: expenseToCreate.getCharges()) {
+            categoryID = oneCharge.getCategoryId();
+            categoryAmount = oneCharge.getAmount();
+        }
+        responseCode = apiTest.createPaymentRequest(expenseToCreate.getAccountId(),
+                expenseToCreate.getPayee().getMemberUuid(),
+                expenseToCreate.getPurpose(),
+                expenseToCreate.getUnitNumber(),
+                categoryID,
+                categoryAmount,
+                "dsoneil");
+        System.out.println("CODE: " + responseCode);
+    }
+
+    @Then("the expense will be correct for {string}")
+    public void theExpenseWillBeCorrectFor(String expenseName) throws Exception {
+        Expense expenseToCreate = createExpense(expenseName);
+        Expense expenseToCheck = apiTest.getExpenseReturnExpense("dsoneil", "39373", expenseName);
+
+        Assert.assertEquals(expenseToCheck.getPurpose(), expenseToCreate.getPurpose());
+        Assert.assertEquals(expenseToCheck.getPayee().getMemberUuid(), expenseToCreate.getPayee().getMemberUuid());
+        Assert.assertEquals(expenseToCheck.getCharges(), expenseToCreate.getCharges()); //Might not work
+
+    }
+
+    @And("the expense {string} will be modified to {string}")
+    public void theExpenseWillBeModifiedTo(String origExpense, String newExpense) throws Exception {
+        Expense expenseToCreate = createExpense(newExpense);
+        //Get ID to change
+        Expense findExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", origExpense);
+        expenseToCreate.setId(findExpense.getId());
+        //Change
+        responseCode = apiTest.putExpenseUpdate(expenseToCreate, "dsoneil");
+        System.out.println("CODE: " + responseCode);
+    }
+
+    @And("delete the expense {string}")
+    public void deleteTheExpense(String expenseToDelete) throws Exception {
+        Expense findExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", expenseToDelete);
+        responseCode = apiTest.expenseDelete(findExpense.getId(), findExpense.getType(), "dsoneil");
+        System.out.println("CODE: " + responseCode);
+    }
+
+    @Then("the expense {string} will {string}")
+    public void theExpenseWill(String expenseToFind, String foundStatus) throws Exception{
+        Expense findExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", expenseToFind);
+        if (findExpense == null) {
+            System.out.println("Expense Not Found");
+            Assert.assertEquals("not be found", expenseToFind);
+        } else {
+            System.out.println("Expense Found");
+            Assert.assertEquals("will be found", expenseToFind);
+        }
+    }
+
+
+
+
+    public Expense createExpense(String expenseName) throws Exception {
+        Expense myExpense = new Expense();
+        Payee myPayee = new Payee();
+        Charge myCharge = new Charge();
+        List<Charge> listCharge = new ArrayList<>();
+
+
+        if (expenseName.equalsIgnoreCase("api automated test 1")) {
+            myPayee.setMemberUuid("533356e1-66c5-49dc-b37b-13a416594413");
+
+            myCharge.setCategoryId(957);
+            myCharge.setAmount(1234);
+            listCharge.add(myCharge);
+
+            myExpense.setAccountId(8880);
+            myExpense.setUnitNumber(39373);
+            myExpense.setPurpose("API Automated Test 1");
+            myExpense.setPayee(myPayee);
+            myExpense.setCharges(listCharge);
+        }
+
+        if (expenseName.equalsIgnoreCase("api automated test 2")) {
+            myPayee.setMemberUuid("533356e1-66c5-49dc-b37b-13a416594413");
+
+            myCharge.setCategoryId(957);
+            myCharge.setAmount(8888);
+            listCharge.add(myCharge);
+
+            myExpense.setAccountId(8880);
+            myExpense.setUnitNumber(39373);
+            myExpense.setPurpose("API Automated Test 2");
+            myExpense.setPayee(myPayee);
+            myExpense.setCharges(listCharge);
+        }
+
+        return myExpense;
+
+    }
 
 
 

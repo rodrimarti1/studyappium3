@@ -1010,7 +1010,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //        return foundExpense;
 //    }
 
-    // ZZZZZZZZZZZZz
+
     public List<ApiFinanceMethod> getAllExpenses2(String proxyLogin, String unitNumber) throws Exception {
         JsonParser parser = new JsonParser();
         String responseData;
@@ -1109,6 +1109,43 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         }
 
         return myMap;
+    }
+
+    public Expense getExpenseReturnExpense(String proxyLogin, String unitNumber, String purposeSearch) throws Exception {
+        JsonParser parser = new JsonParser();
+        String responseData;
+        Gson gson = new Gson();
+        ApiFinanceMethod myFinance = new ApiFinanceMethod();
+        Expense expenseToReturn = new Expense();
+//        HashMap myMap = new HashMap();
+        Map<String, Object> myMap = new HashMap<>();
+//        ArrayList<String> memberNames = new ArrayList<String>();
+        List<String> foundExpense = null;
+        Type apiFinance = new TypeToken<ArrayList<ApiFinanceMethod>>(){}.getType();
+        responseData = getFinanceExpenses(unitNumber, proxyLogin);
+//        System.out.println("Response String: " + responseData);
+        JsonElement jsonElement = parser.parse(responseData);
+
+        if (jsonElement instanceof JsonObject) {
+//            System.out.println("JSON Object!");
+            myFinance = gson.fromJson(jsonElement, ApiFinanceMethod.class);
+
+
+        } else if (jsonElement instanceof JsonArray) {
+            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+            List<ApiFinanceMethod> testExpenses = gson.fromJson(jsonElement, apiFinance);
+            for(ApiFinanceMethod unit : testExpenses) {
+                List<LDSToolsAppium.API.Expenses.Expense> myExpenses = unit.getExpenses();
+                for (LDSToolsAppium.API.Expenses.Expense myFinanceRequest: myExpenses) {
+                    if (myFinanceRequest.getPurpose().equalsIgnoreCase(purposeSearch)) {
+                        expenseToReturn = myFinanceRequest;
+                    }
+                }
+            }
+        }
+
+        return expenseToReturn;
     }
 
     public List<ApiFinanceDetail> getExpensesByStatus(String proxyLogin, String unitNumber, String expenseStatus) throws Exception {
@@ -1233,44 +1270,46 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         return responseData;
 
-        //        JSONObject jsonAddress = new JSONObject();
-//        jsonAddress.put("city", "Hawthorne");
-//        jsonAddress.put("postalCode", "90250-6906");
-//        jsonAddress.put("state", "California");
-//        jsonAddress.put("street1", "4480 W 137th P1");
-
-
-//
-//        JSONObject jsonPayee = new JSONObject();
-//        jsonPayee.put("id" , 1264650);
-//        jsonPayee.put("name", "Thomas, Mark Barrett");
-//        jsonPayee.put("memberUuid", "e463aaf9-573f-4d17-8364-d4f4112cb517");
-//        jsonPayee.put("memberMrn", "000-2205-6416");
-//        jsonPayee.put("address", jsonAddress);
-
-
-//        JSONObject jsonReceipts = new JSONObject();
-//        jsonReceipts.put("id", "{8F39BADA-4B0F-4D54-8DFD-4050A2B9EF22}");
-//        jsonReceipts.put("name", "passed.png");
-//
-//        JSONObject jsonSubmittedBy = new JSONObject();
-//        jsonSubmittedBy.put("id" , 1264650);
-//        jsonSubmittedBy.put("name", "Thomas, Mark Barrett");
-//        jsonSubmittedBy.put("memberUuid", "e463aaf9-573f-4d17-8364-d4f4112cb517");
-//        jsonSubmittedBy.put("memberMrn", "000-2205-6416");
-
-
-//        jsonPost.put("type", "REIMBURSEMENT_REQUEST");
-//        jsonPost.put("advancement", true);
-//        jsonPost.put("status", "SUBMITTED");
-//        jsonPost.put("payee", jsonPayee);
-//        jsonPost.put("submittedDate", "2022-07-01");
-//        jsonPost.put("receipts", jsonReceipts);
-//        jsonPost.put("submittedBy", jsonSubmittedBy);
-
     }
 
 
+    public int putExpenseUpdate(Expense expenseToUpdate, String proxyUser) throws Exception {
+        int responseData = 0;
+        Gson gsonTest = new Gson();
+        String json;
+
+
+        json = gsonTest.toJson(expenseToUpdate);
+        System.out.println(json);
+
+
+        RequestBody body = RequestBody.create(
+                MediaType.parse("application/json"), json);
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .url(baseURL + "finances/expenses/" + expenseToUpdate.getId())
+                .addHeader("X-Proxy-User", proxyUser)
+                .put(body)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: " + response.code());
+            responseData = response.code();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+
+
+    }
 
 
     public int updateExpensePurpose(int expenseId, String purpose, String proxyUser) throws IOException {

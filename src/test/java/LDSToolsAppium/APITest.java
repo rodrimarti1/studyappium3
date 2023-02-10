@@ -26,6 +26,7 @@ import org.jboss.aerogear.security.otp.Totp;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.desktop.SystemEventListener;
 import java.util.*;
 import java.util.List;
 
@@ -347,7 +348,7 @@ public class APITest {
 
     }
 
-//    @Test
+    @Test
     public void createExpense() throws Exception {
         int responseCode = 0;
         //  Create Payment Request
@@ -369,7 +370,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void getAllExpensesForUnit() throws Exception {
         Map<String, Object> myMap = new HashMap<>();
 //        List<String> expenseList = new ArrayList<>();
@@ -414,7 +415,7 @@ public class APITest {
     public void getExpenseDetail() throws Exception {
         String value;
         Map<String, Object> myMap = new HashMap<>();
-        myMap =  apiTest.getExpensesDetail("mbthomas74", "21628", "zzz test zzz");
+        myMap =  apiTest.getExpensesDetail("dsoneil", "39373", "API Automated Test 1");
         for (String mapKey: myMap.keySet()) {
                 String key = mapKey.toString();
                 if (myMap.get(mapKey) == null) {
@@ -706,6 +707,17 @@ public class APITest {
         }
     }
 
+//    @Test
+    public void timeWaitTest() throws Exception {
+        Date myDate = new Date();
+        int currentSeconds = myDate.getSeconds();
+        System.out.println("Current Seconds: "  + currentSeconds);
+        int waitTime = currentSeconds - 60;
+        System.out.println("Wait time: "  + waitTime);
+        waitTime = waitTime * 1000;
+        System.out.println("Wait time in ms: "  + waitTime);
+        Thread.sleep(waitTime);
+    }
 
 
 

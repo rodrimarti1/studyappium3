@@ -19,10 +19,10 @@ Feature: API tests for Expenses
   Scenario: Post Put and Delete an Expense
     When an expense is created for "API Automated Test 1"
     Then the expense will be correct for "API Automated Test 1"
-    And the expense "someUser" will be modified to "API Automated Test 2"
+    And the expense "API Automated Test 1" will be modified to "API Automated Test 2"
     Then the expense will be correct for "API Automated Test 2"
-    And the expense "API Automated Test 2" is deleted
-    Then the expense "API Automated Test 2 will not be found
+    And delete the expense "API Automated Test 2"
+    Then the expense "API Automated Test 2" will "not be found"
 
   #One test?
   Scenario: Get an expense
