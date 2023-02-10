@@ -227,8 +227,6 @@ public class HelperMethods extends BaseDriver {
         int twoFactorCounter = 1;
 
         do {
-
-
             myBasePage.waitForElement(myLoginPage.twoFactorEdit);
             myLoginPage.twoFactorEdit.clear();
             myLoginPage.twoFactorEdit.sendKeys(twoFactorTest()); //GET CODE

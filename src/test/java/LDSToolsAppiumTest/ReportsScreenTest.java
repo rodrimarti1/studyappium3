@@ -671,7 +671,7 @@ public class ReportsScreenTest extends BaseDriver {
         Thread.sleep(3000);
         pageSource = myBasePage.getSourceOfPage();
 //        System.out.println(pageSource);
-        Assert.assertTrue(myBasePage.checkNoCaseList("Acosta", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Emilio", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
@@ -756,7 +756,8 @@ public class ReportsScreenTest extends BaseDriver {
 
 
         Thread.sleep(2000);
-        myBasePage.waitForElementThenClick(myBasePage.backButton);
+//        myBasePage.waitForElementThenClick(myBasePage.backButton);
+        myBasePage.waitForElementThenClick(myBasePage.backAltButton);
 //        myBasePage.backButton.click();
         Thread.sleep(2000);
     }
@@ -805,7 +806,8 @@ public class ReportsScreenTest extends BaseDriver {
 
 
         Thread.sleep(1000);
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.waitForElementThenClick(myBasePage.backAltButton);
         Thread.sleep(1000);
     }
 
