@@ -41,26 +41,23 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/"; //NEW
 //    String baseURL;
 
+    String username = "testuser";
+    String password = "testpassword";
+    String twoFactor = "123456";
+
 
     //Login credentials for the API
-    public OkHttpClient loginCred() {
+    public OkHttpClient loginCred() throws Exception {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         loggingInterceptor.redactHeader("Authorization");
         loggingInterceptor.redactHeader("Cookie");
 
-//        // Encode data on your side using BASE64
-//        byte[] bytesEncoded = Base64.encodeBase64(str.getBytes());
-//        System.out.println("encoded value is " + new String(bytesEncoded));
-//
-//        // Decode data on other side, by processing encoded data
-//        byte[] valueDecoded = Base64.decodeBase64(bytesEncoded);
-//        System.out.println("Decoded value is " + new String(valueDecoded));
+        getInfoFromProperties();
 
+        byte[] decodeBytes = Base64.decodeBase64(password);
 
-        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
-
-        TestWam2CredentialsManager credentialsManager = new TestWam2CredentialsManager("zmaxfield", new String(decodeBytes));
+        TestWam2CredentialsManager credentialsManager = new TestWam2CredentialsManager(username, new String(decodeBytes));
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new TestAuthenticationInterceptor(new TestAuthenticationManager(credentialsManager)))
@@ -71,6 +68,25 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 .build();
 
         return httpClient;
+    }
+
+    public void getInfoFromProperties() throws Exception {
+        try (InputStream input = Files.newInputStream(Paths.get("ConfigFiles/config.properties"))) {
+
+            Properties prop = new Properties();
+
+            // load a properties file
+            prop.load(input);
+
+
+            username = (prop.getProperty("db.user"));
+            password = prop.getProperty("db.password");
+            twoFactor = prop.getProperty("db.twoFactor");
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 
@@ -101,7 +117,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     //Test Request
-    public void apiRequest() {
+    public void apiRequest() throws Exception {
         OkHttpClient httpClient = loginCred();
         Request request = requestURL();
         JsonParser parser = new JsonParser();
@@ -160,7 +176,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 //            JsonObject jsonObject = (new JsonParser()).parse(jsonData).getAsJsonObject();
 //            System.out.println("Name: " + jsonObject.get("name").getAsString());
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -341,7 +357,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getOrganizationJson (String unitNumber, String proxyLogin) throws IOException {
+    public String getOrganizationJson (String unitNumber, String proxyLogin) throws Exception {
         proxyLogin = "mbthomas74";
         String responseData = "";
         File organizationFile = new File("ConfigFiles/organization" + unitNumber + ".json");
@@ -360,18 +376,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/organization" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -381,7 +397,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getUserAccountsJson (String unitNumber, String position) throws IOException {
+    public String getUserAccountsJson (String unitNumber, String position) throws Exception {
         String responseData = "";
         File organizationFile = new File("ConfigFiles/accounts" + unitNumber + ".json");
         StringBuilder contentBuilder = new StringBuilder();
@@ -399,18 +415,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //                    myWriter.write(responseData);
 //                    myWriter.flush();
 //
-//                } catch (IOException e) {
+//                } catch (Exception e) {
 //                    e.printStackTrace();
 //                }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 //        } else {
 //            try {
 //                responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/accounts" + unitNumber + ".json")), StandardCharsets.UTF_8);
 //
-//            } catch (IOException e) {
+//            } catch (Exception e) {
 //                e.printStackTrace();
 //            }
 //
@@ -421,7 +437,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-    public String getHouseholdJson (String unitNumber, String proxyLogin) throws IOException {
+    public String getHouseholdJson (String unitNumber, String proxyLogin) throws Exception {
 //        proxyLogin = "mbthomas74";
         String responseData = "";
         File householdFile = new File("ConfigFiles/households" + unitNumber + ".json");
@@ -440,18 +456,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/households" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -462,7 +478,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getReportJson (String unitNumber, String proxyLogin) throws IOException {
+    public String getReportJson (String unitNumber, String proxyLogin) throws Exception {
 //        proxyLogin = "mbthomas74";
         String responseData = "";
         File organizationFile = new File("ConfigFiles/reports" + unitNumber + ".json");
@@ -481,18 +497,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/reports" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -501,7 +517,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return responseData;
     }
 
-    public String getQRJson (String unitNumber, String proxyLogin, String year, int quarter) throws IOException {
+    public String getQRJson (String unitNumber, String proxyLogin, String year, int quarter) throws Exception {
         String responseData = "";
 
         OkHttpClient httpClient = loginCred();
@@ -510,13 +526,13 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         try (Response response = httpClient.newCall(request).execute()) {
             assert response.body() != null;
             responseData = response.body().string();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return responseData;
     }
 
-    public String getLifeResourceJson(String unitNumber, String proxyLogin) throws IOException {
+    public String getLifeResourceJson(String unitNumber, String proxyLogin) throws Exception {
         String responseData = "";
 
         OkHttpClient httpClient = loginCred();
@@ -525,14 +541,14 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         try (Response response = httpClient.newCall(request).execute()) {
             assert response.body() != null;
             responseData = response.body().string();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return responseData;
     }
 
 
-    public int getApiResponseCode (String apiService, String proxyLogin) throws IOException {
+    public int getApiResponseCode (String apiService, String proxyLogin) throws Exception {
         int responseCode = 0;
 
         OkHttpClient httpClient = loginCred();
@@ -550,7 +566,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("CODE: " + response.code());
             System.out.println("Message: " + response.message());
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -560,7 +576,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    public String getApiInfoTEST (String unitNumber, String proxyLogin) throws IOException {
+    public String getApiInfoTEST (String unitNumber, String proxyLogin) throws Exception {
         String responseData = "";
 
         OkHttpClient httpClient = loginCred();
@@ -584,7 +600,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         System.out.println("*******************************************");
@@ -596,7 +612,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getReportUnitStatsJson (String unitNumber, String proxyLogin) throws IOException {
+    public String getReportUnitStatsJson (String unitNumber, String proxyLogin) throws Exception {
         proxyLogin = "mbthomas74";
         String responseData = "";
         File organizationFile = new File("ConfigFiles/reportsUnitStats" + unitNumber + ".json");
@@ -615,18 +631,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/reportsUnitStats" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -636,7 +652,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getReportsActionAndInterview(String unitNumber, String proxyLogin) throws IOException {
+    public String getReportsActionAndInterview(String unitNumber, String proxyLogin) throws Exception {
         proxyLogin = "mbthomas74";
         String responseData = "";
         File organizationFile = new File("ConfigFiles/reportsActionAndInterview" + unitNumber + ".json");
@@ -655,18 +671,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/reportsActionAndInterview" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -676,7 +692,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getMissionaryJson (String unitNumber, String proxyLogin) throws IOException {
+    public String getMissionaryJson (String unitNumber, String proxyLogin) throws Exception {
         proxyLogin = "mbthomas74";
         String responseData = "";
         File organizationFile = new File("ConfigFiles/missionary" + unitNumber + ".json");
@@ -695,18 +711,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/missionary" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -717,7 +733,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getCovenantPathJson(String unitNumber, String proxyLogin) throws IOException {
+    public String getCovenantPathJson(String unitNumber, String proxyLogin) throws Exception {
         String responseData = "";
         File organizationFile = new File("ConfigFiles/covenantPath" + unitNumber + ".json");
         StringBuilder contentBuilder = new StringBuilder();
@@ -735,18 +751,18 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                     myWriter.write(responseData);
                     myWriter.flush();
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } else {
             try {
                 responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/covenantPath" + unitNumber + ".json")), StandardCharsets.UTF_8);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -756,7 +772,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    public String getFinanceExpenses(String unitNumber, String proxyLogin) throws IOException {
+    public String getFinanceExpenses(String unitNumber, String proxyLogin) throws Exception {
         String responseData = "";
         File organizationFile = new File("ConfigFiles/expenses" + unitNumber + ".json");
         StringBuilder contentBuilder = new StringBuilder();
@@ -769,7 +785,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             assert response.body() != null;
             responseData = response.body().string();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -782,7 +798,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-    public int postListTest(String listMembers, String listName, int listSort, String listOwner, String proxyUser) throws IOException {
+    public int postListTest(String listMembers, String listName, int listSort, String listOwner, String proxyUser) throws Exception {
         int responseData = 0;
         String[] listOfMembers = null;
         listOfMembers = listMembers.split(",");
@@ -831,7 +847,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -863,7 +879,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -874,7 +890,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-    public String getListsFromProxy(String proxyLogin) throws IOException {
+    public String getListsFromProxy(String proxyLogin) throws Exception {
         String responseData = "";
         File organizationFile = new File("ConfigFiles/lists" + proxyLogin + ".json");
         StringBuilder contentBuilder = new StringBuilder();
@@ -895,11 +911,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 myWriter.write(responseData);
                 myWriter.flush();
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -912,7 +928,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     //TODO: Need a file check for the date then delete if older than 3 or so days?
-    public String getClassQuorumJson(String unitNumber, String proxyLogin) throws IOException {
+    public String getClassQuorumJson(String unitNumber, String proxyLogin) throws Exception {
         String responseData = "";
         File organizationFile = new File("ConfigFiles/classquorum" + unitNumber + ".json");
         StringBuilder contentBuilder = new StringBuilder();
@@ -930,11 +946,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 myWriter.write(responseData);
                 myWriter.flush();
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1213,7 +1229,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    public int createPaymentRequest(int accountId, String payeeUuid, String purpose, int unitNumber, int categoryId, int amount, String proxyUser) throws IOException {
+    public int createPaymentRequest(int accountId, String payeeUuid, String purpose, int unitNumber, int categoryId, int amount, String proxyUser) throws Exception {
         int responseData = 0;
 
         String json;
@@ -1264,7 +1280,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1302,7 +1318,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: " + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1312,7 +1328,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    public int updateExpensePurpose(int expenseId, String purpose, String proxyUser) throws IOException {
+    public int updateExpensePurpose(int expenseId, String purpose, String proxyUser) throws Exception {
         int responseData = 0;
 
         String json;
@@ -1351,7 +1367,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1378,7 +1394,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -1640,7 +1656,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
 
-    public String getNameFromUuid( String uuidPersonal, String unitNumber, String proxyLogin, String returnType) throws IOException {
+    public String getNameFromUuid( String uuidPersonal, String unitNumber, String proxyLogin, String returnType) throws Exception {
         proxyLogin = "mbthomas74";
         OkHttpClient httpClient = loginCred();
         Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
@@ -1709,7 +1725,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     //This is to get the ordinances
     //TODO: make this return MAP to get all info?
-    public List<String> getPersonalInfoFromName( String memberToFind, String unitNumber, String proxyLogin) throws IOException {
+    public List<String> getPersonalInfoFromName( String memberToFind, String unitNumber, String proxyLogin) throws Exception {
         OkHttpClient httpClient = loginCred();
         Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
         JsonParser parser = new JsonParser();
@@ -1761,7 +1777,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return memberNames;
     }
 
-    public String getUdidFromName( String memberToFind, String unitNumber, String proxyLogin) throws IOException {
+    public String getUdidFromName( String memberToFind, String unitNumber, String proxyLogin) throws Exception {
         OkHttpClient httpClient = loginCred();
         Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
         JsonParser parser = new JsonParser();
@@ -1804,7 +1820,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return memberName;
     }
 
-    public List<ApiHousehold> getHouseholdInfo( String unitNumber, String proxyLogin) throws IOException {
+    public List<ApiHousehold> getHouseholdInfo( String unitNumber, String proxyLogin) throws Exception {
         OkHttpClient httpClient = loginCred();
         Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin);
         JsonParser parser = new JsonParser();
@@ -1910,7 +1926,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -2533,7 +2549,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     }
 
-    public int createLifeResource(String unitNumber, String proxyUser, Resource lifeResource) throws IOException {
+    public int createLifeResource(String unitNumber, String proxyUser, Resource lifeResource) throws Exception {
         int responseData = 0;
         Gson gsonTest = new Gson();
         String json;
@@ -2562,7 +2578,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: " + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -2589,14 +2605,14 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: "  + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return responseData;
     }
 
-    public int putLifeResource( String proxyUser, Resource lifeResource) throws IOException {
+    public int putLifeResource( String proxyUser, Resource lifeResource) throws Exception {
         int responseData = 0;
         Gson gsonTest = new Gson();
         String json;
@@ -2625,7 +2641,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("Response: " + response.code());
             responseData = response.code();
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

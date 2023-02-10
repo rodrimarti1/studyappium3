@@ -27,6 +27,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.awt.desktop.SystemEventListener;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.List;
 
@@ -348,7 +353,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void createExpense() throws Exception {
         int responseCode = 0;
         //  Create Payment Request
@@ -678,17 +683,31 @@ public class APITest {
         System.out.println("Decoded value is " + new String(valueDecoded));
     }
 
+
 //    @Test
-    public void twoFactorTest() throws Exception {
+    public void configPropertiesTest() throws Exception {
+        try (InputStream input = Files.newInputStream(Paths.get("ConfigFiles/config.properties"))) {
 
-        String otpKeyStr = "UUNGBUABKKZUUENH"; // <- this 2FA secret key.
+            Properties prop = new Properties();
 
-        Totp totp = new Totp(otpKeyStr);
-        String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
-        System.out.println(twoFactorCode);
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+            System.out.println(prop.getProperty("db.twoFactor"));
+            System.out.println(prop.getProperty("db.user"));
+            System.out.println(prop.getProperty("db.password"));
+
+            Totp totp = new Totp(prop.getProperty("db.twoFactor"));
+            String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
+            System.out.println(twoFactorCode);
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
-//    @Test
+    @Test
     public void getHouseholdInfoForUnit() throws Exception {
         List<ApiHousehold> allHouseholds = new ArrayList<>();
         allHouseholds =  apiTest.getHouseholdInfo( "39373", "dsoneil");

@@ -16,12 +16,16 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 
 
 public class HelperMethods extends BaseDriver {
 
-
+    String username = "testusername";
+    String password = "testrpassword";
+    String twoFactor = "123456";
 
 //    public HelperMethods(AppiumDriver<WebElement> driver) {
 //
@@ -138,6 +142,29 @@ public class HelperMethods extends BaseDriver {
         }
     }
 
+    public void getInfoFromProperties() throws Exception {
+        try (InputStream input = Files.newInputStream(Paths.get("ConfigFiles/config.properties"))) {
+
+            Properties prop = new Properties();
+
+            // load a properties file
+            prop.load(input);
+
+            // get the property value and print it out
+//            System.out.println(prop.getProperty("db.twoFactor"));
+//            System.out.println(prop.getProperty("db.user"));
+//            System.out.println(prop.getProperty("db.password"));
+
+            username = (prop.getProperty("db.user"));
+            password = prop.getProperty("db.password");
+            twoFactor = prop.getProperty("db.twoFactor");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
 
     public void proxyLogin(String proxyUserName) throws Exception {
         // ********* Constructor **********
@@ -145,7 +172,13 @@ public class HelperMethods extends BaseDriver {
         BaseDriver myBaseDriver = new BaseDriver();
         LoginPageScreen myLoginPage = new LoginPageScreen(driver);
         SettingsScreen mySettings = new SettingsScreen(driver);
-        String loginName = "zmaxfield";
+
+        getInfoFromProperties();
+
+
+
+
+
 //        String loginName = "membertoolsqa";
 
 
@@ -169,7 +202,7 @@ public class HelperMethods extends BaseDriver {
         }
 
 
-        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
+        byte[] decodeBytes = Base64.decodeBase64(password);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             iosDeepLink(proxyUserName);
 //            loginName = "zmaxfield/stage/" + proxyUserName;
@@ -214,7 +247,7 @@ public class HelperMethods extends BaseDriver {
         LOGGER.info("Clear login and password");
         myBasePage.waitForElement(myLoginPage.loginName);
         myLoginPage.loginName.clear();
-        myLoginPage.loginName.sendKeys(loginName);
+        myLoginPage.loginName.sendKeys(username);
         myLoginPage.nextButton.click();
         Thread.sleep(1300);
 
@@ -339,7 +372,7 @@ public class HelperMethods extends BaseDriver {
 
     public String twoFactorTest() throws Exception {
 
-        String otpKeyStr = "UUNGBUABKKZUUENH"; // <- this 2FA secret key.
+        String otpKeyStr = twoFactor; // <- this 2FA secret key.
 
         Totp totp = new Totp(otpKeyStr);
         String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
@@ -405,10 +438,11 @@ public class HelperMethods extends BaseDriver {
         int myCounter = 1;
 
         LOGGER.info("Start Proxy Login");
+        getInfoFromProperties();
         if (myBasePage.checkForElement(myBasePage.allowButton)) {
             myBasePage.allowButton.click();
         }
-        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
+        byte[] decodeBytes = Base64.decodeBase64(password);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             iosDeepLinkProd(proxyUserName);
         } else {
@@ -436,7 +470,7 @@ public class HelperMethods extends BaseDriver {
         myLoginPage.passWord.clear();
 
 
-        myLoginPage.loginName.sendKeys("zmaxfield");
+        myLoginPage.loginName.sendKeys(username);
         myLoginPage.passWord.sendKeys(new String(decodeBytes));
         myLoginPage.signInButton.click();
         Thread.sleep(1000);

@@ -670,8 +670,15 @@ public class ReportsScreenTest extends BaseDriver {
         myReports.membersMoveInAndOutReport.click();
         Thread.sleep(3000);
         pageSource = myBasePage.getSourceOfPage();
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            for (int x = 1 ; x < 6 ; x++) {
+                myBasePage.newScrollDownSlow();
+                pageSource = pageSource + myBasePage.getSourceOfPage();
+            }
+        }
+
 //        System.out.println(pageSource);
-        Assert.assertTrue(myBasePage.checkNoCaseList("Emilio", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Acosta", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
