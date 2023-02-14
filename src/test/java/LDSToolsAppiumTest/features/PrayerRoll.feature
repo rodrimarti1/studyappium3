@@ -2,7 +2,7 @@
 Feature: Prayer Roll tests
 
 
-  @MQA-3180 @all @smoke @smoke1 @all1 @all @daily @daily1
+  @MQA-3180 @all @smoke @smoke1 @all1 @all @daily @daily1 @jft
   Scenario:  As a member I want to enter a name into the Prayer Roll
     Given a member is on their Temple Page
     When the prayer roll button is pressed
@@ -10,7 +10,7 @@ Feature: Prayer Roll tests
     And the member enters in a name
     Then the name should be submitted
 
-  @MQA-3181 @all @all2 @all @daily @daily2 @jft
+  @MQA-3181 @all @all2 @all @daily @daily2
   Scenario: As a member I want to enter several names into the Prayer Roll
     Given a member is on the prayer roll page
     When the member enters in five names

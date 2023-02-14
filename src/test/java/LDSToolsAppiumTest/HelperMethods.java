@@ -175,10 +175,6 @@ public class HelperMethods extends BaseDriver {
 
         getInfoFromProperties();
 
-
-
-
-
 //        String loginName = "membertoolsqa";
 
 
@@ -371,9 +367,7 @@ public class HelperMethods extends BaseDriver {
     }
 
     public String twoFactorTest() throws Exception {
-
         String otpKeyStr = twoFactor; // <- this 2FA secret key.
-
         Totp totp = new Totp(otpKeyStr);
         String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
         System.out.println(twoFactorCode);

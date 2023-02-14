@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Android Daily Test One Device" configfailurepolicy="continue" verbose="1" parallel="tests" thread-count="4">
+    <listeners>
+        <listener class-name="LDSToolsAppium.RetryListener"/>
+        <listener class-name= "LDSToolsAppium.CustomReporter" />
+        <listener class-name="LDSToolsAppium.TestListener" />
+    </listeners>
+
+    <test name="Android daily Test 1 - Emulator" thread-count="1" parallel="false" >
+        <parameter name="os" value="android" />
+        <parameter name="fileName" value="app-alpha.apk" />
+        <parameter name="testDevice" value="09251FDD4003MU" />
+<!--        <parameter name="testDevice" value="89RY0AB92" />  &lt;!&ndash; Pixel 3 &ndash;&gt;-->
+<!--        <parameter name="testDevice" value="emulator-5554" />-->
+        <parameter name="startSleepTime" value="0200" />
+        <parameter name="systemPort" value="8251" />
+
+        <groups>
+            <run>
+                <include name="daily1"/>
+                <include name="daily2"/>
+                <include name="daily3"/>
+                <include name="daily4"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="LDSToolsAppium.BaseDriver" />
+
+            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.LoginPageTest" />
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />
+            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.PinScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
+            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.HeaderTest" />
+            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
+            <class name="LDSToolsAppiumTest.ListsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
+        </classes>
+    </test>
+</suite>
