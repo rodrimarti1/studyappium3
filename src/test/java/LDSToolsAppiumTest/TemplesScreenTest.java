@@ -195,7 +195,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     //Broken in iOS for Proxy
     //https://jira.churchofjesuschrist.org/browse/MMIP-6476
-    @Test (groups= { "all", "all1", "daily", "daily2"})
+    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
@@ -215,7 +215,8 @@ public class TemplesScreenTest extends BaseDriver {
 
 
         myMenu.selectMenu(myMenu.temples);
-        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        checkForTemplePopUps();
+//        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
         Thread.sleep(1000);
         myTemple.chooseDifferentTab(myTemple.nearestTab);
 
@@ -242,7 +243,7 @@ public class TemplesScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Oquirrh", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Jordan", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Draper", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Timpanogos", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Taylorsville", pageSource, "Contains"));
         }
     }
 
@@ -346,7 +347,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
+    @Test (groups= { "all", "all4", "daily", "daily1"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 
