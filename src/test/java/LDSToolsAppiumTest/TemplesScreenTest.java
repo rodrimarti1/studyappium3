@@ -346,7 +346,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1"})
+    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 
@@ -364,7 +364,7 @@ public class TemplesScreenTest extends BaseDriver {
 
         myMenu.selectMenu(myMenu.temples);
 //        System.out.println(myBasePage.getSourceOfPage());
-        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        checkForTemplePopUps();
         Thread.sleep(2000);
         myTemple.chooseDifferentTab(myTemple.allTab);
         Thread.sleep(8000);
@@ -386,7 +386,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= { "all", "all4", "daily", "daily2", "jft"})
+    @Test (groups= { "all", "all4", "daily", "daily2"})
     public void templeOrdinanceSchedule() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -399,14 +399,7 @@ public class TemplesScreenTest extends BaseDriver {
 
 
         myMenu.selectMenu(myMenu.temples);
-        Thread.sleep(500);
-        if (myBasePage.checkForElement(myTemple.yesRemindMe)) {
-            myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
-        }
-
-        if (myBasePage.checkForElement(myTemple.gotItThanks)) {
-            myBasePage.waitForElementThenClick(myTemple.gotItThanks);
-        }
+        checkForTemplePopUps();
 
         //Ordinance schedule is off for COVID
         System.out.println(myBasePage.getSourceOfPage());
@@ -416,6 +409,19 @@ public class TemplesScreenTest extends BaseDriver {
         checkTempleDates(10);
 
 
+    }
+
+    private void checkForTemplePopUps() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        TemplesScreen myTemple = new TemplesScreen(driver);
+        Thread.sleep(500);
+        if (myBasePage.checkForElement(myTemple.yesRemindMe)) {
+            myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        }
+
+        if (myBasePage.checkForElement(myTemple.gotItThanks)) {
+            myBasePage.waitForElementThenClick(myTemple.gotItThanks);
+        }
     }
 
 

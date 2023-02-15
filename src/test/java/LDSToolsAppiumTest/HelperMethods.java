@@ -359,7 +359,7 @@ public class HelperMethods extends BaseDriver {
         Date myDate = new Date();
         int currentSeconds = myDate.getSeconds();
 //        System.out.println("Current Seconds: "  + currentSeconds);
-        int waitTime = currentSeconds - 60;
+        int waitTime = 60 - currentSeconds;
 //        System.out.println("Wait time: "  + waitTime);
         waitTime = waitTime * 1000;
 //        System.out.println("Wait time in ms: "  + waitTime);
