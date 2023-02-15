@@ -14,7 +14,7 @@ import java.util.List;
 
 public class TemplesScreenTest extends BaseDriver {
 
-    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily3", "jft"})
+    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily3"})
     public void templeSimple() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -386,7 +386,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= { "all", "all4", "daily", "daily2"})
+    @Test (groups= { "all", "all4", "daily", "daily2", "jft"})
     public void templeOrdinanceSchedule() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -399,20 +399,21 @@ public class TemplesScreenTest extends BaseDriver {
 
 
         myMenu.selectMenu(myMenu.temples);
-        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
-
-
+        Thread.sleep(500);
+        if (myBasePage.checkForElement(myTemple.yesRemindMe)) {
+            myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        }
 
         if (myBasePage.checkForElement(myTemple.gotItThanks)) {
             myBasePage.waitForElementThenClick(myTemple.gotItThanks);
         }
 
         //Ordinance schedule is off for COVID
-//        System.out.println(myBasePage.getSourceOfPage());
-//        myTemple.ordinanceScheduleButton.click();
-//
-//        checkOrdinanceDate();
-//        checkTempleDates(10);
+        System.out.println(myBasePage.getSourceOfPage());
+        myTemple.ordinanceScheduleButton.click();
+
+        checkOrdinanceDate();
+        checkTempleDates(10);
 
 
     }
