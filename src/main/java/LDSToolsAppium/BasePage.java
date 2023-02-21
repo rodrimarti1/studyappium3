@@ -141,48 +141,11 @@ public class BasePage extends BaseDriver {
 
     public void scrollToTextGeneral(String myElement) throws Exception {
         flingUp();
-
-
         if (getOS().contains("ios")) {
             scrollToTextiOS(myElement);
         } else {
-
             newScrollToText(myElement);
-//            List<String> scrollArea = new ArrayList<String>();
-//            String pageSource;
-//            pageSource = driver.get().getPageSource();
-//            Document doc = Jsoup.parse(pageSource);
-//            Elements myElements = doc.getElementsByAttributeValueStarting("scrollable", "true");
-//            List<Attribute> elementAttributes = new ArrayList<Attribute>();
-//
-//            for (Element foundElement : myElements ) {
-//                elementAttributes = foundElement.attributes().asList();
-//                for (Attribute myAttribute : elementAttributes ) {
-//
-//
-//                    if (myAttribute.getKey().equals("resource-id")) {
-//                        if (myAttribute.getValue().isEmpty()) {
-//                            System.out.println("Resource ID is blank skipping");
-//                        } else {
-//                            scrollArea.add(myAttribute.getValue());
-//                        }
-//                    }
-//                }
-//
-//            }
-//
-//            if (!scrollArea.isEmpty()) {
-//                for (String areaToScroll : scrollArea ) {
-//                    WebElement list = (WebElement) driver.get().findElement(By.id(areaToScroll));
-//                    WebElement radioGroup = (WebElement) list.findElement(MobileBy.AndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView("
-//                            + "new UiSelector().text(\"" + myElement + "\"));"));
-//                    if (radioGroup.getLocation().toString().isEmpty()) {
-//                        System.out.println("Text not found in: " + areaToScroll);
-//                    }
-//                }
-//            }
         }
-
     }
 
     public void scrollToText(String myElement) throws Exception {
@@ -439,14 +402,6 @@ public class BasePage extends BaseDriver {
 //        System.out.println("Can Scroll More: " + canScrollMore);
 
         return canScrollMore;
-
-
-////        System.out.println("Scrolling down");
-//        ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
-//                "left", 100, "top", 200, "width", 200, "height", 600,
-//                "direction", "down",
-//                "percent", 3.0
-//        ));
     }
 
     public boolean newScrollDownSlow() throws Exception {
@@ -475,8 +430,6 @@ public class BasePage extends BaseDriver {
 //        System.out.println("Can Scroll More: " + canScrollMore);
 
         return canScrollMore;
-
-
     }
 
     public boolean newScrollUp() throws Exception {
@@ -528,10 +481,6 @@ public class BasePage extends BaseDriver {
 
             } while (!textCheck) ;
         }
-
-
-
-
     }
 
     public void scrollDownAndroidUIAutomator(String myInstance) throws Exception {

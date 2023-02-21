@@ -32,23 +32,35 @@ public class WhatsNewScreenTest extends BaseDriver {
             myMenu.selectMenu(myMenu.help);
             myBasePage.waitForElementThenClick(myHelpPage.helpWhatsNew);
             Thread.sleep(2000);
-            pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Quarterly Report", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("View Quorum and Class Lists", pageSource, "Contains"));
+            whatsNewListCheck();
         } else {
             myHelper.enterPinKeepWhatsNew("1", "1", "3", "3");
             Thread.sleep(2000);
-            pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Quarterly Report", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("View Quorum and Class Lists", pageSource, "Contains"));
+            whatsNewListCheck();
             myBasePage.waitForElementThenClick(myWhatsNew.whatsNewDone);
         }
+    }
 
+    public void whatsNewListCheck() throws Exception {
+        String pageSource = null;
+        BasePage myBasePage = new BasePage(driver);
 
+        pageSource = myBasePage.getSourceOfPage();
+
+        Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
+        //4.8.0
+        Assert.assertTrue(myBasePage.checkNoCaseList("New Sign-In Experience", pageSource, "Contains"));
+        //4.7.x
+        Assert.assertTrue(myBasePage.checkNoCaseList("Submit the Quarterly Report", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("View Quorum and Class Lists", pageSource, "Contains"));
+
+        //Should not be displayed
+        //4.6.x
+        Assert.assertFalse(myBasePage.checkNoCaseList("Recording Quorum and Class Visitors", pageSource, "Contains"));
+        Assert.assertFalse(myBasePage.checkNoCaseList("Manage Records", pageSource, "Contains"));
+        Assert.assertFalse(myBasePage.checkNoCaseList("Schedule a Temple Appointment", pageSource, "Contains"));
+        //4.9.0
+        Assert.assertFalse(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
 
     }
 

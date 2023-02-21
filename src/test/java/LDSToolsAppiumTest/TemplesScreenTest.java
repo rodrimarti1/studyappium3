@@ -27,7 +27,8 @@ public class TemplesScreenTest extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
         //Go to Temple
         myMenu.selectMenu(myMenu.temples);
-        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        checkForTemplePopUps();
+//        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
         myBasePage.waitForText("Los Angeles");
         pageSource = myBasePage.getSourceOfPage();
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
@@ -311,7 +312,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all3", "daily", "daily4", "jft"})
+    @Test (groups= { "all", "all3", "daily", "daily4"})
     public void templeSearch() throws Exception {
         String pageSource;
 
@@ -349,7 +350,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1"})
+    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 

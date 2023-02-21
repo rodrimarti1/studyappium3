@@ -684,7 +684,7 @@ public class APITest {
     }
 
 
-//    @Test
+    @Test
     public void configPropertiesTest() throws Exception {
         try (InputStream input = Files.newInputStream(Paths.get("ConfigFiles/config.properties"))) {
 
@@ -707,7 +707,7 @@ public class APITest {
         }
     }
 
-    @Test
+//    @Test
     public void getHouseholdInfoForUnit() throws Exception {
         List<ApiHousehold> allHouseholds = new ArrayList<>();
         allHouseholds =  apiTest.getHouseholdInfo( "39373", "dsoneil");

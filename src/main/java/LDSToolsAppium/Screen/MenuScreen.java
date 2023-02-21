@@ -120,8 +120,10 @@ public class MenuScreen extends BasePage {
 
     public void selectMenu(WebElement myElement) throws Exception {
         BasePage myBase = new BasePage(driver);
+        Thread.sleep(500);
         if (!getOS().equals("ios")) {
-            drawerButton.click();
+            myBase.waitForElementThenClick(drawerButton);
+//            drawerButton.click();
         }
         //Check for Element
         if (checkForElement(myElement)) {
