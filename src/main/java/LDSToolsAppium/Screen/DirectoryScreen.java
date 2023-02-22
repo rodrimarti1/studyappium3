@@ -187,7 +187,8 @@ public class DirectoryScreen extends BasePage {
 
     //Adjust Household Location Lowercase
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/adjustHouseholdLocationButton")
-    @iOSXCUITFindBy(accessibility = "Adjust Household Location")
+//    @iOSXCUITFindBy(accessibility = "Adjust Household Location")
+    @iOSXCUITFindBy(accessibility = "Adjust household location")
     public WebElement gpsAdjustHouseholdLocationLowerCase;
 
 

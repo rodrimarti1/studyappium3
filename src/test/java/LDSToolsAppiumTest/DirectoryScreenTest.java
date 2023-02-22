@@ -662,7 +662,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 //    @Test(groups = {"needUpdate"})
-    @Test(groups = {"all3", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily4"})
     public void directoryLatLongNoGPSNoCalling() throws Exception {
         String pageSource;
 
@@ -696,7 +696,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all3", "all", "daily", "daily1"})
+    @Test(groups = {"all3", "all", "daily", "daily1", "jft"})
     public void directoryLatLongCheckLocation() throws Exception {
 
         // ********* Constructor **********

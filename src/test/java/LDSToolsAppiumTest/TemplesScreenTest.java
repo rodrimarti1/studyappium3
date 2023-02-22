@@ -196,7 +196,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     //Broken in iOS for Proxy
     //https://jira.churchofjesuschrist.org/browse/MMIP-6476
-    @Test (groups= { "all", "all1", "daily", "daily2"})
+    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
@@ -350,7 +350,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
+    @Test (groups= { "all", "all4", "daily", "daily1"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 
@@ -411,7 +411,6 @@ public class TemplesScreenTest extends BaseDriver {
 
         checkOrdinanceDate();
         checkTempleDates(10);
-
 
     }
 
