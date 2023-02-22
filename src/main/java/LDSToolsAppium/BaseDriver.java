@@ -677,6 +677,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("appium:customSnapshotTimeout", 500);
             capabilities.setCapability("appium:snapshotMaxDepth", 100);
 //            capabilities.setCapability("fullReset", true);
+//            capabilities.setCapability("appium:resetLocationService", true);
+
 
 //            capabilities.setCapability("wdaConnectionTimeout", 5000000);
 //            capabilities.setCapability("appium:waitForQuiescence", false);

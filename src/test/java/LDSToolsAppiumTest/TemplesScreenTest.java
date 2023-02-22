@@ -7,6 +7,7 @@ import org.openqa.selenium.html5.Location;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import javax.xml.transform.TransformerException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -216,8 +217,13 @@ public class TemplesScreenTest extends BaseDriver {
 
 
         myMenu.selectMenu(myMenu.temples);
+
         checkForTemplePopUps();
-//        myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myTemple.chooseDifferentTab(myTemple.allTab);
+            myBasePage.scrollUpIOS();
+            Thread.sleep(6000);
+        }
         Thread.sleep(1000);
         myTemple.chooseDifferentTab(myTemple.nearestTab);
 
@@ -237,7 +243,7 @@ public class TemplesScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Oakland", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Sacramento", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Fresno", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Reno", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Feather River", pageSource, "Contains"));
         } else {
             myBasePage.waitForText("Oquirrh");
             pageSource = myBasePage.getSourceOfPage();

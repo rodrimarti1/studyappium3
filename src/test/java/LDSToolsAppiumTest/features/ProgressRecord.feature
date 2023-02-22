@@ -1,7 +1,7 @@
 @ProgressRecord
   Feature: Progress Record tests - Used to be Missionary Progress Record
 
-    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4 @jft
+    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4
     Scenario Outline: SMOKE as a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
@@ -45,9 +45,9 @@
       Then the <memberRecord> will be displayed
       And the members record <can> be edited
       Examples:
-        | leader                            | memberRecord            | can     | unit         |
-        | "STAKE_PRESIDENT"                 | "Young, Kenneth"        | "false" | "Wellington" |
-        | "STAKE_PRESIDENT_FIRST_COUNSELOR" | "Smith, Barbara Aletha" | "false" | "Newton"     |
+        | leader                            | memberRecord     | can     | unit         |
+        | "STAKE_PRESIDENT"                 | "Young, Kenneth" | "false" | "Wellington" |
+        | "STAKE_PRESIDENT_FIRST_COUNSELOR" | "Young, Kenneth" | "false" | "Wellington" |
 #        | "STAKE_PRESIDENT_SECOND_COUNSELOR" | "Richards, Gabe"         | "false" | "Wellington"   |
 #        | "STAKE_CLERK"                      | "Davis, Keith"           | "false" | "Valley"       |
 #        | "STAKE_EXECUTIVE_SECRETARY"        | "Chaney, Dustin John"    | "false" | "Auburn Hills" |
@@ -78,7 +78,7 @@
 #        | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "Buzo, Robert"   | "false" |
 #        | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "Cubbage, Ron"   | "false" |
 
-    @MQA-5158 @MQA-2225 @all @all4 @daily @daily4
+    @MQA-5158 @MQA-2225 @all @all4 @daily @daily4 @jft
     Scenario Outline: As a STAKE leader I should have access to the People Being Taught under Progress Record
       Given a <leader> logs in selects a <unit> and is on the Progress Record Page
       When a <memberRecord> is selected under the People Being Taught tab

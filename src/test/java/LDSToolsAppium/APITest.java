@@ -491,7 +491,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-//    @Test
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -560,7 +560,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("111074", callingId);
+            memberList = apiTest.getAccounts("503916", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
@@ -684,7 +684,7 @@ public class APITest {
     }
 
 
-    @Test
+//    @Test
     public void configPropertiesTest() throws Exception {
         try (InputStream input = Files.newInputStream(Paths.get("ConfigFiles/config.properties"))) {
 
