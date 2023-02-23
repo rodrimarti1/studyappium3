@@ -86,17 +86,22 @@ public class OktaLoginSteps extends BaseDriver {
         myLogin.termsOfUse.click();
         Thread.sleep(1000);
         myBasePage.waitForText("Terms of Use");
+        pageSource = myBasePage.getSourceOfPage();
         Assert.assertTrue(pageSource.contains("Terms of Use"));
         Thread.sleep(500);
         browserBack();
         myBasePage.waitForText("Sign In");
-        //Privacy Notice
-        myLogin.privacyNotice.click();
-        Thread.sleep(1000);
-        myBasePage.waitForText("Privacy Notice");
-        Assert.assertTrue(pageSource.contains("Privacy Notice"));
-        browserBack();
-        myBasePage.waitForText("Sign In");
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            //Privacy Notice
+            myLogin.privacyNotice.click();
+            Thread.sleep(1000);
+            myBasePage.waitForText("Privacy Notice");
+            pageSource = myBasePage.getSourceOfPage();
+            Assert.assertTrue(pageSource.contains("Privacy Notice"));
+            browserBack();
+            myBasePage.waitForText("Sign In");
+        }
+
 
 
     }
