@@ -126,7 +126,9 @@ public class MissionLeaderDirectory extends BaseDriver {
             myMenu.selectMenu(myMenu.settings);
             myBasePage.scrollToTextGeneral("Refresh Data"); //This might need to be something different
 //            toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[@resource-id='org.lds.ldstools.alpha:id/secondaryTextView']/following-sibling::org.lds.ldstools.alpha:id/switchView"));
-            toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[contains(@text, 'Texas Houston')]/following-sibling::android.widget.Switch"));
+            System.out.println(myBasePage.getSourceOfPage());
+//            toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[contains(@text, 'Texas Houston')]/following-sibling::android.widget.Switch"));
+            toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[contains(@text, 'Texas Houston')]/.."));
         } else {
             myMenu.selectMenu(myMenu.settings);
             myBasePage.waitForElementThenClick(mySettings.missionLeaderLimitedVisibility);
@@ -187,7 +189,7 @@ public class MissionLeaderDirectory extends BaseDriver {
         toggleMissionLeaderAccess("off");
         //Need a long sleep to make sure the buttons are off.
         Thread.sleep(10000);
-        myBasePage.waitForElementThenClick(myBasePage.backButton);
+        myBasePage.waitForElementThenClick(myBasePage.backAltButton);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myMenu.selectMenu(myMenu.settings);
         }

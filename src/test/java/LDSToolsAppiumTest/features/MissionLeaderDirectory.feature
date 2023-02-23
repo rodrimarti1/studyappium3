@@ -42,14 +42,14 @@
     Then the Returned Missionary info should be marked private
 
 
-  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1
+  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1 @jft
   Scenario: Returned Missionary add and remove Mission President access
     Given a returned missionary logs in and Mission Leader is turned off
     When a member "tdlarkin" logs in
     Then the Mission President will not see the Returned Missionary
 
 
-  @MQA-5399 @MQA-2223 @all @all4 @daily @daily4 @jft
+  @MQA-5399 @MQA-2223 @all @all4 @daily @daily4
   Scenario: Missionary sign up in Settings
     Given a member "zsgallafent" logs in
     When the Settings page is selected
