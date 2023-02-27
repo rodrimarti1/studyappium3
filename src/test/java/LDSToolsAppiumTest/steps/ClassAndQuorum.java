@@ -154,7 +154,7 @@ public class ClassAndQuorum extends BaseDriver {
     public void theClassListWillBeDisplayed() throws Exception {
         LOGGER.info("The class list will be displayed");
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(pageSource.contains("Andrews"));
+        Assert.assertTrue(pageSource.contains("Chappell"));
         Assert.assertTrue(pageSource.contains("Male"));
         Assert.assertTrue(pageSource.contains("Deacons"));
     }

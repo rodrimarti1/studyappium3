@@ -1,7 +1,7 @@
 @LifeResources
 Feature: Test Life Resources
 
-  @MQA-6683 @MQA-6682 @all @all2 @daily @daily2 @smoke @smoke2
+  @MQA-6683 @MQA-6682 @notValidAnymore
   Scenario: Life Resource check correct data
     Given a "MEMBER1" logs in and is on the Life Resources page
     When a "Addiction Recovery Program" is selected
@@ -12,7 +12,7 @@ Feature: Test Life Resources
       | Addiction Recovery Program                                  |
       | https://addictionrecovery.churchofjesuschrist.org/?lang=eng |
 
-  @MQA-6684 @MQA-6682 @all @all3 @daily @daily3 @jft
+  @MQA-6684 @MQA-6682 @notValidAnymore
   Scenario: Search for a Life Resource
     Given a "MEMBER1" logs in and is on the Life Resources page
     When a "Houston Texas Employment Resource Center" is searched for in Life Resources
