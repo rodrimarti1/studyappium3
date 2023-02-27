@@ -57,6 +57,7 @@ public class PrayerRoll extends BaseDriver {
             myBasePage.scrollToTextGeneral("Prayer Roll");
         }
 
+        Thread.sleep(1000);
 //        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myTemple.prayerRollButton);
 //        myTemple.prayerRollButton.click();

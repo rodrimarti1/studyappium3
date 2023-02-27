@@ -245,7 +245,7 @@ public class HelperMethods extends BaseDriver {
         myLoginPage.loginName.clear();
         myLoginPage.loginName.sendKeys(username);
         myLoginPage.nextButton.click();
-        Thread.sleep(1300);
+        Thread.sleep(1500);
 
         myBasePage.waitForElement(myLoginPage.passWord);
         myLoginPage.passWord.sendKeys(new String(decodeBytes));
