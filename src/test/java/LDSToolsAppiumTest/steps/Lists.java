@@ -265,7 +265,7 @@ public class Lists extends BaseDriver  {
         membersToAdd.add("adams, dewayne");
         membersToAdd.add("adams, zachary");
         membersToAdd.add("agcaoili, lisa");
-        membersToAdd.add("anderson, lisa");
+        membersToAdd.add("smith, raynette");
         membersToAdd.add("arabia, jaclyn");
         membersToAdd.add("arabia, norma");
         membersToAdd.add("arabia, roman");

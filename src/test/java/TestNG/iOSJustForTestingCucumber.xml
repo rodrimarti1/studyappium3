@@ -13,7 +13,7 @@
         <parameter name="systemPort" value="8251" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.OktaLoginRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.ClassAndQuorumRunner"> </class>
         </classes>
     </test>
 </suite>

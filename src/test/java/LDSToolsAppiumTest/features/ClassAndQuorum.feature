@@ -1,7 +1,7 @@
 @ClassAndQuorum
   Feature: Class and Quorum Attendance tests
 
-    @MQA-3517 @MQA-2225 @all @all1 @daily @daily2
+    @MQA-3517 @MQA-2225 @all @all1 @daily @daily2 @jft
     Scenario Outline: As a leader I should have access to Class and Quorum Attendance reports
       Given a <leader> logs in and is on the Class and Quorum Attendance page
       When a <memberRecord> is searched for
@@ -18,7 +18,7 @@
 ##      | "ELDERS_QUORUM_FIRST_COUNSELOR"   | "Bryson, David"    | "true"     |
 #        | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "Bryson, David"   | "true" |
 #        | "ELDERS_QUORUM_SECRETARY"         | "Bryson, David"   | "true" |
-        | "RELIEF_SOCIETY_PRESIDENT" | "Borden, Shirley" | "true" |
+        | "RELIEF_SOCIETY_PRESIDENT" | "Dunford, Rachel" | "true" |
 ##        | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "Borden, Shirley" | "true" |
 #        | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "Borden, Shirley" | "true" |
         | "YOUNG_WOMEN_PRESIDENT"    | "Estrada, Alexis" | "true" |
@@ -35,7 +35,7 @@
       When week one is marked attended
       Then week one will have a check mark
 
-    @MQA-3520 @all @all1 @daily @daily3 @jft
+    @MQA-3520 @all @all1 @daily @daily3
     Scenario: As a Bishopric member I should have access to the filters in Class and Quorum Attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When filters is selected

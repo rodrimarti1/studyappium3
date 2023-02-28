@@ -165,40 +165,25 @@ public class HelperMethods extends BaseDriver {
         }
     }
 
-
-    public void proxyLogin(String proxyUserName) throws Exception {
-        // ********* Constructor **********
+    public void alertCheckBeforeTest() throws Exception {
         BasePage myBasePage = new BasePage(driver);
-        BaseDriver myBaseDriver = new BaseDriver();
-        LoginPageScreen myLoginPage = new LoginPageScreen(driver);
-        SettingsScreen mySettings = new SettingsScreen(driver);
-
-        getInfoFromProperties();
-
-//        String loginName = "membertoolsqa";
-
-
-        String deviceName;
-        String pageSource;
-        int myCounter = 1;
-
-        LOGGER.info("Start Proxy Login");
-
         if (myBasePage.checkForElement(myBasePage.allowWhileUsingApp)) {
-//            System.out.println(myBasePage.getSourceOfPage());
-//            Thread.sleep(2000);
             myBasePage.allowWhileUsingApp.click();
             Thread.sleep(500);
         }
 
         if (myBasePage.checkForElement(myBasePage.allowButton)) {
-//            System.out.println(myBasePage.getSourceOfPage());
-//            Thread.sleep(2000);
             myBasePage.allowButton.click();
         }
+    }
 
+    public void setStageAndProxyUser(String proxyUserName) throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        BaseDriver myBaseDriver = new BaseDriver();
+        LoginPageScreen myLoginPage = new LoginPageScreen(driver);
+        SettingsScreen mySettings = new SettingsScreen(driver);
+        int myCounter = 1;
 
-        byte[] decodeBytes = Base64.decodeBase64(password);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             iosDeepLink(proxyUserName);
 //            loginName = "zmaxfield/stage/" + proxyUserName;
@@ -206,14 +191,11 @@ public class HelperMethods extends BaseDriver {
             String myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
             Thread.sleep(500);
             while(!myLane.equalsIgnoreCase("STAGE")|| myCounter > 4) {
-//                System.out.println(myBasePage.getSourceOfPage());
                 myBasePage.waitForElementThenClick(myLoginPage.titleMemberTools);
                 Thread.sleep(500);
                 myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
-//                myLoginPage.titleMemberTools.click();
                 myCounter++;
             }
-
 
             myLoginPage.overflowMenu.click();
             myLoginPage.overflowSettings.click();
@@ -223,22 +205,20 @@ public class HelperMethods extends BaseDriver {
             mySettings.proxyUsernameEditText.sendKeys(proxyUserName);
             mySettings.proxyUsernameEditOK.click();
             myBasePage.navigateUp.click();
-
-
-
-//            System.out.println("Get the device name");
-//            deviceName = driver.get().getCapabilities().getCapability("deviceName").toString();
-//            System.out.println("adb - proxy start");
-//            myBaseDriver.adbProxyStart(deviceName, proxyUserName);
-//            Thread.sleep(2000);
         }
+
         if (myBasePage.checkForElement(myLoginPage.cancelPass)){
             myLoginPage.cancelPass.click();
         }
+    }
 
-//        if (myBasePage.checkForElement(myLoginPage.startPageSignInButton)) {
-//            myLoginPage.startPageSignInButton.click();
-//        }
+    public void loginWithTwoFactor() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        BaseDriver myBaseDriver = new BaseDriver();
+        LoginPageScreen myLoginPage = new LoginPageScreen(driver);
+        SettingsScreen mySettings = new SettingsScreen(driver);
+        String pageSource;
+        byte[] decodeBytes = Base64.decodeBase64(password);
 
         LOGGER.info("Clear login and password");
         myBasePage.waitForElement(myLoginPage.loginName);
@@ -282,43 +262,21 @@ public class HelperMethods extends BaseDriver {
                 }
             }
         } while ((twoFactor) && (twoFactorCounter < 4));
-
-
-
-
-//        myLoginPage.signInButton.click();
         Thread.sleep(500);
+    }
 
+    public void syncWaitForPin() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        String pageSource;
         long startTime = System.nanoTime();
 
         LOGGER.info("Check for Sign In");
         myBasePage.waitUnitlTextIsGone("Sign In");
         LOGGER.info("Check for Sign In over ------ Check for Sync");
 
-//        Thread.sleep(2000);
-
-//        unavailableCheck();
-
-
-
         if (myBasePage.getOS().equals("ios")) {
             unavailableCheck();
-
-//            pageSource = myBasePage.getSourceOfPage();
-//            if (pageSource.contains("passcode")) {
-//                LOGGER.info("Found Passcode");
-//
-//            } else {
-//                LOGGER.info("Waiting for Updating.... ");
-//                myBasePage.waitForTextPopUp("Updating");
-//
-//                LOGGER.info("Found Updating waiting for Updating to go away.");
-//                myBasePage.waitUntilTextIsGonePopUp("Updating");
-//
-//
-//            }
             Thread.sleep(1000);
-
             myBasePage.waitForText("passcode");
             LOGGER.info("Text found: Passcode");
 
@@ -326,21 +284,17 @@ public class HelperMethods extends BaseDriver {
             myBasePage.waitUnitlTextIsGone("Authenticating");
             unavailableCheck();
             pageSource = myBasePage.getSourceOfPage();
-
             //"Not now"
             if (pageSource.contains("Not now")) {
                 driver.get().findElement(By.xpath("//*[@text='Not now']")).click();
             }
-
             //"Never"
             if (pageSource.contains("Never")) {
                 driver.get().findElement(By.xpath("//*[@text='Never']")).click();
             }
-
             myBasePage.waitUnitlTextIsGone("Updating");
             Thread.sleep(1000);
             myBasePage.waitUnitlTextIsGone("Updating");
-//            unavailableCheck();
         }
 
         long endTime = System.nanoTime();
@@ -349,10 +303,26 @@ public class HelperMethods extends BaseDriver {
         LOGGER.info("Done waiting for Text to disappear: Sync Took: " + duration);
 
         syncTimeWriter(duration);
-
-
-
         Thread.sleep(1000);
+    }
+
+
+    public void proxyLogin(String proxyUserName) throws Exception {
+        // ********* Constructor **********
+        BasePage myBasePage = new BasePage(driver);
+        BaseDriver myBaseDriver = new BaseDriver();
+        LoginPageScreen myLoginPage = new LoginPageScreen(driver);
+        SettingsScreen mySettings = new SettingsScreen(driver);
+
+        getInfoFromProperties();
+        byte[] decodeBytes = Base64.decodeBase64(password);
+//        String loginName = "membertoolsqa";
+
+        LOGGER.info("Start Proxy Login");
+        alertCheckBeforeTest();
+        setStageAndProxyUser(proxyUserName);
+        loginWithTwoFactor();
+        syncWaitForPin();
     }
 
     public void twoFactorWait() throws Exception {
