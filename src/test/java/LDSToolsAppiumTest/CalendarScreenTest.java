@@ -12,11 +12,12 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 
 public class CalendarScreenTest extends BaseDriver {
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily3", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily3"})
     public void calendarScreenCheck() throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
@@ -212,7 +213,7 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all", "all4", "daily", "daily3"})
+    @Test (groups = {"all", "all4", "daily", "daily3", "jft"})
     public void calenderSubscriptions() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -225,6 +226,10 @@ public class CalendarScreenTest extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
         //Go to Calendar
         myMenu.selectMenu(myMenu.calendar);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            //Calendars are loading very slow.
+            Thread.sleep(23000);
+        }
         Thread.sleep(2000);
         //Check for a Stake Calendar Item
         myBasePage.scrollToTextGeneral("High Council");

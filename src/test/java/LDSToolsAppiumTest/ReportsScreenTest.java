@@ -497,8 +497,8 @@ public class ReportsScreenTest extends BaseDriver {
         pageSource = myBasePage.getSourceOfPage();
 
         //TEST
-        Assert.assertTrue(myBasePage.checkNoCaseList("Davis", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Chavez", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Nguyen", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Maddison", pageSource, "Contains"));
 
         //TODO: Need a way to test this for iOS. iOS does this very different.
         if (!getRunningOS().equals("ios")) {

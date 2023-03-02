@@ -85,8 +85,8 @@
       Then the <memberRecord> for People Being Taught will be displayed
       And the members record for People Being Taught <can> be edited
       Examples:
-        | leader            | memberRecord     | can     | unit     |
-        | "STAKE_PRESIDENT" | "Clipper, Scott" | "false" | "Newton" |
+        | leader            | memberRecord        | can     | unit     |
+        | "STAKE_PRESIDENT" | "Supernois, Monica" | "false" | "Newton" |
 #        | "STAKE_PRESIDENT_FIRST_COUNSELOR"  | "Corum, Will"      | "false" | "Newton"       |
 #        | "STAKE_PRESIDENT_SECOND_COUNSELOR" | "Cesar"            | "false" | "Hutchinson"   |
 #        | "STAKE_CLERK"                      | "Casas, Charlotte" | "false" | "Pratt"        |

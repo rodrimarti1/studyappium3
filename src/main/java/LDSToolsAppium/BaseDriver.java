@@ -460,7 +460,14 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
                 myDevice.connectDevice(deviceSerial);
                 deviceIPPort = myDevice.remoteControl(deviceSerial);
                 testDevice = getRemoteIPPort(deviceIPPort);
+
+                //Need to do this twice the first one lies and says it failed.
                 adbRemoteConnect(testDevice);
+                adbRemoteConnect(testDevice);
+
+                adbInstallChurchMobileDev();
+                adbStartChurchMobileDev();
+
             }
 
             if (testDevice.contains("WIRELESS")) {
@@ -843,6 +850,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
     public void adbInstallChurchMobileDev() throws Exception {
         //String pathToADB = "../../../android-sdks/platform-tools/adb";
         //String androidHome = getAndroidHomePath();
+        System.out.println("Install church mobile dev app");
         String androidHome = System.getenv("ANDROID_HOME");
         String pathToADB = androidHome + "/platform-tools/adb";
 
@@ -850,7 +858,28 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         // = "adb shell am force-stop org.lds.ldstools.alpha";
         Runtime run = Runtime.getRuntime();
 
-        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "install", "AppUnderTest/app-release.apk" });
+        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "install", "AppUnderTest/app-debug.apk" });
+        //Process pr = run.exec(cmd);
+        pr.waitFor();
+        BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+        String line;
+
+        while ((line=buf.readLine())!=null) {
+            System.out.println(line);
+        }
+    }
+
+    public void adbStartChurchMobileDev() throws Exception {
+        //String pathToADB = "../../../android-sdks/platform-tools/adb";
+        //String androidHome = getAndroidHomePath();
+        String androidHome = System.getenv("ANDROID_HOME");
+        String pathToADB = androidHome + "/platform-tools/adb";
+
+        //String cmd
+        // = "adb shell am force-stop org.lds.ldstools.alpha";
+        Runtime run = Runtime.getRuntime();
+
+        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "shell", "am","start", "-n", "org.lds.dev/org.lds.dev.ux.main.MainActivity" });
         //Process pr = run.exec(cmd);
         pr.waitFor();
         BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
@@ -871,7 +900,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         // = "adb shell am force-stop org.lds.ldstools.alpha";
         Runtime run = Runtime.getRuntime();
 
-        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "uninstall", "AppUnderTest/app-release.apk" });
+        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "uninstall", "org.lds.dev" });
         //Process pr = run.exec(cmd);
         pr.waitFor();
         BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
