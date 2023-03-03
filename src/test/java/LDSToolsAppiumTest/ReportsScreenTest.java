@@ -341,7 +341,7 @@ public class ReportsScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all2", "all", "report", "daily", "daily3"})
+    @Test (groups = {"all2", "all", "report", "daily", "daily3", "jft"})
     public void reportsActionAndInterviewReports() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -462,7 +462,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
     //There is no API for this
-    @Test (groups = {"all3", "all", "report", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "report", "daily", "daily4"})
     public void reportsYouthRecommendStatus() throws Exception {
         String pageSource;
 

@@ -12,7 +12,7 @@
         | barker, susan |
       Then the "New Automated List" with the members should be displayed.
 
-    @MQA-5712 @MQA-2215 @all @all2 @daily @daily2
+    @MQA-5712 @MQA-2215 @all @all2 @daily @daily2 @jft
     Scenario: Create a list and add multiple members
       When I add a List "Test List 1"
       And members are added to the list
@@ -46,7 +46,7 @@
       Then the "&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&" with the members should be displayed.
 
 
-    @MQA-5720 @MQA-2215 @all @all4 @daily @daily4 @jft
+    @MQA-5720 @MQA-2215 @all @all4 @daily @daily4
     Scenario: Create a list with a large number of members
       When a list is created with a large number of members
       Then the large number list will be created
