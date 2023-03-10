@@ -16,16 +16,29 @@ public class AppiumService {
 	public static void startAppiumService(String os, int myPort) throws Exception {
 		System.out.println("OS: " + os);
 		System.out.println("PORT: " + myPort);
-		String appiumPath = null;
+		String appiumPath = "bad";
 
+		String processorType = System.getProperty("os.arch");
 		Map<String, String> map = System.getenv();
 		for (Map.Entry <String, String> entry: map.entrySet()) {
-//			System.out.println("Variable Name:- " + entry.getKey() + " Value:- " + entry.getValue());
-			if (entry.getKey().equals("APPIUM_HOME")) {
+			System.out.println("Variable Name:- " + entry.getKey() + " Value:- " + entry.getValue());
+			if (entry.getKey().equals("ZAPPIUM_HOME")) {
 				appiumPath = entry.getValue();
 			}
 		}
-		assert appiumPath != null;
+
+//		System.out.println("Processor: " + processorType);
+//		System.getProperties().list(System.out);
+		if (processorType.equalsIgnoreCase("x86_64")) {
+			appiumPath = "/usr/local/lib/node_modules/appium/build/lib/main.js";
+		} else {
+			appiumPath = "/opt/homebrew/lib/node_modules/appium/build/lib/main.js";
+		}
+
+//		if (appiumPath.equalsIgnoreCase("bad")) {
+//			appiumPath = "/usr/local/lib/node_modules/appium/build/lib/main.js";
+//		}
+//		assert appiumPath != null;
 
 			//Setup the service
 		System.out.println("Creating Appium Service");
