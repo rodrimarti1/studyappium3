@@ -34,7 +34,6 @@
         | "BISHOP"  | "households"                                                                   | "Success" |
         | "BISHOP"  | "covenant-path/user"                                                           | "Success" |
         | "BISHOP"  | "covenant-path"                                                                | "Success" |
-        | "BISHOP"  | "life-resources"                                                               | "Success" |
         | "BISHOP"  | "lists"                                                                        | "Success" |
         | "BISHOP"  | "ministering"                                                                  | "Success" |
         | "BISHOP"  | "ministering/organizations"                                                    | "Success" |
