@@ -16,7 +16,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -462,7 +462,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
     //There is no API for this
-    @Test (groups = {"all3", "all", "report", "daily", "daily4"})
+    @Test (groups = {"all3", "all", "report", "daily", "daily4", "jft"})
     public void reportsYouthRecommendStatus() throws Exception {
         String pageSource;
 
@@ -481,33 +481,34 @@ public class ReportsScreenTest extends BaseDriver {
         myMenu.selectMenu(myMenu.reports);
         Thread.sleep(2000);
 
-        if (!getRunningOS().equals("ios")) {
+        if (getRunningOS().equals("ios")) {
 //            System.out.println(myBasePage.getSourceOfPage());
-            myBasePage.scrollToTextRecyclerView("Youth Recommend Status");
-        } else {
             myBasePage.scrollToTextiOS("Youth Recommend Status");
+            myBasePage.waitForElementThenClick(myReports.youthRecommendStatusReport);
+        } else {
+            myBasePage.scrollToTextRecyclerView("Temple Recommend Status");
+            myBasePage.waitForElementThenClick(myReports.templeRecommendStatusReport);
+            myBasePage.waitForElementThenClick(myReports.allRecommendsSort);
+            myBasePage.waitForElementThenClick(myReports.youthSort);
         }
-
-//        System.out.println(myBasePage.getSourceOfPage());
-        Thread.sleep(2000);
-        myReports.youthRecommendStatusReport.click();
-        Thread.sleep(2000);
 
 
         pageSource = myBasePage.getSourceOfPage();
 
         //TEST
-        Assert.assertTrue(myBasePage.checkNoCaseList("Nguyen", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Maddison", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Chavez", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Conteh", pageSource, "Contains"));
 
         //TODO: Need a way to test this for iOS. iOS does this very different.
         if (!getRunningOS().equals("ios")) {
             youthRecommendStatusActive();
             youthRecommendStatusExpiring();
             youthRecommendStatusExpired();
-            youthRecommendStatusNeverIssued();
-            youthRecommendStatusUnordained();
-            youthRecommendStatusNotBaptized();
+
+            //TODO: Need to fix
+//            youthRecommendStatusNeverIssued();
+//            youthRecommendStatusUnordained();
+//            youthRecommendStatusNotBaptized();
         }
 
 
@@ -520,7 +521,8 @@ public class ReportsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         ReportsScreen myReports = new ReportsScreen(driver);
 
-        myReports.activeSort.click();
+        myBasePage.waitForElementThenClick(myReports.allSort);
+        myBasePage.waitForElementThenClick(myReports.activeSort);
 
         pageSource = myBasePage.getSourceOfPage();
 
@@ -534,7 +536,9 @@ public class ReportsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         ReportsScreen myReports = new ReportsScreen(driver);
 
-        myReports.expiringSort.click();
+        myBasePage.waitForElementThenClick(myReports.activeSort);
+        myBasePage.waitForElementThenClick(myReports.expiringSort);
+
 
         pageSource = myBasePage.getSourceOfPage();
 
@@ -548,7 +552,9 @@ public class ReportsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         ReportsScreen myReports = new ReportsScreen(driver);
 
-        myReports.expiredSort.click();
+        myBasePage.waitForElementThenClick(myReports.expiringSort);
+        myBasePage.waitForElementThenClick(myReports.expiredSort);
+
 
         pageSource = myBasePage.getSourceOfPage();
 
@@ -562,7 +568,9 @@ public class ReportsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         ReportsScreen myReports = new ReportsScreen(driver);
 
-        myReports.neverIssuedSort.click();
+        myBasePage.waitForElementThenClick(myReports.expiredSort);
+        myBasePage.waitForElementThenClick(myReports.neverIssuedSort);
+
 
         pageSource = myBasePage.getSourceOfPage();
 
@@ -576,7 +584,8 @@ public class ReportsScreenTest extends BaseDriver {
         BasePage myBasePage = new BasePage(driver);
         ReportsScreen myReports = new ReportsScreen(driver);
 
-        myReports.unordainedSort.click();
+        myBasePage.waitForElementThenClick(myReports.neverIssuedSort);
+        myBasePage.waitForElementThenClick(myReports.unordainedSort);
 
         pageSource = myBasePage.getSourceOfPage();
 

@@ -577,8 +577,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 //            capabilities.setCapability("appActivity", "org.lds.ldstools.alpha.org.lds.ldstools.ui.activity.StartupActivity");
             capabilities.setCapability("androidInstallTimeout", 90000);
 
-            capabilities.setCapability("unicodeKeyboard", "true");
-            capabilities.setCapability("resetKeyboard", "true");
+            capabilities.setCapability("unicodeKeyboard", true);
+            capabilities.setCapability("resetKeyboard", true);
 
             capabilities.setCapability("systemPort", mySystemPort);
 

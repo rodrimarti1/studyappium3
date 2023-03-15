@@ -220,13 +220,31 @@ public class ReportsScreen extends BasePage {
     @iOSXCUITFindBy(accessibility = "Other")
     public  WebElement otherSort;
 
+    //All recommends
+    @AndroidFindBy(xpath = "//*[@text='All recommends']")
+    public  WebElement allRecommendsSort;
+
+    //Proxy Baptisms and Confirmations
+    @AndroidFindBy(xpath = "//*[@text='Proxy Baptisms and Confirmations']")
+    public  WebElement proxyBaptismsAndConfirmationsSort;
+
+    //Regular
+    @AndroidFindBy(xpath = "//*[@text='Regular']")
+    public  WebElement regularSort;
+
+    //Youth
+    @AndroidFindBy(xpath = "//*[@text='Youth']")
+    public  WebElement youthSort;
+
     //Never Issued
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"never issued\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"never issued\")]")
+    @AndroidFindBy(xpath = "//*[@text='Never Issued']")
     @iOSXCUITFindBy(accessibility = "Never Issued")
     public  WebElement neverIssuedSort;
 
     //Unordained
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"unordained\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"unordained\")]")
+    @AndroidFindBy(xpath = "//*[@text='Unordained']")
     @iOSXCUITFindBy(accessibility = "Unordained")
     public  WebElement unordainedSort;
 

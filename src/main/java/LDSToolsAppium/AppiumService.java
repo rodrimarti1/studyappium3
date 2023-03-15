@@ -52,7 +52,7 @@ public class AppiumService {
 				.withIPAddress("127.0.0.1")
 				.withLogFile(appiumLogFile)
 				.withArgument(GeneralServerFlag.SESSION_OVERRIDE)
-				.withArgument(GeneralServerFlag.LOG_LEVEL, "error")
+				.withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
 				.withArgument(GeneralServerFlag.RELAXED_SECURITY)
 				.withArgument(() -> "--base-path", "/wd/hub")
 //				.withArgument(() -> "--base-path", "/")
