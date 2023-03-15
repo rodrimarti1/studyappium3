@@ -564,7 +564,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
 
 
-            capabilities.setCapability("appim:dontStopAppOnReset", true);
+            capabilities.setCapability("appium:dontStopAppOnReset", true);
 
 
             capabilities.setCapability("appium:clearDeviceLogsOnStart", true);
@@ -576,12 +576,14 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 //            capabilities.setCapability("maxTypingFrequency", "8");
 //            capabilities.setCapability("appActivity", "org.lds.ldstools.alpha.org.lds.ldstools.ui.activity.StartupActivity");
             capabilities.setCapability("androidInstallTimeout", 90000);
-//            capabilities.setCapability("unicodeKeyboard", "true");
-//            capabilities.setCapability("resetKeyboard", "true");
+
+            capabilities.setCapability("unicodeKeyboard", "true");
+            capabilities.setCapability("resetKeyboard", "true");
 
             capabilities.setCapability("systemPort", mySystemPort);
 
 
+//            driver.set(new AndroidDriver(new URL("http://127.0.0.1:" + myPort + "/"), capabilities));
             driver.set(new AndroidDriver(new URL("http://127.0.0.1:" + myPort + "/wd/hub"), capabilities));
 //            driver.set(new AndroidDriver(new URL("http://127.0.0.1:" + myPort ), capabilities));
 

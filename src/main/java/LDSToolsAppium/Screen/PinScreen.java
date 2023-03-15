@@ -5,6 +5,7 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import io.cucumber.java.en.And;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -102,52 +103,62 @@ public class PinScreen extends BasePage {
 
 
     //Pin Key 1
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/oneButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/oneButton")
+    @AndroidFindBy(xpath = "//*[@text='1']/..")
     @iOSXCUITFindBy(accessibility = "1")
     public  WebElement pinKey1;
 
     //Pin Key 2
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/twoButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/twoButton")
+    @AndroidFindBy(xpath = "//*[@text='2']/..")
     @iOSXCUITFindBy(accessibility = "2")
     public  WebElement pinKey2;
 
     //Pin Key 3
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/threeButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/threeButton")
+    @AndroidFindBy(xpath = "//*[@text='3']/..")
     @iOSXCUITFindBy(accessibility = "3")
     public  WebElement pinKey3;
 
     //Pin Key 4
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fourButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fourButton")
+    @AndroidFindBy(xpath = "//*[@text='4']/..")
     @iOSXCUITFindBy(accessibility = "4")
     public  WebElement pinKey4;
 
     //Pin Key 5
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fiveButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fiveButton")
+    @AndroidFindBy(xpath = "//*[@text='5']/..")
     @iOSXCUITFindBy(accessibility = "5")
     public  WebElement pinKey5;
 
     //Pin Key 6
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/sixButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/sixButton")
+    @AndroidFindBy(xpath = "//*[@text='6']/..")
     @iOSXCUITFindBy(accessibility = "6")
     public  WebElement pinKey6;
 
     //Pin Key 7
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/sevenButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/sevenButton")
+    @AndroidFindBy(xpath = "//*[@text='7']/..")
     @iOSXCUITFindBy(accessibility = "7")
     public  WebElement pinKey7;
 
     //Pin Key 8
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/eightButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/eightButton")
+    @AndroidFindBy(xpath = "//*[@text='8']/..")
     @iOSXCUITFindBy(accessibility = "8")
     public  WebElement pinKey8;
 
     //Pin Key 9
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/nineButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/nineButton")
+    @AndroidFindBy(xpath = "//*[@text='9']/..")
     @iOSXCUITFindBy(accessibility = "9")
     public  WebElement pinKey9;
 
     //Pin Key 0
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/zeroButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/zeroButton")
+    @AndroidFindBy(xpath = "//*[@text='0']/..")
     @iOSXCUITFindBy(accessibility = "0")
     public  WebElement pinKey0;
 
@@ -157,11 +168,13 @@ public class PinScreen extends BasePage {
     public  WebElement pinKeyVisibility;
 
     //Pin Key Enter
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/enterButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/enterButton")
+    @AndroidFindBy(xpath = "//*[@resource-id=\"android:id/content\"]/androidx.compose.ui.platform.ComposeView[1]/android.view.View[1]/android.view.View[1]/android.widget.ScrollView[1]/android.view.View[1]/android.view.View[12]/android.view.View[1]")
     public WebElement pinKeyEnter;
 
     //Pin Key Delete
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/deleteButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/deleteButton")
+    @AndroidFindBy(xpath = "//*[@content-desc='Delete']")
     @iOSXCUITFindBy(accessibility = "DELETE")
     public  WebElement pinKeyDelete;
 

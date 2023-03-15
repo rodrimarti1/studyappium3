@@ -191,7 +191,7 @@ public class ReportsScreenTest extends BaseDriver {
             myBasePage.rightsCheckNewRights("Temple Recommend Status", 6, rights, pageSource);
             myBasePage.rightsCheckNewRights("Unit Statistics", 4, rights, pageSource);
             myBasePage.rightsCheckNewRights("Quarterly Report", 4, rights, pageSource);
-            myBasePage.rightsCheckNewRights("Youth Recommend Status", 6, rights, pageSource);
+//            myBasePage.rightsCheckNewRights("Youth Recommend Status", 6, rights, pageSource); //Now in Temple Recommend Status
 
 
             getMembersMovedInReport(rights);
@@ -879,7 +879,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
         Thread.sleep(1000);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(1000);
     }
 
@@ -915,6 +915,9 @@ public class ReportsScreenTest extends BaseDriver {
 //        Assert.assertFalse(myBasePage.checkNoCaseList("Ahsoka, Tano", pageSource, "Contains"));
 
 
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.waitForElementThenClick(myReports.allSort);
+        }
         myReports.selectFilters(myReports.activeSort);
         Thread.sleep(1000);
 
@@ -932,6 +935,9 @@ public class ReportsScreenTest extends BaseDriver {
 //        Assert.assertTrue(myBasePage.checkNoCaseList("Anderson", pageSource, "Contains"));
 //        Assert.assertFalse(myBasePage.checkNoCaseList("Maul, Darth", pageSource, "Contains"));
 
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.waitForElementThenClick(myReports.activeSort);
+        }
         myReports.selectFilters(myReports.expiringSort);
         Thread.sleep(1000);
 
@@ -949,6 +955,9 @@ public class ReportsScreenTest extends BaseDriver {
 //        Assert.assertTrue(myBasePage.checkNoCaseList("Expiring", pageSource, "Contains"));
 //        Assert.assertFalse(myBasePage.checkNoCaseList("Windu, Mace", pageSource, "Contains"));
 
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.waitForElementThenClick(myReports.expiringSort);
+        }
         myReports.selectFilters(myReports.expiredSort);
         Thread.sleep(1000);
 
@@ -984,7 +993,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
         Thread.sleep(1000);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(1000);
     }
 

@@ -10,7 +10,6 @@
 <!--        <parameter name="testDevice" value="HT69D0204296" />-->
 <!--        <parameter name="testDevice" value="09251FDD4003MU" />  &lt;!&ndash; Pixel 5 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="R5CN3032NSW" />  &lt;!&ndash; Samsung Galaxy S20 Plus &ndash;&gt;-->
-<!--        <parameter name="testDevice" value="R5CN3032NSW" /> &lt;!&ndash; Samsung S20 + &ndash;&gt;-->
         <parameter name="testDevice" value="19281FDEE00D8D" /> <!-- Pixel 6 Pro -->
 <!--        <parameter name="testDevice" value="HEADLESS,emulator-5556" />-->
 <!--        <parameter name="testDevice" value="emulator-5554" />-->

@@ -29,39 +29,48 @@ public class LoginPageScreen extends BasePage {
 //    @AndroidFindBy(xpath = "//*[@text='Member Tools']")
     public WebElement titleMemberTools;
 
+    //Member Tools Heading PROD
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"PROD\"]")
+    public WebElement titleMemberToolsPROD;
+
     //Member Tools Heading STAGE
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Member Tools - STAGE']")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"STAGE\"]")
     public WebElement titleMemberToolsSTAGE;
+
+    //Member Tools Heading TEST
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"TEST\"]")
+    public WebElement titleMemberToolsTEST;
 
     //Start Page Sign In Button
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton/XCUIElementTypeStaticText[@name=\" Sign In \"]")
     public WebElement startPageSignInButton;
 
 
-    //Member Tools Heading TEST
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Member Tools - TEST']")
-    public WebElement titleMemberToolsTEST;
 
 
     //Login Name
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/usernameEditText")
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/usernameEditText")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Username']/following-sibling::android.view.View")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Username']/../..")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther/XCUIElementTypeTextField")
     public  WebElement loginName;
 
     //Password
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/passwordEditText")
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/passwordEditText")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/passwordEditText")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Password']/following-sibling::android.widget.EditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther/XCUIElementTypeSecureTextField")
     public  WebElement passWord;
 
     //Next Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/nextButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/nextButton")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Next']/following-sibling::android.widget.Button")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"Next\"]")
     public  WebElement nextButton;
 
     //2Factor Edit Field
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/codeEditText")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/codeEditText")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='2-Step Verification']/following-sibling::android.widget.EditText")
     @iOSXCUITFindBy(iOSNsPredicate = "type == \"XCUIElementTypeTextField\"")
     public  WebElement twoFactorEdit;
 

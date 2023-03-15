@@ -188,14 +188,31 @@ public class HelperMethods extends BaseDriver {
             iosDeepLink(proxyUserName);
 //            loginName = "zmaxfield/stage/" + proxyUserName;
         } else {
-            String myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
             Thread.sleep(500);
-            while(!myLane.equalsIgnoreCase("STAGE")|| myCounter > 4) {
-                myBasePage.waitForElementThenClick(myLoginPage.titleMemberTools);
+            if (myBasePage.checkForElement(myLoginPage.titleMemberToolsPROD)) {
+                myBasePage.waitForElementThenClick(myLoginPage.titleMemberToolsPROD);
                 Thread.sleep(500);
-                myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
-                myCounter++;
             }
+
+            if (myBasePage.checkForElement(myLoginPage.titleMemberToolsTEST)) {
+                myBasePage.waitForElementThenClick(myLoginPage.titleMemberToolsTEST);
+                Thread.sleep(500);
+                myBasePage.waitForElementThenClick(myLoginPage.titleMemberToolsPROD);
+                Thread.sleep(500);
+            }
+
+            if (myBasePage.checkForElement(myLoginPage.titleMemberToolsSTAGE)) {
+                System.out.println("Nothing to do lane = STAGE!");
+                Thread.sleep(500);
+            }
+//            String myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
+
+//            while(!myLane.equalsIgnoreCase("STAGE")|| myCounter > 4) {
+//                myBasePage.waitForElementThenClick(myLoginPage.titleMemberTools);
+//                Thread.sleep(500);
+//                myLane = myLoginPage.titleMemberTools.getAttribute("content-desc");
+//                myCounter++;
+//            }
 
             myLoginPage.overflowMenu.click();
             myLoginPage.overflowSettings.click();
@@ -229,6 +246,7 @@ public class HelperMethods extends BaseDriver {
 
         myBasePage.waitForElement(myLoginPage.passWord);
         myLoginPage.passWord.sendKeys(new String(decodeBytes));
+
         myLoginPage.nextButton.click();
         Thread.sleep(1300);
 
@@ -843,12 +861,16 @@ public class HelperMethods extends BaseDriver {
 //        LOGGER.info("Check for MORE Alerts after whats new page");
 //        checkForAlertsAfterPin();
 
+        //I really don't like the sleeps here but Android won't work without them.
         Thread.sleep(2000);
-
         pressPinKeys(firstNumber);
+        Thread.sleep(2000);
         pressPinKeys(secondNumber);
+        Thread.sleep(2000);
         pressPinKeys(thirdNumber);
+        Thread.sleep(2000);
         pressPinKeys(fourthNumber);
+        Thread.sleep(2000);
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myPin.pinKeyEnter.click();
@@ -857,8 +879,11 @@ public class HelperMethods extends BaseDriver {
         Thread.sleep(2000);
 
         pressPinKeys(firstNumber);
+        Thread.sleep(2000);
         pressPinKeys(secondNumber);
+        Thread.sleep(2000);
         pressPinKeys(thirdNumber);
+        Thread.sleep(2000);
         pressPinKeys(fourthNumber);
 
         Thread.sleep(2000);
@@ -1067,8 +1092,11 @@ public class HelperMethods extends BaseDriver {
     public void enterCurrentPin(String firstNumber, String secondNumber, String thirdNumber, String fourthNumber) throws Exception {
 
         pressPinKeys(firstNumber);
+        Thread.sleep(500);
         pressPinKeys(secondNumber);
+        Thread.sleep(500);
         pressPinKeys(thirdNumber);
+        Thread.sleep(500);
         pressPinKeys(fourthNumber);
 
         Thread.sleep(2000);
@@ -1088,17 +1116,20 @@ public class HelperMethods extends BaseDriver {
     }
 
 
-    public void pressPinKeys(String keyNumber) {
+    public void pressPinKeys(String keyNumber) throws Exception {
         PinScreen myPin = new PinScreen(driver);
+        BasePage myBase = new BasePage(driver);
         switch (keyNumber) {
             case "1" :
-                myPin.pinKey1.click();
+//                myPin.pinKey1.click();
+                myBase.waitForElementThenClick(myPin.pinKey1);
                 break;
             case "2" :
                 myPin.pinKey2.click();
                 break;
             case "3" :
-                myPin.pinKey3.click();
+//                myPin.pinKey3.click();
+                myBase.waitForElementThenClick(myPin.pinKey3);
                 break;
             case "4" :
                 myPin.pinKey4.click();

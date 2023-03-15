@@ -181,7 +181,8 @@ public class ReportsScreen extends BasePage {
     public  WebElement notSetApartSort;
 
     //All
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"all\")]")
+    @AndroidFindBy(xpath = "//*[@text='All']")
     @iOSXCUITFindBy(accessibility = "All")
     public  WebElement allSort;
 
@@ -196,22 +197,26 @@ public class ReportsScreen extends BasePage {
     public  WebElement femaleSort;
 
     //Active
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"active\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"active\")]")
+    @AndroidFindBy(xpath = "//*[@text='Active']")
     @iOSXCUITFindBy(accessibility = "Active")
     public  WebElement activeSort;
 
     //Expiring
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"expiring\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"expiring\")]")
+    @AndroidFindBy(xpath = "//*[@text='Expiring']")
     @iOSXCUITFindBy(accessibility = "Expiring")
     public  WebElement expiringSort;
 
     //Expired
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"expired\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"expired\")]")
+    @AndroidFindBy(xpath = "//*[@text='Expired']")
     @iOSXCUITFindBy(accessibility = "Expired")
     public  WebElement expiredSort;
 
     //Other
-    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"other\")]")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"other\")]")
+    @AndroidFindBy(xpath = "//*[@text='Other']")
     @iOSXCUITFindBy(accessibility = "Other")
     public  WebElement otherSort;
 
@@ -878,6 +883,7 @@ public class ReportsScreen extends BasePage {
             sortFilters.click();
             myElement.click();
         } else {
+
             myElement.click();
         }
 
