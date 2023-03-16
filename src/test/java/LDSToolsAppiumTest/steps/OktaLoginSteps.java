@@ -53,8 +53,8 @@ public class OktaLoginSteps extends BaseDriver {
 
         } else {
             Assert.assertTrue(pageSource.contains("Password"));
-            Assert.assertTrue(pageSource.contains("CANCEL"));
-            Assert.assertTrue(pageSource.contains("NEXT"));
+            Assert.assertTrue(pageSource.contains("Cancel"));
+            Assert.assertTrue(pageSource.contains("Next"));
         }
 
         goodPassword();
@@ -65,8 +65,8 @@ public class OktaLoginSteps extends BaseDriver {
             Assert.assertTrue(pageSource.contains("TRY ANOTHER WAY"));
             Assert.assertTrue(pageSource.contains("Next"));
         } else {
-            Assert.assertTrue(pageSource.contains("CANCEL"));
-            Assert.assertTrue(pageSource.contains("NEXT"));
+            Assert.assertTrue(pageSource.contains("Cancel"));
+            Assert.assertTrue(pageSource.contains("Next"));
         }
         Assert.assertTrue(pageSource.contains("2-Step Verification"));
 
@@ -74,6 +74,7 @@ public class OktaLoginSteps extends BaseDriver {
 
     @Then("the links will be valid")
     public void theLinksWillBeValid() throws Exception {
+//        System.out.println(myBasePage.getSourceOfPage());
         myLogin.troubleSigningIn.click();
         //Account
         myBasePage.waitForText("Account");
