@@ -68,7 +68,7 @@ public class PaymentRequests extends BaseDriver {
             myFinance.paymentRequestsSaveButton.click();
             Thread.sleep(1000);
 //            System.out.println(myBasePage.getSourceOfPage());
-            WebElement nameElement = driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]"));
+            WebElement nameElement = driver.get().findElement(By.xpath("//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton/XCUIElementTypeStaticText"));
 //            payeeName = driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]")).getAttribute("name");
             payeeName = nameElement.getAttribute("name");
 //            System.out.println(payeeName);
@@ -294,9 +294,9 @@ public class PaymentRequests extends BaseDriver {
                     myBasePage.waitForElementThenClick(myFinance.paymentRequestsAddPayeeFab);
                 }
         }
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myBasePage.waitForElementThenClick(myFinance.paymentRequestsSelectThisPayee);
-        }
+//        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+//            myBasePage.waitForElementThenClick(myFinance.paymentRequestsSelectThisPayee);
+//        }
     }
 
     public void choosePurpose(String purpose, String account) throws Exception {
