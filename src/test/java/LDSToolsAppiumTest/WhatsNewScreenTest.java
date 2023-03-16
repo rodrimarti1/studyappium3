@@ -53,14 +53,15 @@ public class WhatsNewScreenTest extends BaseDriver {
         //4.7.x
         Assert.assertTrue(myBasePage.checkNoCaseList("Submit the Quarterly Report", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("View Quorum and Class Lists", pageSource, "Contains"));
+        //4.9.0
+        Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
 
         //Should not be displayed
         //4.6.x
         Assert.assertFalse(myBasePage.checkNoCaseList("Recording Quorum and Class Visitors", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Manage Records", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Schedule a Temple Appointment", pageSource, "Contains"));
-        //4.9.0
-        Assert.assertFalse(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
+
 
     }
 

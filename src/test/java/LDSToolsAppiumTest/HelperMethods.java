@@ -1033,9 +1033,13 @@ public class HelperMethods extends BaseDriver {
         Thread.sleep(2000);
 
         pressPinKeys(firstNumber);
+        Thread.sleep(2000);
         pressPinKeys(secondNumber);
+        Thread.sleep(2000);
         pressPinKeys(thirdNumber);
+        Thread.sleep(2000);
         pressPinKeys(fourthNumber);
+        Thread.sleep(2000);
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myPin.pinKeyEnter.click();
@@ -1044,8 +1048,11 @@ public class HelperMethods extends BaseDriver {
         Thread.sleep(2000);
 
         pressPinKeys(firstNumber);
+        Thread.sleep(2000);
         pressPinKeys(secondNumber);
+        Thread.sleep(2000);
         pressPinKeys(thirdNumber);
+        Thread.sleep(2000);
         pressPinKeys(fourthNumber);
 
         Thread.sleep(2000);

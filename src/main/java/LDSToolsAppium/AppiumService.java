@@ -2,6 +2,7 @@ package LDSToolsAppium;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.time.Duration;
 import java.util.Map;
 
 import io.appium.java_client.service.local.AppiumDriverLocalService;
@@ -45,19 +46,21 @@ public class AppiumService {
 		File appiumLogFile = new File("screenshot/myAppiumLog.txt");
 		new FileOutputStream(appiumLogFile, false).close();
 
-		myAppiumService = new AppiumServiceBuilder()
+		AppiumServiceBuilder myBuilder = new AppiumServiceBuilder()
 //				.withAppiumJS(new File("/usr/local/lib/node_modules/appium/build/lib/main.js"))
 				.withAppiumJS(new File(appiumPath))
 				.usingPort(myPort)
 				.withIPAddress("127.0.0.1")
-				.withLogFile(appiumLogFile)
+//				.withLogFile(appiumLogFile)
+				.withTimeout(Duration.ofSeconds(300))
 				.withArgument(GeneralServerFlag.SESSION_OVERRIDE)
 				.withArgument(GeneralServerFlag.LOG_LEVEL, "warn")
 				.withArgument(GeneralServerFlag.RELAXED_SECURITY)
-				.withArgument(() -> "--base-path", "/wd/hub")
+				.withArgument(() -> "--base-path", "/wd/hub");
 //				.withArgument(() -> "--base-path", "/")
-				.build();
+//				.build();
 		System.out.println("Starting Appium");
+		myAppiumService = AppiumDriverLocalService.buildService(myBuilder);
 		myAppiumService.start();
 		Thread.sleep(3000);
 
