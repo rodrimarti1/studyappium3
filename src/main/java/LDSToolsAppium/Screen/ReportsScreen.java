@@ -737,7 +737,7 @@ public class ReportsScreen extends BasePage {
     public  WebElement moveRecordsOutButton;
 
     //Cancel Button
-    @AndroidFindBy(accessibility = "Navigate up")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Close\"]")
     @iOSXCUITFindBy(iOSNsPredicate = "type == 'XCUIElementTypeTextView'")
     public  WebElement moveRecordsCancelButton;
 

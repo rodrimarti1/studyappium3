@@ -191,6 +191,7 @@ public class MissionLeaderDirectory extends BaseDriver {
         Thread.sleep(10000);
         myBasePage.waitForElementThenClick(myBasePage.backAltButton);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
+//            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
             myMenu.selectMenu(myMenu.settings);
         }
         myBasePage.waitForElementThenClick(mySettings.signOut);

@@ -1,7 +1,7 @@
 @ClassAndQuorum
   Feature: Class and Quorum Attendance tests
 
-    @MQA-3517 @MQA-2225 @all @all1 @daily @daily2 @jft
+    @MQA-3517 @MQA-2225 @all @all1 @daily @daily2
     Scenario Outline: As a leader I should have access to Class and Quorum Attendance reports
       Given a <leader> logs in and is on the Class and Quorum Attendance page
       When a <memberRecord> is searched for
@@ -35,7 +35,7 @@
       When week one is marked attended
       Then week one will have a check mark
 
-    @MQA-3520 @all @all1 @daily @daily3
+    @MQA-3520 @all @all1 @daily @daily3 @jft
     Scenario: As a Bishopric member I should have access to the filters in Class and Quorum Attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When filters is selected

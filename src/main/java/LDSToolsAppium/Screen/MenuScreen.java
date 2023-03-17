@@ -111,7 +111,7 @@ public class MenuScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.LinearLayout[@resource-id='drawer_update_info_later_layout']/android.widget.TextView")
     public  WebElement drawerMessage;
 
-    // ********** iOs Only **********
+    // ********** iOS Only **********
     //More Button
 //    @iOSXCUITFindBy(iOSNsPredicate = "name == 'More' AND type == 'XCUIElementTypeButton'")
     @iOSXCUITFindBy(accessibility = "More")
@@ -120,7 +120,7 @@ public class MenuScreen extends BasePage {
 
     public void selectMenu(WebElement myElement) throws Exception {
         BasePage myBase = new BasePage(driver);
-        Thread.sleep(500);
+        Thread.sleep(1000);
         if (!getOS().equals("ios")) {
             myBase.waitForElementThenClick(drawerButton);
 //            drawerButton.click();
