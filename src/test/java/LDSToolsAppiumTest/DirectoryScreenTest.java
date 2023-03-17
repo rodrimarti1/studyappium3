@@ -85,7 +85,7 @@ public class DirectoryScreenTest extends BaseDriver {
         directoryScreenSub("ELDERS_QUORUM_SECRETARY");
     }
 
-    @Test(groups = {"all2", "all", "daily", "daily3"})
+    @Test(groups = {"all2", "all", "daily", "daily3", "jft"})
     public void directoryScreenTest_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         directoryScreenSub("RELIEF_SOCIETY_PRESIDENT");
     }
@@ -696,7 +696,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all3", "all", "daily", "daily1", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily1"})
     public void directoryLatLongCheckLocation() throws Exception {
 
         // ********* Constructor **********

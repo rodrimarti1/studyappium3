@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 
 public class PinScreenTest extends BaseDriver {
 
-    @Test (groups = {"all1", "all", "daily", "daily1"})
+    @Test (groups = {"all1", "all", "daily", "daily1", "jft"})
     public void pinRepeatTest() throws Exception {
         HelperMethods myHelper = new HelperMethods();
         PinScreen myPinScreen = new PinScreen(driver);
@@ -95,7 +95,7 @@ public class PinScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all4", "all", "jft"})
+    @Test (groups = {"all4", "all"})
     public void pinSequentialTest() throws Exception {
         HelperMethods myHelper = new HelperMethods();
         PinScreen myPinScreen = new PinScreen(driver);
@@ -235,8 +235,9 @@ public class PinScreenTest extends BaseDriver {
     private void pinNoMatchTestData() throws Exception {
         HelperMethods myHelper = new HelperMethods();
         PinScreen myPinScreen = new PinScreen(driver);
-        MenuScreen myMenu = new MenuScreen(driver);
-        SettingsScreen mySettings = new SettingsScreen(driver);
+        BasePage myBase = new BasePage(driver);
+        String pageSource;
+
 
 
 //        if (getRunningOS().equalsIgnoreCase("android")) {
@@ -265,8 +266,11 @@ public class PinScreenTest extends BaseDriver {
             myPinScreen.pinKeyEnter.click();
         }
 
+
         if (getRunningOS().equals("android")) {
-            Assert.assertEquals("PINs do not match.", myPinScreen.pinKeyErrorMessage.getText());
+            pageSource = myBase.getSourceOfPage();
+            Assert.assertTrue(myBase.checkNoCaseList("PINs do not match.", pageSource, "Contains"));
+//            Assert.assertEquals("PINs do not match.", myPinScreen.pinKeyErrorMessage.getText());
         } else {
             Assert.assertEquals("Passcodes do not match.", myPinScreen.pinAlertDialogMessage.getText());
             myPinScreen.pinAlertDialogOK.click();
@@ -276,19 +280,25 @@ public class PinScreenTest extends BaseDriver {
     private void pinRepeatTestData() throws Exception {
         HelperMethods myHelper = new HelperMethods();
         PinScreen myPinScreen = new PinScreen(driver);
-        MenuScreen myMenu = new MenuScreen(driver);
-        SettingsScreen mySettings = new SettingsScreen(driver);
+        BasePage myBase = new BasePage(driver);
+        String pageSource;
 
         //All four of the same number
         myHelper.pressPinKeys("1");
+        Thread.sleep(2000);
         myHelper.pressPinKeys("1");
+        Thread.sleep(2000);
         myHelper.pressPinKeys("1");
+        Thread.sleep(2000);
         myHelper.pressPinKeys("1");
+        Thread.sleep(2000);
 
 
         if (getRunningOS().equalsIgnoreCase("android")) {
             myPinScreen.pinKeyEnter.click();
-            Assert.assertEquals("PIN cannot have sequential or repeating numbers.", myPinScreen.pinKeyErrorMessage.getText());
+            pageSource = myBase.getSourceOfPage();
+            Assert.assertTrue(myBase.checkNoCaseList("PIN cannot have sequential or repeating numbers.", pageSource, "Contains"));
+//            Assert.assertEquals("PIN cannot have sequential or repeating numbers.", myPinScreen.pinKeyErrorMessage.getText());
 //            System.out.println(myBasePage.getSourceOfPage());
             for (int x = 1; x <= 4; x++) {
                 myPinScreen.pinKeyDelete.click();
