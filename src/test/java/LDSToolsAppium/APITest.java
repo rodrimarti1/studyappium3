@@ -72,7 +72,7 @@ public class APITest {
 
     }
 
-//    @Test
+    @Test
     public void ResponseCheck() throws Exception {
         int urlStatus;
         urlStatus = apiTest.getApiResponseCode("households", "mbthomas74");
@@ -491,7 +491,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;

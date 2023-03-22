@@ -76,7 +76,7 @@ public class ReportsScreenTest extends BaseDriver {
         reportsBasicCheckSub("ELDERS_QUORUM_SECRETARY");
     }
 
-    @Test(groups = {"all1", "all", "daily", "daily3"})
+    @Test(groups = {"all1", "all", "daily", "daily3", "jft"})
     public void reportsBasic_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         reportsBasicCheckSub("RELIEF_SOCIETY_PRESIDENT");
     }
@@ -462,7 +462,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
     //There is no API for this
-    @Test (groups = {"all3", "all", "report", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "report", "daily", "daily4"})
     public void reportsYouthRecommendStatus() throws Exception {
         String pageSource;
 

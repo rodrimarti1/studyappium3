@@ -62,6 +62,7 @@ public class ProgressRecord extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
         chooseUnit(unit);
         myMenu.selectMenu(myMenu.reports);
+        Thread.sleep(500);
         if (!myBasePage.checkForElement(myReports.progressRecordReport)) {
             myBasePage.scrollDownAndroidUIAutomator("0");
         }
@@ -82,6 +83,7 @@ public class ProgressRecord extends BaseDriver {
         LOGGER.info("a " + memberRecord + " is selected under the People being taught");
         myBasePage.waitForElement(myReports.prNewMembers);
         myBasePage.waitForElementThenClick(myReports.prPeopleBeingTaught);
+        Thread.sleep(500);
         searchForMemberAndClick(memberRecord);
     }
 
@@ -210,6 +212,7 @@ public class ProgressRecord extends BaseDriver {
         } else {
             driver.get().findElement(By.xpath("//android.widget.TextView[@text='"+ memberRecord +"']")).click();
         }
+        Thread.sleep(500);
     }
 
     public String getProgressRecordDetails() throws Exception {

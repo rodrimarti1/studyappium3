@@ -45,6 +45,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     String password = "testpassword";
     String twoFactor = "123456";
 
+    String bearerToken = "Bearer eyJraWQiOiJVSXdsb1Iwc19JM2VvUzlrZjJJaGUyeENzRHdqb1ZBUTIxc1ZuUmVHcUQ0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULjhnb1hZWEE0XzAyQ2FrVmRObUVzdEVDZGFxekR6QXRpREJJaWd5cmFNWWMiLCJpc3MiOiJodHRwczovL2lkLmNodXJjaG9mamVzdXNjaHJpc3Qub3JnL29hdXRoMi9kZWZhdWx0IiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlhdCI6MTY3OTQxNjgzOCwiZXhwIjoxNjc5NDIwNDM4LCJjaWQiOiIwb2FrdzZpZzdtRU0zNUpaeTM1NyIsInVpZCI6IjAwdTF4ZHgzZWdsZUNSQjZDMzU3Iiwic2NwIjpbInByb2ZpbGUiLCJjbWlzaWQiLCJvcGVuaWQiXSwiYXV0aF90aW1lIjoxNjc5NDEwMDcwLCJjaHVyY2hDTUlTSUQiOiI5MDY3NjI0NTIiLCJzdWIiOiIzNTA3MjExOTY1OTkzMzMwIiwiZmlyc3ROYW1lIjoiWmFkZSBFdmVyZXR0IiwibGFzdE5hbWUiOiJNYXhmaWVsZCIsImNodXJjaENNSVNVVUlEIjoiZGRkYTZiNWQtZjJhOC00NTQ3LWI1YTUtMDUyNTM1YTNkMjEyIiwiY2h1cmNoQWNjb3VudElEIjoiMzUwNzIxMTk2NTk5MzMzMCIsImRpc3BsYXlOYW1lIjoiWmFkZSBNYXhmaWVsZCIsInBlcnNvbmFsRW1haWwiOiJ6YWRlbWF4ZmllbGRAZ21haWwuY29tIn0.JPWmYlJhC-7DHRe2mnTZiug94mnLdU93ukUmEovk2oDvybYKPkTTz2Q1AojHpHhob4UD6nLRYB9SsgXP485pzNbkVOq9dZfMfLPfHFhdRmKQ1SDlVPV7HrqbWP-hWZmzWQHSCROeO_8T9EqBIoyDwvTy45efuC9_XW8qDYONqWwAWOUlyol9-5-Wt0BPw_JMq6g_OD8-qlS0TVTPqK02eWA8mj-QlVhPgRK95nHH4HC8ODgaUJPjGpE5HnO91RprOao-elpKKqnyjvyOEYM2OHQOCIjogmM286WGvLSP-mgSHnwLgp2kozA7JZNmM97ZSkO1jcqmjj_luuA8OC7KHQ";
+
 
     //Login credentials for the API
     public OkHttpClient loginCred() throws Exception {
@@ -103,6 +105,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     public Request requestProxyURL(String apiUrl, String proxyUser ) {
         Request request = new Request.Builder()
                 .url(apiUrl)
+//                .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User" , proxyUser)
                 .build();
         return request;
