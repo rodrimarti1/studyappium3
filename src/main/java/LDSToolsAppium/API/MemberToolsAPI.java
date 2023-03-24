@@ -20,7 +20,9 @@ import okhttp3.logging.HttpLoggingInterceptor;
 
 
 import org.apache.commons.codec.binary.Base64;
+import org.jboss.aerogear.security.otp.Totp;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.*;
@@ -37,15 +39,245 @@ import java.lang.reflect.Type;
 public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     Response householdAPI = null;
-    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"; //OLD
-//    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/"; //NEW
+//    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"; //OLD
+    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/"; //NEW
 //    String baseURL;
 
     String username = "testuser";
     String password = "testpassword";
     String twoFactor = "123456";
 
-    String bearerToken = "Bearer eyJraWQiOiJVSXdsb1Iwc19JM2VvUzlrZjJJaGUyeENzRHdqb1ZBUTIxc1ZuUmVHcUQ0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULjhnb1hZWEE0XzAyQ2FrVmRObUVzdEVDZGFxekR6QXRpREJJaWd5cmFNWWMiLCJpc3MiOiJodHRwczovL2lkLmNodXJjaG9mamVzdXNjaHJpc3Qub3JnL29hdXRoMi9kZWZhdWx0IiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlhdCI6MTY3OTQxNjgzOCwiZXhwIjoxNjc5NDIwNDM4LCJjaWQiOiIwb2FrdzZpZzdtRU0zNUpaeTM1NyIsInVpZCI6IjAwdTF4ZHgzZWdsZUNSQjZDMzU3Iiwic2NwIjpbInByb2ZpbGUiLCJjbWlzaWQiLCJvcGVuaWQiXSwiYXV0aF90aW1lIjoxNjc5NDEwMDcwLCJjaHVyY2hDTUlTSUQiOiI5MDY3NjI0NTIiLCJzdWIiOiIzNTA3MjExOTY1OTkzMzMwIiwiZmlyc3ROYW1lIjoiWmFkZSBFdmVyZXR0IiwibGFzdE5hbWUiOiJNYXhmaWVsZCIsImNodXJjaENNSVNVVUlEIjoiZGRkYTZiNWQtZjJhOC00NTQ3LWI1YTUtMDUyNTM1YTNkMjEyIiwiY2h1cmNoQWNjb3VudElEIjoiMzUwNzIxMTk2NTk5MzMzMCIsImRpc3BsYXlOYW1lIjoiWmFkZSBNYXhmaWVsZCIsInBlcnNvbmFsRW1haWwiOiJ6YWRlbWF4ZmllbGRAZ21haWwuY29tIn0.JPWmYlJhC-7DHRe2mnTZiug94mnLdU93ukUmEovk2oDvybYKPkTTz2Q1AojHpHhob4UD6nLRYB9SsgXP485pzNbkVOq9dZfMfLPfHFhdRmKQ1SDlVPV7HrqbWP-hWZmzWQHSCROeO_8T9EqBIoyDwvTy45efuC9_XW8qDYONqWwAWOUlyol9-5-Wt0BPw_JMq6g_OD8-qlS0TVTPqK02eWA8mj-QlVhPgRK95nHH4HC8ODgaUJPjGpE5HnO91RprOao-elpKKqnyjvyOEYM2OHQOCIjogmM286WGvLSP-mgSHnwLgp2kozA7JZNmM97ZSkO1jcqmjj_luuA8OC7KHQ";
+    String bearerToken = " Bearer eyJraWQiOiJVSXdsb1Iwc19JM2VvUzlrZjJJaGUyeENzRHdqb1ZBUTIxc1ZuUmVHcUQ0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULnhhdE9qZ3VfVFE0QVZXN21lOHRTOEVGTk83Yk9IcU1ZYVQ4VG9fUnpJSG8iLCJpc3MiOiJodHRwczovL2lkLmNodXJjaG9mamVzdXNjaHJpc3Qub3JnL29hdXRoMi9kZWZhdWx0IiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlhdCI6MTY3OTYwNDAxNSwiZXhwIjoxNjc5NjA3NjE1LCJjaWQiOiIwb2FrdzZpZzdtRU0zNUpaeTM1NyIsInVpZCI6IjAwdTF4ZHgzZWdsZUNSQjZDMzU3Iiwic2NwIjpbImNtaXNpZCIsInByb2ZpbGUiLCJvcGVuaWQiXSwiYXV0aF90aW1lIjoxNjc5NjA0MDE0LCJjaHVyY2hDTUlTSUQiOiI5MDY3NjI0NTIiLCJzdWIiOiIzNTA3MjExOTY1OTkzMzMwIiwiZmlyc3ROYW1lIjoiWmFkZSBFdmVyZXR0IiwibGFzdE5hbWUiOiJNYXhmaWVsZCIsImNodXJjaENNSVNVVUlEIjoiZGRkYTZiNWQtZjJhOC00NTQ3LWI1YTUtMDUyNTM1YTNkMjEyIiwiY2h1cmNoQWNjb3VudElEIjoiMzUwNzIxMTk2NTk5MzMzMCIsImRpc3BsYXlOYW1lIjoiWmFkZSBNYXhmaWVsZCIsInBlcnNvbmFsRW1haWwiOiJ6YWRlbWF4ZmllbGRAZ21haWwuY29tIn0.TZKoOA_jkWPz4VRiH_foEtkctLaRWNmsLILfiyy80lqIaoZpqJNo7ZQ8yRPeQuukX14mGe6x3zx7OJfCw5nb65Paw4vfCyhhBiSoa9B6Udqoj3qew-jVT1calFQtTYFefHbRGJN0grc_zXwXF5xnEdexg_lMF8Wu6NklpKLgKNW9YoAB0h_Fk7BTnhUbhItrBLsnrYrHZ9bhPkmS6MFF9uacf2ofcEkPzJTYifYOjzeE38IFI2YpLYyEB5RXAiCrHcP7QlUMdGzT6bHnByFSHhP-o7Xsz2RDekn8ygGYQ_-DlUTSz9-e78GHJyqnENxidcMjg0KpIltiLdULKk7Puw";
+
+    public void bearerTokenRefresh() throws Exception {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl url = HttpUrl.parse("https://id.churchofjesuschrist.org/oauth2/default/v1/token");
+        getInfoFromProperties();
+        byte[] decodeBytes = Base64.decodeBase64(password);
+        String credential = Credentials.basic(username, new String(decodeBytes));
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("grant_type", "password");
+            jsonObject.put("username", username);
+            jsonObject.put("password", new String(decodeBytes));
+            jsonObject.put("scope", "openid");
+            jsonObject.put("client_id", "0oakw6ig7mEM35JZy357");
+//            jsonObject.put("client_id", Arrays.toString((Base64.encodeBase64("0oakw6ig7mEM35JZy357".getBytes()))));
+            jsonObject.put("redirect_url", "https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui/oauth2-redirect.html");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+
+        MediaType JSON = MediaType.parse("application/x-www-form-urlencoded");
+        // put your json here
+        RequestBody body = RequestBody.create(JSON, jsonObject.toString());
+
+
+        Request request = new Request.Builder()
+                .url(url)
+//                .addHeader("grant_type", "authorization_code")
+//                .addHeader("Authorization", "Basic " + Base64.encodeBase64("0oakw6ig7mEM35JZy357: ".getBytes()))
+                .addHeader("Authorization", credential)
+//                .addHeader("client_id", Arrays.toString((Base64.encodeBase64("0oakw6ig7mEM35JZy357".getBytes()))))
+//                .addHeader("client_id", clientId)
+//                .addHeader("Content-Type", "application/x-www-form-urlencoded")
+                .addHeader("Content-Type", "application/json;charset=UTF-8")
+                .post(body)
+//                .post(RequestBody.create(MediaType.parse("application/x-www-form-urlencoded"), "grant_type=authorization_code"))
+                .build();
+        Response response = client.newCall(request).execute();
+        JSONObject json = new JSONObject(response.body().string());
+        System.out.println("JSON: " + json);
+        String token = json.getString("access_token");
+        System.out.println("TOKEN: "  + token);
+    }
+
+//    String authBaseURL = "https://dev-858572-admin.okta.com";
+    String authBaseURL = "https://id.churchofjesuschrist.org";
+
+    public String getAccessToken() throws Exception{
+//        HttpUrl url = HttpUrl.parse("https://id.churchofjesuschrist.org");
+        HttpUrl authnUrl = HttpUrl.parse(authBaseURL + "/api/v1/authn");
+        OkHttpClient client = new OkHttpClient();
+
+        getInfoFromProperties();
+        byte[] decodeBytes = Base64.decodeBase64(password);
+        String credential = Credentials.basic(username, new String(decodeBytes));
+
+        String CHARSET = "StandardCharset.UTF_8.name()";
+        String USER_AGENT_HEADER = "User-Agent";
+        String ACCEPT_CHARSET = "Accept-Charset";
+
+        String userAgent = "MemberTools-Test";
+
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("username", username);
+            jsonObject.put("password", new String(decodeBytes));
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        MediaType JSON = MediaType.parse("application/json;charset=UTF-8");
+        // put your json here
+        RequestBody body = RequestBody.create(JSON, jsonObject.toString());
+
+
+
+        Request authnRequest = new Request.Builder()
+                .url(authnUrl)
+                .cacheControl(CacheControl.FORCE_NETWORK) // Do not use any caching what so ever.
+                .addHeader(ACCEPT_CHARSET, CHARSET)
+                .addHeader(USER_AGENT_HEADER, userAgent)
+                .post(body)
+             .build();
+        Response response = client.newCall(authnRequest).execute();
+        JSONObject json = new JSONObject(response.body().string());
+
+        System.out.println(json);
+
+        if (!json.getString("status").equalsIgnoreCase("mfa_required")) {
+            throw new IllegalStateException("Failed initial auth");
+        }
+
+
+        String stateToken = json.getString("stateToken");
+        JSONArray factors = json.getJSONObject("_embedded").getJSONArray("factors");
+        JSONObject totpFactor = null;
+
+        for (int i = 0; i < factors.length(); i++) {
+            JSONObject factor = factors.getJSONObject(i);
+            if (factor.getString("factorType").equalsIgnoreCase("token:software:totp")) {
+                totpFactor = factor;
+                break;
+            }
+        }
+
+        if (totpFactor == null) {
+            throw new IllegalStateException("Missing totp Factor");
+        }
+
+        // TODO: 3/24/23  get two facto
+
+        String passCode = twoFactorTest();
+
+        JSONObject mfaJson = new JSONObject();
+        try {
+            mfaJson.put("stateToken", stateToken);
+            mfaJson.put("passCode", passCode);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // put your json here
+        RequestBody mfaBody = RequestBody.create(JSON, mfaJson.toString());
+
+        HttpUrl mfaUrl = HttpUrl.parse(authBaseURL + "/api/v1/authn/factors").newBuilder()
+                .addPathSegment(totpFactor.getString("id"))
+                .addPathSegment("verify")
+                .build();
+
+        Request mfaRequest = new Request.Builder()
+                .url(mfaUrl)
+                .cacheControl(CacheControl.FORCE_NETWORK) // Do not use any caching what so ever.
+                .addHeader(ACCEPT_CHARSET, CHARSET)
+                .addHeader(USER_AGENT_HEADER, userAgent)
+                .post(mfaBody)
+                .build();
+        Response mfaResponse = client.newCall(mfaRequest).execute();
+        JSONObject mfaJson2 = new JSONObject(mfaResponse.body().string());
+
+        System.out.println(mfaJson2);
+
+        String sessionToken = mfaJson2.getString("sessionToken");
+
+        if (!mfaJson2.getString("status").equalsIgnoreCase("success") || sessionToken == null)  {
+            throw new IllegalStateException("Failed totp challenge");
+        }
+
+        String state = UUID.randomUUID().toString();
+
+        HttpUrl authorizeUrl = HttpUrl.parse(authBaseURL + "/oauth2/defauult/v1/authorize").newBuilder()
+                .addEncodedQueryParameter("client_id", "0oakw6ig7mEM35JZy357")
+                .addEncodedQueryParameter("response_type", "code")
+                .addEncodedQueryParameter("scope", "openid profile offline_access")
+                .addEncodedQueryParameter("redirect_uri", "https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui/oauth2-redirect.html")
+                .addEncodedQueryParameter("state", state)
+                .addEncodedQueryParameter("sessionToken", sessionToken)
+
+//                .addPathSegment(totpFactor.getString("factorId"))
+//                .addPathSegment("verify")
+                .build();
+
+
+        Request authorizeRequest = new Request.Builder()
+                .cacheControl(CacheControl.FORCE_NETWORK) // Do not use any caching what so ever.
+                .url(authorizeUrl)
+                .addHeader(ACCEPT_CHARSET, CHARSET)
+                .addHeader(USER_AGENT_HEADER, userAgent)
+                .build();
+
+        Response authorizeResponse = client.newBuilder().followRedirects(false).build().newCall(authorizeRequest).execute();
+        String redirect = authorizeResponse.header("Location");
+        System.out.println(authorizeResponse.body().string());
+        System.out.println(redirect);
+        HttpUrl redirectUrl = HttpUrl.parse(redirect);
+        String code = redirectUrl.queryParameter("code");
+        String authState = redirectUrl.queryParameter("state");
+
+        if (code == null) {
+            throw new IllegalStateException("Missing auth code");
+        }
+
+        if (!state.equals(authState)) {
+            throw new IllegalStateException("Auth state does not match");
+        }
+
+        FormBody formBody = new FormBody.Builder()
+                .add("code", code)
+                .add("client_id", "0oakw6ig7mEM35JZy357")
+//                .add("client_secret", oauthConfiguration.clientSecret)
+                .add("grant_type", "authorization_code")
+                .add("redirect_uri", "https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui/oauth2-redirect.html")
+//.add("nonce", authRequest.naonce)
+//.add("code_verifier", codeVerifier)
+                .build();
+
+        HttpUrl tokenUrl = HttpUrl.parse(authBaseURL + "/oauth2/default/v1/token");
+
+
+        Request tokenRequest = new Request.Builder()
+                .url(tokenUrl)
+                .addHeader("Accept-Charset", CHARSET)
+                .addHeader("Content-Type", "application/x-www-form-urlencoded;charset=" + CHARSET)
+                .post(formBody)
+                .build();
+
+        Response tokenResponse = client.newCall(tokenRequest).execute();
+
+        JSONObject tokenJson = new JSONObject(tokenResponse.body().string());
+        System.out.println(tokenJson);
+
+        String accessToken = tokenJson.getString("access_token");
+        if (accessToken == null) {
+            throw new IllegalStateException("Missing access token");
+        }
+
+        return accessToken;
+
+
+    }
+
+    public String twoFactorTest() throws Exception {
+        String otpKeyStr = twoFactor; // <- this 2FA secret key.
+        Totp totp = new Totp(otpKeyStr);
+        String twoFactorCode = totp.now(); // <- got 2FA coed at this time!
+        System.out.println(twoFactorCode);
+        return twoFactorCode;
+    }
+
 
 
     //Login credentials for the API
@@ -62,7 +294,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         TestWam2CredentialsManager credentialsManager = new TestWam2CredentialsManager(username, new String(decodeBytes));
 
         OkHttpClient httpClient = new OkHttpClient.Builder()
-                .addInterceptor(new TestAuthenticationInterceptor(new TestAuthenticationManager(credentialsManager)))
+//                .addInterceptor(new TestAuthenticationInterceptor(new TestAuthenticationManager(credentialsManager)))
                 .addInterceptor(loggingInterceptor)
                 .connectTimeout(Duration.ofSeconds(360))
                 .writeTimeout(Duration.ofSeconds(360))
@@ -105,7 +337,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     public Request requestProxyURL(String apiUrl, String proxyUser ) {
         Request request = new Request.Builder()
                 .url(apiUrl)
-//                .addHeader("Authorization", bearerToken)
+                .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User" , proxyUser)
                 .build();
         return request;

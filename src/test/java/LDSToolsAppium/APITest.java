@@ -72,11 +72,16 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void ResponseCheck() throws Exception {
         int urlStatus;
         urlStatus = apiTest.getApiResponseCode("households", "mbthomas74");
         System.out.println("STATUS: " + urlStatus);
+    }
+
+    @Test
+    public void BearerTokenCheck() throws Exception {
+        apiTest.getAccessToken();
     }
 
 //    @Test

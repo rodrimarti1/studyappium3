@@ -22,7 +22,7 @@
         </groups>
 
         <classes>
-            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest"/>
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest"/>
 
         </classes>
     </test> <!-- iOS Just For Testing test -->
