@@ -9,8 +9,5 @@
         <module name="LDSToolsAppium" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="LDSToolsAppium" target="9" />
-    </bytecodeTargetLevel>
   </component>
 </project>

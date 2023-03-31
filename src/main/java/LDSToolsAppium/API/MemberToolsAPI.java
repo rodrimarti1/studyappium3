@@ -1,6 +1,6 @@
 package LDSToolsAppium.API;
 
-
+import LDSToolsAppium.Web.GetBearerTokenWeb;
 import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
 import LDSToolsAppium.API.Expenses.Expense;
 import LDSToolsAppium.API.Households.ApiHousehold;
@@ -47,7 +47,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     String password = "testpassword";
     String twoFactor = "123456";
 
-    String bearerToken = " Bearer eyJraWQiOiJVSXdsb1Iwc19JM2VvUzlrZjJJaGUyeENzRHdqb1ZBUTIxc1ZuUmVHcUQ0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULnhhdE9qZ3VfVFE0QVZXN21lOHRTOEVGTk83Yk9IcU1ZYVQ4VG9fUnpJSG8iLCJpc3MiOiJodHRwczovL2lkLmNodXJjaG9mamVzdXNjaHJpc3Qub3JnL29hdXRoMi9kZWZhdWx0IiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlhdCI6MTY3OTYwNDAxNSwiZXhwIjoxNjc5NjA3NjE1LCJjaWQiOiIwb2FrdzZpZzdtRU0zNUpaeTM1NyIsInVpZCI6IjAwdTF4ZHgzZWdsZUNSQjZDMzU3Iiwic2NwIjpbImNtaXNpZCIsInByb2ZpbGUiLCJvcGVuaWQiXSwiYXV0aF90aW1lIjoxNjc5NjA0MDE0LCJjaHVyY2hDTUlTSUQiOiI5MDY3NjI0NTIiLCJzdWIiOiIzNTA3MjExOTY1OTkzMzMwIiwiZmlyc3ROYW1lIjoiWmFkZSBFdmVyZXR0IiwibGFzdE5hbWUiOiJNYXhmaWVsZCIsImNodXJjaENNSVNVVUlEIjoiZGRkYTZiNWQtZjJhOC00NTQ3LWI1YTUtMDUyNTM1YTNkMjEyIiwiY2h1cmNoQWNjb3VudElEIjoiMzUwNzIxMTk2NTk5MzMzMCIsImRpc3BsYXlOYW1lIjoiWmFkZSBNYXhmaWVsZCIsInBlcnNvbmFsRW1haWwiOiJ6YWRlbWF4ZmllbGRAZ21haWwuY29tIn0.TZKoOA_jkWPz4VRiH_foEtkctLaRWNmsLILfiyy80lqIaoZpqJNo7ZQ8yRPeQuukX14mGe6x3zx7OJfCw5nb65Paw4vfCyhhBiSoa9B6Udqoj3qew-jVT1calFQtTYFefHbRGJN0grc_zXwXF5xnEdexg_lMF8Wu6NklpKLgKNW9YoAB0h_Fk7BTnhUbhItrBLsnrYrHZ9bhPkmS6MFF9uacf2ofcEkPzJTYifYOjzeE38IFI2YpLYyEB5RXAiCrHcP7QlUMdGzT6bHnByFSHhP-o7Xsz2RDekn8ygGYQ_-DlUTSz9-e78GHJyqnENxidcMjg0KpIltiLdULKk7Puw";
+    String bearerToken = "  Bearer " + "eyJraWQiOiJVSXdsb1Iwc19JM2VvUzlrZjJJaGUyeENzRHdqb1ZBUTIxc1ZuUmVHcUQ0IiwiYWxnIjoiUlMyNTYifQ.eyJ2ZXIiOjEsImp0aSI6IkFULldxWEI1V0dUdlYxeE95Xzc4LWZya2dsVXJoRDlNYkxSd2ZJb2NjaHRkRUkiLCJpc3MiOiJodHRwczovL2lkLmNodXJjaG9mamVzdXNjaHJpc3Qub3JnL29hdXRoMi9kZWZhdWx0IiwiYXVkIjoiYXBpOi8vZGVmYXVsdCIsImlhdCI6MTY4MDE4Nzc4MCwiZXhwIjoxNjgwMTkxMzgwLCJjaWQiOiIwb2FrdzZpZzdtRU0zNUpaeTM1NyIsInVpZCI6IjAwdTF4ZHgzZWdsZUNSQjZDMzU3Iiwic2NwIjpbIm9wZW5pZCIsImNtaXNpZCIsInByb2ZpbGUiXSwiYXV0aF90aW1lIjoxNjgwMTg3Nzc5LCJjaHVyY2hDTUlTSUQiOiI5MDY3NjI0NTIiLCJzdWIiOiIzNTA3MjExOTY1OTkzMzMwIiwiZmlyc3ROYW1lIjoiWmFkZSBFdmVyZXR0IiwibGFzdE5hbWUiOiJNYXhmaWVsZCIsImNodXJjaENNSVNVVUlEIjoiZGRkYTZiNWQtZjJhOC00NTQ3LWI1YTUtMDUyNTM1YTNkMjEyIiwiY2h1cmNoQWNjb3VudElEIjoiMzUwNzIxMTk2NTk5MzMzMCIsImRpc3BsYXlOYW1lIjoiWmFkZSBNYXhmaWVsZCIsInBlcnNvbmFsRW1haWwiOiJ6YWRlbWF4ZmllbGRAZ21haWwuY29tIn0.RHcBppm3T2LAd4TD_7ndDYJbsYX1sXz-tQgLpTEot18OMoAwB5p-oyQSA-sf40UX1vmEa2tNTEBYOQHsZFDo9PsXf_TI0xE1SaSvUmkmOtKx3SD9_2aneaaV3b8uG5FF_kOLANHyqJ9MpKCpZ5yWimNEE30pBPQSzuzgwTIxaXZQGicU--zExISW4ZUIB6u4yEOz2g5EHjIFoy2TaJj_ReZbxo8XlVVnxdR-TRUoRt-1UCAFZQGzTisL4pHyuAT8DjdtIvu9vvgvf-eGg8GjpzGsNtYgMsN2_iU544gWLIyR8Ud-YCiTMl-2gKxS5GZSQKY1EGvvMNcxv3jFvj8l2w";
 
     public void bearerTokenRefresh() throws Exception {
         OkHttpClient client = new OkHttpClient();
@@ -96,17 +96,23 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 //    String authBaseURL = "https://dev-858572-admin.okta.com";
     String authBaseURL = "https://id.churchofjesuschrist.org";
+//    String authBaseURL = "https://id.churchofjesuschrist.org";
 
     public String getAccessToken() throws Exception{
 //        HttpUrl url = HttpUrl.parse("https://id.churchofjesuschrist.org");
         HttpUrl authnUrl = HttpUrl.parse(authBaseURL + "/api/v1/authn");
         OkHttpClient client = new OkHttpClient();
+//        String clientId = "0oa3geius7uFlksa9357";
+        String clientId = "0oakw6ig7mEM35JZy357";
+
+
 
         getInfoFromProperties();
         byte[] decodeBytes = Base64.decodeBase64(password);
-        String credential = Credentials.basic(username, new String(decodeBytes));
+//        String credential = Credentials.basic(username, new String(decodeBytes));
 
-        String CHARSET = "StandardCharset.UTF_8.name()";
+//        String CHARSET = "StandardCharset.UTF_8.name()";
+        String CHARSET = "UTF-8";
         String USER_AGENT_HEADER = "User-Agent";
         String ACCEPT_CHARSET = "Accept-Charset";
 
@@ -134,6 +140,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 .post(body)
              .build();
         Response response = client.newCall(authnRequest).execute();
+        System.out.println(response.code());
         JSONObject json = new JSONObject(response.body().string());
 
         System.out.println(json);
@@ -145,6 +152,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         String stateToken = json.getString("stateToken");
         JSONArray factors = json.getJSONObject("_embedded").getJSONArray("factors");
+        System.out.println(factors.toString());
         JSONObject totpFactor = null;
 
         for (int i = 0; i < factors.length(); i++) {
@@ -159,9 +167,9 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             throw new IllegalStateException("Missing totp Factor");
         }
 
-        // TODO: 3/24/23  get two facto
 
         String passCode = twoFactorTest();
+//        System.out.println(passCode);
 
         JSONObject mfaJson = new JSONObject();
         try {
@@ -187,11 +195,14 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 .post(mfaBody)
                 .build();
         Response mfaResponse = client.newCall(mfaRequest).execute();
+        System.out.println("MFA Response Code: " + mfaResponse.code());
         JSONObject mfaJson2 = new JSONObject(mfaResponse.body().string());
 
         System.out.println(mfaJson2);
 
+
         String sessionToken = mfaJson2.getString("sessionToken");
+        System.out.println("Session Token: " + sessionToken);
 
         if (!mfaJson2.getString("status").equalsIgnoreCase("success") || sessionToken == null)  {
             throw new IllegalStateException("Failed totp challenge");
@@ -199,18 +210,25 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         String state = UUID.randomUUID().toString();
 
-        HttpUrl authorizeUrl = HttpUrl.parse(authBaseURL + "/oauth2/defauult/v1/authorize").newBuilder()
-                .addEncodedQueryParameter("client_id", "0oakw6ig7mEM35JZy357")
+//        HttpUrl authorizeUrl = HttpUrl.parse(authBaseURL + "/oauth2/default/v1/authorize").newBuilder()
+        HttpUrl authorizeUrl = HttpUrl.parse(authBaseURL + "/oauth2/default/v1/authorize").newBuilder()
+//                .addEncodedQueryParameter("client_id", "0oakw6ig7mEM35JZy357") //Zade
+//                .addEncodedQueryParameter("client_id", "0oa35dhlu2aNHfpZp357") //From Jeff - dev ten
+                .addEncodedQueryParameter("client_id", clientId)
                 .addEncodedQueryParameter("response_type", "code")
+//                .addEncodedQueryParameter("scope", "openid profile offline_access cmisid")
                 .addEncodedQueryParameter("scope", "openid profile offline_access")
                 .addEncodedQueryParameter("redirect_uri", "https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui/oauth2-redirect.html")
+//                .addEncodedQueryParameter("redirect_uri", "https://mobileandroid")
                 .addEncodedQueryParameter("state", state)
                 .addEncodedQueryParameter("sessionToken", sessionToken)
 
 //                .addPathSegment(totpFactor.getString("factorId"))
 //                .addPathSegment("verify")
                 .build();
-
+        //https://id.churchofjesuschrist.org/oauth2/default/v1/authorize?client_id=0oa35dhlu2aNHfpZp357&response_type=code&scope=openid%20profile%20offline_access%20cmisid&redirect_uri=https://mobileandroid&state=c01910b9-bb6f-4560-8d84-cf7a77b0a6f3&sessionToken=20111NFUR2FgkLte5LZa3iFwHvUhRXQLCf5o04gCxnJQ6F-Ofio-gis
+        //https://id.churchofjesuschrist.org/oauth2/default/v1/authorize?client_id=0oa3geius7uFlksa9357&response_type=code&scope=openid%20profile%20offline_access%20cmisid&redirect_uri=https://mobileandroid&state=eff3c66d-23cc-4893-86d7-b5dda7d54176&sessionToken=20111g9EWM12iLxlYDNlLynvLGrZOyNSUGj9_JGV5eVGbFRQugYHI2n
+        System.out.println("Authorization URL " + authorizeUrl);
 
         Request authorizeRequest = new Request.Builder()
                 .cacheControl(CacheControl.FORCE_NETWORK) // Do not use any caching what so ever.
@@ -221,8 +239,17 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         Response authorizeResponse = client.newBuilder().followRedirects(false).build().newCall(authorizeRequest).execute();
         String redirect = authorizeResponse.header("Location");
+        System.out.println("Response Code " + authorizeResponse.code());
+        System.out.println("Authorize Response Body");
         System.out.println(authorizeResponse.body().string());
+        System.out.println("Redirect");
         System.out.println(redirect);
+        System.out.println("Response Location " + authorizeResponse.header("Location"));
+        System.out.println("Redirect Location " + redirect);
+//        String responseAuthUrl = authorizeResponse.header("Location");
+//        HttpUrl responseAuthHttpUrl = HttpUrl.parse(responseAuthUrl).newBuilder().build();
+
+
         HttpUrl redirectUrl = HttpUrl.parse(redirect);
         String code = redirectUrl.queryParameter("code");
         String authState = redirectUrl.queryParameter("state");
@@ -237,7 +264,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         FormBody formBody = new FormBody.Builder()
                 .add("code", code)
-                .add("client_id", "0oakw6ig7mEM35JZy357")
+                .add("client_id", clientId)
 //                .add("client_secret", oauthConfiguration.clientSecret)
                 .add("grant_type", "authorization_code")
                 .add("redirect_uri", "https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui/oauth2-redirect.html")
@@ -323,6 +350,12 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         }
     }
 
+    public void getBearerTokenFromSelenium() throws Exception {
+        GetBearerTokenWeb myTokenTest = new GetBearerTokenWeb();
+        String tempBearerToken = myTokenTest.readBearerTokenFile();
+        bearerToken = "  Bearer " + tempBearerToken;
+    }
+
 
     public Request requestURL() {
         Request request = new Request.Builder()
@@ -334,7 +367,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return request;
     }
 
-    public Request requestProxyURL(String apiUrl, String proxyUser ) {
+    public Request requestProxyURL(String apiUrl, String proxyUser ) throws Exception {
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(apiUrl)
                 .addHeader("Authorization", bearerToken)
