@@ -21,7 +21,7 @@ import java.util.List;
 public class OrganizationsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3"})
+    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3", "jft"})
     public void organizationTest_BISHOP() throws Exception {
         organizationTestCheckSub("BISHOP");
     }
@@ -211,7 +211,7 @@ public class OrganizationsScreenTest extends BaseDriver {
         organizationStakeHighPriestQuorumCheckSub("ELDERS_QUORUM_SECRETARY");
     }
 
-    @Test(groups = {"all2", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all2", "all", "daily", "daily2"})
     public void organizationStakeHighPriestQuorum_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         organizationStakeHighPriestQuorumCheckSub("RELIEF_SOCIETY_PRESIDENT");
     }

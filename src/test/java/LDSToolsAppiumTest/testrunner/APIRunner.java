@@ -18,10 +18,10 @@ import org.testng.annotations.DataProvider;
                 "rerun:src/test/java/Reports/cucumber-reports/rerun.txt"
         })
 public class APIRunner extends MemberToolsAPI {
-        @Override
-        @DataProvider(parallel = true)
-        public Object[][] scenarios() {
-                return super.scenarios();
-        }
+//        @Override
+//        @DataProvider(parallel = true)
+//        public Object[][] scenarios() {
+//                return super.scenarios();
+//        }
 
 }
