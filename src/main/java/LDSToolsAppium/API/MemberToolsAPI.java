@@ -357,9 +357,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     }
 
 
-    public Request requestURL() {
+    public Request requestURL() throws Exception {
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(baseURL + "organizations?units=21628")
+                .addHeader("Authorization", bearerToken)
 //                .url("https://identity-util-service-int.churchofjesuschrist.org/api/checkSession")
 //                .url(baseURL + "user")
                 .addHeader("X-Proxy-User" , "mbthomas74")
@@ -377,8 +379,10 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         return request;
     }
 
-    public Request requestURLNoProxyUser(String apiUrl ) {
+    public Request requestURLNoProxyUser(String apiUrl ) throws Exception {
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
+                .addHeader("Authorization", bearerToken)
                 .url(apiUrl)
                 .build();
         return request;
