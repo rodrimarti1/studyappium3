@@ -211,6 +211,7 @@ public class SacramentAttendance extends BaseDriver {
     }
 
     public void counterPressAdd(int myCounter) throws Exception {
+//        System.out.println(myBasePage.getSourceOfPage());
         for (int x = 1; x <= myCounter; x++) {
             myReports.sacramentAttendanceAddButton.click();
         }

@@ -486,20 +486,23 @@ public class ReportsScreen extends BasePage {
     public  WebElement sacramentAttendanceDialogOk;
 
     //Sacrament Attendance Counter Icon
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/text_input_end_icon")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/text_input_end_icon")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Counter']")
     @iOSXCUITFindBy(accessibility = "sacramentCounterIcon")
     public  WebElement sacramentAttendanceCounterIcon;
 
 
 
     //Sacrament Attendance Add Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/counterTextView")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/counterTextView")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Tap to add, longpress to edit']/following-sibling::android.widget.TextView")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther/XCUIElementTypeButton[1]")
     public  WebElement sacramentAttendanceAddButton;
 
 
     //Sacrament Attendance Minus Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/decrementFab")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/decrementFab")
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Decrease Count']")
 //    @iOSXCUITFindBy(accessibility = "minus.circle")
     @iOSXCUITFindBy(accessibility = "remove")
     public  WebElement sacramentAttendanceMinusButton;
@@ -510,7 +513,11 @@ public class ReportsScreen extends BasePage {
     public  WebElement sacramentAttendanceCounterNextSection;
 
     //Sacrament Attendance Counter Save Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/saveButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/saveButton")
+    @AndroidFindBy(xpath = "//*[contains(@text,'Save')]")
+
+
+
     @iOSXCUITFindBy(accessibility = "Save")
     public  WebElement sacramentAttendanceCounterSave;
 
