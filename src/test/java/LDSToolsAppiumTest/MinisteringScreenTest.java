@@ -15,7 +15,7 @@ import java.util.List;
 public class MinisteringScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4"})
     public void ministeringScreenCheck() throws Exception {
         String pageSource;
         List<String> memberList = new ArrayList<String>();
@@ -82,7 +82,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily1"})
+    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily1", "jft"})
     public void ministeringBasic_BISHOP() throws Exception {
         ministeringBasicSub("BISHOP");
     }

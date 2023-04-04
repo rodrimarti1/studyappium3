@@ -46,8 +46,8 @@ public class SacramentAttendance extends BaseDriver {
         if (!myBasePage.checkForElement(myReports.sacramentAttendanceReport)) {
             myBasePage.scrollDownAndroidUIAutomator("0");
         }
-        myBasePage.waitForElementThenClick(myReports.sacramentAttendanceReport);
-        cleanup();
+//        myBasePage.waitForElementThenClick(myReports.sacramentAttendanceReport);
+//        cleanup();
         myBasePage.waitForElementThenClick(myReports.sacramentAttendanceReport);
     }
 
@@ -64,19 +64,22 @@ public class SacramentAttendance extends BaseDriver {
         Thread.sleep(2000);
         clickElement(fieldToEnter);
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            sacToEnter = getSunday(fieldToEnter);
+            sacToEnter = getSunday(fieldToEnter, "number");
             sacToEnter.clear();
             sacToEnter.sendKeys(valueToEnter);
             myBasePage.keyboardReturn.click();
         } else {
             Thread.sleep(2000);
+            sacToEnter = getSunday(fieldToEnter, "other");
+            sacToEnter.clear();
+            sacToEnter.sendKeys(valueToEnter);
 //            System.out.println(myBasePage.getSourceOfPage());
-            myReports.sacramentAttendanceDialogEditField.sendKeys(valueToEnter);
-            myReports.sacramentAttendanceDialogOk.click();
+//            myReports.sacramentAttendanceDialogEditField.sendKeys(valueToEnter);
+//            myReports.sacramentAttendanceDialogOk.click();
             Thread.sleep(2000);
         }
         iShouldSee(valueToEnter);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 //        System.out.println(myBasePage.getSourceOfPage());
         Thread.sleep(500);
         if (!myBasePage.checkForElement(myReports.sacramentAttendanceReport)) {
@@ -102,8 +105,10 @@ public class SacramentAttendance extends BaseDriver {
             myBasePage.scrollDownIOS();
             myBasePage.scrollUpIOS();
         }
-        String textFromElement = getTextFromElement(fieldToCheck);
-        Assert.assertTrue(textToCheck.contains(textFromElement));
+//        String textFromElement = getTextFromElement(fieldToCheck);
+//        Assert.assertTrue(textToCheck.contains(textFromElement));
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertTrue(pageSource.contains(textToCheck));
     }
 
     @Given("a {string} is on the Reports page")
@@ -137,7 +142,7 @@ public class SacramentAttendance extends BaseDriver {
             myBasePage.scrollUpIOS();
             Thread.sleep(2000);
             clickElement("First Date Field");
-            sacToEnter = getSunday("First Date Field");
+            sacToEnter = getSunday("First Date Field", "number");
             sacToEnter.clear();
 //            Thread.sleep(2000);
             sacToEnter.sendKeys("0");
@@ -165,7 +170,7 @@ public class SacramentAttendance extends BaseDriver {
             myBasePage.scrollUpIOS();
             Thread.sleep(2000);
             clickElement("First Date Field");
-            sacToEnter = getSunday("First Date Field");
+            sacToEnter = getSunday("First Date Field", "number");
             sacToEnter.clear();
 //            Thread.sleep(2000);
             sacToEnter.sendKeys("0");
@@ -220,14 +225,14 @@ public class SacramentAttendance extends BaseDriver {
 
     public void clickElement(String elementName) throws Exception {
         WebElement myElement = null;
-        myElement = getSunday(elementName);
+        myElement = getSunday(elementName, "number");
         myElement.click();
     }
 
     public String getTextFromElement(String elementName) throws Exception {
         String myText = null;
         WebElement myElement = null;
-        myElement = getSunday(elementName);
+        myElement = getSunday(elementName, "number");
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myText = myElement.getAttribute("value");
         } else {
@@ -254,9 +259,12 @@ public class SacramentAttendance extends BaseDriver {
         return myText;
     }
 
-    public WebElement getSunday(String elementName) throws Exception {
+    public WebElement getSunday(String elementName, String textField) throws Exception {
         WebElement returnElement = null;
+        Calendar cal = Calendar.getInstance();
         List<String> sundayNumber = getSundaysInCurrentMonth();
+        String currentMonth = new SimpleDateFormat("MMM").format(cal.getTime());
+        System.out.println("Current Month: " + currentMonth);
         Thread.sleep(1500);
         switch(elementName) {
             case "First Date Field":
@@ -265,7 +273,17 @@ public class SacramentAttendance extends BaseDriver {
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(0) + "']"));
                 } else {
-                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                    if (textField.equalsIgnoreCase("number")) {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(0) + "']"));
+                    } else {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(0) + "']/following-sibling::android.view.View"));
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(0) + "']/../.."));
+                    }
                 }
                 break;
             case "Second Date Field":
@@ -273,7 +291,15 @@ public class SacramentAttendance extends BaseDriver {
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(1) + "']"));
                 } else {
-                    returnElement = myReports.sacramentAttendanceSecondWeek;
+                    if (textField.equalsIgnoreCase("number")) {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(1) + "']"));
+                    } else {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(1) + "']/following-sibling::android.view.View"));
+                    }
                 }
 
                 break;
@@ -282,7 +308,15 @@ public class SacramentAttendance extends BaseDriver {
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(2) + "']"));
                 } else {
-                    returnElement = myReports.sacramentAttendanceThirdWeek;
+                    if (textField.equalsIgnoreCase("number")) {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(2) + "']"));
+                    } else {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(2) + "']/following-sibling::android.view.View"));
+                    }
                 }
 
                 break;
@@ -291,7 +325,15 @@ public class SacramentAttendance extends BaseDriver {
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(3) + "']"));
                 } else {
-                    returnElement = myReports.sacramentAttendanceFourthWeek;
+                    if (textField.equalsIgnoreCase("number")) {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(3) + "']"));
+                    } else {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(3) + "']/following-sibling::android.view.View"));
+                    }
                 }
 
                 break;
@@ -301,7 +343,15 @@ public class SacramentAttendance extends BaseDriver {
                     returnElement = (WebElement) driver.get().findElement(By.xpath(
                             "//XCUIElementTypeTable/XCUIElementTypeCell[4]//XCUIElementTypeTextField[@name='" + sundayNumber.get(4) + "']"));
                 } else {
-                    returnElement = myReports.sacramentAttendanceFifthWeek;
+                    if (textField.equalsIgnoreCase("number")) {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(4) + "']"));
+                    } else {
+                        //                    returnElement = myReports.sacramentAttendanceFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[@text='" + currentMonth + " " + sundayNumber.get(4) + "']/following-sibling::android.view.View"));
+                    }
                 }
 
                 break;
@@ -403,33 +453,33 @@ public class SacramentAttendance extends BaseDriver {
 //            }
 
         } else {
-            if (checkForEnabled(myReports.sacramentAttendanceFirstWeek).equalsIgnoreCase("true")) {
-                myReports.sacramentAttendanceFirstWeek.click();
-                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
-                myReports.sacramentAttendanceDialogOk.click();
-            }
-            if (checkForEnabled(myReports.sacramentAttendanceSecondWeek).equalsIgnoreCase("true")) {
-                myReports.sacramentAttendanceSecondWeek.click();
-                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
-                myReports.sacramentAttendanceDialogOk.click();
-            }
-            if (checkForEnabled(myReports.sacramentAttendanceThirdWeek).equalsIgnoreCase("true")) {
-                myReports.sacramentAttendanceThirdWeek.click();
-                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
-                myReports.sacramentAttendanceDialogOk.click();
-            }
-            if (checkForEnabled(myReports.sacramentAttendanceFourthWeek).equalsIgnoreCase("true")) {
-                myReports.sacramentAttendanceFourthWeek.click();
-                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
-                myReports.sacramentAttendanceDialogOk.click();
-            }
-            if (myBasePage.checkForElement(myReports.sacramentAttendanceFifthWeek)) {
-                if (checkForEnabled(myReports.sacramentAttendanceFifthWeek).equalsIgnoreCase("true")) {
-                    myReports.sacramentAttendanceFifthWeek.click();
-                    myReports.sacramentAttendanceDialogEditField.sendKeys("0");
-                    myReports.sacramentAttendanceDialogOk.click();
-                }
-            }
+//            if (checkForEnabled(myReports.sacramentAttendanceFirstWeek).equalsIgnoreCase("true")) {
+//                myReports.sacramentAttendanceFirstWeek.click();
+//                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
+//                myReports.sacramentAttendanceDialogOk.click();
+//            }
+//            if (checkForEnabled(myReports.sacramentAttendanceSecondWeek).equalsIgnoreCase("true")) {
+//                myReports.sacramentAttendanceSecondWeek.click();
+//                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
+//                myReports.sacramentAttendanceDialogOk.click();
+//            }
+//            if (checkForEnabled(myReports.sacramentAttendanceThirdWeek).equalsIgnoreCase("true")) {
+//                myReports.sacramentAttendanceThirdWeek.click();
+//                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
+//                myReports.sacramentAttendanceDialogOk.click();
+//            }
+//            if (checkForEnabled(myReports.sacramentAttendanceFourthWeek).equalsIgnoreCase("true")) {
+//                myReports.sacramentAttendanceFourthWeek.click();
+//                myReports.sacramentAttendanceDialogEditField.sendKeys("0");
+//                myReports.sacramentAttendanceDialogOk.click();
+//            }
+//            if (myBasePage.checkForElement(myReports.sacramentAttendanceFifthWeek)) {
+//                if (checkForEnabled(myReports.sacramentAttendanceFifthWeek).equalsIgnoreCase("true")) {
+//                    myReports.sacramentAttendanceFifthWeek.click();
+//                    myReports.sacramentAttendanceDialogEditField.sendKeys("0");
+//                    myReports.sacramentAttendanceDialogOk.click();
+//                }
+//            }
 
         }
 
@@ -438,6 +488,7 @@ public class SacramentAttendance extends BaseDriver {
     public String checkForEnabled(WebElement elementToCheck) throws Exception {
         String returnStatus;
         Thread.sleep(500);
+//        System.out.println(myBasePage.getSourceOfPage());
         returnStatus = elementToCheck.getAttribute("enabled");
         return  returnStatus;
     }
@@ -445,14 +496,14 @@ public class SacramentAttendance extends BaseDriver {
     @After("@all and @SacramentAttendance and not @nonBishopric")
     public void cleanup() throws Exception {
         LOGGER.info("Cleanup - Sacrament Attendance");
-        if(checkForEnabled(getSunday("First Date Field")).equalsIgnoreCase("true")) {
+        if(checkForEnabled(getSunday("First Date Field", "number")).equalsIgnoreCase("true")) {
 //        if (checkForEnabled(myReports.sacramentAttendanceFirstWeek).equalsIgnoreCase("true")) {
             sacramentAttendanceCleanUp();
             if (myBasePage.getOS().equalsIgnoreCase("android")) {
                 myBasePage.scrollDownAndroidUIAutomator("1");
                 Thread.sleep(4000);
             }
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
         }
     }
 
