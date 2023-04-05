@@ -611,7 +611,7 @@ public class ReportsScreen extends BasePage {
     public WebElement classAndQuorumVisitors;
 
     //Class and Quorum Visitors Done - Save
-    @AndroidFindBy(xpath = "//*[@text='SAVE']")
+    @AndroidFindBy(xpath = "//*[@content-desc='Save']")
     @iOSXCUITFindBy(accessibility = "Done")
     public WebElement classAndQuorumVisitorsDone;
 

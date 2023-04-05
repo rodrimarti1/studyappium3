@@ -461,8 +461,9 @@ public class ClassAndQuorum extends BaseDriver {
             category = category.toUpperCase();
             myElement = (WebElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
         } else {
-            System.out.println(myBasePage.getSourceOfPage());
-            myElement = (WebElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
+//            System.out.println(myBasePage.getSourceOfPage());
+//            myElement = (WebElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
+            myElement = (WebElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/../following-sibling::android.widget.EditText[" + weekNumber + "]"));
         }
 
         return  myElement;
@@ -633,6 +634,7 @@ public class ClassAndQuorum extends BaseDriver {
                 myElement.sendKeys("0");
             }
         }
+//        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitorsDone);
         myBasePage.waitForElementThenClick(myReports.classAndQuorumVisitors);
 
