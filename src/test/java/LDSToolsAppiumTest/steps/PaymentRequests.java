@@ -49,7 +49,8 @@ public class PaymentRequests extends BaseDriver {
         LOGGER.info("a payment request is filled out for " + payee + " " + purpose + " " + account + " " + addReceipt + " " + category + " " + categoryAmount);
         Thread.sleep(1000);
 //        System.out.println(myBasePage.getSourceOfPage());
-        myFinance.paymentRequestsAdd.click();
+        myBasePage.waitForElementThenClick(myFinance.paymentRequestsAdd);
+//        myFinance.paymentRequestsAdd.click();
 //        System.out.println(myBasePage.getSourceOfPage());
         purpose = purpose + Math.random();
         choosePayee(payee);

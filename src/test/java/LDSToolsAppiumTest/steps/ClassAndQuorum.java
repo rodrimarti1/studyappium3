@@ -461,7 +461,7 @@ public class ClassAndQuorum extends BaseDriver {
             category = category.toUpperCase();
             myElement = (WebElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + category + "']/following-sibling::XCUIElementTypeTextField[" + weekNumber + "]"));
         } else {
-//            System.out.println(myBasePage.getSourceOfPage());
+            System.out.println(myBasePage.getSourceOfPage());
             myElement = (WebElement) driver.get().findElement(By.xpath("//*[@text='" + category + "']/following-sibling::android.widget.EditText[" + weekNumber + "]"));
         }
 

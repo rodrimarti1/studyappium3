@@ -604,7 +604,8 @@ public class ReportsScreen extends BasePage {
 
 
     //Class and Quorum Visitors
-    @AndroidFindBy(xpath = "//android.widget.Button[@text='VISITORS']")
+//    @AndroidFindBy(xpath = "//android.widget.Button[@text='VISITORS']")
+    @AndroidFindBy(xpath = "//*[@text='Visitors']")
 //    Have to use xpath for iOS the page source is too big for the other methods
     @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Add Visitors')]")
     public WebElement classAndQuorumVisitors;

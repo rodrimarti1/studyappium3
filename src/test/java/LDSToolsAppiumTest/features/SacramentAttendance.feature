@@ -5,7 +5,7 @@
     As a Ward Council member
     Sacrament Attendance should not be displayed
 
-    @MQA-3183 @all @all1 @smoke @smoke3 @all @daily @daily3
+    @MQA-3183 @all @all1 @smoke @smoke3 @all @daily @daily3 @jft
     Scenario: As a Bishop enter a number and have it saved
       Given a "BISHOP" is on the Sacrament Attendance page
       When "159" is entered in the "First Date Field"
@@ -34,7 +34,7 @@
       When a 27 35 5 48 is entered using the counter and next section
       Then I should see "115"
 
-    @MQA-3188 @all @all3 @all @daily @daily3 @jft
+    @MQA-3188 @all @all3 @all @daily @daily3
     Scenario: On the Sacrament counter use both plus and minus
       Given a "WARD_CLERK" is on the Sacrament Attendance page
       When a "38" is entered using the counter without saving
