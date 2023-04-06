@@ -31,7 +31,8 @@ public class FinanceScreen extends BasePage {
 
     //Add Payment Requests
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/newPaymentRequestFab")
-    @iOSXCUITFindBy(accessibility = "New Payment Request")
+//    @iOSXCUITFindBy(accessibility = "New Payment Request")
+    @iOSXCUITFindBy(xpath = "//*[contains(@name, 'New Payment Request')]")
     public WebElement paymentRequestsAdd;
 
     //Add Myself
