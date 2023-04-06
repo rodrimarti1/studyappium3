@@ -2,7 +2,7 @@
   Feature: API test for Quarterly Reports
 
     @MQA-6724 @MQA-6341 @all
-    Scenario Outline: Check <url> status code for <member>
+    Scenario Outline: Check <url> status code for <member> - Quarterly Report
       Given a <member> goes to the <url>
       Then the status should be <status>
       Examples:

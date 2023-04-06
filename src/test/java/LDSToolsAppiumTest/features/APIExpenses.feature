@@ -1,8 +1,8 @@
 @API
 Feature: API tests for Expenses
 
-  @jft
-  Scenario Outline: Check <url> status code for <member> Expenses
+  @MQA-7071 @MQA-6341 @all @jft
+  Scenario Outline: Check <url> status code for <member> - Expenses
     Given a <member> goes to the <url>
     Then the status should be <status>
     Examples:
