@@ -16,7 +16,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -76,7 +76,7 @@ public class ReportsScreenTest extends BaseDriver {
         reportsBasicCheckSub("ELDERS_QUORUM_SECRETARY");
     }
 
-    @Test(groups = {"all1", "all", "daily", "daily3"})
+    @Test(groups = {"all1", "all", "daily", "daily3", "jft"})
     public void reportsBasic_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         reportsBasicCheckSub("RELIEF_SOCIETY_PRESIDENT");
     }

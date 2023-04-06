@@ -1106,9 +1106,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         StringBuilder contentBuilder = new StringBuilder();
 
+        getBearerTokenFromSelenium();
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .url(baseURL + "lists")
+                .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User" , proxyUser)
                 .post(body)
                 .build();
@@ -1140,9 +1142,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
             System.out.println("UUID: " + listUuid);
         }
 
+        getBearerTokenFromSelenium();
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .delete()
+                .addHeader("Authorization", bearerToken)
                 .url(baseURL + "lists/" + listUuid)
                 .addHeader("X-Proxy-User" , proxyUser)
                 .build();
@@ -1169,8 +1173,9 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
+                .addHeader("Authorization", bearerToken)
                 .url(baseURL + "lists")
                 .addHeader("X-Proxy-User" , proxyLogin)
                 .build();
@@ -1538,10 +1543,12 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //        StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(baseURL + "finances/reimbursement")
 //                .url(baseURL + "finances/expenses")
                 .addHeader("X-Proxy-User" , proxyUser)
+                .addHeader("Authorization", bearerToken)
 //                .header("Content-Type", "application/json; charset=UTF-8")
                 .post(multiBody)
                 .build();
@@ -1577,9 +1584,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
         StringBuilder contentBuilder = new StringBuilder();
 
+        getBearerTokenFromSelenium();
         OkHttpClient httpClient = loginCred();
         Request request = new Request.Builder()
                 .url(baseURL + "finances/expenses/" + expenseToUpdate.getId())
+                .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User", proxyUser)
                 .put(body)
                 .build();
@@ -1626,8 +1635,10 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 //        StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(baseURL + "finances/expenses/" + expenseId)
+                .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User" , proxyUser)
 //                .header("Content-Type", "application/json; charset=UTF-8")
                 .put(multiBody)
@@ -1656,10 +1667,12 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .delete()
                 .url(baseURL + "finances/expenses/" + expenseId + "?type=" + expenseType)
                 .addHeader("X-Proxy-User" , proxyUser)
+                .addHeader("Authorization", bearerToken)
                 .build();
 
 
@@ -2188,9 +2201,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(baseURL + "admin/ordinances/priesthood")
                 .addHeader("X-Proxy-User" , "mbthomas74")
+                .addHeader("Authorization", bearerToken)
                 .post(body)
                 .build();
 
@@ -2838,8 +2853,10 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(baseURL + "life-resources")
+                .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User", proxyUser)
                 .post(body)
                 .build();
@@ -2867,10 +2884,12 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .delete()
                 .url(baseURL + "life-resources/" + myResource.getUuid())
                 .addHeader("X-Proxy-User" , proxyUser)
+                .addHeader("Authorization", bearerToken)
                 .build();
 
 
@@ -2901,9 +2920,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
         Request request = new Request.Builder()
                 .url(baseURL + "life-resources/" + lifeResource.getUuid())
                 .addHeader("X-Proxy-User", proxyUser)
+                .addHeader("Authorization", bearerToken)
                 .put(body)
                 .build();
 
