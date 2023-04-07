@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Android Smoke Test" configfailurepolicy="continue" verbose="2">
+<suite name="Android Smoke Test One Device" configfailurepolicy="continue" verbose="2">
     <listeners>
 <!--        <listener class-name="LDSToolsAppium.RetryListener"/>-->
         <listener class-name= "LDSToolsAppium.CustomReporter" />
@@ -11,7 +11,8 @@
         <parameter name="os" value="android" />
        <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
-        <parameter name="testDevice" value="STF-Pool" />
+<!--        <parameter name="testDevice" value="STF-Pool" />-->
+        <parameter name="testDevice" value="09251FDD4003MU" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
 
@@ -36,6 +37,7 @@
             <class name="LDSToolsAppiumTest.TemplesScreenTest" />
             <class name="LDSToolsAppiumTest.HeaderTest" />
             <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
             <class name="LDSToolsAppiumTest.ListsScreenTest" />
             <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
         </classes>
