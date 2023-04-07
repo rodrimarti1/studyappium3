@@ -1579,8 +1579,16 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         System.out.println(json);
 
 
-        RequestBody body = RequestBody.create(
-                MediaType.parse("application/json"), json);
+//        RequestBody body = RequestBody.create(
+//                MediaType.parse("application/json"), json);
+
+        MultipartBody multiBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("request", null, RequestBody.create(MediaType.parse("application/json"), json))
+//                .addFormDataPart("application/json", json)
+                .addFormDataPart("receipts", "cereal-receipt.jpeg",
+                        RequestBody.create(MediaType.parse("image/jpeg"), new File("cereal-receipt.jpeg")))
+                .build();
 
         StringBuilder contentBuilder = new StringBuilder();
 
@@ -1590,7 +1598,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                 .url(baseURL + "finances/expenses/" + expenseToUpdate.getId())
                 .addHeader("Authorization", bearerToken)
                 .addHeader("X-Proxy-User", proxyUser)
-                .put(body)
+                .put(multiBody)
+//                .put(body)
                 .build();
 
 

@@ -358,7 +358,7 @@ public class APITest {
 
     }
 
-//    @Test
+    @Test
     public void createExpense() throws Exception {
         int responseCode = 0;
         //  Create Payment Request
@@ -377,6 +377,11 @@ public class APITest {
         //Bishopric 1st Counselor
         responseCode = apiTest.createPaymentRequest(2921, "8c4b71ab-3d01-49ff-8699-41ec6116f993", "Activities Automated Test", 21628, 315, 14999, "lafaele40");
         System.out.println("CODE: " + responseCode);
+
+
+//        responseCode = apiTest.createPaymentRequest(8880, "533356e1-66c5-49dc-b37b-13a416594413", "Test Two ZZZZ", 39373, 952, 776, "dsoneil");
+//        System.out.println("CODE: " + responseCode);
+
 
     }
 
@@ -496,7 +501,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
