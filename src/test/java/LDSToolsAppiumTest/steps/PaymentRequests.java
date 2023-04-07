@@ -68,7 +68,8 @@ public class PaymentRequests extends BaseDriver {
         } else {
             myFinance.paymentRequestsSaveButton.click();
             Thread.sleep(1000);
-//            System.out.println(myBasePage.getSourceOfPage());
+            System.out.println(myBasePage.getSourceOfPage());
+//            WebElement nameElement = driver.get().findElement(By.xpath("//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton/XCUIElementTypeStaticText"));
             WebElement nameElement = driver.get().findElement(By.xpath("//XCUIElementTypeCell/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton/XCUIElementTypeStaticText"));
 //            payeeName = driver.get().findElement(By.xpath("//XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeStaticText[1]")).getAttribute("name");
             payeeName = nameElement.getAttribute("name");
