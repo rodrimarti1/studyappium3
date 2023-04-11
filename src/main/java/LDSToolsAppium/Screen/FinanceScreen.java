@@ -179,6 +179,7 @@ public class FinanceScreen extends BasePage {
 
     //Category iOS
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Category']/following-sibling::XCUIElementTypeButton")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Category']/following-sibling::XCUIElementTypeImage[@name='Forward']")
     public WebElement paymentRequestsCategoryiOS;
 
     //Category Android

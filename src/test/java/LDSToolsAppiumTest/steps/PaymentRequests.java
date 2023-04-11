@@ -398,8 +398,12 @@ public class PaymentRequests extends BaseDriver {
 
 
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            String categoryName;
             Thread.sleep(2000);
-            myFinance.paymentRequestsCategoryiOS.click();
+            categoryName = myFinance.paymentRequestsCategoryiOS.getAttribute("name");
+            System.out.println("NAME: " + categoryName);
+            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + categoryName + "']")).click();
+//            myFinance.paymentRequestsCategoryiOS.click();
             Thread.sleep(2000);
             driver.get().findElement(By.id(category)).click();
         } else {
