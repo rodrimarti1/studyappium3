@@ -79,7 +79,7 @@ public class LoginPageScreen extends BasePage {
     public WebElement twoFactorBack;
 
     //Deep Link Open
-    @iOSXCUITFindBy(xpath = "//*[@name='Open']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Open']")
     public  WebElement deepLinkOpen;
 
     //Sign In Button
@@ -158,4 +158,27 @@ public class LoginPageScreen extends BasePage {
    //Samsung Pass
     @AndroidFindBy(accessibility = "Settings")
     public WebElement cancelPass;
+
+    //iOS Deep Link elements
+    //Address Label
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@label='Address']")
+    public  WebElement addressLabel;
+
+    //Clear Text Button
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Clear text']")
+    public  WebElement clearTextButton;
+
+    //Address field
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@label='Address']")
+    public  WebElement iOSAddressField;
+
+    //Go Button
+    @iOSXCUITFindBy(xpath = "//*[@name='Go']")
+    public  WebElement deepLinkGo;
+
+    //Open Button
+    @iOSXCUITFindBy(xpath = "//*[@name='Open']")
+    public  WebElement deepLinkOpenButton;
+
+
 }

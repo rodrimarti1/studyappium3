@@ -118,24 +118,27 @@ public class HelperMethods extends BaseDriver {
             params.put("bundleId", "com.apple.mobilesafari");
             params.put("arguments", args);
             driver.get().executeScript("mobile: launchApp", params);
-            Thread.sleep(10000);
-
-            driver.get().findElement(By.xpath("//XCUIElementTypeOther[@label='Address']")).click();
-            Thread.sleep(6000);
-
-            driver.get().findElement(By.xpath("//XCUIElementTypeButton[@name='Clear text']")).click();
-            Thread.sleep(6000);
-
-            driver.get().findElement(By.xpath("//XCUIElementTypeTextField[@label='Address']")).sendKeys("membertools://user/" + proxyUserName + "/stage");
-            Thread.sleep(2000);
-            driver.get().findElement(By.xpath("//*[@name='Go']")).click();
-            Thread.sleep(6000);
-            driver.get().findElement(By.xpath("//*[@name='Open']")).click();
+//            Thread.sleep(10000);
+            myBasePage.waitForElementThenClick(myLoginPage.addressLabel);
+//            driver.get().findElement(By.xpath("//XCUIElementTypeOther[@label='Address']")).click();
+//            Thread.sleep(6000);
+            myBasePage.waitForElementThenClick(myLoginPage.clearTextButton);
+//            driver.get().findElement(By.xpath("//XCUIElementTypeButton[@name='Clear text']")).click();
+//            Thread.sleep(6000);
+            myBasePage.waitForElement(myLoginPage.iOSAddressField);
+            myLoginPage.iOSAddressField.sendKeys("membertools://user/" + proxyUserName + "/stage");
+//            Thread.sleep(2000);
+            myBasePage.waitForElementThenClick(myLoginPage.deepLinkGo);
+//            driver.get().findElement(By.xpath("//*[@name='Go']")).click();
+//            Thread.sleep(6000);
+            myBasePage.waitForElementThenClick(myLoginPage.deepLinkOpenButton);
+//            driver.get().findElement(By.xpath("//*[@name='Open']")).click();
         } else {
             driver.get().get("https://www.google.com");
             Thread.sleep(2000);
             driver.get().get("membertools://user/" + proxyUserName + "/stage");
             Thread.sleep(3000);
+//            System.out.println(myBasePage.getSourceOfPage());
             if (myBasePage.checkForElement(myLoginPage.deepLinkOpen)) {
                 myLoginPage.deepLinkOpen.click();
             }
@@ -238,6 +241,8 @@ public class HelperMethods extends BaseDriver {
         byte[] decodeBytes = Base64.decodeBase64(password);
 
         LOGGER.info("Clear login and password");
+//        System.out.println(myBasePage.getSourceOfPage());
+//        myLoginPage.loginName.click();
         myBasePage.waitForElement(myLoginPage.loginName);
         myLoginPage.loginName.clear();
         myLoginPage.loginName.sendKeys(username);
