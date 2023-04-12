@@ -20,8 +20,8 @@
       And the <expensePayee> with the <expenseAmount> is Approved with the <paymentType>
       Then the expense will be approved
       Examples:
-        | leader       | expensePayee                      | expenseAmount | paymentType | differentLeader              |
-        | "BISHOP"     | "Stelter, Sharon Siniva"          | "$53.99"      | "Check"     | "WARD_CLERK"                 |
+        | leader   | expensePayee      | expenseAmount | paymentType | differentLeader |
+        | "BISHOP" | "Stelter, Sharon" | "$53.99"      | "Check"     | "WARD_CLERK"    |
 #        | "WARD_CLERK" | "Martinez Salguero, Cesar Leonel" | "$67.43"      | "Check"     | "BISHOPRIC_SECOND_COUNSELOR" |
 
 
@@ -88,6 +88,10 @@
       Given  a "BISHOP" logs in and is on the Summary page
       When an expense is selected
       Then the expense information will be correct
+
+    Scenario: Advanced Payment
+    Scenario: Utah Unit - state tax?
+    Scenario: Paroisse de Gex
 
 
 

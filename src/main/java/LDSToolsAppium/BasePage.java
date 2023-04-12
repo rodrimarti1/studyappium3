@@ -1236,7 +1236,10 @@ public class BasePage extends BaseDriver {
 //            clickByCords("Clear text");
 //            clickByCords("Cancel");
             Thread.sleep(2000);
-            cancel.click();
+            if (checkForElement(cancel)) {
+                cancel.click();
+            }
+
 
         } else {
             //System.out.println("Start of Back To Root");
@@ -1263,32 +1266,21 @@ public class BasePage extends BaseDriver {
         backButtonCheck = checkForElement(backButton);
         System.out.println("Back Button Check - before loop: " + backButtonCheck);
 
-        while ((backButtonCheck) && (myCounter < 9 ))  {
+        while (backButtonCheck)  {
             Thread.sleep(1000);
 
 //            System.out.println(getSourceOfPage());
             if (checkForElement(myDirectory.searchCancel)) {
-                System.out.println("Check for cancel");
+                System.out.println("Hitting Cancel!");
                 waitForElementThenClick(myDirectory.searchCancel);
+            } else {
+                System.out.println("Pressing Back Key " + myCounter);
+                backButton.click();
+                Thread.sleep(2000);
+                System.out.println("Back Key pressed");
             }
 
 
-            System.out.println("Pressing Back Key " + myCounter);
-//            if (getOS().equals("ios")) {
-//                backButton.click();
-//            } else {
-//                driver.get().navigate().back();
-//            }
-
-            backButton.click();
-
-            Thread.sleep(2000);
-            System.out.println("Back Key pressed");
-//            System.out.println(getSourceOfPage());
-            //System.out.println("Checking for back key....");
-            //backButtonCheck = checkElementExistsByXpath("TopBack");
-            //backButtonCheck = checkElementExistsByXpath("NewBackButton");
-            //printPageSource();
             if (checkForElement(menuTitle)) {
                 myMenuTitle = menuTitle.getText();
             } else {
@@ -1322,11 +1314,18 @@ public class BasePage extends BaseDriver {
                 case "Temples" :
                     backButtonCheck = false;
                     break;
+                case "More" :
+                    backButtonCheck = false;
+                    break;
                 default :
                     backButtonCheck = true;
             }
 
             if (checkForElement(searchCollapse)) {
+                backButtonCheck = false;
+            }
+
+            if (myCounter > 6) {
                 backButtonCheck = false;
             }
 

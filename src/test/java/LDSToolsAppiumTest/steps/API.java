@@ -436,7 +436,8 @@ public class API {
         Expense findExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", origExpense);
         expenseToCreate.setId(findExpense.getId());
         //Change
-        responseCode = apiTest.putExpenseUpdate(expenseToCreate, "dsoneil");
+//        responseCode = apiTest.putExpenseUpdate(expenseToCreate, "dsoneil");
+        responseCode = apiTest.putExpenseUpdate(expenseToCreate, "JaysonKoleW");
         System.out.println("CODE: " + responseCode);
         Assert.assertTrue(responseCode < 320);
     }

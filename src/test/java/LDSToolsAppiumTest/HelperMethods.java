@@ -134,6 +134,8 @@ public class HelperMethods extends BaseDriver {
             myBasePage.waitForElementThenClick(myLoginPage.deepLinkOpenButton);
 //            driver.get().findElement(By.xpath("//*[@name='Open']")).click();
         } else {
+            driver.get().executeScript("mobile: terminateApp", ImmutableMap.of("bundleId", "com.apple.mobilesafari"));
+            Thread.sleep(2000);
             driver.get().get("https://www.google.com");
             Thread.sleep(2000);
             driver.get().get("membertools://user/" + proxyUserName + "/stage");

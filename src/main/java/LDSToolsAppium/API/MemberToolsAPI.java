@@ -1387,7 +1387,11 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
                         myMap.put("id", myFinanceRequest.getId());
                         myMap.put("date", myFinanceRequest.getSubmittedDate());
 //                        myMap.put("receiptCount", myFinanceRequest.getReceiptCount());
-                        myMap.put("receiptCount", myFinanceRequest.getReceipts().size());
+                        if (myFinanceRequest.getReceipts() != null) {
+                            myMap.put("receiptCount", myFinanceRequest.getReceipts().size());
+                        } else {
+                            myMap.put("receiptCount", 0);
+                        }
                         myMap.put("payeeId", myFinanceRequest.getPayee().getId());
                         myMap.put("payeeName", myFinanceRequest.getPayee().getName());
                         myMap.put("unitNumber", myFinanceRequest.getUnitNumber());
