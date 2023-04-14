@@ -15,7 +15,7 @@ import java.util.List;
 public class MinisteringScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"})
     public void ministeringScreenCheck() throws Exception {
         String pageSource;
         List<String> memberList = new ArrayList<String>();
@@ -57,7 +57,7 @@ public class MinisteringScreenTest extends BaseDriver {
         }
 
 
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(1000);
 
         myMinistering.ministeringSistersReport.click();
@@ -74,7 +74,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(pageSource.contains(ministeringReport));
         }
 
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
 
     }
@@ -82,7 +82,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily1", "jft"})
+    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily1",})
     public void ministeringBasic_BISHOP() throws Exception {
         ministeringBasicSub("BISHOP");
     }
@@ -261,7 +261,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Assigned Households", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Unassigned Households", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             myMinistering.ministeringSistersReport.click();
 
@@ -272,7 +272,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Assigned Sisters", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Unassigned Sisters", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
         }
 
@@ -414,9 +414,9 @@ public class MinisteringScreenTest extends BaseDriver {
             }
 
 
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
             Thread.sleep(2000);
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
 
             Thread.sleep(2000);
             myMinistering.ministeringSistersReport.click();
@@ -435,9 +435,9 @@ public class MinisteringScreenTest extends BaseDriver {
                 Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
             }
 
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
             Thread.sleep(2000);
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
         }
 
         if (rights == 3){
@@ -471,9 +471,9 @@ public class MinisteringScreenTest extends BaseDriver {
             }
 
 
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
             Thread.sleep(2000);
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
 
 
             myMinistering.ministeringSistersReport.click();
@@ -493,9 +493,9 @@ public class MinisteringScreenTest extends BaseDriver {
             }
 
 
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
             Thread.sleep(2000);
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
         }
 
         if (rights == 4){
@@ -806,7 +806,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Martinez", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Darth", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             //Select District 2
             myMinistering.selectDistrict("First Counselor");
@@ -816,7 +816,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Fitzgerald", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Vader", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             //Select District 3
             myMinistering.selectDistrict("Second Counselor");
@@ -825,7 +825,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Ryan", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Solo", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
         }
 
         if (rights == 1){
@@ -857,7 +857,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Bryson", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Darth", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             //Select District 2
             myMinistering.selectDistrict("First Counselor");
@@ -867,7 +867,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Smith", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Vader", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             //Select District 3
             myMinistering.selectDistrict("Second Counselor");
@@ -876,7 +876,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Ryan", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Solo", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
         }
 
         if (rights == 4){
@@ -1354,7 +1354,7 @@ public class MinisteringScreenTest extends BaseDriver {
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("Callahan", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("LDS16", pageSource, "Contains"));
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             //Select District 2
             myMinistering.selectDistrict("RS - 2nd Counselor");
@@ -1362,7 +1362,7 @@ public class MinisteringScreenTest extends BaseDriver {
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("Callahan", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("LDS16", pageSource, "Contains"));
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
         }
 
         if (rights == 1){
@@ -1391,7 +1391,7 @@ public class MinisteringScreenTest extends BaseDriver {
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("Callahan", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("LDS16", pageSource, "Contains"));
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
             //Select District 2
             myMinistering.selectDistrict("RS - 2nd Counselor");
@@ -1399,7 +1399,7 @@ public class MinisteringScreenTest extends BaseDriver {
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(myBasePage.checkNoCaseList("Callahan", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("LDS16", pageSource, "Contains"));
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
         }
 
         if (rights == 4){
@@ -1697,7 +1697,7 @@ public class MinisteringScreenTest extends BaseDriver {
 //        if (getRunningOS().equals("ios")) {
 //            myMinistering.filters.click();
 //            myElement.click();
-//            myBasePage.backButton.click();
+//            myBasePage.backAltButton.click();
 //        } else {
 //            Thread.sleep(1000);
 //            //myMinistering.ministeringExpandFilter.click();
