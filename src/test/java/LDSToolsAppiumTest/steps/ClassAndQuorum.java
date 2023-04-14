@@ -313,7 +313,12 @@ public class ClassAndQuorum extends BaseDriver {
                 }
             } else {
                 for (int y = 1; y <= 5 ; y++) {
-                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.FrameLayout[contains(@resource-id, 'week" + y + "')]//android.widget.TextView")).getAttribute("text"));
+//                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.FrameLayout[contains(@resource-id, 'week" + y + "')]//android.widget.TextView")).getAttribute("text"));
+                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.TextView[@text='Gospel Doctrine']/../../following-sibling::android.view.View/android.view.View/android.widget.TextView[" + y + "]")).getAttribute("text"));
+
+
+
+
                 }
             }
 
