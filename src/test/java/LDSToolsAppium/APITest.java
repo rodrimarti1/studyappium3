@@ -2,6 +2,7 @@ package LDSToolsAppium;
 
 import LDSToolsAppium.API.*;
 import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
+import LDSToolsAppium.API.Expenses.ApprovedRejectedBy;
 import LDSToolsAppium.API.Expenses.Charge;
 import LDSToolsAppium.API.Households.ApiHousehold;
 import LDSToolsAppium.API.Households.Member;
@@ -358,7 +359,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void createExpense() throws Exception {
         int responseCode = 0;
         //  Create Payment Request
@@ -385,7 +386,7 @@ public class APITest {
 
     }
 
-//    @Test
+    @Test
     public void getAllExpensesForUnit() throws Exception {
         Map<String, Object> myMap = new HashMap<>();
 //        List<String> expenseList = new ArrayList<>();
@@ -400,12 +401,13 @@ public class APITest {
 //            }
 //        }
 
-        expenseList = apiTest.getAllExpenses2("dsoneil", "39373");
+        expenseList = apiTest.getAllExpenses2("mbthomas74", "21628");
 
         for (ApiFinanceMethod oneMonthExpense : expenseList) {
             System.out.println("Unit Number: " + oneMonthExpense.getUnitNumber());
             System.out.println("Month: " + oneMonthExpense.getMonth());
             System.out.println("*****************************************");
+            System.out.println(" ");
             for (LDSToolsAppium.API.Expenses.Expense testExp : oneMonthExpense.getExpenses()) {
                 System.out.println("ID: " + testExp.getId());
                 System.out.println("Status: " + testExp.getStatus());
@@ -417,11 +419,30 @@ public class APITest {
                 System.out.println("Payee ID: " + testExp.getPayee().getId());
                 System.out.println("Member Uuid ID: " + testExp.getPayee().getMemberUuid());
                 System.out.println("Member MRN: " + testExp.getPayee().getMemberMrn());
+                System.out.println("Type: " + testExp.getType());
+                System.out.println("Advancement: " + testExp.getAdvancement());
+
+
+
+
+                if (testExp.getApprovedRejectedBy() != null) {
+                    System.out.println("Approved Rejected By Name : " + testExp.getApprovedRejectedBy().getName());
+                } else {
+                    System.out.println("Approved Rejected By Name : NULL" );
+                }
+
+                if (testExp.getApprovedRejectedDate() != null) {
+                    System.out.println("Approved Rejected Date : " + testExp.getApprovedRejectedDate());
+                } else {
+                    System.out.println("Approved Rejected Date : NULL" );
+                }
+
 
                 for(Charge testCharge : testExp.getCharges()) {
                     System.out.println("Category ID: " + testCharge.getCategoryId());
                     System.out.println("Amount: " + testCharge.getAmount());
                 }
+                System.out.println("-------------------------------");
             }
         }
     }
@@ -468,6 +489,45 @@ public class APITest {
                 System.out.println("Response: "  + responseCode);
             }
         }
+
+//        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "APPROVED");
+//        if (!expenseDetailList.isEmpty()) {
+//            for (ApiFinanceDetail expenseDetail: expenseDetailList) {
+//                System.out.println(expenseDetail.getPurpose());
+//                System.out.println(expenseDetail.getId());
+//                System.out.println(expenseDetail.getType());
+////                int myInt = Integer.parseInt(idName);
+//
+//                responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
+//                System.out.println("Response: "  + responseCode);
+//            }
+//        }
+
+        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "PENDING_PRINT");
+        if (!expenseDetailList.isEmpty()) {
+            for (ApiFinanceDetail expenseDetail: expenseDetailList) {
+                System.out.println(expenseDetail.getPurpose());
+                System.out.println(expenseDetail.getId());
+                System.out.println(expenseDetail.getType());
+//                int myInt = Integer.parseInt(idName);
+
+                responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
+                System.out.println("Response: "  + responseCode);
+            }
+        }
+
+//        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "REJECTED");
+//        if (!expenseDetailList.isEmpty()) {
+//            for (ApiFinanceDetail expenseDetail: expenseDetailList) {
+//                System.out.println(expenseDetail.getPurpose());
+//                System.out.println(expenseDetail.getId());
+//                System.out.println(expenseDetail.getType());
+////                int myInt = Integer.parseInt(idName);
+//
+//                responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
+//                System.out.println("Response: "  + responseCode);
+//            }
+//        }
 
 
             //        if (!myMap.isEmpty()) {

@@ -205,7 +205,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Assigned Households", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Unassigned Households", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
             Thread.sleep(1000);
 
             myMinistering.ministeringSistersReport.click();
@@ -217,7 +217,7 @@ public class MinisteringScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Assigned Sisters", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Unassigned Sisters", pageSource, "Contains"));
 
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
 
         }
 
