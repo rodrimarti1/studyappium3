@@ -30,18 +30,21 @@ public class FinanceScreen extends BasePage {
     public WebElement financePaymentRequests;
 
     //Add Payment Requests
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/newPaymentRequestFab")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/newPaymentRequestFab")
+    @AndroidFindBy(accessibility = "New Payment Request")
 //    @iOSXCUITFindBy(accessibility = "New Payment Request")
     @iOSXCUITFindBy(xpath = "//*[contains(@name, 'New Payment Request')]")
     public WebElement paymentRequestsAdd;
 
     //Add Myself
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/addMyselfButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/addMyselfButton")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add Myself']")
     @iOSXCUITFindBy(accessibility = "Add Myself")
     public WebElement paymentRequestsAddMyself;
 
     //Add Other Payee
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/addOtherButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/addOtherButton")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Add Other Payee']")
     @iOSXCUITFindBy(accessibility = "Add Other Payee")
     public WebElement paymentRequestsAddOther;
 
@@ -183,7 +186,8 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsCategoryiOS;
 
     //Category Android
-    @AndroidFindBy(xpath = "//*[@text='Categories and Amounts']/../following-sibling::android.view.View")
+//    @AndroidFindBy(xpath = "//*[@text='Categories and Amounts']/../following-sibling::android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Category']")
     public WebElement paymentRequestsCategoryAndroid;
 
     //Amount iOS
@@ -191,7 +195,8 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsAmountiOS;
 
     //Amount
-    @AndroidFindBy(xpath = "//*[@content-desc='Remove Category']/../following-sibling::android.view.View")
+//    @AndroidFindBy(xpath = "//*[@content-desc='Remove Category']/../following-sibling::android.view.View")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Amount']")
     @iOSXCUITFindBy(accessibility = "Amount")
     public WebElement paymentRequestsCategoryGroup1Amount;
 
@@ -300,7 +305,7 @@ public class FinanceScreen extends BasePage {
 
     //Submit Button
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/submitButton")
-    @AndroidFindBy(xpath = "//*[@text='SUBMIT']/..")
+    @AndroidFindBy(xpath = "//*[@text='Submit']/..")
     @iOSXCUITFindBy(accessibility = "Submit")
     public WebElement paymentRequestsSubmitButton;
 
