@@ -76,7 +76,7 @@ public class ReportsScreenTest extends BaseDriver {
         reportsBasicCheckSub("ELDERS_QUORUM_SECRETARY");
     }
 
-    @Test(groups = {"all1", "all", "daily", "daily3", "jft"})
+    @Test(groups = {"all1", "all", "daily", "daily3"})
     public void reportsBasic_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         reportsBasicCheckSub("RELIEF_SOCIETY_PRESIDENT");
     }
@@ -341,7 +341,7 @@ public class ReportsScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups = {"all2", "all", "report", "daily", "daily3"})
+    @Test (groups = {"all2", "all", "report", "daily", "daily3", "jft"})
     public void reportsActionAndInterviewReports() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();

@@ -273,7 +273,8 @@ public class ReportsScreen extends BasePage {
     //Overdue Aaronic Priesthood Ordinations
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Overdue Aaronic Priesthood Ordinations'][@resource-id='org.lds.ldstools:id/reportTextView']")
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Overdue Aaronic Priesthood Ordinations'][contains(@resource-id, 'reportTextView')]")
-    @AndroidFindBy(xpath = "//android.view.View[@clickable='true']/android.widget.TextView[@text='Overdue Aaronic Priesthood Ordinations']")
+//    @AndroidFindBy(xpath = "//android.view.View[@clickable='true']/android.widget.TextView[@text='Overdue Aaronic Priesthood Ordinations']")
+    @AndroidFindBy(xpath = "//android.view.View[@clickable='true']/android.view.View/android.widget.TextView[@text='Overdue Aaronic Priesthood Ordinations']")
     @iOSXCUITFindBy(xpath = "//*[@name='Overdue Aaronic Priesthood Ordinations'][2]")
     public WebElement overdueAaronicPriesthoodOrdinationsReport;
 
