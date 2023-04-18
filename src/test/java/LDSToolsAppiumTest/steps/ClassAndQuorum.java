@@ -114,14 +114,14 @@ public class ClassAndQuorum extends BaseDriver {
     @Then("week one will have a check mark")
     public void weekOneWillHaveACheckMark() throws Exception {
         LOGGER.info("week one will have a check mark");
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
         searchClassAndQuorum("Barton, Reilly");
         Assert.assertTrue(getWeekAttendanceStatus("week1", "main").equalsIgnoreCase("attended"));
         //Clean Up
         Thread.sleep(500);
         getWeekElement("week1", "main").click();
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
     }
 
 
@@ -170,7 +170,7 @@ public class ClassAndQuorum extends BaseDriver {
 //        System.out.println(myBasePage.getSourceOfPage());
         getWeekElement("week3", "main").click();
         Thread.sleep(500);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
         searchClassAndQuorum("Rickett, Dylan");
         Thread.sleep(500);
@@ -191,9 +191,9 @@ public class ClassAndQuorum extends BaseDriver {
         Thread.sleep(500);
         getWeekElement("week3", "detail").click();
         Thread.sleep(500);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(1000);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
     }
 
 
@@ -289,7 +289,7 @@ public class ClassAndQuorum extends BaseDriver {
         }
 
 
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
     }
 
@@ -369,7 +369,9 @@ public class ClassAndQuorum extends BaseDriver {
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(0) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
-                        returnElement = myReports.classAndQuorumFirstWeek;
+//                        returnElement = myReports.classAndQuorumFirstWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(0) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
                     } else {
                         System.out.println("Detail check for week 1");
                         numberOnly = dateToCheck.get(0).replaceAll("[^0-9]", "");
@@ -386,7 +388,9 @@ public class ClassAndQuorum extends BaseDriver {
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(1) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
-                        returnElement = myReports.classAndQuorumSecondWeek;
+//                        returnElement = myReports.classAndQuorumSecondWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(1) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
                     } else {
                         System.out.println("Detail check for week 2");
                         numberOnly = dateToCheck.get(1).replaceAll("[^0-9]", "");
@@ -404,7 +408,9 @@ public class ClassAndQuorum extends BaseDriver {
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(2) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
-                        returnElement = myReports.classAndQuorumThirdWeek;
+//                        returnElement = myReports.classAndQuorumThirdWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(2) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
                     } else {
                         numberOnly = dateToCheck.get(2).replaceAll("[^0-9]", "");
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
@@ -420,7 +426,9 @@ public class ClassAndQuorum extends BaseDriver {
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(3) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
-                        returnElement = myReports.classAndQuorumFourthWeek;
+//                        returnElement = myReports.classAndQuorumFourthWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(3) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
                     } else {
                         numberOnly = dateToCheck.get(3).replaceAll("[^0-9]", "");
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
@@ -437,7 +445,9 @@ public class ClassAndQuorum extends BaseDriver {
                             "//XCUIElementTypeStaticText[contains(@name, '" + dateToCheck.get(4) +"')]"));
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
-                        returnElement = myReports.classAndQuorumFifthWeek;
+//                        returnElement = myReports.classAndQuorumFifthWeek;
+                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(4) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
                     } else {
                         numberOnly = dateToCheck.get(4).replaceAll("[^0-9]", "");
                         returnElement = (WebElement) driver.get().findElement(By.xpath(

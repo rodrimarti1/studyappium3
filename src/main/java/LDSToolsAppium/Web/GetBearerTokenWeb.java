@@ -60,9 +60,9 @@ public class GetBearerTokenWeb {
         devTools.addListener(Network.requestWillBeSent(),
                 entry -> {
                     RequestId requestid = entry.getRequestId();
-                    System.out.println("Request Method : " + entry.getRequest().getMethod());
-                    System.out.println("Request URI : " + entry.getRequest().getUrl());
-                    System.out.println("Request headers:");
+//                    System.out.println("Request Method : " + entry.getRequest().getMethod());
+//                    System.out.println("Request URI : " + entry.getRequest().getUrl());
+//                    System.out.println("Request headers:");
                     entry.getRequest().getHeaders().toJson().forEach((k, v) -> System.out.println((k + ":" + v)));
                     Optional<String> postData = entry.getRequest().getPostData();
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -76,7 +76,8 @@ public class GetBearerTokenWeb {
     public void setupDriver() throws Exception {
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--incognito");
+        options.addArguments("--incognito");
+        options.addArguments("--headless=new");
         options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         DevTools devTools = ((ChromeDriver) driver).getDevTools();
@@ -111,9 +112,9 @@ public class GetBearerTokenWeb {
         devTools.send(Network.enable(Optional.of(100000000), Optional.empty(), Optional.empty()));
         devTools.addListener(Network.responseReceived(), responseReceived -> {
             if (responseReceived.getResponse().getUrl().contains("id.churchofjesuschrist.org")) {
-                System.out.println("URL: " + responseReceived.getResponse().getUrl());
-                System.out.println("Status: " + responseReceived.getResponse().getStatus());
-                System.out.println("Type: " + responseReceived.getType().toJson());
+//                System.out.println("URL: " + responseReceived.getResponse().getUrl());
+//                System.out.println("Status: " + responseReceived.getResponse().getStatus());
+//                System.out.println("Type: " + responseReceived.getType().toJson());
                 responseReceived.getResponse().getHeaders().toJson().forEach((k, v) -> System.out.println((k + ":" + v)));
                 requestIds[0] = responseReceived.getRequestId();
                 String responseBody = devTools.send(Network.getResponseBody(requestIds[0])).getBody();
@@ -125,7 +126,7 @@ public class GetBearerTokenWeb {
                         throw new RuntimeException(e);
                     }
                 }
-                System.out.println("Response Body: \n" + responseBody + "\n");
+//                System.out.println("Response Body: \n" + responseBody + "\n");
             }
         });
     }
@@ -139,10 +140,10 @@ public class GetBearerTokenWeb {
 //        System.out.println(myJson.get("access_token"));
 
         LocalDateTime timeNow = LocalDateTime.now();
-        System.out.println("Time " + timeNow);
+//        System.out.println("Time " + timeNow);
 
         LocalDateTime expireTime = LocalDateTime.now().plusHours(1);
-        System.out.println("Expire Time " + expireTime);
+//        System.out.println("Expire Time " + expireTime);
 
         if (LocalDateTime.now().isBefore(expireTime)) {
             System.out.println("Token is still good!");
@@ -163,7 +164,7 @@ public class GetBearerTokenWeb {
 
         writeBearerTokenFile(myTest);
 
-        System.out.println(myTest);
+//        System.out.println(myTest);
 
 
     }
@@ -174,15 +175,15 @@ public class GetBearerTokenWeb {
         DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
         String jsonText = readTokenFile();
         JSONObject jsonData = new JSONObject(jsonText);
-        System.out.println(jsonData.get("access_token"));
-        System.out.println(jsonData.get("expire_time"));
+//        System.out.println(jsonData.get("access_token"));
+//        System.out.println(jsonData.get("expire_time"));
 //        LocalDateTime expireTime = (LocalDateTime) jsonData.get("expire_time");
         LocalDateTime expireTime = LocalDateTime.parse((CharSequence) jsonData.get("expire_time"), formatter);
         String accessToken = (String) jsonData.get("access_token");
 
         //Get Local Time
         LocalTime timeNow = LocalTime.now();
-        System.out.println("Time " + timeNow);
+//        System.out.println("Time " + timeNow);
 
         //See if token is still valid
         if (LocalDateTime.now().isBefore(expireTime)) {
@@ -195,9 +196,9 @@ public class GetBearerTokenWeb {
             accessToken = (String) jsonData.get("access_token");
         }
 //        eyJraWQiOiJVSXdsb1Iwc19JM2VvUzlrZjJJaGUyeENzRHdqb1ZBUTIxc1ZuUmVHcUQ0IiwiYWxnIjoiUlMyNTYifQ
-        System.out.println("******************************");
-        System.out.println(accessToken);
-        System.out.println("******************************");
+//        System.out.println("******************************");
+//        System.out.println(accessToken);
+//        System.out.println("******************************");
 
         return accessToken;
     }
@@ -206,7 +207,7 @@ public class GetBearerTokenWeb {
         File bearerTokenFile = new File("AppUnderTest/bearerToken.json");
         InputStream bearerFile = Files.newInputStream(bearerTokenFile.toPath());
         String jsonText = IOUtils.toString(bearerFile, "UTF-8");
-        System.out.println(jsonText);
+//        System.out.println(jsonText);
         return jsonText;
     }
 
