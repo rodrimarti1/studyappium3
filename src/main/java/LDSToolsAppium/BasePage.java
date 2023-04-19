@@ -135,7 +135,7 @@ public class BasePage extends BaseDriver {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         HashMap scrollObject = new HashMap();
         scrollObject.put("direction", "up");
-        scrollObject.put("xpath", "//XCUIElementTypeStaticText[@name='" + myElement + "']");
+        scrollObject.put("xpath", "//*[@name='" + myElement + "']");
         js.executeScript("mobile: swipe", scrollObject);
     }
 

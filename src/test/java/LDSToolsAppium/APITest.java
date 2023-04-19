@@ -1,9 +1,7 @@
 package LDSToolsAppium;
 
 import LDSToolsAppium.API.*;
-import LDSToolsAppium.API.Expenses.ApiFinanceMethod;
-import LDSToolsAppium.API.Expenses.ApprovedRejectedBy;
-import LDSToolsAppium.API.Expenses.Charge;
+import LDSToolsAppium.API.Expenses.*;
 import LDSToolsAppium.API.Households.ApiHousehold;
 import LDSToolsAppium.API.Households.Member;
 import LDSToolsAppium.API.LifeResources.Contact;
@@ -387,6 +385,37 @@ public class APITest {
     }
 
     @Test
+    public void createExpenseByObject() throws Exception {
+        int responseCode = 0;
+
+        Random rand = new Random();
+//        int randomNumber = rand.nextInt((10000 - 99999) + 1) + 10000;
+        int randomNumber = rand.nextInt(10001) + 99990;
+
+        Expense myExpense = new Expense();
+        Payee myPayee = new Payee();
+        Charge myCharge = new Charge();
+        List<Charge> listCharge = new ArrayList<>();
+
+        myPayee.setMemberUuid("533356e1-66c5-49dc-b37b-13a416594413");
+
+        myCharge.setCategoryId(952);
+        myCharge.setAmount(1234);
+        listCharge.add(myCharge);
+
+        myExpense.setAccountId(8880);
+        myExpense.setUnitNumber(39373);
+        myExpense.setPurpose("API Automated Test " + randomNumber);
+        myExpense.setPayee(myPayee);
+        myExpense.setCharges(listCharge);
+//        myExpense.setType("EXPENSE");
+
+        responseCode = apiTest.createExpenseWithObject(myExpense, "dsoneil");
+        System.out.println("Response Code: " + responseCode);
+
+    }
+
+//    @Test
     public void getAllExpensesForUnit() throws Exception {
         Map<String, Object> myMap = new HashMap<>();
 //        List<String> expenseList = new ArrayList<>();

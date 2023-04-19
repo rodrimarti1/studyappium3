@@ -316,9 +316,6 @@ public class ClassAndQuorum extends BaseDriver {
 //                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.FrameLayout[contains(@resource-id, 'week" + y + "')]//android.widget.TextView")).getAttribute("text"));
                     visibleDates.add(driver.get().findElement(By.xpath("//android.widget.TextView[@text='Gospel Doctrine']/../../following-sibling::android.view.View/android.view.View/android.widget.TextView[" + y + "]")).getAttribute("text"));
 
-
-
-
                 }
             }
 

@@ -56,6 +56,7 @@ public class MoveInMoveOut extends BaseDriver {
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsCancelButton));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsMoreSearchOptions));
         //Move Records In - More Search Options
+//        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myReports.moveRecordsMoreSearchOptions);
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsName));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsBirthDate));

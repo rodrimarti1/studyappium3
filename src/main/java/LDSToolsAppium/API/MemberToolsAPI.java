@@ -1572,6 +1572,50 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     }
 
+    public int createExpenseWithObject(Expense expenseToUpdate, String proxyUser) throws Exception {
+        int responseData = 0;
+        String json;
+        Gson gsonTest = new Gson();
+
+        json = gsonTest.toJson(expenseToUpdate);
+        System.out.println(json);
+
+        MultipartBody multiBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("request", null, RequestBody.create(MediaType.parse("application/json"), json))
+//                .addFormDataPart("application/json", json)
+                .addFormDataPart("receipts", "cereal-receipt.jpeg",
+                        RequestBody.create(MediaType.parse("image/jpeg"), new File("cereal-receipt.jpeg")))
+                .build();
+
+//        StringBuilder contentBuilder = new StringBuilder();
+
+        OkHttpClient httpClient = loginCred();
+        getBearerTokenFromSelenium();
+        Request request = new Request.Builder()
+                .url(baseURL + "finances/reimbursement")
+//                .url(baseURL + "finances/expenses")
+                .addHeader("X-Proxy-User" , proxyUser)
+                .addHeader("Authorization", bearerToken)
+//                .header("Content-Type", "application/json; charset=UTF-8")
+                .post(multiBody)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: "  + response.code());
+            responseData = response.code();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+
+    }
+
 
     public int putExpenseUpdate(Expense expenseToUpdate, String proxyUser) throws Exception {
         int responseData = 0;
