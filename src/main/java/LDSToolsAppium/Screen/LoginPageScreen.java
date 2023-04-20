@@ -181,4 +181,9 @@ public class LoginPageScreen extends BasePage {
     public  WebElement deepLinkOpenButton;
 
 
+    //Android invalid password OK button
+    @AndroidFindBy(xpath = "//*[@text='OK']")
+    public  WebElement invalidPasswordOK;
+
+
 }

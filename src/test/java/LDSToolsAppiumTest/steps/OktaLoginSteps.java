@@ -124,6 +124,7 @@ public class OktaLoginSteps extends BaseDriver {
             Assert.assertTrue(pageSource.contains("Invalid Password"));
         } else {
             Assert.assertTrue(pageSource.contains("Invalid password"));
+            myLogin.invalidPasswordOK.click();
         }
         myLogin.passWord.clear();
     }
@@ -148,11 +149,12 @@ public class OktaLoginSteps extends BaseDriver {
         pageSource = myBasePage.getSourceOfPage();
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             Assert.assertTrue(pageSource.contains("Invalid Passcode"));
+            myLogin.twoFactorEdit.clear();
         } else {
             Assert.assertTrue(pageSource.contains("Try another way to sign in"));
-            myLogin.twoFactorBack.click();
+//            myLogin.twoFactorBack.click();
         }
-        myLogin.twoFactorEdit.clear();
+
     }
 
     public void browserBack() throws Exception {
