@@ -28,4 +28,5 @@
 /src/test/java/Reports/Android Just For Testing Suite
 /.DS_Store
 /.idea/misc.xml
+/AppUnderTest/bearerToken.json
 

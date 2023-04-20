@@ -16,7 +16,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -194,8 +194,8 @@ public class ReportsScreenTest extends BaseDriver {
 //            myBasePage.rightsCheckNewRights("Youth Recommend Status", 6, rights, pageSource); //Now in Temple Recommend Status
 
 
-            getMembersMovedInReport(rights);
-            getMembersMovedOutReport(rights);
+
+
             getMembersWithCallings(rights);
             getMembersWithOutCallings(rights);
 //            getNewMembers(rights);
@@ -208,6 +208,8 @@ public class ReportsScreenTest extends BaseDriver {
                 }
             }
 
+            getMembersMovedInReport(rights);
+            getMembersMovedOutReport(rights);
 
 
         } else {
@@ -462,7 +464,7 @@ public class ReportsScreenTest extends BaseDriver {
 
 
     //There is no API for this
-    @Test (groups = {"all3", "all", "report", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "report", "daily", "daily4"})
     public void reportsYouthRecommendStatus() throws Exception {
         String pageSource;
 

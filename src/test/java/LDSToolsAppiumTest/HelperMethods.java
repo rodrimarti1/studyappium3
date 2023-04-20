@@ -317,9 +317,9 @@ public class HelperMethods extends BaseDriver {
             if (pageSource.contains("Never")) {
                 driver.get().findElement(By.xpath("//*[@text='Never']")).click();
             }
-            myBasePage.waitUnitlTextIsGone("Updating");
+            myBasePage.waitUnitlTextIsGone("Refresh Data");
             Thread.sleep(1000);
-            myBasePage.waitUnitlTextIsGone("Updating");
+            myBasePage.waitUnitlTextIsGone("Refresh Data");
         }
 
         long endTime = System.nanoTime();
