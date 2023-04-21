@@ -377,4 +377,30 @@ public class FinanceScreen extends BasePage {
     public WebElement financePaymentReject;
 
 
+    //Add New Expense
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Enter new expense']")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == \"Add\" AND type == \"XCUIElementTypeOther\"")
+    public WebElement addNewExpense;
+
+    //Search Field for Payee
+//    @AndroidFindBy(xpath = "//*[@content-desc='Search']/following-sibling::android.view.View/android.widget.TextView")
+    @AndroidFindBy(xpath = "//*[@text=\"Search\"]/../..")
+    @iOSXCUITFindBy(iOSNsPredicate = "value == \"Search\"")
+    public WebElement searchFieldForPayee;
+
+    //Expense Purpose
+    @AndroidFindBy(xpath = "//*[@text=\"Purpose\"]/../..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Purpose\"]/following-sibling::XCUIElementTypeTextView")
+    public WebElement expensePurpose;
+
+    //Payment Type Name
+    @AndroidFindBy(xpath = "//*[@text=\"Payment Type\"]/../..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Payment Type\"]/following-sibling::XCUIElementTypeStaticText")
+    public WebElement paymentTypeName;
+
+    //Payment Type Arrow Button
+    @AndroidFindBy(xpath = "//*[@content-desc='Dropdown menu']")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage[@name=\"Forward\"])[1]")
+    public WebElement paymentTypeNameArrowButton;
+
 }

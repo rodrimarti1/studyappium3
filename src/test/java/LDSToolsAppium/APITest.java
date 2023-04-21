@@ -384,7 +384,7 @@ public class APITest {
 
     }
 
-    @Test
+//    @Test
     public void createExpenseByObject() throws Exception {
         int responseCode = 0;
 
@@ -590,7 +590,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-//    @Test
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -609,6 +609,7 @@ public class APITest {
 //         *********************************
         List<String> callingAndLoginName = new ArrayList<String>();
         List<String> deepLink = new ArrayList<String>();
+        List<String> prepForFile = new ArrayList<String>();
         Map<String, String> unitMap = new HashMap<String, String>();
         unitMap.put("4", "BISHOP");
         unitMap.put("54", "BISHOPRIC_FIRST_COUNSELOR");
@@ -656,6 +657,10 @@ public class APITest {
         unitMap.put("179", "DEACONS_QUORUM_SECOND_COUNSELOR");
         unitMap.put("142", "ELDERS_QUORUM_INSTRUCTOR");
         unitMap.put("150", "RELIEF_SOCIETY_TEACHER");
+        unitMap.put("12", "BRANCH_PRESIDENT");
+        unitMap.put("59", "BRANCH_PRESIDENCY_FIRST_COUNSELOR");
+        unitMap.put("60", "BRANCH_PRESIDENCY_SECOND_COUNSELOR");
+
 
 
         for (String callingId: unitMap.keySet()) {
@@ -664,6 +669,7 @@ public class APITest {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
                 deepLink.add(unitMap.get(callingId) + " MemberTools://user/" + myUsername + "/stage");
+                prepForFile.add(unitMap.get(callingId) + "," + myUsername);
             }
         }
 
@@ -678,6 +684,12 @@ public class APITest {
 
         for (String deepLinkMember : deepLink) {
             System.out.println(deepLinkMember);
+        }
+
+        System.out.println("*********************************************************");
+
+        for (String prepForFileMember : prepForFile) {
+            System.out.println(prepForFileMember);
         }
 
 

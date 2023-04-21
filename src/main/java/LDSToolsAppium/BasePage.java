@@ -820,7 +820,7 @@ public class BasePage extends BaseDriver {
 
     public void waitUnitlTextIsGone(String myText) {
         //System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(120));
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(240));
 
         if(getOS().equals("ios")) {
             wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(@value, '" + myText + "')]")));

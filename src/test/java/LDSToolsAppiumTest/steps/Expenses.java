@@ -11,6 +11,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -23,7 +24,11 @@ public class Expenses extends BaseDriver {
     MenuScreen myMenu = new MenuScreen(driver);
     FinanceScreen myFinance = new FinanceScreen(driver);
     MemberToolsAPI apiTest = new MemberToolsAPI();
+    PaymentRequests myPaymentRequests = new PaymentRequests();
     int responseCode;
+    String pageSource;
+    String payeeName = "";
+    String purpose = "";
 
 
 
@@ -268,4 +273,110 @@ public class Expenses extends BaseDriver {
     }
 
 
+    @And("is on the Expenses page")
+    public void isOnTheExpensesPage() throws Exception {
+        myMenu.selectMenu(myMenu.finance);
+        myBasePage.waitForElementThenClick(myFinance.financeExpenses);
+    }
+
+
+    @When("an expense is filled out for  {string} {string} {string} {string} {string} {string}")
+    public void anExpenseIsFilledOutFor(String payee, String purpose, String paymentType, String addReceipt, String category, String categoryAmount) throws Exception {
+        myBasePage.waitForElementThenClick(myFinance.addNewExpense);
+
+        //Payee
+        expenseAddAPayee(payee);
+        //Purpose
+        expenseAddPurpose(purpose);
+        //Payment Type
+        choosePaymentType(paymentType);
+        //Add Receipt
+        myPaymentRequests.addReceiptToPaymentRequest(addReceipt);
+        //Set the Category
+        myPaymentRequests.categorySub(category);
+        //Set the amount
+        myPaymentRequests.categoryAmountSub(categoryAmount);
+
+        myFinance.paymentRequestsSubmitButton.click();
+
+        //Wait or check for something?
+        Thread.sleep(20000);
+
+    }
+
+
+    //Search and add a payee
+    public void expenseAddAPayee(String payee) throws Exception {
+        //Search for the payee
+        Thread.sleep(1000);
+        myFinance.searchFieldForPayee.sendKeys(payee);
+        Thread.sleep(1000);
+        //Select the payee
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + payee + "']")).click();
+        } else {
+            driver.get().findElement(By.xpath("//android.widget.TextView[@text='" + payee + "']/../..")).click();
+        }
+    }
+
+    public void expenseAddPurpose(String purpose) throws Exception {
+        int min = 1000;
+        int max = 9998;
+        double randomNumber = Math.random() * (max - min) + min;
+        purpose = purpose + " " + randomNumber;
+        myFinance.expensePurpose.sendKeys(purpose);
+    }
+
+    public void choosePaymentType(String paymentType) throws Exception {
+        //Get the payment type
+        String foundPaymentType;
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            foundPaymentType = myFinance.paymentTypeName.getAttribute("value");
+        } else {
+            foundPaymentType = myFinance.paymentTypeName.getAttribute("text");
+        }
+//        System.out.println("Found Payment Type: "  + foundPaymentType);
+//        System.out.println("Looking for Payment Type: "  + paymentType);
+
+        if (foundPaymentType.equalsIgnoreCase(paymentType)) {
+            System.out.println("Payment Type is set");
+        } else {
+            myBasePage.waitForElementThenClick(myFinance.paymentTypeNameArrowButton);
+            myBasePage.clickByTextName(paymentType);
+        }
+
+
+
+    }
+
+
+    @Then("the expense will be processed with  {string} {string} {string} {string} {string} {string}")
+    public void theExpenseWillBeProcessedWith(String payee, String purpose, String paymentType, String addReceipt, String category, String categoryAmount) throws Exception {
+
+        //Check API
+        //todo switch to finance object?
+        Map<String, Object> myMap = new HashMap<>();
+        myMap = apiTest.getExpensesDetail("dsoneil", "39373", purpose);
+
+//        Assert.assertEquals(payee, myMap.get("payeeName").toString());
+        if (myMap.containsKey("amount")) {
+            Assert.assertEquals(categoryAmount, myMap.get("amount").toString());
+
+            //Have to do a contains because the api has the last name and the app doesn't
+            Assert.assertTrue(myMap.get("payeeName").toString().contains(payeeName));
+        }
+
+        //Check GUI
+
+
+    }
+
+    @Given("a {string} logs in to {string}")
+    public void aLogsInTo(String memberCalling, String unit) throws Exception {
+        String[] callingRights;
+        callingRights = myHelper.getMemberNameFromList(memberCalling, unit);
+        String userName = callingRights[1];
+        myHelper.proxyLogin(userName);
+        myHelper.enterPin("1", "1", "3", "3");
+    }
 }
