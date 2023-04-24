@@ -81,6 +81,11 @@ public class BasePage extends BaseDriver {
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'OK'")
     public WebElement alertOK;
 
+    //OK
+    @AndroidFindBy(xpath = "//*[@text=\"OK\"]")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'Enter'")
+    public WebElement alertOKEnter;
+
     //Cancel
     @AndroidFindBy(accessibility = "Cancel")
     @iOSXCUITFindBy(accessibility = "Cancel")

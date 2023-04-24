@@ -311,12 +311,12 @@ public class SettingsScreen extends BasePage {
     //Override temple recommend expiration
 //    @AndroidFindBy(xpath = "//*[contains(@text, 'Override temple recommend expiration')]")
     @AndroidFindBy(xpath = "//*[contains(@text, 'Temple Recommend Expiration')]")
-    @iOSXCUITFindBy(accessibility = "Set Temple Recommend Expiration")
+    @iOSXCUITFindBy(accessibility = "Set Recommend Expiration")
     public  WebElement overrideTempleRecommendExpiration;
 
     //Temple Recommend Status
     @AndroidFindBy(xpath = "//*[contains(@text, 'Temple Recommend Status')]")
-    @iOSXCUITFindBy(accessibility = "Set Temple Recommend Status")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Set Recommend Status\"]")
     public  WebElement templeRecommendStatus;
 
         //UNKNOWN
@@ -325,7 +325,7 @@ public class SettingsScreen extends BasePage {
 
         //ACTIVE
         @AndroidFindBy(xpath = "//*[contains(@text, 'ACTIVE')]")
-        @iOSXCUITFindBy(accessibility = "Active/Expired")
+        @iOSXCUITFindBy(accessibility = "Active")
         public  WebElement active;
 
         //LOST_OR_STOLEN
@@ -354,7 +354,7 @@ public class SettingsScreen extends BasePage {
 
     //Enter Days until recommend expires
     @AndroidFindBy(xpath = "//android.widget.EditText[@resource-id='android:id/input']")
-    @iOSXCUITFindBy(iOSNsPredicate = "value == 'Days until expiration'")
+    @iOSXCUITFindBy(iOSNsPredicate = "value == 'Days to Recommend Expiration'")
     public WebElement templeDaysUntilExpiration;
 
 

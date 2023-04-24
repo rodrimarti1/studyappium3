@@ -217,22 +217,23 @@ public class TemplesScreen extends BasePage {
             if (myScanner.scannerCheckForText("Developer Settings") ) {
                 myBasePage.waitForElementThenClick(myLoginPage.developerButton);
             } else {
-                for (int x = 1; x <= 5; x++) {
+                for (int x = 1; x <= 4; x++) {
                     myBasePage.waitForElementThenClick(myLoginPage.enterDeveloperButton);
                 }
+                myBasePage.waitForElementThenClick(myLoginPage.developerButton);
             }
             //Set the Temple Recommend Status
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-                myBasePage.scrollDownToTextIOS("Set Temple Recommend Status");
+                myBasePage.scrollDownToTextIOS("Set Recommend Status");
             }
             myBasePage.waitForElementThenClick(mySettings.templeRecommendStatus);
             Thread.sleep(500);
             myBasePage.waitForElementThenClick(recommendStatus);
-            Thread.sleep(500);
+            Thread.sleep(2000);
             //Set the number of Days until expired
             myBasePage.waitForElementThenClick(mySettings.overrideTempleRecommendExpiration);
             mySettings.templeDaysUntilExpiration.sendKeys(numberOfDays);
-            myBasePage.waitForElementThenClick(mySettings.alertOK);
+            myBasePage.waitForElementThenClick(mySettings.alertOKEnter);
             myBasePage.waitForElementThenClick(myBasePage.backButton);
             Thread.sleep(1000);
             myBasePage.waitForElementThenClick(myBasePage.backButton);

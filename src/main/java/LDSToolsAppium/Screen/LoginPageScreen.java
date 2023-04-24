@@ -103,11 +103,13 @@ public class LoginPageScreen extends BasePage {
     public  WebElement overflowSettings;
 
     //Enter Developer Button
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[7]")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[7]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Press me to reveal developer settings')]")
     public  WebElement enterDeveloperButton;
 
     //Developer Button Displayed
-    @iOSXCUITFindBy(accessibility = "Developer Settings")
+//    @iOSXCUITFindBy(accessibility = "Developer Settings")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Developer Settings\"])[2]")
     public WebElement developerButton;
 
 
