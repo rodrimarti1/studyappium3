@@ -291,6 +291,10 @@ public class Expenses extends BaseDriver {
         //Payment Type
         choosePaymentType(paymentType);
         //Add Receipt
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            driver.get().findElement(By.xpath("//*[@name='Reference Number']")).click();
+            myBasePage.scrollDownIOS();
+        }
         myPaymentRequests.addReceiptToPaymentRequest(addReceipt);
         //Set the Category
         myPaymentRequests.categorySub(category);
@@ -323,6 +327,7 @@ public class Expenses extends BaseDriver {
         int min = 1000;
         int max = 9998;
         double randomNumber = Math.random() * (max - min) + min;
+        randomNumber = Math.round(randomNumber);
         purpose = purpose + " " + randomNumber;
         myFinance.expensePurpose.sendKeys(purpose);
     }

@@ -105,7 +105,8 @@ public class FinanceScreen extends BasePage {
     //Add Receipt
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/addReceiptTopButton")
     @AndroidFindBy(xpath = "//android.view.View[@content-desc='Add supporting documentation']/following-sibling::android.widget.Button")
-    @iOSXCUITFindBy(accessibility = "Add Receipt, Hand written receipts are also acceptable")
+//    @iOSXCUITFindBy(accessibility = "Add Receipt, Hand written receipts are also acceptable")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Add Receipt\"]")
     public WebElement paymentRequestsAddReceipt;
 
     //Take a picture small button
@@ -193,6 +194,10 @@ public class FinanceScreen extends BasePage {
     //Amount iOS
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     public WebElement paymentRequestsAmountiOS;
+
+    //Categories and Anounts label
+    @iOSXCUITFindBy(accessibility = "Categories and Amounts")
+    public WebElement paymentRequestCategoriesAndAmountsLabel;
 
     //Amount
 //    @AndroidFindBy(xpath = "//*[@content-desc='Remove Category']/../following-sibling::android.view.View")

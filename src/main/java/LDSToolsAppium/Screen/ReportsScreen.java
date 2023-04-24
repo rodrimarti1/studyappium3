@@ -69,12 +69,14 @@ public class ReportsScreen extends BasePage {
 
     //Move In and Out Report In tab
     @AndroidFindBy(xpath = "//*[@text='In']")
-    @iOSXCUITFindBy(accessibility = "Members Moved In")
+//    @iOSXCUITFindBy(accessibility = "Members Moved In")
+    @iOSXCUITFindBy(accessibility = "Move In")
     public WebElement moveReportInTab;
 
     //Move In and Out Report Out tab
     @AndroidFindBy(xpath = "//*[@text='Out']")
-    @iOSXCUITFindBy(accessibility = "Members Moved Out")
+//    @iOSXCUITFindBy(accessibility = "Members Moved Out")
+    @iOSXCUITFindBy(accessibility = "Move Out")
     public WebElement moveReportOutTab;
 
 

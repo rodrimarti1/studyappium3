@@ -464,7 +464,13 @@ public class PaymentRequests extends BaseDriver {
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myFinance.paymentRequestsAmountiOS.clear();
             myFinance.paymentRequestsAmountiOS.sendKeys(categoryAmount);
-            driver.get().findElement(AppiumBy.accessibilityId("Purpose")).click(); //Get rid of keyboard
+            Thread.sleep(500);
+            if (myBasePage.checkForElement(myFinance.paymentRequestCategoriesAndAmountsLabel)) {
+                myFinance.paymentRequestCategoriesAndAmountsLabel.click(); //Get rid of keyboard
+            } else {
+                driver.get().findElement(AppiumBy.accessibilityId("Purpose")).click(); //Get rid of keyboard
+            }
+
 //            myFinance.paymentRequestsSaveButton.click();
         } else {
             for (int i = 0; i < categoryAmount.length(); i++ ) {
