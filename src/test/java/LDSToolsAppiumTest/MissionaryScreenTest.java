@@ -141,19 +141,29 @@ public class MissionaryScreenTest extends BaseDriver {
         pageSource = myMissionary.getMissionaryPage();
 
         //Check Assigned Missionaries
-        memberList = apiTest.getAssignedMissionaries("mbthomas74", "21628");
-        myBasePage.apiCheckDataPageSource(memberList, pageSource);
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myMissionary.tabMissionaries.click();
+        } else {
+            memberList = apiTest.getAssignedMissionaries("mbthomas74", "21628");
+            myBasePage.apiCheckDataPageSource(memberList, pageSource);
+        }
 
-        //Check Serving Missionaries
-        memberList = apiTest.getServingMissionaries("mbthomas74", "21628");
-        myBasePage.apiCheckDataPageSource(memberList, pageSource);
-
-        //Check Ward Missionaries
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.swipeByElement(myMissionary.tabAssigned);
+            myMissionary.tabWard.click();
+        }
         memberList = apiTest.getOrganizationMembers("Ward Missionaries", "mbthomas74", "21628");
         if (getRunningOS().equalsIgnoreCase("ios")) {
             memberListIos = myBasePage.swapLastNameCommaFirstName(memberList);
             memberList = memberListIos;
         }
+        myBasePage.apiCheckDataPageSource(memberList, pageSource);
+
+        //Check Serving Missionaries
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myMissionary.tabServing.click();
+        }
+        memberList = apiTest.getServingMissionaries("mbthomas74", "21628");
         myBasePage.apiCheckDataPageSource(memberList, pageSource);
     }
 

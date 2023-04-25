@@ -196,6 +196,12 @@ public class MissionaryScreen extends BasePage {
             pageSource = pageSource + getSourceOfPage();
 
             if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                for (int myCounter = 1; myCounter <= 3 ; myCounter++) {
+                    myBasePage.newScrollDownSlow();
+                    pageSource = pageSource + getSourceOfPage();
+                    Thread.sleep(500);
+                }
+
                 myBasePage.swipeByElement(tabAssigned);
             }
 
@@ -206,7 +212,14 @@ public class MissionaryScreen extends BasePage {
             tabServing.click();
             Thread.sleep(3000);
             pageSource = pageSource + getSourceOfPage();
-
+            if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                for (int myCounter = 1; myCounter <= 2 ; myCounter++) {
+                    myBasePage.newScrollDownSlow();
+                    pageSource = pageSource + getSourceOfPage();
+                    Thread.sleep(500);
+                }
+            }
+            tabAssigned.click();
             tabReferrals.click();
         }
 
