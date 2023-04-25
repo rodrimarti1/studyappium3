@@ -151,8 +151,8 @@ public class DirectoryScreen extends BasePage {
 
     //Tab Membership
 //    @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"membership information\")]")
-//    @AndroidFindBy(xpath = "//*[@text='Membership Information']")
-    @AndroidFindBy(accessibility = "Membership Information")
+    @AndroidFindBy(xpath = "//*[@text='Membership Information']")
+//    @AndroidFindBy(accessibility = "Membership Information")
     public  WebElement tabMembership;
 
 
@@ -451,8 +451,13 @@ public class DirectoryScreen extends BasePage {
             Thread.sleep(1000);
             pageSource = getSourceOfPage();
 
-            myBasePage.scrollDownAndroidUIAutomator("0");
-            //scrollDownTEST(200);
+            for (int myCounter = 1; myCounter <= 3 ; myCounter++) {
+
+                pageSource = pageSource + getSourceOfPage();
+//                    myBasePage.newScrollDown();
+                myBasePage.newScrollDownSlow();
+                Thread.sleep(500);
+            }
 
             tabHousehold.click();
             Thread.sleep(1000);
@@ -460,17 +465,10 @@ public class DirectoryScreen extends BasePage {
 
             myCheck = checkForElement(tabMembership);
             if (myCheck) {
+                //I don't know why this is here twice.
                 tabMembership.click();
                 tabMembership.click();
 
-                //The headings are taking a while to load
-//                Thread.sleep(1000);
-//                myBasePage.scrollDownAndroidUIAutomator("1");
-//                myBasePage.scrollDownAndroidUIAutomator("1");
-//                Thread.sleep(2000);
-//                myBasePage.scrollUpAndroidUIAutomator("1");
-//                myBasePage.scrollUpAndroidUIAutomator("1");
-//                Thread.sleep(1000);
                 myBasePage.newScrollUp();
                 for (int myCounter = 1; myCounter <= 8 ; myCounter++) {
 
@@ -479,25 +477,6 @@ public class DirectoryScreen extends BasePage {
                     myBasePage.newScrollDownSlow();
                     Thread.sleep(500);
                 }
-
-//
-//                pageSource = pageSource + getSourceOfPage();
-//                myBasePage.newScrollDown();
-////                myBasePage.scrollDownAndroidUIAutomator("1");
-//                Thread.sleep(500);
-//                pageSource = pageSource + getSourceOfPage();
-//                myBasePage.newScrollDown();
-////                myBasePage.scrollDownAndroidUIAutomator("1");
-//                Thread.sleep(500);
-//                pageSource = pageSource + getSourceOfPage();
-//                myBasePage.newScrollDown();
-////                myBasePage.scrollDownAndroidUIAutomator("1");
-//                Thread.sleep(500);
-//                pageSource = pageSource + getSourceOfPage();
-//                myBasePage.newScrollDown();
-////                myBasePage.scrollDownAndroidUIAutomator("1");
-//                Thread.sleep(500);
-//                pageSource = pageSource + getSourceOfPage();
             }
 
             myCheck = checkForElement(tabCallings);
