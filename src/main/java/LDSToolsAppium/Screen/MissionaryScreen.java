@@ -24,7 +24,8 @@ public class MissionaryScreen extends BasePage {
     // ****************** Missionary Main Screen ******************
 
     //Send Referral Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fab")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fab")
+    @AndroidFindBy(xpath = "//*[content-desc='New Referral']")
     @iOSXCUITFindBy(accessibility = "Send Referral")
     public WebElement sendReferralButton;
 
@@ -129,6 +130,11 @@ public class MissionaryScreen extends BasePage {
 
 
     //Android Only
+
+    //Missionary Tab
+    @AndroidFindBy(xpath = "//*[@text=\"Missionaries\"]")
+    public  WebElement tabMissionaries;
+
     //Referrals Tab
     @AndroidFindBy(xpath = "//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"referrals\")]")
     public  WebElement tabReferrals;
@@ -179,9 +185,19 @@ public class MissionaryScreen extends BasePage {
             Thread.sleep(3000);
             pageSource = getSourceOfPage();
 
+
+            tabMissionaries.click();
+            Thread.sleep(3000);
+            pageSource = pageSource + getSourceOfPage();
+
+
             tabAssigned.click();
             Thread.sleep(3000);
             pageSource = pageSource + getSourceOfPage();
+
+            if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                myBasePage.swipeByElement(tabAssigned);
+            }
 
             tabWard.click();
             Thread.sleep(3000);

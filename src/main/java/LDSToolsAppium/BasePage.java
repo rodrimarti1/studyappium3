@@ -461,6 +461,15 @@ public class BasePage extends BaseDriver {
         return canScrollMore;
     }
 
+    public void swipeByElement(WebElement myElement) throws Exception {
+
+        ((JavascriptExecutor) driver.get()).executeScript("mobile: dragGesture", ImmutableMap.of(
+                "elementId", myElement,
+                "endX", 100,
+                "endY", 100
+        ));
+    }
+
 
     public void newScrollToText(String myText) throws Exception {
         String pageSource;

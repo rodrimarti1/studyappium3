@@ -15,7 +15,7 @@ import java.util.List;
 public class MissionaryScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1"})
+    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1", "jft"})
     public void missionaryTest_BISHOP() throws Exception {
         missionaryTestCheckSub("BISHOP");
     }
@@ -75,7 +75,7 @@ public class MissionaryScreenTest extends BaseDriver {
         missionaryTestCheckSub("ELDERS_QUORUM_SECRETARY");
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily3", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily3"})
     public void missionaryTest_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         missionaryTestCheckSub("RELIEF_SOCIETY_PRESIDENT");
     }
@@ -135,8 +135,9 @@ public class MissionaryScreenTest extends BaseDriver {
 
         myMenu.selectMenu(myMenu.missionary);
 
-        myBasePage.waitForElementThenClick(myMissionary.sendReferralButton);
-        myBasePage.waitForElementThenClick(myMissionary.cancelReferralButton);
+        //Not needed anymore?
+//        myBasePage.waitForElementThenClick(myMissionary.sendReferralButton);
+//        myBasePage.waitForElementThenClick(myMissionary.cancelReferralButton);
         pageSource = myMissionary.getMissionaryPage();
 
         //Check Assigned Missionaries
