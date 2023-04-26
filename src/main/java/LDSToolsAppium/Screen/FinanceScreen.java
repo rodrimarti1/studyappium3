@@ -408,4 +408,21 @@ public class FinanceScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage[@name=\"Forward\"])[1]")
     public WebElement paymentTypeNameArrowButton;
 
+    //Expense Reject Button
+    @AndroidFindBy(xpath = "//*[@text=\"Reject\"]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Reject\"]")
+    public WebElement expenseRejectButton;
+
+    //Reason Pulldown
+    @AndroidFindBy(xpath = "//*[@text=\"Reason\"]/../..")
+    public WebElement rejectReasonPullDown;
+
+    //Expense Reject Reasons
+    //Incorrect category
+    @AndroidFindBy(xpath = "//*[@text=\"Incorrect category\"]")
+    @iOSXCUITFindBy(accessibility = "Incorrect category")
+    public WebElement rejectReasonIncorrectCategory;
+
+
+
 }

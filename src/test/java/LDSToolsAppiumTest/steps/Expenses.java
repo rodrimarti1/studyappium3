@@ -1,5 +1,7 @@
 package LDSToolsAppiumTest.steps;
 
+import LDSToolsAppium.API.Expenses.Charge;
+import LDSToolsAppium.API.Expenses.Expense;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
@@ -28,7 +30,7 @@ public class Expenses extends BaseDriver {
     int responseCode;
     String pageSource;
     String payeeName = "";
-    String purpose = "";
+    String myPurpose = "";
 
 
 
@@ -328,8 +330,8 @@ public class Expenses extends BaseDriver {
         int max = 9998;
         double randomNumber = Math.random() * (max - min) + min;
         randomNumber = Math.round(randomNumber);
-        purpose = purpose + " " + randomNumber;
-        myFinance.expensePurpose.sendKeys(purpose);
+        myPurpose = purpose + " " + randomNumber;
+        myFinance.expensePurpose.sendKeys(myPurpose);
     }
 
     public void choosePaymentType(String paymentType) throws Exception {
@@ -358,10 +360,11 @@ public class Expenses extends BaseDriver {
     @Then("the expense will be processed with  {string} {string} {string} {string} {string} {string}")
     public void theExpenseWillBeProcessedWith(String payee, String purpose, String paymentType, String addReceipt, String category, String categoryAmount) throws Exception {
 
+        Expense myApiExpense = new Expense();
         //Check API
         //todo switch to finance object?
         Map<String, Object> myMap = new HashMap<>();
-        myMap = apiTest.getExpensesDetail("dsoneil", "39373", purpose);
+        myMap = apiTest.getExpensesDetail("dsoneil", "39373", myPurpose);
 
 //        Assert.assertEquals(payee, myMap.get("payeeName").toString());
         if (myMap.containsKey("amount")) {
@@ -371,9 +374,18 @@ public class Expenses extends BaseDriver {
             Assert.assertTrue(myMap.get("payeeName").toString().contains(payeeName));
         }
 
-        //Check GUI
+        myApiExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", myPurpose);
+//        System.out.println("Payee Name: " + myApiExpense.getPayee().getName());
+        System.out.println("Purpose: " + myApiExpense.getPurpose());
+//        System.out.println("Payment Type: " + myApiExpense.getType());
+//        for (Charge myCharge : myApiExpense.getCharges()) {
+//            System.out.println("Amount: " + myCharge.getAmount());
+//            System.out.println("Category ID: " + myCharge.getCategoryId());
+//        }
 
-
+        //Check GUI - clean up? Reject?
+        selectPayeeByName(payee);
+        rejectExpense();
     }
 
     @Given("a {string} logs in to {string}")
@@ -384,4 +396,34 @@ public class Expenses extends BaseDriver {
         myHelper.proxyLogin(userName);
         myHelper.enterPin("1", "1", "3", "3");
     }
+
+
+    public void selectPayeeByName(String payeeName) throws Exception {
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + payeeName + "']")).click();
+        } else {
+            driver.get().findElement(By.xpath("//*[contains(@text, '" + payeeName + "')]")).click();
+        }
+    }
+
+    public void rejectExpense() throws Exception {
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myBasePage.scrollDownIOS();
+        }
+        myFinance.expenseRejectButton.click();
+
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myFinance.rejectReasonPullDown.click();
+            driver.get().setSetting("enableMultiWindows", true);
+//            System.out.println(myBasePage.getSourceOfPage());
+            myFinance.rejectReasonIncorrectCategory.click();
+            myFinance.expenseRejectButton.click();
+        } else {
+            myFinance.rejectReasonIncorrectCategory.click();
+        }
+
+
+    }
+
+
 }
