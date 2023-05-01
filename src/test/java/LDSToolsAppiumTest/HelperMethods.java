@@ -921,6 +921,13 @@ public class HelperMethods extends BaseDriver {
         dismissWhatsNewPage();
 
 
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+//            System.out.println("Check for Cancel");
+                if (myBasePage.checkForElement(myBasePage.alertCANCEL)) {
+//                    System.out.println("Cancel Found!");
+                    myBasePage.alertCANCEL.click();
+                }
+        }
 
 
 
@@ -1507,6 +1514,16 @@ public class HelperMethods extends BaseDriver {
         if (unit.equalsIgnoreCase("Rama Belmopan")) {
             sc = new Scanner(new File("src/main/java/LDSToolsAppium/Units/callings_members_RamaBelmopan.csv"));
             unitNumber = "329347";
+        }
+
+        if (unit.equalsIgnoreCase("Ala Rio Pequeno")) {
+            sc = new Scanner(new File("src/main/java/LDSToolsAppium/Units/callings_members_AlaRioPequeno.csv"));
+            unitNumber = "236977";
+        }
+
+        if (unit.equalsIgnoreCase("Paroisse de Gex")) {
+            sc = new Scanner(new File("src/main/java/LDSToolsAppium/Units/callings_members_ParoissedeGex.csv"));
+            unitNumber = "225169";
         }
 
 

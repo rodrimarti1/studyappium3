@@ -2,6 +2,7 @@ package LDSToolsAppiumTest.steps;
 
 import LDSToolsAppium.API.Expenses.Charge;
 import LDSToolsAppium.API.Expenses.Expense;
+import LDSToolsAppium.API.Expenses.Payee;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
@@ -31,6 +32,8 @@ public class Expenses extends BaseDriver {
     String pageSource;
     String payeeName = "";
     String myPurpose = "";
+    String myReferenceNumber = "";
+    Expense expenseRequest = new Expense();
 
 
 
@@ -282,8 +285,8 @@ public class Expenses extends BaseDriver {
     }
 
 
-    @When("an expense is filled out for  {string} {string} {string} {string} {string} {string}")
-    public void anExpenseIsFilledOutFor(String payee, String purpose, String paymentType, String addReceipt, String category, String categoryAmount) throws Exception {
+    @When("an expense is filled out for  {string} {string} {string} {string} {string} {string} {string}")
+    public void anExpenseIsFilledOutFor(String payee, String purpose, String paymentType, String addReceipt, String category, String categoryAmount, String referenceNumber) throws Exception {
         myBasePage.waitForElementThenClick(myFinance.addNewExpense);
 
         //Payee
@@ -292,6 +295,8 @@ public class Expenses extends BaseDriver {
         expenseAddPurpose(purpose);
         //Payment Type
         choosePaymentType(paymentType);
+        //Reference Number
+        chooseReferenceNumber(referenceNumber);
         //Add Receipt
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             driver.get().findElement(By.xpath("//*[@name='Reference Number']")).click();
@@ -305,9 +310,15 @@ public class Expenses extends BaseDriver {
 
         myFinance.paymentRequestsSubmitButton.click();
 
-        //Wait or check for something?
-        Thread.sleep(20000);
+        waitForTransmitting();
+//        Thread.sleep(60000);
 
+    }
+
+    public void waitForTransmitting() throws Exception {
+        //wait for element?
+        Thread.sleep(1000);
+        myBasePage.waitForElementToDisappear(myFinance.transmittingIcon);
     }
 
 
@@ -335,25 +346,41 @@ public class Expenses extends BaseDriver {
     }
 
     public void choosePaymentType(String paymentType) throws Exception {
-        //Get the payment type
-        String foundPaymentType;
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            foundPaymentType = myFinance.paymentTypeName.getAttribute("value");
+
+        if (paymentType.equalsIgnoreCase("advance payment")) {
+            //Turn on Advanced Payment
+            myBasePage.waitForElementThenClick(myFinance.advancePaymentButton);
         } else {
-            foundPaymentType = myFinance.paymentTypeName.getAttribute("text");
-        }
+            //Get the payment type
+            String foundPaymentType;
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                foundPaymentType = myFinance.paymentTypeName.getAttribute("value");
+            } else {
+                foundPaymentType = myFinance.paymentTypeName.getAttribute("text");
+            }
 //        System.out.println("Found Payment Type: "  + foundPaymentType);
 //        System.out.println("Looking for Payment Type: "  + paymentType);
 
-        if (foundPaymentType.equalsIgnoreCase(paymentType)) {
-            System.out.println("Payment Type is set");
-        } else {
-            myBasePage.waitForElementThenClick(myFinance.paymentTypeNameArrowButton);
-            myBasePage.clickByTextName(paymentType);
+            if (foundPaymentType.equalsIgnoreCase(paymentType)) {
+                System.out.println("Payment Type is set");
+            } else {
+                myBasePage.waitForElementThenClick(myFinance.paymentTypeNameArrowButton);
+                myBasePage.clickByTextName(paymentType);
+            }
         }
+    }
 
-
-
+    public void chooseReferenceNumber(String referenceNumber) throws Exception {
+        if (referenceNumber.equalsIgnoreCase("none")) {
+            System.out.println("No Reference Number");
+        } else {
+            if (referenceNumber.equalsIgnoreCase("random")) {
+                myReferenceNumber = "12" + Math.random();
+            } else {
+                myReferenceNumber = referenceNumber;
+            }
+            myFinance.referenceNumberField.sendKeys(myReferenceNumber);
+        }
     }
 
 

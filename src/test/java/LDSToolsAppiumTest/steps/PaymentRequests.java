@@ -318,10 +318,9 @@ public class PaymentRequests extends BaseDriver {
 
     public void addReceiptToPaymentRequest(String addReceipt) throws Exception {
         Thread.sleep(2000);
-        myBasePage.waitForElementThenClick(myFinance.paymentRequestsAddReceipt);
-
-
+        //TODO: change this to a case - none, picture, upload file etc...
         if (addReceipt.equalsIgnoreCase("picture")) {
+            myBasePage.waitForElementThenClick(myFinance.paymentRequestsAddReceipt);
             //ios crashes when you try to take a picture
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
 //                myFinance.paymentRequestsTakeAPicture.click();
@@ -377,14 +376,10 @@ public class PaymentRequests extends BaseDriver {
                     myBasePage.waitForElement(myFinance.paymentRequestsCameraButtonDone);
                     myFinance.paymentRequestsCameraButtonDone.click();
                 }
-
-
             }
         } else {
-            //TODO: need a way to upload files to the device then choose the file here.
-
+            System.out.println(addReceipt + "Nothing to do here");
         }
-
     }
 
 

@@ -91,6 +91,11 @@ public class BasePage extends BaseDriver {
     @iOSXCUITFindBy(accessibility = "Cancel")
     public WebElement cancel;
 
+    //CANCEL
+    @AndroidFindBy(xpath = "//*[@text=\"CANCEL\"]")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'CANCEL'")
+    public WebElement alertCANCEL;
+
     //Allow button
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]")
 //    @AndroidFindBy(id = "permission_allow_foreground_only_button")
@@ -824,12 +829,14 @@ public class BasePage extends BaseDriver {
 //        sa.assertAll();
     }
 
-    public void waitForTextToDisappear(WebElement myElement) {
+    public void waitForElementToDisappear(WebElement myElement) {
         System.out.println("Start Checking for Element");
-        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(60));
+        WebDriverWait wait = new WebDriverWait(driver.get(), Duration.ofSeconds(90));
         wait.until(ExpectedConditions.invisibilityOf(myElement));
         System.out.println("Stop Checking for Element");
     }
+
+
 
 
     public void waitUnitlTextIsGone(String myText) {

@@ -192,7 +192,8 @@ public class FinanceScreen extends BasePage {
     public WebElement paymentRequestsCategoryAndroid;
 
     //Amount iOS
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Amount']/following-sibling::XCUIElementTypeTextField")
     public WebElement paymentRequestsAmountiOS;
 
     //Categories and Anounts label
@@ -408,6 +409,11 @@ public class FinanceScreen extends BasePage {
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage[@name=\"Forward\"])[1]")
     public WebElement paymentTypeNameArrowButton;
 
+    //Reference Number field
+    @AndroidFindBy(xpath = "//*[@text='Reference Number']/../..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Reference Number']/following-sibling::XCUIElementTypeTextField")
+    public WebElement referenceNumberField;
+
     //Expense Reject Button
     @AndroidFindBy(xpath = "//*[@text=\"Reject\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Reject\"]")
@@ -422,6 +428,16 @@ public class FinanceScreen extends BasePage {
     @AndroidFindBy(xpath = "//*[@text=\"Incorrect category\"]")
     @iOSXCUITFindBy(accessibility = "Incorrect category")
     public WebElement rejectReasonIncorrectCategory;
+
+    //Expense Advance Payment Button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Advance payment']/../..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Advance payment']/following-sibling::XCUIElementTypeSwitch")
+    public WebElement advancePaymentButton;
+
+    //Transmitting icon
+    @AndroidFindBy(xpath = "//android.widget.ImageView[@content-desc='Pending data connection.']")
+    @iOSXCUITFindBy(accessibility = "Syncing")
+    public WebElement transmittingIcon;
 
 
 
