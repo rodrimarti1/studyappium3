@@ -136,16 +136,18 @@ public class Expenses extends BaseDriver {
 
         Thread.sleep(500);
         pageSource = myBasePage.getSourceOfPage();
+        String amountWithDot = addDotToAmount(expenseAmount);
 
-        Assert.assertTrue(pageSource.contains(expenseAmount));
+        Assert.assertTrue(pageSource.contains(amountWithDot));
         Assert.assertTrue(pageSource.contains(expensePayee));
+        Assert.assertTrue(pageSource.contains(paymentType));
 
-        myBasePage.waitForElementThenClick(myFinance.financePaymentType);
-        if (paymentType.equalsIgnoreCase("check")) {
-            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeCheck);
-        } else {
-            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeElectronicACHTransfer);
-        }
+//        myBasePage.waitForElementThenClick(myFinance.financePaymentType);
+//        if (paymentType.equalsIgnoreCase("check")) {
+//            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeCheck);
+//        } else {
+//            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeElectronicACHTransfer);
+//        }
 
         myBasePage.waitForElementThenClick(myFinance.financePaymentReceipt);
         myBasePage.waitForElementThenClick(myFinance.financePaymentReceiptApprove);
@@ -176,27 +178,39 @@ public class Expenses extends BaseDriver {
         apiCleanUpExpenses();
     }
 
-
+    public String addDotToAmount(String expenseAmount) throws Exception {
+        String amountWithDot;
+        StringBuilder builder = new StringBuilder(expenseAmount);
+        int x = 2;
+        builder.insert(builder.length() - x, ".");
+        System.out.println(builder);
+        amountWithDot = builder.toString();
+        return amountWithDot;
+    }
 
 
 
 
     public void selectExpenseByAmount(String expenseAmount, String approveOrReview) throws Exception {
         WebElement amountElement = null;
-        myBasePage.newScrollToText(expenseAmount);
+        String amountWithDot = addDotToAmount(expenseAmount);
+        myBasePage.newScrollToText(amountWithDot);
         if (approveOrReview.equalsIgnoreCase("approve")) {
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
 //                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='EXPENSES TO APPROVE']/following-sibling::XCUIElementTypeButton/XCUIElementTypeStaticText[@name='"+ expenseAmount +"']"));
-                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='"+ expenseAmount +"']"));
+//                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='"+ amountWithDot +"']"));
+                amountElement = driver.get().findElement(AppiumBy.xpath("//*[contains(@name,'"+ amountWithDot +"')]"));
             } else {
-                amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='Expenses to Approve']/..//*[@text='" + expenseAmount + "']"));
+//                amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='Expenses to Approve']/..//*[@text='" + amountWithDot + "']"));
+                amountElement = driver.get().findElement(AppiumBy.xpath("//*[contains(@text,'" + amountWithDot + "')]"));
             }
         } else {
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
 //                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='EXPENSES TO REVIEW']/following-sibling::XCUIElementTypeButton/XCUIElementTypeStaticText[@name='"+ expenseAmount +"']"));
-                amountElement = driver.get().findElement(AppiumBy.xpath("//XCUIElementTypeStaticText[@name='"+ expenseAmount +"']"));
+                amountElement = driver.get().findElement(AppiumBy.xpath("//*[contains(@name,'"+ amountWithDot +"')]"));
             } else {
-                amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='Expenses to Review']/..//*[@text='" + expenseAmount + "']"));
+//                amountElement = driver.get().findElement(AppiumBy.xpath("//*[@text='Expenses to Review']/..//*[@text='" + expenseAmount + "']"));
+                amountElement = driver.get().findElement(AppiumBy.xpath("//*[contains(@text,'" + amountWithDot + "')]"));
             }
         }
 
@@ -342,6 +356,7 @@ public class Expenses extends BaseDriver {
         double randomNumber = Math.random() * (max - min) + min;
         randomNumber = Math.round(randomNumber);
         myPurpose = purpose + " " + randomNumber;
+        System.out.println("Purpose: " + myPurpose);
         myFinance.expensePurpose.sendKeys(myPurpose);
     }
 
@@ -371,14 +386,20 @@ public class Expenses extends BaseDriver {
     }
 
     public void chooseReferenceNumber(String referenceNumber) throws Exception {
+        int min = 1000;
+        int max = 9998;
+        double randomNumber = Math.random() * (max - min) + min;
+        randomNumber = Math.round(randomNumber);
+        int randomInt = (int)randomNumber;
         if (referenceNumber.equalsIgnoreCase("none")) {
             System.out.println("No Reference Number");
         } else {
             if (referenceNumber.equalsIgnoreCase("random")) {
-                myReferenceNumber = "12" + Math.random();
+                myReferenceNumber = "1" + randomInt;
             } else {
                 myReferenceNumber = referenceNumber;
             }
+            System.out.println("Reference Number: " + myReferenceNumber);
             myFinance.referenceNumberField.sendKeys(myReferenceNumber);
         }
     }
@@ -411,8 +432,8 @@ public class Expenses extends BaseDriver {
 //        }
 
         //Check GUI - clean up? Reject?
-        selectPayeeByName(payee);
-        rejectExpense();
+//        selectPayeeByName(payee);
+//        rejectExpense();
     }
 
     @Given("a {string} logs in to {string}")

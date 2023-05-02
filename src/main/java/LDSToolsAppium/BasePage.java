@@ -70,6 +70,9 @@ public class BasePage extends BaseDriver {
     @AndroidFindBy(xpath = "//*[@content-desc='Open navigation drawer']")
     public WebElement drawerButton;
 
+    @AndroidFindBy(xpath = "//*[@content-desc='Open navigation drawer']")
+    public WebElement drawerButtonNew;
+
     @AndroidFindBy(id = "clearTextImageButton")
     public WebElement searchCollapse;
 
@@ -1284,7 +1287,19 @@ public class BasePage extends BaseDriver {
 
         int myCounter = 1;
         //backButtonCheck = checkElementExistsByXpath("TopBack");
-        backButtonCheck = checkForElement(backButton);
+        //Android could have two different back buttons for now.
+        if (getOS().equalsIgnoreCase("android")) {
+            if (checkForElement(backAltButton)) {
+                backButtonCheck = checkForElement(backAltButton);
+            } else {
+                backButtonCheck = checkForElement(backButton);
+            }
+        } else {
+            backButtonCheck = checkForElement(backButton);
+        }
+
+
+
         System.out.println("Back Button Check - before loop: " + backButtonCheck);
 
         while (backButtonCheck)  {
@@ -1296,7 +1311,16 @@ public class BasePage extends BaseDriver {
                 waitForElementThenClick(myDirectory.searchCancel);
             } else {
                 System.out.println("Pressing Back Key " + myCounter);
-                backButton.click();
+                if (getOS().equalsIgnoreCase("android")) {
+                    if (checkForElement(backAltButton)) {
+                        backAltButton.click();
+                    }
+                    if (checkForElement(backButton)) {
+                        backButton.click();
+                    }
+                } else {
+                    backButton.click();
+                }
                 Thread.sleep(2000);
                 System.out.println("Back Key pressed");
             }
@@ -1338,11 +1362,18 @@ public class BasePage extends BaseDriver {
                 case "More" :
                     backButtonCheck = false;
                     break;
+                case "Finance" :
+                    backButtonCheck = false;
+                    break;
                 default :
                     backButtonCheck = true;
             }
 
             if (checkForElement(searchCollapse)) {
+                backButtonCheck = false;
+            }
+
+            if (checkForElement(drawerButtonNew)) {
                 backButtonCheck = false;
             }
 

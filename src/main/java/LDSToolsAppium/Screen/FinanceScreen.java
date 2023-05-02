@@ -331,7 +331,7 @@ public class FinanceScreen extends BasePage {
     public WebElement financeExpenses;
 
     //Payment Type
-    @AndroidFindBy(xpath = "//*[@text='Payment Type']")
+    @AndroidFindBy(xpath = "//*[@text='Payment Type']/../..")
 //    @iOSXCUITFindBy(xpath = "//*[contains(@name, 'Payment Type')]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Payment Type']/following-sibling::XCUIElementTypeStaticText")
     public WebElement financePaymentType;
@@ -357,7 +357,7 @@ public class FinanceScreen extends BasePage {
     public WebElement financePaymentReceipt;
 
         //Receipt Approve
-        @AndroidFindBy(xpath = "//*[@text='APPROVE']")
+        @AndroidFindBy(xpath = "//*[@text='Approve']")
         @iOSXCUITFindBy(accessibility = "Approve")
         public WebElement financePaymentReceiptApprove;
 
@@ -368,7 +368,7 @@ public class FinanceScreen extends BasePage {
         public WebElement financePaymentReceiptReject;
 
     //Expense Submit
-    @AndroidFindBy(xpath = "//*[@text='SUBMIT']")
+    @AndroidFindBy(xpath = "//*[@text='Approve']")
     @iOSXCUITFindBy(accessibility = "Submit")
     public WebElement financePaymentApprove;
 

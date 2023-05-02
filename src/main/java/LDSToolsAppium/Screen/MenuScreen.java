@@ -165,6 +165,11 @@ public class MenuScreen extends BasePage {
         Thread.sleep(1000);
         selectMenu(settings);
 
+        if (getOS().equalsIgnoreCase("android")) {
+            newScrollUp();
+            newScrollUp();
+            newScrollUp();
+        }
         myBase.waitForElementThenClick(mySettings.signOut);
 //        mySettings.signOut.click();
 
