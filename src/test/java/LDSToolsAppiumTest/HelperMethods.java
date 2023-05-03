@@ -927,6 +927,10 @@ public class HelperMethods extends BaseDriver {
 //                    System.out.println("Cancel Found!");
                     myBasePage.alertCANCEL.click();
                 }
+
+                if (myBasePage.checkForElement(myMenuScreen.directory)) {
+                    myMenuScreen.directory.click();
+                }
         }
 
 

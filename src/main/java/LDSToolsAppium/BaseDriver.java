@@ -462,6 +462,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
                 testDevice = getRemoteIPPort(deviceIPPort);
 
                 //Need to do this twice the first one lies and says it failed.
+                deviceSerial = testDevice;
                 adbRemoteConnect(testDevice);
                 adbRemoteConnect(testDevice);
 
@@ -860,7 +861,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
         // = "adb shell am force-stop org.lds.ldstools.alpha";
         Runtime run = Runtime.getRuntime();
 
-        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "install", "AppUnderTest/app-debug.apk" });
+//        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "install", "AppUnderTest/app-debug.apk" });
+        Process pr = run.exec(new String[] { pathToADB, "-s", deviceSerial, "install", "AppUnderTest/app-release.apk" });
         //Process pr = run.exec(cmd);
         pr.waitFor();
         BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));

@@ -46,7 +46,8 @@ public class DirectoryScreen extends BasePage {
 
     // ****************** Search ******************
     //Search Directory
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
+    @AndroidFindBy(xpath = "//*[@text='Search']/../..")
     @iOSXCUITFindBy(accessibility = "Search")
     public  WebElement searchBar;
 
@@ -284,7 +285,8 @@ public class DirectoryScreen extends BasePage {
             String appPackage = driver.get().getCapabilities().getCapability("appPackage").toString();
             System.out.println("App Package: " + appPackage);
 //            System.out.println(getSourceOfPage());
-            driver.get().findElement(By.xpath("//android.widget.TextView[@resource-id='" + appPackage +":id/name'][@text='" + myUser + "']")).click();
+//            driver.get().findElement(By.xpath("//android.widget.TextView[@resource-id='" + appPackage +":id/name'][@text='" + myUser + "']")).click();
+            driver.get().findElement(By.xpath("//android.widget.TextView[@text='" + myUser + "']/../..")).click();
 //            driver.findElement(By.xpath("//android.widget.TextView[@id='name'][@text='" + myUser + "']")).click();
         }
     }
@@ -304,10 +306,9 @@ public class DirectoryScreen extends BasePage {
 //            System.out.println(myBase.getSourceOfPage());
         }
 
-        myBase.waitForElementThenClick(directorySort);
-
 
         if (myBase.getOS().equalsIgnoreCase("ios")) {
+            myBase.waitForElementThenClick(directorySort);
             myBase.waitForElementThenClick(sortIndividual);
         }
 
