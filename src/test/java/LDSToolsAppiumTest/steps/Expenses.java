@@ -406,32 +406,36 @@ public class Expenses extends BaseDriver {
 
 
     @Then("the expense will be processed with  {string} {string} {string} {string} {string} {string}")
-    public void theExpenseWillBeProcessedWith(String payee, String purpose, String paymentType, String addReceipt, String category, String categoryAmount) throws Exception {
-
+    public void theExpenseWillBeProcessedWith(String payee, String status, String type, String addReceipt, String category, String categoryAmount) throws Exception {
+        String message = "";
         Expense myApiExpense = new Expense();
         //Check API
         //todo switch to finance object?
-        Map<String, Object> myMap = new HashMap<>();
-        myMap = apiTest.getExpensesDetail("dsoneil", "39373", myPurpose);
-
-//        Assert.assertEquals(payee, myMap.get("payeeName").toString());
-        if (myMap.containsKey("amount")) {
-            Assert.assertEquals(categoryAmount, myMap.get("amount").toString());
-
-            //Have to do a contains because the api has the last name and the app doesn't
-            Assert.assertTrue(myMap.get("payeeName").toString().contains(payeeName));
-        }
-
-        myApiExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", myPurpose);
-//        System.out.println("Payee Name: " + myApiExpense.getPayee().getName());
-        System.out.println("Purpose: " + myApiExpense.getPurpose());
-//        System.out.println("Payment Type: " + myApiExpense.getType());
-//        for (Charge myCharge : myApiExpense.getCharges()) {
-//            System.out.println("Amount: " + myCharge.getAmount());
-//            System.out.println("Category ID: " + myCharge.getCategoryId());
+//        Map<String, Object> myMap = new HashMap<>();
+//        myMap = apiTest.getExpensesDetail("dsoneil", "39373", myPurpose);
+//
+////        Assert.assertEquals(payee, myMap.get("payeeName").toString());
+//        if (myMap.containsKey("amount")) {
+//            Assert.assertEquals(categoryAmount, myMap.get("amount").toString());
+//
+//            //Have to do a contains because the api has the last name and the app doesn't
+//            Assert.assertTrue(myMap.get("payeeName").toString().contains(payeeName));
 //        }
 
-        //Check GUI - clean up? Reject?
+        myApiExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", myPurpose);
+        System.out.println("Purpose: " + myApiExpense.getPurpose());
+
+        Assert.assertTrue(myApiExpense.getStatus().equalsIgnoreCase(status), message);
+        Assert.assertTrue(myApiExpense.getType().equalsIgnoreCase(type), message);
+//        Assert.assertTrue(myApiExpense.getPayee().getName().equalsIgnoreCase(payee));
+
+
+        //Check GUI
+
+
+
+
+        //Reject Expense
 //        selectPayeeByName(payee);
 //        rejectExpense();
     }

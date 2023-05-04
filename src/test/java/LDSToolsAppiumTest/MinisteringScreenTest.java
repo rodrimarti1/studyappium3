@@ -200,6 +200,11 @@ public class MinisteringScreenTest extends BaseDriver {
 
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
+            if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                myBasePage.newScrollDownSlow();
+                pageSource = myBasePage.getSourceOfPage() + pageSource;
+            }
+
 
             Assert.assertTrue(myBasePage.checkNoCaseList("Companionships Interviewed", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Assigned Households", pageSource, "Contains"));
@@ -212,6 +217,10 @@ public class MinisteringScreenTest extends BaseDriver {
 
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
+            if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                myBasePage.newScrollDownSlow();
+                pageSource = myBasePage.getSourceOfPage() + pageSource;
+            }
 
             Assert.assertTrue(myBasePage.checkNoCaseList("Companionships Interviewed", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Assigned Sisters", pageSource, "Contains"));

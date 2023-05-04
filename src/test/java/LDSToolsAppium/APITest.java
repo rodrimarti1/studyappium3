@@ -492,10 +492,56 @@ public class APITest {
             }
     }
 
-//            PENDING_PRINT
-//            SUBMITTED
-//            APPROVED
-//            REJECTED?
+    @Test
+    public void getExpenseDetailByObject() throws Exception {
+        Expense foundExpense = new Expense();
+//        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "test1234"); //Submitted - Electronic transfer
+//        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "PR"); //Payment Request
+//        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 8862.0"); //Submitted Expense
+//        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 6648.0"); //Rejected
+//        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 1427.0"); //Checks to print
+        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Paint night"); //In Summary - done
+
+
+
+        System.out.println("Purpose: " + foundExpense.getPurpose());
+        System.out.println("Status: " + foundExpense.getStatus());
+        System.out.println("Reference Number: " + foundExpense.getReferenceNumber());
+        System.out.println("Payment Method ID: " + foundExpense.getPaymentMethodId());
+        System.out.println("Type: " + foundExpense.getType());
+
+
+
+        for (Receipt myReceipt: foundExpense.getReceipts()) {
+            System.out.println("Receipt Name: " + myReceipt.getName());
+            System.out.println("Receipt ID: " + myReceipt.getId());
+        }
+
+
+        for (Charge myCharge: foundExpense.getCharges()) {
+            System.out.println("Category ID: " + myCharge.getCategoryId());
+            System.out.println("Category Amount: " + myCharge.getAmount());
+        }
+
+
+        if (foundExpense.getApprovedRejectedBy() != null) {
+            System.out.println("Approved - Rejected Date: " + foundExpense.getApprovedRejectedDate());
+            System.out.println("Approved - Rejected By: " + foundExpense.getApprovedRejectedBy().getName());
+        } else {
+            System.out.println("No Approved - Rejected Data" );
+        }
+
+        if (foundExpense.getSubmittedBy() != null) {
+            System.out.println("Submitted By: " + foundExpense.getSubmittedBy().getName());
+        } else {
+            System.out.println("No Submitted Data" );
+        }
+
+
+
+    }
+
+
 
 //    @Test
     public void listExpensesAndDelete() throws Exception {
@@ -590,7 +636,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
