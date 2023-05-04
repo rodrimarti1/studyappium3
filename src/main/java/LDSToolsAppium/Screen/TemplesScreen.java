@@ -65,14 +65,16 @@ public class TemplesScreen extends BasePage {
 
 
     //No Thanks
-    @AndroidFindBy(xpath = "//*[@text='NO THANKS']")
+//    @AndroidFindBy(xpath = "//*[@text='NO THANKS']")
+    @AndroidFindBy(xpath = "//*[@text='No thanks']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'No thanks'")
     public WebElement noThanks;
 
     //Yes, remind me
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/md_button_positive")
 //    @AndroidFindBy(id = "android:id/button1")
-    @AndroidFindBy(xpath = "//*[@text='YES, REMIND ME']")
+//    @AndroidFindBy(xpath = "//*[@text='YES, REMIND ME']")
+    @AndroidFindBy(xpath = "//*[@text='Yes, remind me']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Yes, remind me'")
     public WebElement yesRemindMe;
 
