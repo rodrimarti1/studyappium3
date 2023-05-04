@@ -144,7 +144,8 @@ public class MissionaryScreen extends BasePage {
     public  WebElement tabAssigned;
 
     //Tab Ward
-    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"ward\")]")
+//    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView//android.widget.TextView[contains(translate(@text, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), \"ward\")]")
+    @AndroidFindBy(xpath = "//*[@text='Ward']/..")
     public  WebElement tabWard;
 
     //Tab Serving
