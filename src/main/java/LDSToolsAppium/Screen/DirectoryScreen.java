@@ -86,7 +86,8 @@ public class DirectoryScreen extends BasePage {
 
     // ****************** Edit ******************
     //Edit Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/edit_fab")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/edit_fab")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit Information']/..")
     @iOSXCUITFindBy(accessibility = "Edit")
     public  WebElement directoryEdit;
 
