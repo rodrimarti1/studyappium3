@@ -3,17 +3,14 @@
 <suite name="Android Just For Testing Suite" configfailurepolicy="continue" verbose="2">
     <test name="Android Just For Testing">
         <parameter name="os" value="android" />
-<!--       <parameter name="fileName" value="app-alpha.apk" />-->
         <parameter name="fileName" value="app-alpha.apk" />
-<!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
-<!--        <parameter name="fileName" value="ldstools-release.apk" />-->
 <!--        <parameter name="testDevice" value="HT69D0204296" />-->
 <!--        <parameter name="testDevice" value="09251FDD4003MU" />  &lt;!&ndash; Pixel 5 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="R5CN3032NSW" />  &lt;!&ndash; Samsung Galaxy S20 Plus &ndash;&gt;-->
-        <parameter name="testDevice" value="19281FDEE00D8D" /> <!-- Pixel 6 Pro -->
+<!--        <parameter name="testDevice" value="19281FDEE00D8D" /> &lt;!&ndash; Pixel 6 Pro &ndash;&gt;-->
+        <parameter name="testDevice" value="RFCN80KVV5P" />  <!-- Samsung S20 -->
 <!--        <parameter name="testDevice" value="HEADLESS,emulator-5556" />-->
 <!--        <parameter name="testDevice" value="emulator-5554" />-->
-<!--        <parameter name="testDevice" value="RFCN80KVV5P" />  &lt;!&ndash; Samsung S20 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="STF-Pool" />-->
 <!--        <parameter name="testDevice" value="STF-R38M40A2GVM" />-->
         <parameter name="startSleepTime" value= "0200" />

@@ -12,7 +12,7 @@ Feature: Test the Expenses for Member Tools
     When a <differentMember> logs in to <unit>
     And is on the Expenses page
     And the <payee> with the <categoryAmount> is Approved with the <paymentType>
-    Then the expense will be processed with  <payee> "approved" "expense" <addReceipt> <category> <categoryAmount>
+    Then the expense will be processed with  <payee> "PENDING_PRINT" "expense" <addReceipt> <category> <categoryAmount>
     Examples:
       | member   | unit            | payee              | purpose       | paymentType | addReceipt | category | categoryAmount | referenceNumber | differentMember             |
       | "BISHOP" | "Maplewood 2nd" | "Carroll, Melanie" | "Expense One" | "Check"     | "picture"  | "FSY"    | "858"          | "none"          | "BISHOPRIC_FIRST_COUNSELOR" |
