@@ -469,6 +469,19 @@ public class BasePage extends BaseDriver {
         return canScrollMore;
     }
 
+    public void newScrollUpUnitList() throws Exception {
+        WebElement dragHandel = driver.get().findElement(By.xpath("//android.view.View[@content-desc=\"Drag handle\"]"));
+        Dimension deviceSize = driver.get().manage().window().getSize();
+        int deviceWidth = deviceSize.getWidth();
+        int width = deviceWidth / 2;
+        ((JavascriptExecutor) driver.get()).executeScript("mobile: dragGesture", ImmutableMap.of(
+                "elementId", dragHandel,
+                "endX", width,
+                "endY", 100
+        ));
+    }
+
+
     public void swipeByElement(WebElement myElement) throws Exception {
 
         ((JavascriptExecutor) driver.get()).executeScript("mobile: dragGesture", ImmutableMap.of(
