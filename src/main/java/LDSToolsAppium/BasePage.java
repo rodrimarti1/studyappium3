@@ -20,6 +20,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -145,11 +146,24 @@ public class BasePage extends BaseDriver {
     //Scrolling Methods
 
     public void scrollToTextiOS(String myElement) throws Exception {
+        int myCounter = 1;
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        WebElement elementToScrollTo = driver.get().findElement(By.xpath("//*[@name='" + myElement + "']"));
         HashMap scrollObject = new HashMap();
-        scrollObject.put("direction", "up");
-        scrollObject.put("xpath", "//*[@name='" + myElement + "']");
-        js.executeScript("mobile: swipe", scrollObject);
+
+        while (myCounter < 3) {
+            if (!checkForElement(elementToScrollTo)) {
+                scrollObject.put("direction", "up");
+                js.executeScript("mobile: swipe", scrollObject);
+                myCounter++;
+            } else {
+                System.out.println("Found: " + myElement);
+                myCounter = 10;
+            }
+
+        }
+
+
     }
 
     public void scrollToTextGeneral(String myElement) throws Exception {
@@ -441,6 +455,41 @@ public class BasePage extends BaseDriver {
         ));
 
 //        System.out.println("Can Scroll More: " + canScrollMore);
+
+        return canScrollMore;
+    }
+
+    public boolean newScrollIosAndroid() throws Exception {
+        System.out.println("Scrolling down");
+        boolean canScrollMore = false;
+
+        if (getOS().equalsIgnoreCase("ios")) {
+            scrollDownIOS();
+        } else {
+            Dimension deviceSize = driver.get().manage().window().getSize();
+            int deviceWidth = deviceSize.getWidth();
+            int deviceHeight = deviceSize.getHeight();
+            int left = deviceWidth / 5;
+            int top = deviceHeight / 5; //6
+//        int width = deviceWidth / 8;
+            int width = 1;
+            int height = deviceHeight / 3; //4
+
+//        System.out.println("Device Width: " + deviceWidth);
+//        System.out.println("Device Height: " + deviceHeight);
+//        System.out.println("left: " + left + " top: " + top + " width: " + width + " height: " + height);
+
+            canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                    "left", left, "top", top, "width", width, "height", height,
+                    "direction", "down",
+                    "percent", 1.0,
+                    "speed", 600
+            ));
+
+//        System.out.println("Can Scroll More: " + canScrollMore);
+        }
+
+
 
         return canScrollMore;
     }
@@ -1072,6 +1121,9 @@ public class BasePage extends BaseDriver {
     public void apiCheckData(List<String> jsonList) throws Exception {
         String pageSource = null;
         pageSource = getSourceOfPage();
+//        newScrollIosAndroid();
+//        pageSource = pageSource + getSourceOfPage();
+//        System.out.println(pageSource);
 
         for (String apiUser : jsonList) {
             System.out.println("API Data: "  + apiUser);

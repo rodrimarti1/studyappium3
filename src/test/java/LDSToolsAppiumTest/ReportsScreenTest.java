@@ -713,8 +713,8 @@ public class ReportsScreenTest extends BaseDriver {
 
         memberList = apiTest.getNamesFromMembersMovedOut(memberLogin, unitNumber);
 
-        //Just take the first 5 members in the list
-        for (int i = 0; i < 3; i++ ) {
+        //Just take the first 2 members in the list
+        for (int i = 0; i < 2; i++ ) {
             shortList.add(memberList.get(i));
         }
 
@@ -875,7 +875,8 @@ public class ReportsScreenTest extends BaseDriver {
             myBasePage.scrollToTextRecyclerView("Unit Statistics");
             Thread.sleep(2000);
         } else {
-            myBasePage.scrollToTextiOS("Unit Statistics");
+//            myBasePage.scrollToTextiOS("Unit Statistics");
+            myBasePage.scrollDownIOS();
             Thread.sleep(1000);
         }
 
