@@ -15,7 +15,7 @@ import java.util.List;
 public class MissionaryScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1", "jft"})
+    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1"})
     public void missionaryTest_BISHOP() throws Exception {
         missionaryTestCheckSub("BISHOP");
     }
@@ -213,7 +213,7 @@ public class MissionaryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all4", "all", "daily", "daily2"})
+    @Test(groups = {"all4", "all", "daily", "daily2", "jft"})
     public void missionaryOtherUnits() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -228,9 +228,9 @@ public class MissionaryScreenTest extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
 
         myMenu.selectMenu(myMenu.missionary);
-        myBasePage.waitForElementThenClick(myMissionary.sendReferralButton);
-        Thread.sleep(500);
-        myBasePage.waitForElementThenClick(myMissionary.cancelReferralButton);
+//        myBasePage.waitForElementThenClick(myMissionary.sendReferralButton);
+//        Thread.sleep(500);
+//        myBasePage.waitForElementThenClick(myMissionary.cancelReferralButton);
 
         //Centinela 1st Ward
         unitNumber = "21628";
@@ -551,13 +551,21 @@ public class MissionaryScreenTest extends BaseDriver {
 
     private void chooseUnit(String myUnit) throws Exception {
         MissionaryScreen myMissionary = new MissionaryScreen(driver);
+        BasePage myBasePage = new BasePage(driver);
         //Choose different Unit
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            if (myBasePage.checkForElement(myMissionary.tabMissionaries)) {
+                myMissionary.tabMissionaries.click();
+            }
+        }
         myMissionary.unitSelector.click();
         Thread.sleep(2000);
         if (getRunningOS().equalsIgnoreCase("ios")) {
             driver.get().findElement(By.xpath("//*[contains(@name,'" + myUnit + "')]")).click();
         } else {
-            driver.get().findElement(By.xpath("//*[contains(@text,'" + myUnit + "')]")).click();
+            myBasePage.newScrollUpUnitList();
+            Thread.sleep(1000);
+            driver.get().findElement(By.xpath("//*[contains(@text, '" + myUnit + "')]/../..")).click();
         }
 
     }
