@@ -25,7 +25,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
 
 
-    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4"})
     public void directoryScreenTest_BISHOP() throws Exception {
         directoryScreenSub("BISHOP");
     }
@@ -696,7 +696,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all3", "all", "daily", "daily1"})
+    @Test(groups = {"all3", "all", "daily", "daily1", "jft"})
     public void directoryLatLongCheckLocation() throws Exception {
 
         // ********* Constructor **********
@@ -714,7 +714,7 @@ public class DirectoryScreenTest extends BaseDriver {
             myDirectory.searchAndClickHousehold("Loion, Leone");
 //            myBasePage.clickByTextContains("Pipi");
 //            myBasePage.scrollDownIOS();
-            myBasePage.scrollToTextGeneral("Adjust Household Location");
+            myBasePage.scrollToTextGeneral("Adjust household location");
         } else {
             myDirectory.searchAndClickHousehold("Loion, Leone");
         }
@@ -999,14 +999,6 @@ public class DirectoryScreenTest extends BaseDriver {
 //    }
 
 
-//    public void directoryScreenTest_JFT() throws Exception {
-//        String[] callingRights;
-//        HelperMethods myHelper = new HelperMethods();
-//        callingRights = myHelper.getMemberNameFromList("MEMBER1");
-//        myHelper.proxyLogin(callingRights[1]);
-//        myHelper.enterPin("1", "1", "3", "3");
-//        directoryJanDicksonNewRights(Integer.parseInt(callingRights[2]));
-//    }
 
 
 //    @Test(groups = {"smoke2", "smoke", "all2", "all"})
