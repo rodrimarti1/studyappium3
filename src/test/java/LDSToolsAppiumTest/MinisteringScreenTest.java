@@ -16,7 +16,7 @@ import java.util.List;
 public class MinisteringScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4"})
     public void ministeringScreenCheck() throws Exception {
         String pageSource;
         List<String> memberList = new ArrayList<String>();
@@ -303,7 +303,7 @@ public class MinisteringScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all4", "all", "daily", "daily2"})
+    @Test (groups = {"all4", "all", "daily", "daily2", "jft"})
     public void ministeringUnassignedHouseholds_BISHOP() throws Exception {
         ministeringUnassignedHouseholdsCheckSub("BISHOP");
     }
@@ -408,6 +408,9 @@ public class MinisteringScreenTest extends BaseDriver {
             myMenu.selectMenu(myMenu.reports);
             myMinistering.ministeringBrothersReport.click();
             Thread.sleep(2000);
+            if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                myBasePage.newScrollDownSlow();
+            }
             myMinistering.unassignedHouseholds.click();
             Thread.sleep(2000);
 
