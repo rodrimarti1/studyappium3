@@ -101,7 +101,7 @@ public class CalendarScreenTest extends BaseDriver {
         calendarSimpleSub("MEMBER1");
     }
 
-    @Test (groups = {"all1", "all", "daily", "daily2", "jft"})
+    @Test (groups = {"all1", "all", "daily", "daily2"})
     public void calendarSimple_ELDERS_QUORUM_PRESIDENT() throws Exception {
         calendarSimpleSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -213,7 +213,7 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all", "all4", "daily", "daily3"})
+    @Test (groups = {"all", "all4", "daily", "daily3", "jft"})
     public void calenderSubscriptions() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -283,6 +283,7 @@ public class CalendarScreenTest extends BaseDriver {
             myBasePage.scrollUpIOS();
             Thread.sleep(1000);
             myBasePage.scrollUpIOS();
+            Thread.sleep(20000);
         } else {
             myBasePage.waitForElementThenClick(myBasePage.backButton);
         }
