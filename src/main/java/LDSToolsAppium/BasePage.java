@@ -433,28 +433,33 @@ public class BasePage extends BaseDriver {
 
     public boolean newScrollDownSlow() throws Exception {
         System.out.println("Scrolling down");
-        boolean canScrollMore;
-        Dimension deviceSize = driver.get().manage().window().getSize();
-        int deviceWidth = deviceSize.getWidth();
-        int deviceHeight = deviceSize.getHeight();
-        int left = deviceWidth / 5;
-        int top = deviceHeight / 5; //6
+        boolean canScrollMore = false;
+
+        if (getOS().equalsIgnoreCase("ios")) {
+            scrollDownIOS();
+        } else {
+            Dimension deviceSize = driver.get().manage().window().getSize();
+            int deviceWidth = deviceSize.getWidth();
+            int deviceHeight = deviceSize.getHeight();
+            int left = deviceWidth / 5;
+            int top = deviceHeight / 5; //6
 //        int width = deviceWidth / 8;
-        int width = 1;
-        int height = deviceHeight / 3; //4
+            int width = 1;
+            int height = deviceHeight / 3; //4
 
 //        System.out.println("Device Width: " + deviceWidth);
 //        System.out.println("Device Height: " + deviceHeight);
 //        System.out.println("left: " + left + " top: " + top + " width: " + width + " height: " + height);
 
-        canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
-                "left", left, "top", top, "width", width, "height", height,
-                "direction", "down",
-                "percent", 1.0,
-                "speed", 600
-        ));
+            canScrollMore = (Boolean) ((JavascriptExecutor) driver.get()).executeScript("mobile: scrollGesture", ImmutableMap.of(
+                    "left", left, "top", top, "width", width, "height", height,
+                    "direction", "down",
+                    "percent", 1.0,
+                    "speed", 600
+            ));
 
 //        System.out.println("Can Scroll More: " + canScrollMore);
+        }
 
         return canScrollMore;
     }
@@ -691,7 +696,8 @@ public class BasePage extends BaseDriver {
 //            textCheck = checkTextOnPage(myText);
 //            System.out.println("Check: " + textCheck);
             if (!textCheck) {
-                scrollDownSlow(1500);
+//                scrollDownSlow(1500);
+                newScrollDownSlow();
             }
             if (myCounter > 5) {
                 textCheck = true;
