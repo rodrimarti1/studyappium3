@@ -32,7 +32,8 @@ public class DirectoryScreen extends BasePage {
 
     // ****************** Directory Dropdown ******************
     //Directory Dropdown
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Directory']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Directory']")
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[1]")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Directory' AND type == 'XCUIElementTypeStaticText'")
 //    @iOSXCUITFindBy(accessibility = "Directory")
     public WebElement directoryDropdown;

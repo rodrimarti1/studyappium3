@@ -254,6 +254,7 @@ public class ProgressRecord extends BaseDriver {
             driver.get().findElement(By.xpath("//*[contains(@name,'" + unit + "')]")).click();
         } else {
             Thread.sleep(2000);
+            myBasePage.newScrollUpUnitList();
             driver.get().findElement(By.xpath("//*[contains(@text,'" + unit + "')]")).click();
         }
         Thread.sleep(6000);
