@@ -124,6 +124,7 @@ public class MissionLeaderDirectory extends BaseDriver {
 //        toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[@resource-id='org.lds.ldstools.alpha:id/secondaryTextView']/following-sibling::org.lds.ldstools.alpha:id/switchView"));
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myMenu.selectMenu(myMenu.settings);
+            Thread.sleep(1000);
             myBasePage.scrollToTextGeneral("Refresh Data"); //This might need to be something different
 //            toggleButton = driver.get().findElements(By.xpath("//android.widget.TextView[@resource-id='org.lds.ldstools.alpha:id/secondaryTextView']/following-sibling::org.lds.ldstools.alpha:id/switchView"));
             System.out.println(myBasePage.getSourceOfPage());
@@ -193,6 +194,10 @@ public class MissionLeaderDirectory extends BaseDriver {
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
 //            myBasePage.waitForElementThenClick(myBasePage.backAltButton);
             myMenu.selectMenu(myMenu.settings);
+            Thread.sleep(500);
+            myBasePage.newScrollUp();
+            myBasePage.newScrollUp();
+            myBasePage.newScrollUp();
         }
         myBasePage.waitForElementThenClick(mySettings.signOut);
         myBasePage.waitForElementThenClick(myBasePage.alertOK);
@@ -214,7 +219,12 @@ public class MissionLeaderDirectory extends BaseDriver {
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myBasePage.waitForElementThenClick(myBasePage.cancel);
         }
+        Thread.sleep(1000);
         myMenu.selectMenu(myMenu.settings);
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.newScrollUp();
+            myBasePage.newScrollUp();
+        }
         myBasePage.waitForElementThenClick(mySettings.signOut);
         myBasePage.waitForElementThenClick(myBasePage.alertOK);
         cleanUpForRemove();

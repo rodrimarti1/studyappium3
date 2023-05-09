@@ -84,7 +84,7 @@ public class MenuScreen extends BasePage {
     public  WebElement update;
 
     //Settings
-    @AndroidFindBy(xpath = "//*[@text='Settings']")
+    @AndroidFindBy(xpath = "//*[@text='Settings']/..")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Settings'")
     public  WebElement settings;
 
@@ -138,6 +138,7 @@ public class MenuScreen extends BasePage {
 //                scrollDownTEST(200);
                 scrollDownAndroidUIAutomator("0");
             }
+            Thread.sleep(500);
             myBase.waitForElementThenClick(myElement);
 //            myElement.click();
         }
