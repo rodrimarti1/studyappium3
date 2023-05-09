@@ -76,47 +76,25 @@ public class TemplesScreenTest extends BaseDriver {
 //        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
     }
 
-    @Test (groups= { "all", "all2"})
+    @Test (groups= { "all", "all2", "jft"})
     public void templeRecommendReminder5Days() throws Exception {
         String pageSource;
-
         HelperMethods myHelper = new HelperMethods();
-        PinScreen myPinScreen = new PinScreen(driver);
         BasePage myBasePage = new BasePage(driver);
-        WhatsNewScreen myWhatsNew = new WhatsNewScreen(driver);
-        MenuScreen myMenu = new MenuScreen(driver);
         TemplesScreen myTemple = new TemplesScreen(driver);
         SettingsScreen mySettings = new SettingsScreen(driver);
 
-
-//        myHelper.loginUAT("ngibpc1", "password1");
         myHelper.proxyLogin("adambee");
         myHelper.enterPin("1", "1", "3", "3");
 
-
         myTemple.enableTempleRecommendReminder("5", mySettings.active, mySettings.temple6Weeks);
-
         //Check the temple reminder
         Thread.sleep(6000);
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Temple Recommend expiring next month", pageSource, "Contains"));
-
-
-
-//
-//        Assert.assertTrue(myBasePage.checkForElement(myTemple.contactBishopric));
-//        Assert.assertTrue(myBasePage.checkForElement(myTemple.gotItThanks));
-//
-//        myTemple.contactBishopric.click();
-//
-//
-//        //Verify Bishopric
-//        Thread.sleep(2000);
-//        pageSource = myBasePage.getSourceOfPage();
-//        Assert.assertTrue(myBasePage.checkNoCaseList("Bishop", pageSource, "Contains"));
-//        Assert.assertTrue(myBasePage.checkNoCaseList("Bishopric First Counselor", pageSource, "Contains"));
-//        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Temple Recommend expiring this month", pageSource, "Contains"));
     }
+
+
 // NOT Valid anymore
 //    @Test (groups= { "all", "all3"})
     public void templeRecommendReminderRemindLater() throws Exception {
@@ -197,7 +175,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     //Broken in iOS for Proxy
     //https://jira.churchofjesuschrist.org/browse/MMIP-6476
-    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
+    @Test (groups= { "all", "all1", "daily", "daily2"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 

@@ -80,17 +80,17 @@ public class TemplesScreen extends BasePage {
 
 
     //Temple Tab Mine
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='MINE']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Mine']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'My Temple')]")
     public WebElement mineTab;
 
     //Temple Tab Nearest
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='NEAREST']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Nearest']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Nearest Temples')]")
     public WebElement nearestTab;
 
     //Temple Tab All
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='ALL']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='All']")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'All Temples')]")
     public WebElement allTab;
 
@@ -265,6 +265,9 @@ public class TemplesScreen extends BasePage {
             myMenu.selectMenu(myMenu.settings);
             //Scroll down and Reset Temple Preferences
 //            myMenu.scrollToTextRecyclerViewSettings("Temple Recommend Status");
+            Thread.sleep(1000);
+            myBasePage.newScrollUp();
+            Thread.sleep(1000);
             myBasePage.scrollTextIntoViewAndroid("Show Temple Recommend Expiration", 4);
             myBasePage.waitForElementThenClick(mySettings.templeShowTempleRecommendExpiration);
 
@@ -301,9 +304,9 @@ public class TemplesScreen extends BasePage {
 //            myBasePage.waitForElementThenClick(mySettings.templeRecommendReminder);
 //            myBasePage.checkForElement(numberOfWeeks);
 //            numberOfWeeks.click();
-
-
-            myBasePage.backButton.click();
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                myBasePage.backButton.click();
+            }
             myMenu.selectMenu(myMenu.temples);
         }
     }

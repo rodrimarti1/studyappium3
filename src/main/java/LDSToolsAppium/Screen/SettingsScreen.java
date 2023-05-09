@@ -359,7 +359,7 @@ public class SettingsScreen extends BasePage {
 
 
     // Android Show Temple Recommend Expiration
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Show Temple Recommend Expiration']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Show Temple Recommend Expiration']/../..")
     public WebElement templeShowTempleRecommendExpiration;
 
     //Temple Weeks
