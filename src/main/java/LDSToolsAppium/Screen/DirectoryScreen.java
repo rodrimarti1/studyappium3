@@ -68,14 +68,16 @@ public class DirectoryScreen extends BasePage {
 
     // ****************** Sort ******************
     //Sort Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterMenuImageButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterMenuImageButton")
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[2]")
     //@AndroidFindBy(xpath = "//*[@resource-id='filterMenuImageButton']")
 //    @iOSXCUITFindBy(accessibility = "Sort")
     @iOSXCUITFindBy(accessibility = "Sort Options")
     public  WebElement directorySort;
 
     //Households
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Households']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Households']")
+    @AndroidFindBy(xpath = "//android.widget.ScrollView//*[@text='Household']")
     @iOSXCUITFindBy(xpath = "//*[contains(@name, \"Household\")]")
     public  WebElement sortHousehold;
 
@@ -343,13 +345,8 @@ public class DirectoryScreen extends BasePage {
         String tempMyUser = myUser.toLowerCase();
 
         directorySort.click();
-        if (getOS().equalsIgnoreCase("ios")) {
-            sortHousehold.click();
-        }
+        sortHousehold.click();
 
-
-
-        //
         if (tempMyUser.contains("tools")) {
             String[] parts = myUser.split(", ");
             String part1 = parts[0];

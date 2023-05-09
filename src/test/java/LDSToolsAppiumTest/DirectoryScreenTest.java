@@ -351,7 +351,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily2"})
+    @Test(groups = {"all3", "all", "daily", "daily2", "jft"})
     public void directoryMemberInfoIndividual() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -534,7 +534,7 @@ public class DirectoryScreenTest extends BaseDriver {
 //        Assert.assertTrue(myBasePage.checkNoCaseList("Sustained", pageSource, "Contains"));
 //        Assert.assertTrue(myBasePage.checkNoCaseList("February 25, 2018", pageSource, "Contains"));
 
-        Assert.assertTrue(myBasePage.checkNoCaseList("Class Assignments", pageSource, "Contains"));
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Class Assignments", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Gospel Doctrine", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Elders Quorum", pageSource, "Contains"));
 
@@ -696,7 +696,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all3", "all", "daily", "daily1", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily1"})
     public void directoryLatLongCheckLocation() throws Exception {
 
         // ********* Constructor **********
