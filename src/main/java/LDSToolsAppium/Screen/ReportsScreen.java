@@ -450,6 +450,11 @@ public class ReportsScreen extends BasePage {
     public WebElement prClearSearch;
 
 
+    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
+    @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.OneWorkView']//XCUIElementTypeStaticText[2]")
+    public WebElement prUnitSelected;
+
+
 
 
     // ************ Sacrament Attendance Page

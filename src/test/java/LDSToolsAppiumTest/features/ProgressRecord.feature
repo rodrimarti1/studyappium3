@@ -40,17 +40,16 @@
 
     @MQA-5157 @MQA-2225 @all @all3 @daily @daily3 @jft
     Scenario Outline: As a STAKE leader I should have access to the New Members under Progress Record
-      Given a <leader> logs in selects a <unit> and is on the Progress Record Page
-      When a <memberRecord> is selected under the New Members tab
+      Given a <leader> logs in to <unit>
+      And is on the Progress Record page
+      When a <memberRecord> is selected under the New Members tab for <singleUnit>
       Then the <memberRecord> will be displayed
       And the members record <can> be edited
       Examples:
-        | leader                            | memberRecord     | can     | unit         |
-        | "STAKE_PRESIDENT"                 | "Young, Kenneth" | "false" | "Wellington" |
-#        | "STAKE_PRESIDENT_FIRST_COUNSELOR" | "Young, Kenneth" | "false" | "Wellington" |
-#        | "STAKE_PRESIDENT_SECOND_COUNSELOR" | "Richards, Gabe"         | "false" | "Wellington"   |
-#        | "STAKE_CLERK"                      | "Davis, Keith"           | "false" | "Valley"       |
-#        | "STAKE_EXECUTIVE_SECRETARY"        | "Chaney, Dustin John"    | "false" | "Auburn Hills" |
+        | leader            | memberRecord     | can     | unit           | singleUnit   |
+        | "STAKE_PRESIDENT" | "Young, Kenneth" | "false" | "Auburn Hills" | "Wellington" |
+
+
 
 
     @MQA-3194 @MQA-2225 @all @all1 @daily @daily1

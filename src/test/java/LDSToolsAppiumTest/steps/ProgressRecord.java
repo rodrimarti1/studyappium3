@@ -60,13 +60,14 @@ public class ProgressRecord extends BaseDriver {
         callingRights = myHelper.getMemberNameFromList(memberCalling, "Auburn Hills");
         myHelper.proxyLogin(callingRights[1]);
         myHelper.enterPin("1", "1", "3", "3");
-        chooseUnit(unit);
+
         myMenu.selectMenu(myMenu.reports);
         Thread.sleep(500);
         if (!myBasePage.checkForElement(myReports.progressRecordReport)) {
             myBasePage.scrollDownAndroidUIAutomator("0");
         }
         myBasePage.waitForElementThenClick(myReports.progressRecordReport);
+        chooseUnit(unit);
     }
 
     @When("a {string} is selected under the New Members tab")
@@ -75,6 +76,16 @@ public class ProgressRecord extends BaseDriver {
         myBasePage.waitForElement(myReports.prNewMembers);
         Thread.sleep(500);
         myReports.prNewMembers.click();
+        searchForMemberAndClick(memberRecord);
+    }
+
+    @When("a {string} is selected under the New Members tab for {string}")
+    public void aIsSelectedUnderTheNewMembersTabFor(String memberRecord, String singleUnit) throws Exception {
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myReports.prNewMembers.click();
+        }
+        chooseUnit(singleUnit);
+        Thread.sleep(500);
         searchForMemberAndClick(memberRecord);
     }
 
@@ -244,22 +255,37 @@ public class ProgressRecord extends BaseDriver {
     }
 
     public void chooseUnit(String unit) throws Exception {
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myBasePage.scrollDownIOS();
-        }
+//        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+//            myBasePage.scrollDownIOS();
+//        }
 //        System.out.println(myBasePage.getSourceOfPage());
-        myDirectory.directoryDropdown.click();
+        //When they change to Compose this should work
+//        myDirectory.directoryDropdown.click();
+
+        myReports.prUnitSelected.click();
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             Thread.sleep(2000);
             driver.get().findElement(By.xpath("//*[contains(@name,'" + unit + "')]")).click();
         } else {
             Thread.sleep(2000);
-            myBasePage.newScrollUpUnitList();
             driver.get().findElement(By.xpath("//*[contains(@text,'" + unit + "')]")).click();
+
+            //When they change to Compose this should work
+//            myBasePage.newScrollUpUnitList();
+//            Thread.sleep(2000);
+//            driver.get().findElement(By.xpath("//*[contains(@text,'" + unit + "')]/../..")).click();
         }
         Thread.sleep(6000);
     }
 
 
-
+    @And("is on the Progress Record page")
+    public void isOnTheProgressRecordPage() throws Exception {
+        myMenu.selectMenu(myMenu.reports);
+//        System.out.println(myBasePage.getSourceOfPage());
+        if (!myBasePage.checkForElement(myReports.progressRecordReport)) {
+            myBasePage.scrollDownAndroidUIAutomator("0");
+        }
+        myBasePage.waitForElementThenClick(myReports.progressRecordReport);
+    }
 }
