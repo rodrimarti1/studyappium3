@@ -33,12 +33,6 @@
         | "BISHOP"  | "lists"                                   | "Success" |
         | "BISHOP"  | "ministering"                             | "Success" |
         | "BISHOP"  | "ministering/organizations"               | "Success" |
-        | "BISHOP"  | "mission-leaders"                         | "Success" |
-        | "BISHOP"  | "mission-leaders/returned-missionaries"   | "Success" |
-        | "BISHOP"  | "mission-leaders/missions"                | "Success" |
-        | "BISHOP"  | "missionaries"                            | "Success" |
-        | "BISHOP"  | "missionaries/serving"                    | "Success" |
-        | "BISHOP"  | "missionaries/assigned"                   | "Success" |
         | "BISHOP"  | "notifications"                           | "Success" |
         | "BISHOP"  | "organizations"                           | "Success" |
         | "BISHOP"  | "photos/members"                          | "Success" |
