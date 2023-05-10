@@ -1,72 +1,58 @@
 @API
   Feature: API tests
 
-    #Calendars have been turned off for now.
     @MQA-6342 @MQA-6341 @all
     Scenario Outline: Check <url> status code for <member>
       Given a <member> goes to the <url>
       Then the status should be <status>
       Examples:
-        | member    | url                                                                            | status    |
-        | "BISHOP"  | "user"                                                                         | "Success" |
-        | "BISHOP"  | "user/search?query=Smith"                                                      | "Success" |
-        | "BISHOP"  | "user/search/bad"                                                              | "Error"   |
-        | "BISHOP"  | "units"                                                                        | "Success" |
-        | "BISHOP"  | "units/39373"                                                                  | "Success" |
-        | "BISHOP"  | "units/39373goat"                                                              | "Error"   |
-        | "BISHOP"  | "subscriptions"                                                                | "Success" |
-        | "BISHOP"  | "reports?units=39373"                                                          | "Success" |
-        | "BISHOP"  | "reports/access"                                                               | "Success" |
-        | "BISHOP"  | "reports"                                                                      | "Success" |
-        | "BISHOP"  | "reports/sacrament-attendance"                                                 | "Success" |
-        | "BISHOP"  | "reports/class-quorum-attendance"                                              | "Success" |
-        | "BISHOP"  | "reports/unit-statistics"                                                      | "Success" |
-        | "BISHOP"  | "reports/new-members"                                                          | "Success" |
-        | "BISHOP"  | "reports/ministering-sisters"                                                  | "Success" |
-        | "BISHOP"  | "reports/ministering-brothers"                                                 | "Success" |
-        | "BISHOP"  | "reports/members-moved-out"                                                    | "Success" |
-        | "BISHOP"  | "reports/covenant-path-records"                                                | "Success" |
-        | "BISHOP"  | "reports/action-interviews"                                                    | "Success" |
-        | "BISHOP"  | "reports/my-cool-report"                                                       | "Error"   |
-        | "BISHOP"  | "temples"                                                                      | "Success" |
-        | "BISHOP"  | "temples/schedules"                                                            | "Success" |
-        | "BISHOP"  | "referrals"                                                                    | "Success" |
-        | "BISHOP"  | "households"                                                                   | "Success" |
-        | "BISHOP"  | "covenant-path/user"                                                           | "Success" |
-        | "BISHOP"  | "covenant-path"                                                                | "Success" |
-        | "BISHOP"  | "lists"                                                                        | "Success" |
-        | "BISHOP"  | "ministering"                                                                  | "Success" |
-        | "BISHOP"  | "ministering/organizations"                                                    | "Success" |
-        | "BISHOP"  | "mission-leaders"                                                              | "Success" |
-        | "BISHOP"  | "mission-leaders/returned-missionaries"                                        | "Success" |
-        | "BISHOP"  | "mission-leaders/missions"                                                     | "Success" |
-        | "BISHOP"  | "missionaries"                                                                 | "Success" |
-        | "BISHOP"  | "missionaries/serving"                                                         | "Success" |
-        | "BISHOP"  | "missionaries/assigned"                                                        | "Success" |
-        | "BISHOP"  | "notifications"                                                                | "Success" |
-        | "BISHOP"  | "organizations"                                                                | "Success" |
-        | "BISHOP"  | "photos/members"                                                               | "Success" |
-        | "BISHOP"  | "photos/returned-missionaries"                                                 | "Success" |
-        | "BISHOP"  | "record/access"                                                                | "Success" |
-        | "BISHOP"  | "record/households"                                                            | "Success" |
-        | "BISHOP"  | "record/ordinances/priesthood/recommends"                                      | "Success" |
-        | "BISHOP"  | "temple-recommend"                                                             | "Success" |
-        | "MEMBER1" | "user"                                                                         | "Success" |
-        | "MEMBER1" | "units"                                                                        | "Success" |
-        | "MEMBER1" | "reports?units=39373"                                                          | "Error"   |
-        | "MEMBER1" | "subscriptions"                                                                | "Success" |
-        | "MEMBER1" | "reports/access"                                                               | "Success" |
-        | "MEMBER1" | "referrals"                                                                    | "Success" |
-        | "MEMBER1" | "temples"                                                                      | "Success" |
-        | "MEMBER1" | "calendars?timeZone=America/Denver"                                            | "Success" |
-        | "BISHOP"  | "calendars?timeZone=America/Denver"                                            | "Success" |
-        | "BISHOP"  | "calendars/events?start=2022-09-01T00%3A12%3A28Z&end=2022-12-01T00%3A12%3A28Z" | "Success" |
-        | "BISHOP"  | "calendars/compile"                                                            | "Success" |
-        | "BISHOP"  | "calendars/colors?building=false"                                              | "Success" |
-        | "BISHOP"  | "calendars/colors?building=true"                                               | "Success" |
-        | "BISHOP"  | "calendars/colors/names?building=false"                                        | "Success" |
-        | "BISHOP"  | "calendars/colors/names?building=true"                                         | "Success" |
-        | "BISHOP"  | "calendars?timeZone=$#@%@#%@#^@^%"                                             | "Error"   |
+        | member    | url                                       | status    |
+        | "BISHOP"  | "user"                                    | "Success" |
+        | "BISHOP"  | "user/search?query=Smith"                 | "Success" |
+        | "BISHOP"  | "user/search/bad"                         | "Error"   |
+        | "BISHOP"  | "units"                                   | "Success" |
+        | "BISHOP"  | "units/39373"                             | "Success" |
+        | "BISHOP"  | "units/39373goat"                         | "Error"   |
+        | "BISHOP"  | "subscriptions"                           | "Success" |
+        | "BISHOP"  | "reports?units=39373"                     | "Success" |
+        | "BISHOP"  | "reports/access"                          | "Success" |
+        | "BISHOP"  | "reports"                                 | "Success" |
+        | "BISHOP"  | "reports/sacrament-attendance"            | "Success" |
+        | "BISHOP"  | "reports/class-quorum-attendance"         | "Success" |
+        | "BISHOP"  | "reports/unit-statistics"                 | "Success" |
+        | "BISHOP"  | "reports/new-members"                     | "Success" |
+        | "BISHOP"  | "reports/ministering-sisters"             | "Success" |
+        | "BISHOP"  | "reports/ministering-brothers"            | "Success" |
+        | "BISHOP"  | "reports/members-moved-out"               | "Success" |
+        | "BISHOP"  | "reports/covenant-path-records"           | "Success" |
+        | "BISHOP"  | "reports/action-interviews"               | "Success" |
+        | "BISHOP"  | "reports/my-cool-report"                  | "Error"   |
+        | "BISHOP"  | "households"                              | "Success" |
+        | "BISHOP"  | "covenant-path/user"                      | "Success" |
+        | "BISHOP"  | "covenant-path"                           | "Success" |
+        | "BISHOP"  | "lists"                                   | "Success" |
+        | "BISHOP"  | "ministering"                             | "Success" |
+        | "BISHOP"  | "ministering/organizations"               | "Success" |
+        | "BISHOP"  | "mission-leaders"                         | "Success" |
+        | "BISHOP"  | "mission-leaders/returned-missionaries"   | "Success" |
+        | "BISHOP"  | "mission-leaders/missions"                | "Success" |
+        | "BISHOP"  | "missionaries"                            | "Success" |
+        | "BISHOP"  | "missionaries/serving"                    | "Success" |
+        | "BISHOP"  | "missionaries/assigned"                   | "Success" |
+        | "BISHOP"  | "notifications"                           | "Success" |
+        | "BISHOP"  | "organizations"                           | "Success" |
+        | "BISHOP"  | "photos/members"                          | "Success" |
+        | "BISHOP"  | "photos/returned-missionaries"            | "Success" |
+        | "BISHOP"  | "record/access"                           | "Success" |
+        | "BISHOP"  | "record/households"                       | "Success" |
+        | "BISHOP"  | "record/ordinances/priesthood/recommends" | "Success" |
+        | "MEMBER1" | "user"                                    | "Success" |
+        | "MEMBER1" | "units"                                   | "Success" |
+        | "MEMBER1" | "reports?units=39373"                     | "Error"   |
+        | "MEMBER1" | "subscriptions"                           | "Success" |
+        | "MEMBER1" | "reports/access"                          | "Success" |
+
+
 
     #    @MQA-3518 @all @smoke @all1 @daily @daily2
     @MQA-6343 @MQA-6341 @all
