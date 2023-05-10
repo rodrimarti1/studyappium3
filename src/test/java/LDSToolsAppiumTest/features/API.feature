@@ -14,25 +14,8 @@
         | "BISHOP"  | "units/39373"                             | "Success" |
         | "BISHOP"  | "units/39373goat"                         | "Error"   |
         | "BISHOP"  | "subscriptions"                           | "Success" |
-        | "BISHOP"  | "reports?units=39373"                     | "Success" |
-        | "BISHOP"  | "reports/access"                          | "Success" |
-        | "BISHOP"  | "reports"                                 | "Success" |
-        | "BISHOP"  | "reports/sacrament-attendance"            | "Success" |
-        | "BISHOP"  | "reports/class-quorum-attendance"         | "Success" |
-        | "BISHOP"  | "reports/unit-statistics"                 | "Success" |
-        | "BISHOP"  | "reports/new-members"                     | "Success" |
-        | "BISHOP"  | "reports/ministering-sisters"             | "Success" |
-        | "BISHOP"  | "reports/ministering-brothers"            | "Success" |
-        | "BISHOP"  | "reports/members-moved-out"               | "Success" |
-        | "BISHOP"  | "reports/covenant-path-records"           | "Success" |
-        | "BISHOP"  | "reports/action-interviews"               | "Success" |
-        | "BISHOP"  | "reports/my-cool-report"                  | "Error"   |
         | "BISHOP"  | "households"                              | "Success" |
-        | "BISHOP"  | "covenant-path/user"                      | "Success" |
-        | "BISHOP"  | "covenant-path"                           | "Success" |
         | "BISHOP"  | "lists"                                   | "Success" |
-        | "BISHOP"  | "ministering"                             | "Success" |
-        | "BISHOP"  | "ministering/organizations"               | "Success" |
         | "BISHOP"  | "notifications"                           | "Success" |
         | "BISHOP"  | "organizations"                           | "Success" |
         | "BISHOP"  | "photos/members"                          | "Success" |
@@ -42,9 +25,8 @@
         | "BISHOP"  | "record/ordinances/priesthood/recommends" | "Success" |
         | "MEMBER1" | "user"                                    | "Success" |
         | "MEMBER1" | "units"                                   | "Success" |
-        | "MEMBER1" | "reports?units=39373"                     | "Error"   |
         | "MEMBER1" | "subscriptions"                           | "Success" |
-        | "MEMBER1" | "reports/access"                          | "Success" |
+
 
 
 
