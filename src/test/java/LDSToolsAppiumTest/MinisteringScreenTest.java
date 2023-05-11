@@ -634,6 +634,7 @@ public class MinisteringScreenTest extends BaseDriver {
             myMenu.selectMenu(myMenu.reports);
             myBasePage.waitForElementThenClick(myMinistering.ministeringBrothersReport);
             Thread.sleep(1000); //should not need this.
+            myBasePage.scrollToTextGeneral("Assigned Households");
             myBasePage.waitForElementThenClick(myMinistering.assignedHouseholds);
 
 

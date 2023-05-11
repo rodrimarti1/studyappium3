@@ -339,7 +339,8 @@ public class Expenses extends BaseDriver {
     //Search and add a payee
     public void expenseAddAPayee(String payee) throws Exception {
         //Search for the payee
-        Thread.sleep(1000);
+//        Thread.sleep(1500);
+        myBasePage.waitForElement(myFinance.searchFieldForPayee);
         myFinance.searchFieldForPayee.sendKeys(payee);
         Thread.sleep(1000);
         //Select the payee

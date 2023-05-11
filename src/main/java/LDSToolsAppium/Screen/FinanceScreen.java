@@ -140,7 +140,8 @@ public class FinanceScreen extends BasePage {
 
     //Camera Button
     //TODO: iOS code
-    @AndroidFindBy(xpath = "//*[contains(@content-desc, 'picture')]")
+//    @AndroidFindBy(xpath = "//*[contains(@content-desc, 'picture')]")
+    @AndroidFindBy(id = "com.sec.android.app.camera:id/normal_center_button")
     @iOSXCUITFindBy(accessibility = "Payment Requests")
     public WebElement paymentRequestsCameraButton;
 
@@ -161,6 +162,12 @@ public class FinanceScreen extends BasePage {
     @AndroidFindBy(xpath = "//*[@content-desc='Shutter']")
     @iOSXCUITFindBy(accessibility = "Payment Requests")
     public WebElement paymentRequestsCameraButton4;
+
+    //Camera Button #5
+    //TODO: iOS code
+    @AndroidFindBy(id = "com.sec.android.app.camera:id/normal_center_button']")
+    @iOSXCUITFindBy(accessibility = "Payment Requests")
+    public WebElement paymentRequestsCameraButton5;
 
     //Camera Done
     @AndroidFindBy(xpath = "//*[@content-desc='Done']")

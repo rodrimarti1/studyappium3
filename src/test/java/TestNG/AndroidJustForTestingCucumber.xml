@@ -15,7 +15,7 @@
         <parameter name="systemPort" value="8555" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.ProgressRecordRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.Expenses"> </class>
         </classes>
     </test >
 
