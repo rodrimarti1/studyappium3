@@ -235,15 +235,15 @@ public class GetBearerTokenWeb {
         byte[] decodeBytes = Base64.decodeBase64(password);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        driver.get("https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui/?signmein");
+        driver.get("https://membertools-api-stage.churchofjesuschrist.org/api/swagger-ui");
 
-        WebElement loginName = driver.findElement(By.id("username"));
-        WebElement password = driver.findElement(By.id("password"));
-        WebElement signInButton = driver.findElement(By.id("sign-in"));
-
-        loginName.sendKeys(username);
-        password.sendKeys(new String(decodeBytes));
-        signInButton.click();
+        //Not needed anymore
+//        WebElement loginName = driver.findElement(By.id("username"));
+//        WebElement password = driver.findElement(By.id("password"));
+//        WebElement signInButton = driver.findElement(By.id("sign-in"));
+//        loginName.sendKeys(username);
+//        password.sendKeys(new String(decodeBytes));
+//        signInButton.click();
 
         //Should be on the swagger page.
         Thread.sleep(2000);

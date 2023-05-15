@@ -923,9 +923,10 @@ public class HelperMethods extends BaseDriver {
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
 //            System.out.println("Check for Cancel");
-                if (myBasePage.checkForElement(myBasePage.alertCANCEL)) {
+            Thread.sleep(1000);
+                if (myBasePage.checkForElement(myBasePage.alertCancel)) {
 //                    System.out.println("Cancel Found!");
-                    myBasePage.alertCANCEL.click();
+                    myBasePage.alertCancel.click();
                 }
 
                 if (myBasePage.checkForElement(myMenuScreen.directory)) {
@@ -1474,6 +1475,7 @@ public class HelperMethods extends BaseDriver {
         String calling = null;
         String loginName = null;
         String rights = null;
+
         String[] membersArray = new String[0];
         memberCalling = memberCalling + ",";
         List<String> fileList = openCallingsMembersFile(unit);
@@ -1535,9 +1537,38 @@ public class HelperMethods extends BaseDriver {
             memberList.add(sc.nextLine());
 //            System.out.println(sc.next());
         }
+
         
         sc.close();
         return memberList;
+    }
+
+    public String getUnitNumber(String unit) throws Exception {
+        if (unit.equalsIgnoreCase("Centinela 1st")) {
+            unitNumber = "21628";
+        }
+
+        if (unit.equalsIgnoreCase("Auburn Hills")) {
+            unitNumber = "111074";
+        }
+
+        if (unit.equalsIgnoreCase("Maplewood 2nd")) {
+            unitNumber = "39373";
+        }
+
+        if (unit.equalsIgnoreCase("Rama Belmopan")) {
+            unitNumber = "329347";
+        }
+
+        if (unit.equalsIgnoreCase("Ala Rio Pequeno")) {
+            unitNumber = "236977";
+        }
+
+        if (unit.equalsIgnoreCase("Paroisse de Gex")) {
+            unitNumber = "225169";
+        }
+
+        return unitNumber;
     }
 
 

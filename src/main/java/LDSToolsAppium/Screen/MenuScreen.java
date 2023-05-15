@@ -127,7 +127,8 @@ public class MenuScreen extends BasePage {
         }
         //Check for Element
         if (checkForElement(myElement)) {
-            myElement.click();
+            Thread.sleep(500);
+            myBase.waitForElementThenClick(myElement);
         } else {
             if (getOS().equals("ios")) {
 //                System.out.println("Clicking More....");
@@ -163,7 +164,7 @@ public class MenuScreen extends BasePage {
 
         }
 
-        Thread.sleep(1000);
+        Thread.sleep(2000);
         selectMenu(settings);
 
         if (getOS().equalsIgnoreCase("android")) {

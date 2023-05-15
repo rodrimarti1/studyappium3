@@ -492,7 +492,7 @@ public class APITest {
             }
     }
 
-//    @Test
+    @Test
     public void getExpenseDetailByObject() throws Exception {
         Expense foundExpense = new Expense();
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "test1234"); //Submitted - Electronic transfer
@@ -500,7 +500,8 @@ public class APITest {
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 8862.0"); //Submitted Expense
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 6648.0"); //Rejected
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 1427.0"); //Checks to print
-        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Paint night"); //In Summary - done
+//        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Paint night"); //In Summary - done
+        foundExpense = apiTest.getExpenseReturnExpense("RaphaelQueiroz", "236977", "Zzz test zzz"); //In Summary - done
 
 
 
@@ -511,10 +512,13 @@ public class APITest {
         System.out.println("Type: " + foundExpense.getType());
 
 
-
-        for (Receipt myReceipt: foundExpense.getReceipts()) {
-            System.out.println("Receipt Name: " + myReceipt.getName());
-            System.out.println("Receipt ID: " + myReceipt.getId());
+        if (foundExpense.getReceipts() != null) {
+            for (Receipt myReceipt : foundExpense.getReceipts()) {
+                System.out.println("Receipt Name: " + myReceipt.getName());
+                System.out.println("Receipt ID: " + myReceipt.getId());
+            }
+        } else {
+            System.out.println("No Receipt");
         }
 
 
@@ -636,7 +640,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;

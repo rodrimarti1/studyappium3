@@ -100,6 +100,11 @@ public class BasePage extends BaseDriver {
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'CANCEL'")
     public WebElement alertCANCEL;
 
+    //Cancel
+    @AndroidFindBy(xpath = "//*[@text=\"Cancel\"]")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'Cancel'")
+    public WebElement alertCancel;
+
     //Allow button
     @AndroidFindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_foreground_only_button\"]")
 //    @AndroidFindBy(id = "permission_allow_foreground_only_button")

@@ -376,7 +376,7 @@ public class FinanceScreen extends BasePage {
 
     //Expense Submit
     @AndroidFindBy(xpath = "//*[@text='Approve']")
-    @iOSXCUITFindBy(accessibility = "Submit")
+    @iOSXCUITFindBy(accessibility = "Approve")
     public WebElement financePaymentApprove;
 
     //Second Submit Button
@@ -398,7 +398,7 @@ public class FinanceScreen extends BasePage {
     //Search Field for Payee
 //    @AndroidFindBy(xpath = "//*[@content-desc='Search']/following-sibling::android.view.View/android.widget.TextView")
     @AndroidFindBy(xpath = "//*[@text=\"Search\"]/../..")
-    @iOSXCUITFindBy(iOSNsPredicate = "value == \"Search\"")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[@value='Search']")
     public WebElement searchFieldForPayee;
 
     //Expense Purpose

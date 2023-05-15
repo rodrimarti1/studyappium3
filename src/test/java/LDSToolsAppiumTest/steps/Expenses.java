@@ -3,6 +3,7 @@ package LDSToolsAppiumTest.steps;
 import LDSToolsAppium.API.Expenses.Charge;
 import LDSToolsAppium.API.Expenses.Expense;
 import LDSToolsAppium.API.Expenses.Payee;
+import LDSToolsAppium.API.Expenses.Receipt;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
@@ -34,6 +35,8 @@ public class Expenses extends BaseDriver {
     String myPurpose = "";
     String myReferenceNumber = "";
     Expense expenseRequest = new Expense();
+    String userName = "";
+    String unitNumber = "";
 
 
 
@@ -149,14 +152,23 @@ public class Expenses extends BaseDriver {
 //            myBasePage.waitForElementThenClick(myFinance.financePaymentTypeElectronicACHTransfer);
 //        }
 
-        myBasePage.waitForElementThenClick(myFinance.financePaymentReceipt);
-        myBasePage.waitForElementThenClick(myFinance.financePaymentReceiptApprove);
-        myBasePage.waitForElementThenClick(myFinance.financePaymentApprove);
+        myBasePage.newScrollIosAndroid();
+        if (paymentType.equalsIgnoreCase("Advance payment")) {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentApprove);
+        } else {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentReceipt);
+            myBasePage.waitForElementThenClick(myFinance.financePaymentReceiptApprove);
+            myBasePage.waitForElementThenClick(myFinance.financePaymentApprove);
+        }
 
+
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myBasePage.waitForElementThenClick(myFinance.financePaymentApprove);
+        } else {
+            myBasePage.newScrollUp();
+        }
         //Need a big wait?
         //maybe a wait for element - text?
-        myBasePage.newScrollUp();
-
         Thread.sleep(20000);
     }
 
@@ -339,7 +351,7 @@ public class Expenses extends BaseDriver {
     //Search and add a payee
     public void expenseAddAPayee(String payee) throws Exception {
         //Search for the payee
-//        Thread.sleep(1500);
+        Thread.sleep(1500);
         myBasePage.waitForElement(myFinance.searchFieldForPayee);
         myFinance.searchFieldForPayee.sendKeys(payee);
         Thread.sleep(1000);
@@ -409,6 +421,7 @@ public class Expenses extends BaseDriver {
     @Then("the expense will be processed with  {string} {string} {string} {string} {string} {string}")
     public void theExpenseWillBeProcessedWith(String payee, String status, String type, String addReceipt, String category, String categoryAmount) throws Exception {
         String message = "";
+        Boolean receiptPresent = false;
         Expense myApiExpense = new Expense();
         //Check API
         //todo switch to finance object?
@@ -423,12 +436,29 @@ public class Expenses extends BaseDriver {
 //            Assert.assertTrue(myMap.get("payeeName").toString().contains(payeeName));
 //        }
 
-        myApiExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", myPurpose);
+        myApiExpense = apiTest.getExpenseReturnExpense(userName, unitNumber, myPurpose);
         System.out.println("Purpose: " + myApiExpense.getPurpose());
 
         Assert.assertTrue(myApiExpense.getStatus().equalsIgnoreCase(status), message);
         Assert.assertTrue(myApiExpense.getType().equalsIgnoreCase(type), message);
-//        Assert.assertTrue(myApiExpense.getPayee().getName().equalsIgnoreCase(payee));
+
+        //Check for receipt
+        if (myApiExpense.getReceipts() != null) {
+            for (Receipt myReceipt : myApiExpense.getReceipts()) {
+                System.out.println("Receipt Name: " + myReceipt.getName());
+                System.out.println("Receipt ID: " + myReceipt.getId());
+            }
+            receiptPresent = true;
+        } else {
+            System.out.println("No Receipt");
+            receiptPresent = false;
+        }
+        if (addReceipt.equalsIgnoreCase("none")) {
+            Assert.assertFalse(receiptPresent);
+        } else {
+            Assert.assertTrue(receiptPresent);
+        }
+
 
 
         //Check GUI
@@ -445,10 +475,12 @@ public class Expenses extends BaseDriver {
     public void aLogsInTo(String memberCalling, String unit) throws Exception {
         String[] callingRights;
         callingRights = myHelper.getMemberNameFromList(memberCalling, unit);
-        String userName = callingRights[1];
+        userName = callingRights[1];
+        unitNumber = myHelper.getUnitNumber(unit);
         myHelper.proxyLogin(userName);
         myHelper.enterPin("1", "1", "3", "3");
     }
+
 
 
     public void selectPayeeByName(String payeeName) throws Exception {
