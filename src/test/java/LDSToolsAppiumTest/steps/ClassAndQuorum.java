@@ -314,7 +314,8 @@ public class ClassAndQuorum extends BaseDriver {
             } else {
                 for (int y = 1; y <= 5 ; y++) {
 //                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.FrameLayout[contains(@resource-id, 'week" + y + "')]//android.widget.TextView")).getAttribute("text"));
-                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.TextView[@text='Gospel Doctrine']/../../following-sibling::android.view.View/android.view.View/android.widget.TextView[" + y + "]")).getAttribute("text"));
+//                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.TextView[@text='Gospel Doctrine']/../../following-sibling::android.view.View/android.view.View/android.widget.TextView[" + y + "]")).getAttribute("text"));
+                    visibleDates.add(driver.get().findElement(By.xpath("//android.widget.ImageView[@content-desc='Attendance Status']/preceding-sibling::android.widget.TextView[" + y + "]")).getAttribute("text"));
 
                 }
             }
@@ -342,7 +343,8 @@ public class ClassAndQuorum extends BaseDriver {
                 returnStatus = "attended";
             }
         } else {
-            returnStatus = weekCheckBox.getAttribute("selected");
+//            returnStatus = weekCheckBox.getAttribute("selected");
+            returnStatus = weekCheckBox.getAttribute("checked");
             System.out.println("Return Status: " + returnStatus);
             if (returnStatus.equalsIgnoreCase("false")) {
                 returnStatus = "not attended";
@@ -367,14 +369,18 @@ public class ClassAndQuorum extends BaseDriver {
                 } else {
                     if (pageType.equalsIgnoreCase("main")) {
 //                        returnElement = myReports.classAndQuorumFirstWeek;
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(0) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(0) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(0) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     } else {
-                        System.out.println("Detail check for week 1");
-                        numberOnly = dateToCheck.get(0).replaceAll("[^0-9]", "");
-                        System.out.println("Number Only: " + numberOnly);
+//                        System.out.println("Detail check for week 1");
+//                        numberOnly = dateToCheck.get(0).replaceAll("[^0-9]", "");
+//                        System.out.println("Number Only: " + numberOnly);
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(0) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     }
 
                 }
@@ -387,13 +393,15 @@ public class ClassAndQuorum extends BaseDriver {
                     if (pageType.equalsIgnoreCase("main")) {
 //                        returnElement = myReports.classAndQuorumSecondWeek;
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(1) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
-                    } else {
-                        System.out.println("Detail check for week 2");
-                        numberOnly = dateToCheck.get(1).replaceAll("[^0-9]", "");
-                        System.out.println("Number Only: " + numberOnly);
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(1) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
+//                    } else {
+//                        System.out.println("Detail check for week 2");
+//                        numberOnly = dateToCheck.get(1).replaceAll("[^0-9]", "");
+//                        System.out.println("Number Only: " + numberOnly);
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(1) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     }
 
                 }
@@ -407,11 +415,13 @@ public class ClassAndQuorum extends BaseDriver {
                     if (pageType.equalsIgnoreCase("main")) {
 //                        returnElement = myReports.classAndQuorumThirdWeek;
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(2) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(2) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     } else {
-                        numberOnly = dateToCheck.get(2).replaceAll("[^0-9]", "");
+//                        numberOnly = dateToCheck.get(2).replaceAll("[^0-9]", "");
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(2) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     }
 
                 }
@@ -425,11 +435,13 @@ public class ClassAndQuorum extends BaseDriver {
                     if (pageType.equalsIgnoreCase("main")) {
 //                        returnElement = myReports.classAndQuorumFourthWeek;
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(3) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(3) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     } else {
-                        numberOnly = dateToCheck.get(3).replaceAll("[^0-9]", "");
+//                        numberOnly = dateToCheck.get(3).replaceAll("[^0-9]", "");
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(3) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     }
 
                 }
@@ -444,11 +456,13 @@ public class ClassAndQuorum extends BaseDriver {
                     if (pageType.equalsIgnoreCase("main")) {
 //                        returnElement = myReports.classAndQuorumFifthWeek;
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(4) +"')]/following-sibling::android.view.View/android.view.View[@content-desc='Attendance Status']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(4) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     } else {
-                        numberOnly = dateToCheck.get(4).replaceAll("[^0-9]", "");
+//                        numberOnly = dateToCheck.get(4).replaceAll("[^0-9]", "");
+//                        returnElement = (WebElement) driver.get().findElement(By.xpath(
+//                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
-                                "//android.widget.TextView[@text = '" + numberOnly +"']"));
+                                "//android.widget.TextView[contains(@text, '" + dateToCheck.get(4) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
                     }
 
                 }

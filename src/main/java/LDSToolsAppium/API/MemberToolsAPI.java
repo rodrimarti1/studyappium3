@@ -1593,8 +1593,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         OkHttpClient httpClient = loginCred();
         getBearerTokenFromSelenium();
         Request request = new Request.Builder()
-                .url(baseURL + "finances/reimbursement")
-//                .url(baseURL + "finances/expenses")
+//                .url(baseURL + "finances/reimbursement")
+                .url(baseURL + "finances/expenses")
                 .addHeader("X-Proxy-User" , proxyUser)
                 .addHeader("Authorization", bearerToken)
 //                .header("Content-Type", "application/json; charset=UTF-8")
@@ -1665,6 +1665,54 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     }
+
+    public int updateExpenseWithObject(Expense expenseToUpdate, String proxyUser) throws Exception {
+        int responseData = 0;
+        Gson gsonTest = new Gson();
+        String json;
+
+
+        json = gsonTest.toJson(expenseToUpdate);
+        System.out.println(json);
+
+
+        MultipartBody multiBody = new MultipartBody.Builder()
+                .setType(MultipartBody.FORM)
+                .addFormDataPart("request", null, RequestBody.create(MediaType.parse("application/json"), json))
+//                .addFormDataPart("application/json", json)
+//                .addFormDataPart("receipts", "cereal-receipt.jpeg",
+//                        RequestBody.create(MediaType.parse("image/jpeg"), new File("cereal-receipt.jpeg")))
+                .build();
+
+        StringBuilder contentBuilder = new StringBuilder();
+
+        getBearerTokenFromSelenium();
+        OkHttpClient httpClient = loginCred();
+        Request request = new Request.Builder()
+                .url(baseURL + "finances/expenses/" + expenseToUpdate.getId() + "?type=" + expenseToUpdate.getType())
+                .addHeader("Authorization", bearerToken)
+                .addHeader("X-Proxy-User", proxyUser)
+                .put(multiBody)
+//                .put(body)
+                .build();
+
+
+        try (Response response = httpClient.newCall(request).execute()) {
+//            assert response.body() != null;
+//            responseData = response.body().string();
+            System.out.println("Response: " + response.code());
+            responseData = response.code();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return responseData;
+
+
+    }
+
+
 
 
     public int updateExpensePurpose(int expenseId, String purpose, String proxyUser) throws Exception {

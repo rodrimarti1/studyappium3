@@ -143,6 +143,8 @@ public class Expenses extends BaseDriver {
 
         Assert.assertTrue(pageSource.contains(amountWithDot));
         Assert.assertTrue(pageSource.contains(expensePayee));
+        pageSource = pageSource.toLowerCase();
+        paymentType = paymentType.toLowerCase();
         Assert.assertTrue(pageSource.contains(paymentType));
 
 //        myBasePage.waitForElementThenClick(myFinance.financePaymentType);

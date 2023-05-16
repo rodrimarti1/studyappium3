@@ -568,7 +568,8 @@ public class ReportsScreen extends BasePage {
     public  WebElement classAndQuorumFifthWeek;
 
     //Class and Quorum - Filters
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/iconImageView")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/iconImageView")
+    @AndroidFindBy(xpath = "//android.widget.CheckBox")
     @iOSXCUITFindBy(accessibility = "Filter")
     public  WebElement classAndQuorumFilter;
 

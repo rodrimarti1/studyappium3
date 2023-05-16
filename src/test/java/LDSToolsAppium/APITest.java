@@ -25,6 +25,7 @@ import org.jboss.aerogear.security.otp.Totp;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.awt.*;
 import java.awt.desktop.SystemEventListener;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -385,6 +386,7 @@ public class APITest {
     }
 
 //    @Test
+    //Not working
     public void createExpenseByObject() throws Exception {
         int responseCode = 0;
 
@@ -395,22 +397,45 @@ public class APITest {
         Expense myExpense = new Expense();
         Payee myPayee = new Payee();
         Charge myCharge = new Charge();
+        SubmittedBy mySubmittedby = new SubmittedBy();
+        Receipt myReceipt = new Receipt();
         List<Charge> listCharge = new ArrayList<>();
+        List<Receipt> listReceipts = new ArrayList<>();
 
-        myPayee.setMemberUuid("533356e1-66c5-49dc-b37b-13a416594413");
+        //Payee
+        myPayee.setMemberUuid("6909882b-16ef-41d2-80be-6de55a88011a");
+        myPayee.setId(32902952);
+        myPayee.setName("Angers, Donna");
 
-        myCharge.setCategoryId(952);
+        //Charges
+        myCharge.setCategoryId(315);
         myCharge.setAmount(1234);
         listCharge.add(myCharge);
 
-        myExpense.setAccountId(8880);
-        myExpense.setUnitNumber(39373);
-        myExpense.setPurpose("API Automated Test " + randomNumber);
-        myExpense.setPayee(myPayee);
-        myExpense.setCharges(listCharge);
-//        myExpense.setType("EXPENSE");
+        //Submittedby
+        mySubmittedby.setMemberUuid("e463aaf9-573f-4d17-8364-d4f4112cb517");
+        mySubmittedby.setMemberMrn("000-2205-6416");
+        mySubmittedby.setName("Thomas, Mark Barrett");
 
-        responseCode = apiTest.createExpenseWithObject(myExpense, "dsoneil");
+        //Receipt
+        myReceipt.setName("TEST1234");
+        listReceipts.add(myReceipt);
+
+//        myExpense.setId(0);
+        myExpense.setType("EXPENSE");
+        myExpense.setUnitNumber(21628);
+        myExpense.setAccountId(2921);
+        myExpense.setStatus("SUBMITTED");
+        myExpense.setPayee(myPayee);
+        myExpense.setPurpose("API Automated Test " + randomNumber);
+        myExpense.setCharges(listCharge);
+        myExpense.setPaymentMethodId(10);
+        myExpense.setExpenseDistribution(false);
+        myExpense.setSubmittedDate("2023-05-15");
+        myExpense.setSubmittedBy(mySubmittedby);
+        myExpense.setReceipts(listReceipts);
+
+        responseCode = apiTest.createExpenseWithObject(myExpense, "mbthomas74");
         System.out.println("Response Code: " + responseCode);
 
     }
@@ -501,8 +526,10 @@ public class APITest {
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 6648.0"); //Rejected
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Expense One 1427.0"); //Checks to print
 //        foundExpense = apiTest.getExpenseReturnExpense("dsoneil", "39373", "Paint night"); //In Summary - done
-        foundExpense = apiTest.getExpenseReturnExpense("RaphaelQueiroz", "236977", "Zzz test zzz"); //In Summary - done
+//        foundExpense = apiTest.getExpenseReturnExpense("RaphaelQueiroz", "236977", "Zzz test zzz"); //In Summary - done
+        foundExpense = apiTest.getExpenseReturnExpense("mbthomas74", "21628", "test1"); //In Summary - done
 
+        ApprovedRejectedBy myApprovedRejectedBy = new ApprovedRejectedBy();
 
 
         System.out.println("Purpose: " + foundExpense.getPurpose());
@@ -541,7 +568,20 @@ public class APITest {
             System.out.println("No Submitted Data" );
         }
 
+        //Add rejected stuff to object
+        //Submittedby
+        myApprovedRejectedBy.setMemberUuid("e463aaf9-573f-4d17-8364-d4f4112cb517");
+        myApprovedRejectedBy.setMemberMrn("000-2205-6416");
+        myApprovedRejectedBy.setName("Thomas, Mark Barrett");
 
+        foundExpense.setApprovedRejectedDate("2023-05-16");
+        foundExpense.setApprovedRejectedBy(myApprovedRejectedBy);
+//        foundExpense.setStatus("REJECTED");
+        foundExpense.setReasonForRejection("Incorrect amount");
+
+
+        int myResponse = apiTest.updateExpenseWithObject(foundExpense, "mbthomas74");
+        System.out.println("Response: " + myResponse);
 
     }
 
@@ -559,13 +599,19 @@ public class APITest {
         expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "SUBMITTED");
         if (!expenseDetailList.isEmpty()) {
             for (ApiFinanceDetail expenseDetail: expenseDetailList) {
-                System.out.println(expenseDetail.getPurpose());
-                System.out.println(expenseDetail.getId());
-                System.out.println(expenseDetail.getType());
+                System.out.println("Purpose: " + expenseDetail.getPurpose());
+                System.out.println("ID: " + expenseDetail.getId());
+                System.out.println("Type: " + expenseDetail.getType());
+                System.out.println("Status: " + expenseDetail.getStatus());
 //                int myInt = Integer.parseInt(idName);
 
-                responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
-                System.out.println("Response: "  + responseCode);
+                if (expenseDetail.getType().equalsIgnoreCase("REIMBURSEMENT_REQUEST")) {
+                    responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
+                    System.out.println("Response: "  + responseCode);
+                }
+
+
+
             }
         }
 
@@ -582,20 +628,8 @@ public class APITest {
 //            }
 //        }
 
-        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "PENDING_PRINT");
-        if (!expenseDetailList.isEmpty()) {
-            for (ApiFinanceDetail expenseDetail: expenseDetailList) {
-                System.out.println(expenseDetail.getPurpose());
-                System.out.println(expenseDetail.getId());
-                System.out.println(expenseDetail.getType());
-//                int myInt = Integer.parseInt(idName);
-
-                responseCode = apiTest.expenseDelete(expenseDetail.getId(), expenseDetail.getType(), "mbthomas74");
-                System.out.println("Response: "  + responseCode);
-            }
-        }
-
-//        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "REJECTED");
+        //Update to Reject?
+//        expenseDetailList = apiTest.getExpensesByStatus("mbthomas74", "21628", "PENDING_PRINT");
 //        if (!expenseDetailList.isEmpty()) {
 //            for (ApiFinanceDetail expenseDetail: expenseDetailList) {
 //                System.out.println(expenseDetail.getPurpose());
@@ -609,23 +643,7 @@ public class APITest {
 //        }
 
 
-            //        if (!myMap.isEmpty()) {
-//            for (String mapKey: myMap.keySet()) {
-//                String key = mapKey.toString();
-//                if (myMap.get(mapKey) == null) {
-//                    value = "";
-//                } else {
-//                    value = myMap.get(mapKey).toString();
-//                }
-//                System.out.println(key + " - " + value);
-//            }
-//
-////            myId = (int) myMap.get("id");
-////            myType = (String) myMap.get("type");
-////            responseCode = apiTest.expenseDelete(myId, myType, "mbthomas74");
-////            System.out.println("CODE: " + responseCode);
-//
-//        }
+
     }
 
 

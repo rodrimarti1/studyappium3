@@ -29,7 +29,7 @@
 
 
 
-    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2 @jft
+    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2
     Scenario: As a Bishopric member I should be able to mark a members attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When week one is marked attended
@@ -43,7 +43,7 @@
       When I select a class
       Then The class list will be displayed
 
-    @MQA-3520 @all @all1 @daily @daily4
+    @MQA-3520 @all @all1 @daily @daily4 @jft
     Scenario: Check attendance from individual users page
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When a member record is selected
