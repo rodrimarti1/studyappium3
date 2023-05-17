@@ -444,7 +444,7 @@ public class MinisteringScreenTest extends BaseDriver {
                 Assert.assertFalse(pageSource.contains("Skywalker"));
             } else {
                 pageSource = myBasePage.getSourceOfPage();
-                Assert.assertTrue(myBasePage.checkNoCaseList("Ayon", pageSource, "Contains"));
+                Assert.assertTrue(myBasePage.checkNoCaseList("Arabia", pageSource, "Contains"));
                 Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
             }
 
