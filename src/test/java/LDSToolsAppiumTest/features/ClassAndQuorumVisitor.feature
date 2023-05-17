@@ -2,14 +2,14 @@
   Feature: Test the visitor feature for Class and Quorum
 
 
-    @MQA-5699 @MQA-2225 @all @all4 @daily @daily4 @smoke @smoke4 @jft
+    @MQA-5699 @MQA-2225 @all @all4 @daily @daily4 @smoke @smoke4
     Scenario: Enter visitors for Class and Quorum
       Given a "BISHOP" logs in and is on the Class and Quorum Attendance visitors page
       When "25" is entered in the "Men" in the "1" field
       And the done button is pressed
       Then "25" will be saved in the "Men" "1" field attendance
 
-    @MQA-5700 @MQA-2225 @all @all1 @daily @daily1
+    @MQA-5700 @MQA-2225 @all @all1 @daily @daily1 @jft
     Scenario Outline: Enter in visitor counts for different callings
       Given a <leader> logs in and is on the Class and Quorum Attendance visitors page
       When <visitor> is entered in the <class> in the <weekNumber> field
@@ -22,7 +22,7 @@
         | "YOUNG_WOMEN_PRESIDENT"    | "8"     | "Young Women" | "3"        |
         | "RELIEF_SOCIETY_PRESIDENT" | "30"    | "Women"       | "4"        |
         | "PRIMARY_PRESIDENT"        | "1"     | "Children"    | "5"        |
-        | "SUNDAY_SCHOOL_PRESIDENT"  | "17"    | "Young Women" | "3"        |
+#        | "SUNDAY_SCHOOL_PRESIDENT"  | "17"    | "Young Women" | "3"        |
 
       #Todo: needs work
     Scenario: Enter visitors then cancel

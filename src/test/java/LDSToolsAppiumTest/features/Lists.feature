@@ -12,7 +12,7 @@
         | barker, susan |
       Then the "New Automated List" with the members should be displayed.
 
-    @MQA-5712 @MQA-2215 @all @all2 @daily @daily2 @jft
+    @MQA-5712 @MQA-2215 @all @all2 @daily @daily2
     Scenario: Create a list and add multiple members
       When I add a List "Test List 1"
       And members are added to the list

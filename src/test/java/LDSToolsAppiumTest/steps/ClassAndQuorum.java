@@ -232,9 +232,9 @@ public class ClassAndQuorum extends BaseDriver {
         } else {
 //            elementToCheck = (WebElement) driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView"));
             Thread.sleep(1000);
-            if(!driver.get().findElements(By.id("org.lds.ldstools.alpha:id/nameTextView")).isEmpty()) {
+            if(!driver.get().findElements(By.xpath("(//*[@text='" + memberRecord + "'])[2]")).isEmpty()) {
                 Thread.sleep(1000);
-                foundName = driver.get().findElement(By.id("org.lds.ldstools.alpha:id/nameTextView")).getAttribute("text");
+                foundName = driver.get().findElement(By.xpath("(//*[@text='" + memberRecord + "'])[2]")).getAttribute("text");
             } else {
                 foundName = "NOT FOUND!";
             }

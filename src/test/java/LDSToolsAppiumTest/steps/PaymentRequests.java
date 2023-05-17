@@ -190,7 +190,7 @@ public class PaymentRequests extends BaseDriver {
         a_is_on_the_Finance_page(member);
         a_payment_request_is_filled_out_for_and_saved("myself", "Test One", "test", "picture", "FSY", "7792");
         Thread.sleep(2000);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(2000);
 
         //may not be needed anymore

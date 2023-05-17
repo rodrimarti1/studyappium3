@@ -540,7 +540,8 @@ public class ReportsScreen extends BasePage {
     public  WebElement classAndQuorumSearch;
 
     //Class and Quorum - Clear Search
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/clearTextImageButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/clearTextImageButton")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Search\"]/following-sibling::android.view.View/android.view.View")
     @iOSXCUITFindBy(accessibility = "Clear text")
     public  WebElement classAndQuorumClearSearch;
 
