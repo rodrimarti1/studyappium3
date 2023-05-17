@@ -138,7 +138,9 @@ public class BasePage extends BaseDriver {
     public WebElement unitSelected;
 
 
-
+    //Drag Handle
+    @AndroidFindBy(xpath ="//android.view.View[@content-desc='Drag handle']")
+    public  WebElement dragHandle;
 
 
 
@@ -537,6 +539,19 @@ public class BasePage extends BaseDriver {
                 "elementId", dragHandel,
                 "endX", width,
                 "endY", 100
+        ));
+    }
+
+    public void dragHandleScrollAway() throws Exception {
+
+        Dimension deviceSize = driver.get().manage().window().getSize();
+        int deviceWidth = deviceSize.getWidth();
+        int deviceHeight = deviceSize.getHeight();
+        int width = deviceWidth / 2;
+        ((JavascriptExecutor) driver.get()).executeScript("mobile: dragGesture", ImmutableMap.of(
+                "elementId", dragHandle,
+                "endX", width,
+                "endY", deviceHeight
         ));
     }
 

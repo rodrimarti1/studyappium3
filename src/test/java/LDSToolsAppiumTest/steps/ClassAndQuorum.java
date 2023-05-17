@@ -190,8 +190,12 @@ public class ClassAndQuorum extends BaseDriver {
         getWeekElement("week1", "detail").click();
         Thread.sleep(500);
         getWeekElement("week3", "detail").click();
-        Thread.sleep(500);
-        myBasePage.backAltButton.click();
+        Thread.sleep(1000);
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.dragHandleScrollAway();
+        } else {
+            myBasePage.backAltButton.click();
+        }
         Thread.sleep(1000);
         myBasePage.backAltButton.click();
     }
@@ -394,7 +398,7 @@ public class ClassAndQuorum extends BaseDriver {
 //                        returnElement = myReports.classAndQuorumSecondWeek;
                         returnElement = (WebElement) driver.get().findElement(By.xpath(
                                 "//android.widget.TextView[contains(@text, '" + dateToCheck.get(1) +"')]/following-sibling::android.widget.ImageView[@content-desc='Attendance Status']"));
-//                    } else {
+                    } else {
 //                        System.out.println("Detail check for week 2");
 //                        numberOnly = dateToCheck.get(1).replaceAll("[^0-9]", "");
 //                        System.out.println("Number Only: " + numberOnly);
