@@ -100,7 +100,7 @@ public class DirectoryScreenTest extends BaseDriver {
         directoryScreenSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all1", "all", "daily", "daily4"})
+    @Test(groups = {"all1", "all", "daily", "daily4", "jft"})
     public void directoryScreenTest_YOUNG_WOMEN_PRESIDENT() throws Exception {
         directoryScreenSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -263,14 +263,14 @@ public class DirectoryScreenTest extends BaseDriver {
         myBasePage.rightsCheckNewRights("000-1189-3575", 6, rights, pageSource);
 
         //Birth Date
-        myBasePage.rightsCheckNewRights("January 20, 1946", 5, rights, pageSource);
+        myBasePage.rightsCheckNewRights("January 20, 1946", 4, rights, pageSource);
         myBasePage.rightsCheckNewRights("Birth Date", 4, rights, pageSource);
         if (getRunningOS().equals("ios")) {
-            myBasePage.rightsCheckNewRights("(77)", 5, rights, pageSource);
+            myBasePage.rightsCheckNewRights("(77)", 4, rights, pageSource);
             //Temple Recommend
             myBasePage.rightsCheckNewRights("October 2023", 6, rights, pageSource);
         } else {
-            myBasePage.rightsCheckNewRights("- 77", 5, rights, pageSource);
+            myBasePage.rightsCheckNewRights("- 77", 4, rights, pageSource);
             //Temple Recommend
             myBasePage.rightsCheckNewRights("Oct 2023", 6, rights, pageSource);
         }
@@ -351,7 +351,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily2"})
     public void directoryMemberInfoIndividual() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
