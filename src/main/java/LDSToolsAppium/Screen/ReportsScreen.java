@@ -518,7 +518,8 @@ public class ReportsScreen extends BasePage {
 
 
     //Sacrament Attendance Next Section
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/sectionButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/sectionButton")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Next Section']/..")
     public  WebElement sacramentAttendanceCounterNextSection;
 
     //Sacrament Attendance Counter Save Button
@@ -889,7 +890,8 @@ public class ReportsScreen extends BasePage {
 
 
     //Quarterly Report Unit Selector
-    @AndroidFindBy(xpath ="//*[@text='Quarterly Report']")
+//    @AndroidFindBy(xpath ="//*[@text='Quarterly Report']")
+    @AndroidFindBy(xpath ="//android.widget.CheckBox")
     @iOSXCUITFindBy(xpath ="//*[contains(@name, 'Quarterly Report')]")
     public  WebElement unitSelectorQR;
 

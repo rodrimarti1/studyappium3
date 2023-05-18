@@ -12,7 +12,7 @@
        <parameter name="fileName" value="app-alpha.apk" />
         <!--        <parameter name="fileName" value="ldstools-beta.apk" />-->
 <!--        <parameter name="testDevice" value="STF-Pool" />-->
-        <parameter name="testDevice" value="09251FDD4003MU" />
+        <parameter name="testDevice" value="R5CN3032NSW" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
 

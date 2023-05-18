@@ -159,6 +159,8 @@ public class QuarterlyReportSteps extends BaseDriver {
         if (myBase.getOS().equalsIgnoreCase("ios")) {
             driver.get().findElement(By.xpath("//*[contains(@name,'" + myUnit + "')]")).click();
         } else {
+            myBase.newScrollUpUnitList();
+            Thread.sleep(1000);
             driver.get().findElement(By.xpath("//*[contains(@text,'" + myUnit + "')]")).click();
         }
 

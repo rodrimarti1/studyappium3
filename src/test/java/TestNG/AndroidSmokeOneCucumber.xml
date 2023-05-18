@@ -7,7 +7,7 @@
         <parameter name="fileName" value="app-alpha.apk" />
 <!--        <parameter name="testDevice" value="89RY0AB92" />  &lt;!&ndash; Pixel 3 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="emulator-5554" />-->
-        <parameter name="testDevice" value="09251FDD4003MU" />
+        <parameter name="testDevice" value="R5CN3032NSW" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
         <classes>
