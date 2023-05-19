@@ -439,7 +439,8 @@ public class ReportsScreen extends BasePage {
     public  WebElement prPeopleBeingTaught;
 
     //Search Field
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']/..")
     @iOSXCUITFindBy(accessibility = "Search")
     public  WebElement prSearchField;
 

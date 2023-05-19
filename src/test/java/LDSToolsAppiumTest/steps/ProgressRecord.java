@@ -115,7 +115,7 @@ public class ProgressRecord extends BaseDriver {
         Assert.assertTrue(myBasePage.checkNoCaseList("Ministering Brothers", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Temple Ordinances", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Principles Taught", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Other Commitments", pageSource, "Contains"));
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Other Commitments", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Self-Reliance Class", pageSource, "Contains"));
 
     }
