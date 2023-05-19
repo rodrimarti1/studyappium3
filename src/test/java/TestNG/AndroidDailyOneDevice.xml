@@ -10,7 +10,7 @@
     <test name="Android daily Test 1 - Emulator" thread-count="1" parallel="false" >
         <parameter name="os" value="android" />
         <parameter name="fileName" value="app-alpha.apk" />
-        <parameter name="testDevice" value="09251FDD4003MU" />
+        <parameter name="testDevice" value="R5CN3032NSW" />
 <!--        <parameter name="testDevice" value="89RY0AB92" />  &lt;!&ndash; Pixel 3 &ndash;&gt;-->
 <!--        <parameter name="testDevice" value="emulator-5554" />-->
         <parameter name="startSleepTime" value="0200" />
