@@ -5,6 +5,7 @@ import LDSToolsAppium.BasePage;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.Screen.DirectoryScreen;
 import LDSToolsAppium.Screen.LoginPageScreen;
+import LDSToolsAppium.Screen.MeetinghousesScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 
 import org.apache.commons.codec.binary.Base64;
@@ -25,7 +26,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
 
 
-    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4"})
+    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4", "jft"})
     public void directoryScreenTest_BISHOP() throws Exception {
         directoryScreenSub("BISHOP");
     }
@@ -100,7 +101,7 @@ public class DirectoryScreenTest extends BaseDriver {
         directoryScreenSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all1", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"all1", "all", "daily", "daily4"})
     public void directoryScreenTest_YOUNG_WOMEN_PRESIDENT() throws Exception {
         directoryScreenSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -223,6 +224,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
     public void directoryJanDicksonNewRights(int rights ) throws Exception {
         String pageSource;
+        MeetinghousesScreen myMeetingHouse = new MeetinghousesScreen(driver);
 
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -233,6 +235,12 @@ public class DirectoryScreenTest extends BaseDriver {
 
         //Get all info
         Thread.sleep(4000);
+        if (myBasePage.checkForElement(myMeetingHouse.allowWhileUsingApp)) {
+            myMeetingHouse.allowWhileUsingApp.click();
+            Thread.sleep(500);
+        }
+
+
         pageSource = myDirectory.getDirectoryUserData();
 
         //General Information

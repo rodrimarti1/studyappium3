@@ -76,7 +76,7 @@ public class TemplesScreenTest extends BaseDriver {
 //        Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker", pageSource, "Contains"));
     }
 
-    @Test (groups= { "all", "all2", "jft"})
+    @Test (groups= { "all", "all2"})
     public void templeRecommendReminder5Days() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -175,7 +175,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     //Broken in iOS for Proxy
     //https://jira.churchofjesuschrist.org/browse/MMIP-6476
-    @Test (groups= { "all", "all1", "daily", "daily2"})
+    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
