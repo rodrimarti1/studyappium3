@@ -13,6 +13,7 @@ import org.jboss.aerogear.security.otp.Totp;
 import org.jsoup.nodes.Element;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import java.io.*;
@@ -868,36 +869,63 @@ public class HelperMethods extends BaseDriver {
 //        LOGGER.info("Check for MORE Alerts after whats new page");
 //        checkForAlertsAfterPin();
 
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            new Actions(driver.get())
+                    .sendKeys(firstNumber)
+                    .sendKeys(thirdNumber)
+                    .perform();
+            myPin.pinKeyEnter.click();
+            new Actions(driver.get())
+                    .sendKeys(firstNumber)
+                    .sendKeys(thirdNumber)
+                    .perform();
+            myPin.pinKeyEnter.click();
+        } else {
+            pressPinKeys(firstNumber);
+            pressPinKeys(secondNumber);
+            pressPinKeys(thirdNumber);
+            pressPinKeys(fourthNumber);
+            Thread.sleep(1000);
+            pressPinKeys(firstNumber);
+            pressPinKeys(secondNumber);
+            pressPinKeys(thirdNumber);
+            pressPinKeys(fourthNumber);
+        }
+
+
+
+
+
         //I really don't like the sleeps here but Android won't work without them.
-        Thread.sleep(2000);
-        pressPinKeys(firstNumber);
-        Thread.sleep(2000);
-        pressPinKeys(secondNumber);
-        Thread.sleep(2000);
-        pressPinKeys(thirdNumber);
-        Thread.sleep(2000);
-        pressPinKeys(fourthNumber);
-        Thread.sleep(2000);
+//        Thread.sleep(2000);
+//        pressPinKeys(firstNumber);
+////        Thread.sleep(2000);
+//        pressPinKeys(secondNumber);
+////        Thread.sleep(2000);
+//        pressPinKeys(thirdNumber);
+////        Thread.sleep(2000);
+//        pressPinKeys(fourthNumber);
+////        Thread.sleep(2000);
 
-        if (myBasePage.getOS().equalsIgnoreCase("android")) {
-            myPin.pinKeyEnter.click();
-        }
-
-        Thread.sleep(2000);
-
-        pressPinKeys(firstNumber);
-        Thread.sleep(2000);
-        pressPinKeys(secondNumber);
-        Thread.sleep(2000);
-        pressPinKeys(thirdNumber);
-        Thread.sleep(2000);
-        pressPinKeys(fourthNumber);
-
-        Thread.sleep(2000);
-
-        if (myBasePage.getOS().equalsIgnoreCase("android")) {
-            myPin.pinKeyEnter.click();
-        }
+//        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+//            myPin.pinKeyEnter.click();
+//        }
+//
+//        Thread.sleep(2000);
+//
+//        pressPinKeys(firstNumber);
+//        Thread.sleep(2000);
+//        pressPinKeys(secondNumber);
+//        Thread.sleep(2000);
+//        pressPinKeys(thirdNumber);
+//        Thread.sleep(2000);
+//        pressPinKeys(fourthNumber);
+//
+//        Thread.sleep(2000);
+//
+//        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+//            myPin.pinKeyEnter.click();
+//        }
 
 
 
