@@ -6,6 +6,7 @@ import LDSToolsAppium.BasePage;
 
 import LDSToolsAppium.Screen.LoginPageScreen;
 
+import io.appium.java_client.remote.SupportsContextSwitching;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -13,10 +14,19 @@ import io.cucumber.java.en.When;
 import org.apache.commons.codec.binary.Base64;
 import org.testng.Assert;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Properties;
+
 public class OktaLoginSteps extends BaseDriver {
     BasePage myBasePage = new BasePage(driver);
     LoginPageScreen myLogin = new LoginPageScreen(driver);
     String pageSource;
+    String username;
+    String password;
+    String twoFactor;
 
 
     @Given("a user opens the app")
@@ -76,10 +86,18 @@ public class OktaLoginSteps extends BaseDriver {
     public void theLinksWillBeValid() throws Exception {
 //        System.out.println(myBasePage.getSourceOfPage());
         myLogin.troubleSigningIn.click();
-        //Account
-        myBasePage.waitForText("Account");
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(pageSource.contains("Account Recovery"));
+        Thread.sleep(600);
+        if (getRunningOS().equalsIgnoreCase("ios")) {
+            //Account
+            myBasePage.waitForText("Account");
+            pageSource = myBasePage.getSourceOfPage();
+            Assert.assertTrue(pageSource.contains("Account Recovery"));
+        } else {
+            myBasePage.waitForText("account");
+            pageSource = myBasePage.getSourceOfPage();
+            Assert.assertTrue(pageSource.contains("account.churchofjesuschrist.org"));
+//            myBasePage.printPageSource();
+        }
         browserBack();
         myBasePage.waitForText("Sign In");
         //Terms of use
@@ -173,7 +191,8 @@ public class OktaLoginSteps extends BaseDriver {
     }
 
     public void goodPassword() throws Exception {
-        byte[] decodeBytes = Base64.decodeBase64("U25AazNTcDE3MjAyMg==");
+        getInfoFromProperties();
+        byte[] decodeBytes = Base64.decodeBase64(password);
         myBasePage.waitForElement(myLogin.passWord);
         myLogin.passWord.sendKeys(new String(decodeBytes));
         myLogin.nextButton.click();
@@ -185,6 +204,22 @@ public class OktaLoginSteps extends BaseDriver {
         myLogin.passWord.sendKeys(passWord);
         myLogin.nextButton.click();
         Thread.sleep(1300);
+    }
+
+    public void getInfoFromProperties() throws Exception {
+        try (InputStream input = Files.newInputStream(Paths.get("ConfigFiles/config.properties"))) {
+            Properties prop = new Properties();
+            // load a properties file
+            prop.load(input);
+
+            username = (prop.getProperty("db.user"));
+            password = prop.getProperty("db.password");
+            twoFactor = prop.getProperty("db.twoFactor");
+
+
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 

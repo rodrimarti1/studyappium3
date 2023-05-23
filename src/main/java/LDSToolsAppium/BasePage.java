@@ -20,6 +20,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.remote.DriverCommand;
+import org.openqa.selenium.remote.RemoteExecuteMethod;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -28,6 +30,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import org.testng.Assert;
 
+import java.awt.desktop.SystemEventListener;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.time.Duration;
@@ -927,6 +930,11 @@ public class BasePage extends BaseDriver {
         System.out.println("Stop Checking for Element");
     }
 
+//    public void switchToContext(String context) {
+//        RemoteExecuteMethod executeMethod = new RemoteExecuteMethod(getDriver());
+//        executeMethod.execute(DriverCommand.SWITCH_TO_CONTEXT, ImmutableMap.of("name", context));
+//    }
+
 
 
 
@@ -1100,6 +1108,10 @@ public class BasePage extends BaseDriver {
 //        System.out.println("End Get Source of Page");
 
         return myString;
+    }
+
+    public void printPageSource() throws Exception {
+        System.out.println(driver.get().getPageSource());
     }
 
     public String getSourceOfPageIDB() throws Exception {
