@@ -75,6 +75,7 @@ public class GetBearerTokenWeb {
 
     public void setupDriver() throws Exception {
         WebDriverManager.chromedriver().setup();
+//        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--incognito");
         options.addArguments("--headless=new");
