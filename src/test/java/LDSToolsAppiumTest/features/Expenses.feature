@@ -3,6 +3,7 @@ Feature: Test the Expenses for Member Tools
 
   #todo: need a in Utah unit test - maybe a separate test?
 
+  @jft
   Scenario Outline: Create a Check Expense for <unit> and Approve Expense
     Given a <member> logs in to <unit>
     And is on the Expenses page
@@ -14,12 +15,10 @@ Feature: Test the Expenses for Member Tools
     And the <payee> with the <categoryAmount> is Approved with the <paymentType>
     Then the expense will be processed with  <payee> "PENDING_PRINT" "expense" <addReceipt> <category> <categoryAmount>
     Examples:
-      | member   | unit            | payee              | purpose       | paymentType | addReceipt | category | categoryAmount | referenceNumber | differentMember             |
-      | "BISHOP" | "Maplewood 2nd" | "Carroll, Melanie" | "Expense One" | "Check"     | "picture"  | "FSY"    | "858"          | "none"          | "BISHOPRIC_FIRST_COUNSELOR" |
+      | member   | unit            | payee            | purpose       | paymentType | addReceipt | category | categoryAmount | referenceNumber | differentMember             |
+      | "BISHOP" | "Maplewood 2nd" | "Cline, Michael" | "Expense One" | "Check"     | "picture"  | "FSY"    | "858"          | "none"          | "BISHOPRIC_FIRST_COUNSELOR" |
 
 
-
-  @jft
   Scenario Outline: Create an Advanced Payment Expense for <unit> and Approve Expense
     Given a <member> logs in to <unit>
     And is on the Expenses page
