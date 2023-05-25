@@ -872,7 +872,8 @@ public class ReportsScreenTest extends BaseDriver {
 
         if (!getRunningOS().equals("ios")) {
             Thread.sleep(2000);
-            myBasePage.scrollToTextRecyclerView("Unit Statistics");
+//            myBasePage.scrollToTextRecyclerView("Unit Statistics");
+            myBasePage.newScrollToText("Unit Statistics");
             Thread.sleep(2000);
         } else {
 //            myBasePage.scrollToTextiOS("Unit Statistics");

@@ -672,9 +672,9 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("appium:noReset", false);
             capabilities.setCapability("appium:newCommandTimeout", 90);
             capabilities.setCapability("appium:app", app.getAbsolutePath());
-            capabilities.setCapability("launchTimeout", 900000);
+
             capabilities.setCapability("appium:platformVersion", "16.4");
-            capabilities.setCapability("nativeInstrumentsLib", false);
+
             capabilities.setCapability("appium:clearSystemFiles", true);
             //capabilities.setCapability("allowTouchIdEnroll", true);
             capabilities.setCapability("appium:maxTypingFrequency", 20);
@@ -684,10 +684,20 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             //capabilities.setCapability("appPackage", myAppPackage);
             //capabilities.setCapability("simpleIsVisibleCheck", true);
 //            capabilities.setCapability("connectHardwareKeyboard", false);
-            capabilities.setCapability("appium:customSnapshotTimeout", 500);
-            capabilities.setCapability("appium:snapshotMaxDepth", 100);
+
+
 //            capabilities.setCapability("fullReset", true);
 //            capabilities.setCapability("appium:resetLocationService", true);
+
+
+            capabilities.setCapability("launchTimeout", 900000);
+            capabilities.setCapability("appium:customSnapshotTimeout", 500);
+            capabilities.setCapability("appium:snapshotMaxDepth", 100);
+            capabilities.setCapability("nativeInstrumentsLib", false);
+            //This is needed so HEADLESS will have a location set.
+            capabilities.setCapability("locationServicesEnabled", true);
+            capabilities.setCapability("locationServicesAuthorized", true);
+
 
 
 //            capabilities.setCapability("wdaConnectionTimeout", 5000000);
@@ -710,9 +720,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
 //            capabilities.setCapability("appium:useNewWDA", true);
 
-            //This is needed so HEADLESS will have a location set.
-            capabilities.setCapability("locationServicesEnabled", true);
-            capabilities.setCapability("locationServicesAuthorized", true);
+
 
             if (myUdid != null) {
                 capabilities.setCapability("xcodeOrgId", "U3SP4KMCK6");
