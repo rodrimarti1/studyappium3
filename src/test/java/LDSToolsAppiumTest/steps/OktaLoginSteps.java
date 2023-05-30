@@ -97,6 +97,7 @@ public class OktaLoginSteps extends BaseDriver {
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(pageSource.contains("account.churchofjesuschrist.org"));
 //            myBasePage.printPageSource();
+            Thread.sleep(2000);
         }
         browserBack();
         myBasePage.waitForText("Sign In");

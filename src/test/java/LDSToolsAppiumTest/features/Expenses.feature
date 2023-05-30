@@ -16,7 +16,7 @@ Feature: Test the Expenses for Member Tools
     Then the expense will be processed with  <payee> "PENDING_PRINT" "expense" <addReceipt> <category> <categoryAmount>
     Examples:
       | member   | unit            | payee            | purpose       | paymentType | addReceipt | category | categoryAmount | referenceNumber | differentMember             |
-      | "BISHOP" | "Maplewood 2nd" | "Cline, Michael" | "Expense One" | "Check"     | "picture"  | "FSY"    | "858"          | "none"          | "BISHOPRIC_FIRST_COUNSELOR" |
+      | "BISHOP" | "Maplewood 2nd" | "Cline, Michael" | "Expense One" | "Check"     | "picture"  | "FSY"    | "858"          | "none"          | "WARD_CLERK" |
 
 
   Scenario Outline: Create an Advanced Payment Expense for <unit> and Approve Expense
