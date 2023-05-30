@@ -4,7 +4,8 @@
     <test name="iOS Smoke Test - iPhone 12" thread-count="1" parallel="false" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="HEADLESS-iPhone 12" />
+<!--        <parameter name="testDevice" value="HEADLESS-iPhone 12" />-->
+        <parameter name="testDevice" value="iPhone 12" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8320" />
 
@@ -16,7 +17,8 @@
     <test name="iOS Smoke Test - iPhone 11" thread-count="1" parallel="false" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="HEADLESS-iPhone 11" />
+<!--        <parameter name="testDevice" value="HEADLESS-iPhone 11" />-->
+        <parameter name="testDevice" value="iPhone 11" />
         <parameter name="startSleepTime" value="60000" />
         <parameter name="systemPort" value="8321" />
 
@@ -28,7 +30,8 @@
     <test name="iOS Smoke Test - iPhone 13" thread-count="1" parallel="false" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="HEADLESS-iPhone 13" />
+<!--        <parameter name="testDevice" value="HEADLESS-iPhone 13" />-->
+        <parameter name="testDevice" value="iPhone 13" />
         <parameter name="startSleepTime" value="120000" />
         <parameter name="systemPort" value="8322" />
 
@@ -40,7 +43,8 @@
     <test name="iOS Smoke Test - iPhone 14" thread-count="1" parallel="false" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="HEADLESS-iPhone 14" />
+<!--        <parameter name="testDevice" value="HEADLESS-iPhone 14" />-->
+        <parameter name="testDevice" value="iPhone 14" />
         <parameter name="startSleepTime" value="180000" />
         <parameter name="systemPort" value="8323" />
 
