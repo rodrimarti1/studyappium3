@@ -26,7 +26,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
 
 
-    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4"})
     public void directoryScreenTest_BISHOP() throws Exception {
         directoryScreenSub("BISHOP");
     }
@@ -359,7 +359,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily2"})
+    @Test(groups = {"all3", "all", "daily", "daily2", "jft"})
     public void directoryMemberInfoIndividual() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -481,6 +481,10 @@ public class DirectoryScreenTest extends BaseDriver {
         // ********* Constructor **********
         DirectoryScreen myDirectory = new DirectoryScreen(driver);
         BasePage myBasePage = new BasePage(driver);
+
+        if (myBasePage.checkForElement(myDirectory.allowWhileUsingApp)) {
+            myDirectory.allowWhileUsingApp.click();
+        }
 
         //Get all info
         pageSource = myDirectory.getDirectoryUserData();
