@@ -399,7 +399,8 @@ public class DirectoryScreen extends BasePage {
 
         String pageSource = null;
         if (getOS().equals("ios")) {
-            scrollDownIOS();
+//            scrollDownIOS();
+            swipeUpIOS();
             boolean checkForLabel;
 
             checkForLabel = checkForElement(householdMembers);
