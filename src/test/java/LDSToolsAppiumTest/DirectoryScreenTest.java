@@ -359,7 +359,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily2"})
     public void directoryMemberInfoIndividual() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -665,11 +665,21 @@ public class DirectoryScreenTest extends BaseDriver {
 
         myDirectory.searchAndClick("Alapati, James");
 
-        Assert.assertTrue(myBasePage.checkForElement(myDirectory.gpsHouseholdLocationMissing));
+        if (myBasePage.checkForElement(myDirectory.allowWhileUsingApp)) {
+            myDirectory.allowWhileUsingApp.click();
+        }
 
-        //Get all info
-        pageSource = myDirectory.getDirectoryUserData();
-        Assert.assertTrue(myBasePage.checkNoCaseList("Household Location Missing", pageSource, "Contains"));
+
+
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            pageSource = myDirectory.getDirectoryUserData();
+            Assert.assertTrue(myBasePage.checkNoCaseList("0.000000", pageSource, "Contains"));
+        } else {
+            Assert.assertTrue(myBasePage.checkForElement(myDirectory.gpsHouseholdLocationMissing));
+            pageSource = myDirectory.getDirectoryUserData();
+            Assert.assertTrue(myBasePage.checkNoCaseList("Household Location Missing", pageSource, "Contains"));
+        }
+
 
     }
 
@@ -690,6 +700,10 @@ public class DirectoryScreenTest extends BaseDriver {
 
         myDirectory.searchAndClick("Aiulu, Talatau");
 
+        if (myBasePage.checkForElement(myDirectory.allowWhileUsingApp)) {
+            myDirectory.allowWhileUsingApp.click();
+        }
+
         //Get all info
         Thread.sleep(500);
         pageSource = myDirectory.getDirectoryUserData();
@@ -708,7 +722,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all3", "all", "daily", "daily1"})
+    @Test(groups = {"all3", "all", "daily", "daily1", "jft"})
     public void directoryLatLongCheckLocation() throws Exception {
 
         // ********* Constructor **********
@@ -724,6 +738,9 @@ public class DirectoryScreenTest extends BaseDriver {
 
         if (myBasePage.getOS().contains("ios")) {
             myDirectory.searchAndClickHousehold("Loion, Leone");
+            if (myBasePage.checkForElement(myDirectory.allowWhileUsingApp)) {
+                myDirectory.allowWhileUsingApp.click();
+            }
 //            myBasePage.clickByTextContains("Pipi");
 //            myBasePage.scrollDownIOS();
             myBasePage.scrollToTextGeneral("Adjust household location");
