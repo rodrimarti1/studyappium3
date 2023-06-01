@@ -27,6 +27,10 @@ public class DirectoryEditScreenTest extends BaseDriver {
 
         myDirectory.searchAndClick("Martinez, Cesar L.");
 
+        if (myBasePage.checkForElement(myDirectory.allowWhileUsingApp)) {
+            myDirectory.allowWhileUsingApp.click();
+        }
+
         Assert.assertTrue(myDirectory.directoryEdit.isDisplayed());
         myEditDirectory.editUserOpen();
 
