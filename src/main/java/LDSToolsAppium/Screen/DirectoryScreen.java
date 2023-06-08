@@ -50,7 +50,8 @@ public class DirectoryScreen extends BasePage {
     //Search Directory
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
     @AndroidFindBy(xpath = "//*[@text='Search']/../..")
-    @iOSXCUITFindBy(accessibility = "Search")
+//    @iOSXCUITFindBy(accessibility = "Search")
+    @iOSXCUITFindBy(iOSNsPredicate = "value == 'Search'")
     public  WebElement searchBar;
 
     //Clear Search
@@ -72,8 +73,8 @@ public class DirectoryScreen extends BasePage {
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterMenuImageButton")
     @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[2]")
     //@AndroidFindBy(xpath = "//*[@resource-id='filterMenuImageButton']")
-//    @iOSXCUITFindBy(accessibility = "Sort")
-    @iOSXCUITFindBy(accessibility = "Sort Options")
+    @iOSXCUITFindBy(accessibility = "Sort")
+//    @iOSXCUITFindBy(accessibility = "Sort Options")
     public  WebElement directorySort;
 
     //Households
@@ -283,7 +284,7 @@ public class DirectoryScreen extends BasePage {
         if (getOS().equals("ios")) {
 //            clickByCords(myUser);
             driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
-            driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
+//            driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
 //            driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
             //driver.findElement(By.xpath("//XCUIElementTypeCell/XCUIElementTypeStaticText[contains(@value, '" + myUser + "')]"));
         } else {
@@ -305,16 +306,17 @@ public class DirectoryScreen extends BasePage {
         BasePage myBase = new BasePage(driver);
         String tempMyUser = myUser.toLowerCase();
 
-        if (myBase.getOS().equalsIgnoreCase("ios")) {
-            myBase.scrollDownIOS();
-//            myBase.scrollUpIOS();
-//            System.out.println(myBase.getSourceOfPage());
-        }
+//        if (myBase.getOS().equalsIgnoreCase("ios")) {
+//            myBase.scrollDownIOS();
+////            myBase.scrollUpIOS();
+////            System.out.println(myBase.getSourceOfPage());
+//        }
 
 
         if (myBase.getOS().equalsIgnoreCase("ios")) {
             myBase.waitForElementThenClick(directorySort);
             myBase.waitForElementThenClick(sortIndividual);
+            myBase.waitForElement(searchBar);
         }
 
         if (tempMyUser.contains("tools")) {
@@ -324,7 +326,9 @@ public class DirectoryScreen extends BasePage {
             searchBar.sendKeys(part2);
 //            searchBar.setValue(part2);
         } else {
+            Thread.sleep(500);
             searchBar.sendKeys(myUser);
+            Thread.sleep(1500);
 //            searchBar.setValue(myUser);
         }
         //Just for testing
