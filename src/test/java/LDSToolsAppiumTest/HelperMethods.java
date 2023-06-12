@@ -957,6 +957,10 @@ public class HelperMethods extends BaseDriver {
                     myBasePage.alertCancel.click();
                 }
 
+                if (myBasePage.checkForElement(myBasePage.dragHandle)) {
+                    myBasePage.dragHandleScrollAway();
+                }
+
                 if (myBasePage.checkForElement(myMenuScreen.directory)) {
                     myMenuScreen.directory.click();
                 }
