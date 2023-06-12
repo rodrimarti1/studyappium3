@@ -48,9 +48,11 @@ public class MeetinghousesScreenTest extends BaseDriver {
         Thread.sleep(4000);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMoreOptions);
+        } else {
+            myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMapTypes);
         }
 //        System.out.println(myBasePage.getSourceOfPage());
-        myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMapTypes);
+
 
         Assert.assertTrue(myMeetinghouses.meetinghousesMapTypesRoad.isDisplayed());
         Assert.assertTrue(myMeetinghouses.meetinghousesMapTypesSatellite.isDisplayed());
@@ -88,8 +90,10 @@ public class MeetinghousesScreenTest extends BaseDriver {
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMoreOptions);
+        } else {
+            myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMapTypes);
         }
-        myBasePage.waitForElementThenClick(myMeetinghouses.meetinghousesMapTypes);
+
         myBasePage.waitForElementThenClick(mapElement);
         Thread.sleep(2000);
         pageSource = myBasePage.getSourceOfPage();
