@@ -96,11 +96,11 @@ public class MeetinghousesScreen extends BasePage {
 
 
     //Search Button - Android only
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_map_search")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']")
     public WebElement meetinghousesSearchButton;
 
     //Search Text Field
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/search_src_text")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']/..")
     @iOSXCUITFindBy(accessibility = "Search")
     public WebElement meetinghousesSearchField;
 
