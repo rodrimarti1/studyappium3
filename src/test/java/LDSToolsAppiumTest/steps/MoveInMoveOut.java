@@ -94,6 +94,9 @@ public class MoveInMoveOut extends BaseDriver {
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsStateOrProvince));
         Assert.assertTrue(myBasePage.checkForElement(myReports.moveRecordsPostalCode));
         //Select
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.newScrollUp();
+        }
         myBasePage.waitForElementThenClick(myReports.moveRecordsAddressSelector);
         myBasePage.waitForElementThenClick(myReports.moveRecordsAddressUnchanging);
         myBasePage.waitForElementThenClick(myReports.moveRecordsNext);

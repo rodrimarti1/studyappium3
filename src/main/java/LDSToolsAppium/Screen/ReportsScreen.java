@@ -739,7 +739,7 @@ public class ReportsScreen extends BasePage {
     // **************************************** Move In and Out ****************************************
     //Main Move in and out page
     //In Tab
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Move record in'][1]")
+    @AndroidFindBy(xpath = "(//android.view.View[@content-desc='Move record in'])[2]")
     @iOSXCUITFindBy(accessibility = "In")
     public  WebElement moveRecordsInTab;
 
@@ -816,12 +816,12 @@ public class ReportsScreen extends BasePage {
 
 
     //Next
-    @AndroidFindBy(xpath = "//*[@text='NEXT']")
+    @AndroidFindBy(xpath = "//*[@text='Next']")
     @iOSXCUITFindBy(accessibility = "Next")
     public  WebElement moveRecordsNext;
 
     //Address Selector
-    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Dropdown menu']/android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Dropdown menu']")
     @iOSXCUITFindBy(iOSNsPredicate = "label == 'Address, Address Known'")
     public  WebElement moveRecordsAddressSelector;
 
@@ -841,7 +841,7 @@ public class ReportsScreen extends BasePage {
         public  WebElement moveRecordsJoiningAHousehold;
 
     //Locate On Map
-    @AndroidFindBy(xpath = "//*[@text='LOCATE ON MAP']")
+    @AndroidFindBy(xpath = "//*[@text='Locate on Map']")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Locate on Map' AND type == 'XCUIElementTypeButton'")
     public  WebElement moveRecordsLocateOnMap;
 
@@ -875,7 +875,7 @@ public class ReportsScreen extends BasePage {
 
 
     //Move Records In
-    @AndroidFindBy(xpath = "//*[@text='MOVE RECORDS IN']")
+    @AndroidFindBy(xpath = "//*[@text='Move Records In']")
     @iOSXCUITFindBy(accessibility = "Move In")
     public  WebElement moveRecordsMoveRecordsIn;
 
@@ -885,7 +885,7 @@ public class ReportsScreen extends BasePage {
     public  WebElement moveRecordsDiscardMove;
 
     //Discard Button
-    @AndroidFindBy(xpath = "//*[@text='DISCARD']")
+    @AndroidFindBy(xpath = "//*[@text='Discard']")
     @iOSXCUITFindBy(accessibility = "OK")
     public  WebElement moveRecordsDiscardButton;
 
