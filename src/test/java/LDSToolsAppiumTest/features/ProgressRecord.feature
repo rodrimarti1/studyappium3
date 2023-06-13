@@ -1,18 +1,18 @@
 @ProgressRecord
   Feature: Progress Record tests - Used to be Missionary Progress Record
 
-    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4
+    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4 @jft
     Scenario Outline: SMOKE as a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
       Then the <memberRecord> will be displayed
       And the members record <can> be edited
       Examples:
-        | leader   | memberRecord          | can    |
-        | "BISHOP" | "Chaney, Dustin John" | "true" |
+        | leader   | memberRecord       | can    |
+        | "BISHOP" | "Forred, Kingston" | "true" |
 
 
-    @MQA-3193 @MQA-2225 @all @all3 @all @daily @daily3 @jft
+    @MQA-3193 @MQA-2225 @all @all3 @all @daily @daily3
     Scenario Outline: As a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
@@ -20,10 +20,10 @@
       And the members record <can> be edited
       Examples:
         | leader                     | memberRecord          | can     |
-        | "BISHOP"                   | "Chaney, Dustin John" | "true"  |
-        | "ELDERS_QUORUM_PRESIDENT"  | "Chaney, Dustin John" | "true"  |
-        | "RELIEF_SOCIETY_PRESIDENT" | "Chaney, Dustin John" | "true"  |
-        | "YOUNG_WOMEN_PRESIDENT"    | "Chaney, Dustin John" | "false" |
+        | "BISHOP"                   | "Forred, Kingston" | "true"  |
+        | "ELDERS_QUORUM_PRESIDENT"  | "Forred, Kingston" | "true"  |
+        | "RELIEF_SOCIETY_PRESIDENT" | "Forred, Kingston" | "true"  |
+        | "YOUNG_WOMEN_PRESIDENT"    | "Forred, Kingston" | "false" |
 #        | "YOUNG_WOMEN_SECOND_COUNSELOR"    | "Chaney, Dustin John"   | "false" |
 #        | "SUNDAY_SCHOOL_PRESIDENT"         | "Chaney, Destin John"    | "false" |
 #        | "SUNDAY_SCHOOL_FIRST_COUNSELOR"   | "Chaney, Destin John"    | "false" |
