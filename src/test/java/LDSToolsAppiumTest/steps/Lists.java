@@ -123,7 +123,8 @@ public class Lists extends BaseDriver  {
         pageSource = myBasePage.getSourceOfPage();
         Assert.assertTrue(myBasePage.checkNoCaseList("barker", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("susan", pageSource, "Contains"));
-        myBasePage.backButton.click();
+//        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
         Thread.sleep(2000);
 
         //Delete the List

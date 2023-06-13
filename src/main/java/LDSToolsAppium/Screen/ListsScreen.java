@@ -95,7 +95,8 @@ public class ListsScreen extends BasePage {
     public WebElement listsSearch;
 
     //Back button after adding user
-    @AndroidFindBy(xpath = "//android.widget.ImageButton")
+//    @AndroidFindBy(xpath = "//android.widget.ImageButton")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Navigate up\"]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeNavigationBar/XCUIElementTypeButton")
     public WebElement listsBackButton;
 
@@ -280,6 +281,8 @@ public class ListsScreen extends BasePage {
         if (getOS().equals("ios")) {
             listNumber = driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myListName + "']/following-sibling::XCUIElementTypeStaticText")).getAttribute("name").toString();
         } else {
+//            listNumber = driver.get().findElement(By.xpath("//android.widget.TextView[@text='"+ myListName + "']/following-sibling::android.widget.TextView")).getAttribute("text").toString();
+            Thread.sleep(1000);
             listNumber = driver.get().findElement(By.xpath("//android.widget.TextView[@text='"+ myListName + "']/following-sibling::android.widget.TextView")).getAttribute("text").toString();
             if (listNumber.contains("people")) {
                 listNumber = listNumber.replace(" people", "");

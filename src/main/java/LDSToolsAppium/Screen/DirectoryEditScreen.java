@@ -81,7 +81,7 @@ public class DirectoryEditScreen extends BasePage {
 
 
     //Save Button
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_save")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Save\"]/..")
     @iOSXCUITFindBy(iOSNsPredicate = "name == 'Save'")
     public WebElement menuSave;
 

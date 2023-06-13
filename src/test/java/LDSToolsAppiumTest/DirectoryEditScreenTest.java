@@ -72,7 +72,8 @@ public class DirectoryEditScreenTest extends BaseDriver {
         } else {
             myEditDirectory.directoryPrivacyTab.click();
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(pageSource.contains("Image"));
+//            Assert.assertTrue(pageSource.contains("Image"));
+            Assert.assertTrue(pageSource.contains("Photo"));
             Assert.assertTrue(pageSource.contains("Phone"));
             Assert.assertTrue(pageSource.contains("Email"));
 //            myEditDirectory.visiblityCancel.click();
