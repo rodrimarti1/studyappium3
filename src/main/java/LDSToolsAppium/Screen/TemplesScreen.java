@@ -158,32 +158,34 @@ public class TemplesScreen extends BasePage {
     public WebElement prayerRollButton;
 
     //Prayer Roll 1st Name Field
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+//    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[5]")
     public WebElement prayerRoll1stName;
 
     //Prayer Roll 2nd Name Field
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout[2]/android.widget.FrameLayout/android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText[2]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[1]")
     public WebElement prayerRoll2ndName;
 
     //Prayer Roll 3rd Name Field
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout[3]/android.widget.FrameLayout/android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText[3]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[2]")
     public WebElement prayerRoll3rdName;
 
     //Prayer Roll 4th Name Field
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout[4]/android.widget.FrameLayout/android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText[4]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[3]")
     public WebElement prayerRoll4thName;
 
     //Prayer Roll 5th Name Field
-    @AndroidFindBy(xpath = "//android.widget.LinearLayout[1]/android.widget.FrameLayout/android.widget.EditText")
+    @AndroidFindBy(xpath = "//android.widget.EditText[5]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField[5]")
     public WebElement prayerRoll5thName;
 
     //Prayer Roll Submit Names
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/submitButton")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/submitButton")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Submit Names']/following-sibling::android.widget.Button")
     @iOSXCUITFindBy(accessibility = "Submit Names")
     public WebElement prayerRollSubmitNames;
 
