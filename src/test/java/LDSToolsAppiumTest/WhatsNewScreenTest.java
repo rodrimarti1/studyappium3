@@ -37,7 +37,8 @@ public class WhatsNewScreenTest extends BaseDriver {
             myHelper.enterPinKeepWhatsNew("1", "1", "3", "3");
             Thread.sleep(2000);
             whatsNewListCheck();
-            myBasePage.waitForElementThenClick(myWhatsNew.whatsNewDone);
+//            myBasePage.waitForElementThenClick(myWhatsNew.whatsNewDone);
+            myBasePage.dragHandleScrollAway();
         }
     }
 
@@ -48,16 +49,15 @@ public class WhatsNewScreenTest extends BaseDriver {
         pageSource = myBasePage.getSourceOfPage();
 
         Assert.assertTrue(myBasePage.checkNoCaseList("What's New", pageSource, "Contains"));
-        //4.8.0
-        Assert.assertTrue(myBasePage.checkNoCaseList("New Sign-In Experience", pageSource, "Contains"));
-        //4.7.x
-        Assert.assertTrue(myBasePage.checkNoCaseList("Submit the Quarterly Report", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("View Quorum and Class Lists", pageSource, "Contains"));
         //4.9.0
+        Assert.assertTrue(myBasePage.checkNoCaseList("Updated Look and Feel", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Improved Member Referral Experience", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Expenses", pageSource, "Contains"));
 
+
         //Should not be displayed
-        //4.6.x
+        Assert.assertFalse(myBasePage.checkNoCaseList("Submit the Quarterly Report", pageSource, "Contains"));
+        Assert.assertFalse(myBasePage.checkNoCaseList("View Quorum and Class Lists", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Recording Quorum and Class Visitors", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Manage Records", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Schedule a Temple Appointment", pageSource, "Contains"));
