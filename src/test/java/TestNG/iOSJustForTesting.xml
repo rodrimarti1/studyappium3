@@ -22,7 +22,7 @@
         </groups>
 
         <classes>
-            <class name="LDSToolsAppiumTest.DirectoryScreenTest"/>
+            <class name="LDSToolsAppiumTest.ReportsScreenTest"/>
 
         </classes>
     </test> <!-- iOS Just For Testing test -->

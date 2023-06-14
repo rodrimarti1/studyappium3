@@ -686,6 +686,11 @@ public class ReportsScreenTest extends BaseDriver {
                 myBasePage.newScrollDownSlow();
                 pageSource = pageSource + myBasePage.getSourceOfPage();
             }
+        } else {
+            for (int x = 1 ; x < 6 ; x++) {
+                myBasePage.scrollDownIOS();
+                pageSource = pageSource + myBasePage.getSourceOfPage();
+            }
         }
 
 //        System.out.println(pageSource);
