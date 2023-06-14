@@ -15,7 +15,7 @@
         <parameter name="systemPort" value="8555" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.MoveInMoveOutRunner"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.OktaLoginRunner"> </class>
         </classes>
     </test >
 
