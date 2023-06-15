@@ -326,7 +326,7 @@ public class DirectoryScreen extends BasePage {
             searchBar.sendKeys(part2);
 //            searchBar.setValue(part2);
         } else {
-            Thread.sleep(500);
+            Thread.sleep(1500);
             searchBar.sendKeys(myUser);
             Thread.sleep(1500);
 //            searchBar.setValue(myUser);
@@ -335,6 +335,7 @@ public class DirectoryScreen extends BasePage {
         Thread.sleep(2000);
 //        System.out.println(getSourceOfPage());
         clickDirectoryUser(myUser);
+        Thread.sleep(2000);
 
     }
 
