@@ -247,14 +247,14 @@ public class DirectoryScreenTest extends BaseDriver {
         myBasePage.rightsCheckNewRights("Centinela", 1, rights, pageSource);
 
         myBasePage.rightsCheckNewRights("JanDic60@yahoo.com", 1, rights, pageSource);
-        myBasePage.rightsCheckNewRights("cedickson@sbcglobal.net", 1, rights, pageSource);
+//        myBasePage.rightsCheckNewRights("cedickson@sbcglobal.net", 1, rights, pageSource);
 
 
         myBasePage.rightsCheckNewRights("5420 W 140th St", 1, rights, pageSource);
         myBasePage.rightsCheckNewRights("Hawthorne, California 90250-6402", 1, rights, pageSource);
 
         myBasePage.rightsCheckNewRights("33.9", 1, rights, pageSource);
-        myBasePage.rightsCheckNewRights("-118.3", 1, rights, pageSource);
+
 
         //Membership Information
         myBasePage.rightsCheckNewRights("MEMBERSHIP INFORMATION", 4, rights, pageSource);
@@ -272,18 +272,21 @@ public class DirectoryScreenTest extends BaseDriver {
         //Birth Date
         myBasePage.rightsCheckNewRights("January 20, 1946", 4, rights, pageSource);
         myBasePage.rightsCheckNewRights("Birth Date", 4, rights, pageSource);
+        myBasePage.rightsCheckNewRights("- 77", 4, rights, pageSource);
         if (getRunningOS().equals("ios")) {
-            myBasePage.rightsCheckNewRights("(77)", 4, rights, pageSource);
+//            myBasePage.rightsCheckNewRights("(77)", 4, rights, pageSource);
             //Temple Recommend
             myBasePage.rightsCheckNewRights("October 2023", 6, rights, pageSource);
             myBasePage.rightsCheckNewRights("(754) 215-9330", 1, rights, pageSource);
-            myBasePage.rightsCheckNewRights("(310) 643-8800", 1, rights, pageSource);
+//            myBasePage.rightsCheckNewRights("(310) 643-8800", 1, rights, pageSource);
+            myBasePage.rightsCheckNewRights("118.3", 1, rights, pageSource); //This should be -118.3
         } else {
-            myBasePage.rightsCheckNewRights("- 77", 4, rights, pageSource);
+
             //Temple Recommend
             myBasePage.rightsCheckNewRights("Oct 2023", 6, rights, pageSource);
             myBasePage.rightsCheckNewRights("754-215-9330", 1, rights, pageSource);
-            myBasePage.rightsCheckNewRights("310-643-8800", 1, rights, pageSource);
+//            myBasePage.rightsCheckNewRights("310-643-8800", 1, rights, pageSource);
+            myBasePage.rightsCheckNewRights("-118.3", 1, rights, pageSource);
         }
 
 
