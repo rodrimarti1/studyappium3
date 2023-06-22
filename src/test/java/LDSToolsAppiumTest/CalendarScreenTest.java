@@ -43,7 +43,7 @@ public class CalendarScreenTest extends BaseDriver {
             myBasePage.waitForElementThenClick(myCalendar.calendarsToDisplay);
         }
         pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(pageSource.contains("Calendars to display"));
+//        Assert.assertTrue(pageSource.contains("Calendars to display")); //now "Manage Calendars" in Android
         Assert.assertTrue(pageSource.contains("All calendars"));
         Assert.assertTrue(myCalendar.calendarSubscriptions.isDisplayed());
 

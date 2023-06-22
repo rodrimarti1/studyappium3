@@ -45,7 +45,7 @@ public class CalendarsScreen extends BasePage {
 
 
     //Calendars to display
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Calendars to display']")
+    @AndroidFindBy(xpath = "//*[@text='Manage Calendars']")
     public WebElement calendarsToDisplay;
 
 
