@@ -42,7 +42,8 @@ public class DirectoryScreen extends BasePage {
 //    @AndroidFindBy(xpath = "//android.view.ViewGroup[@resouce-id='ab_toolbar']/android.widget.TextView[2]")
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
     @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[1]" )
-    @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
+//    @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]/XCUIElementTypeButton")
     public WebElement unitSelected;
 
 
@@ -326,7 +327,7 @@ public class DirectoryScreen extends BasePage {
             searchBar.sendKeys(part2);
 //            searchBar.setValue(part2);
         } else {
-            Thread.sleep(1500);
+            Thread.sleep(4000);
             searchBar.sendKeys(myUser);
             Thread.sleep(1500);
 //            searchBar.setValue(myUser);
@@ -664,6 +665,7 @@ public class DirectoryScreen extends BasePage {
         MissionaryScreen myMissionary = new MissionaryScreen(driver);
 
         //Choose different Unit
+        Thread.sleep(2000);
         unitSelected.click();
         Thread.sleep(2000);
         if (myBase.getOS().equalsIgnoreCase("ios")) {
