@@ -212,7 +212,7 @@ public class TemplesScreenTest extends BaseDriver {
             myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
         }
 
-//        Thread.sleep(12000);
+        Thread.sleep(12000);
 //        pageSource = myBasePage.getSourceOfPage();
 
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
