@@ -13,7 +13,7 @@
         <parameter name="systemPort" value="8251" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.MissionLeaderDirectory"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.ListsRunner"> </class>
         </classes>
     </test>
 </suite>
