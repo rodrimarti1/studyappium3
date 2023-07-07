@@ -162,7 +162,9 @@ public class MissionaryScreen extends BasePage {
     //*********** Tool Bar **************
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow")
     @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[1]")
-    @iOSXCUITFindBy(accessibility = "Missionary")
+//    @iOSXCUITFindBy(accessibility = "Missionary")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]/XCUIElementTypeButton")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]//XCUIElementTypeStaticText")
     public WebElement unitSelector;
 
 
