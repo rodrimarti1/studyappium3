@@ -40,7 +40,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     Response householdAPI = null;
 //    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"; //OLD
-    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/"; //NEW
+    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/";
+//    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v5/"; //NEW
 //    String baseURL;
 
     String username = "testuser";

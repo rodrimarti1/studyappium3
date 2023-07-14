@@ -693,7 +693,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4"})
     public void companionshipsElders_BISHOP() throws Exception {
         companionshipsEldersSub("BISHOP");
     }
@@ -900,7 +900,7 @@ public class MinisteringScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all1", "all", "daily", "daily1" })
+    @Test (groups = {"all1", "all", "daily", "daily1", "jft"})
     public void unassignedSisters_BISHOP() throws Exception {
         unassignedSistersSub("BISHOP");
     }
