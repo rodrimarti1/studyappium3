@@ -286,8 +286,8 @@ public class DirectoryScreen extends BasePage {
 //            clickByCords(myUser);
 //            System.out.println(getSourceOfPage());
 //            driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
-//            driver.get().findElement(By.xpath("//XCUIElementTypeButton[@name='" + myUser + "']")).click();
-            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
+            driver.get().findElement(By.xpath("//XCUIElementTypeButton[@name='" + myUser + "']")).click();
+//            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
 //            driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
 //            driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
             //driver.findElement(By.xpath("//XCUIElementTypeCell/XCUIElementTypeStaticText[contains(@value, '" + myUser + "')]"));
