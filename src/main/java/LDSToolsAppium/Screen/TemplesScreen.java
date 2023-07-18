@@ -226,8 +226,10 @@ public class TemplesScreen extends BasePage {
                 }
                 myBasePage.waitForElementThenClick(myLoginPage.developerButton);
             }
+            Thread.sleep(500);
             //Set the Temple Recommend Status
             if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+//                System.out.println(myBasePage.getSourceOfPage());
                 myBasePage.scrollDownToTextIOS("Set Recommend Status");
             }
             myBasePage.waitForElementThenClick(mySettings.templeRecommendStatus);
@@ -240,7 +242,9 @@ public class TemplesScreen extends BasePage {
             myBasePage.waitForElementThenClick(mySettings.alertOKEnter);
             myBasePage.waitForElementThenClick(myBasePage.backButton);
             Thread.sleep(1000);
-            myBasePage.waitForElementThenClick(myBasePage.backButton);
+            if (myBasePage.getOS().equalsIgnoreCase("android")) {
+                myBasePage.waitForElementThenClick(myBasePage.backButton);
+            }
             //Open Settings
             Thread.sleep(2000);
             myMenu.selectMenu(myMenu.settings);
