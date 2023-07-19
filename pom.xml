@@ -117,17 +117,17 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
-            <version>4.9.1</version>
+            <version>4.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>4.9.1</version>
+            <version>4.10.0</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>
-            <version>4.9.1</version>
+            <version>4.10.0</version>
         </dependency>
 
         <dependency>
@@ -176,12 +176,12 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
-            <version>4.9.1</version>
+            <version>4.10.0</version>
         </dependency>
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.3.2</version>
+            <version>5.4.0</version>
         </dependency>
 
 
@@ -192,8 +192,8 @@
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-devtools-v110</artifactId>
-            <version>4.8.1</version>
+            <artifactId>selenium-devtools-v111</artifactId>
+            <version>4.9.1</version>
         </dependency>
 
 
