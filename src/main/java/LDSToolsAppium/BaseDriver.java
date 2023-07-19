@@ -535,7 +535,8 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
 
             androidAppPackage = myAppPackage;
 
-            capabilities.setCapability("deviceName", testDevice);
+//            capabilities.setCapability("deviceName", testDevice);
+            capabilities.setCapability("appium:deviceName", testDevice);
             capabilities.setCapability("udid", testDevice);
             capabilities.setCapability("platformName", "android");
             capabilities.setCapability("automationName","uiautomator2");
