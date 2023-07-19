@@ -85,7 +85,8 @@ public class DirectoryScreen extends BasePage {
     public  WebElement sortHousehold;
 
     //Individuals
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Individuals']")
+//    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Individuals']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Name']")
     @iOSXCUITFindBy(xpath = "//*[contains(@name, \"Name\")]")
     public  WebElement sortIndividual;
 
@@ -311,14 +312,15 @@ public class DirectoryScreen extends BasePage {
         BasePage myBase = new BasePage(driver);
         String tempMyUser = myUser.toLowerCase();
 
-//        if (myBase.getOS().equalsIgnoreCase("ios")) {
-//            myBase.scrollDownIOS();
-////            myBase.scrollUpIOS();
-////            System.out.println(myBase.getSourceOfPage());
-//        }
 
 
         if (myBase.getOS().equalsIgnoreCase("ios")) {
+            myBase.waitForElementThenClick(directorySort);
+            Thread.sleep(500);
+            myBase.waitForElementThenClick(sortIndividual);
+            myBase.waitForElement(searchBar);
+        } else {
+//            System.out.println(myBase.getSourceOfPage());
             myBase.waitForElementThenClick(directorySort);
             Thread.sleep(500);
             myBase.waitForElementThenClick(sortIndividual);
@@ -478,11 +480,18 @@ public class DirectoryScreen extends BasePage {
             Thread.sleep(1000);
             pageSource = pageSource + getSourceOfPage();
 
+            myCheck = checkForElement(tabCallings);
+            if (myCheck) {
+                tabCallings.click();
+                Thread.sleep(1000);
+                pageSource = pageSource + getSourceOfPage();
+            }
+
             myCheck = checkForElement(tabMembership);
             if (myCheck) {
                 //I don't know why this is here twice.
                 tabMembership.click();
-                tabMembership.click();
+//                tabMembership.click();
 
                 myBasePage.newScrollUp();
                 for (int myCounter = 1; myCounter <= 8 ; myCounter++) {
@@ -494,12 +503,6 @@ public class DirectoryScreen extends BasePage {
                 }
             }
 
-            myCheck = checkForElement(tabCallings);
-            if (myCheck) {
-                tabCallings.click();
-                Thread.sleep(1000);
-                pageSource = pageSource + getSourceOfPage();
-            }
 
             myCheck = checkForElement(tabHTVT);
             if (myCheck) {
