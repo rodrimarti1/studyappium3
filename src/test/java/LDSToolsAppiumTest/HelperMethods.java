@@ -318,9 +318,10 @@ public class HelperMethods extends BaseDriver {
             if (pageSource.contains("Never")) {
                 driver.get().findElement(By.xpath("//*[@text='Never']")).click();
             }
-            myBasePage.waitUnitlTextIsGone("Refresh Data");
-            Thread.sleep(1000);
-            myBasePage.waitUnitlTextIsGone("Refresh Data");
+            myBasePage.waitForText("Choose your PIN");
+//            myBasePage.waitUnitlTextIsGone("Refresh Data");
+//            Thread.sleep(1000);
+//            myBasePage.waitUnitlTextIsGone("Refresh Data");
         }
 
         long endTime = System.nanoTime();
