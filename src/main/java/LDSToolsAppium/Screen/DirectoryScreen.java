@@ -412,22 +412,21 @@ public class DirectoryScreen extends BasePage {
 
         String pageSource = null;
         if (getOS().equals("ios")) {
-//            scrollDownIOS();
+            //Contact Tab
+            Thread.sleep(1000);
+            pageSource = pageSource + getSourceOfPage();
             swipeUpIOS();
+            pageSource = pageSource + getSourceOfPage();
+
+
+//            scrollDownIOS();
+
             Thread.sleep(1000);
             boolean checkForLabel;
 
             checkForLabel = checkForElement(householdMembers);
             if (checkForLabel) {
                householdMembers.click();
-                pageSource = pageSource + getSourceOfPage();
-                myBasePage.backButton.click();
-                checkForLabel = false;
-            }
-
-            checkForLabel = checkForElement(htvt);
-            if (checkForLabel) {
-                htvt.click();
                 pageSource = pageSource + getSourceOfPage();
                 myBasePage.backButton.click();
                 checkForLabel = false;
@@ -441,7 +440,7 @@ public class DirectoryScreen extends BasePage {
                 checkForLabel = false;
             }
 
-            scrollDownIOS();
+//            scrollDownIOS();
 //            System.out.println(myBasePage.getSourceOfPage());
             checkForLabel = checkForElement(memebershipInformation);
             if (checkForLabel) {
@@ -455,12 +454,18 @@ public class DirectoryScreen extends BasePage {
                 checkForLabel = false;
             }
 
-            //Contact Tab
-            Thread.sleep(1000);
-            pageSource = pageSource + getSourceOfPage();
-            scrollDownIOS();
+            checkForLabel = checkForElement(htvt);
+            if (checkForLabel) {
+                htvt.click();
+                pageSource = pageSource + getSourceOfPage();
+                myBasePage.backButton.click();
+                checkForLabel = false;
+            }
 
-            pageSource = pageSource + getSourceOfPage();
+
+
+
+
         } else {
             boolean myCheck;
 

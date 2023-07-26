@@ -49,8 +49,8 @@ public class MenuScreen extends BasePage {
     public  WebElement manageRecord;
 
     //Lists
-    @AndroidFindBy(xpath = "//*[@text='Lists']")
-    @iOSXCUITFindBy(iOSNsPredicate = "name == 'Lists'")
+    @AndroidFindBy(xpath = "//*[@text='Groups']")
+    @iOSXCUITFindBy(iOSNsPredicate = "name == 'Groups'")
     public  WebElement lists;
 
     //Missionary
