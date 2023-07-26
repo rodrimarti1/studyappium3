@@ -16,7 +16,7 @@ import java.util.List;
 public class MinisteringScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"})
     public void ministeringScreenCheck() throws Exception {
         String pageSource;
         List<String> memberList = new ArrayList<String>();
@@ -817,7 +817,7 @@ public class MinisteringScreenTest extends BaseDriver {
             myMinistering.selectDistrict("EQ President");
             Thread.sleep(2000);
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Gardner", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Thomas", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Darth", pageSource, "Contains"));
 
             myBasePage.backAltButton.click();
@@ -900,7 +900,7 @@ public class MinisteringScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all1", "all", "daily", "daily1", "jft"})
+    @Test (groups = {"all1", "all", "daily", "daily1"})
     public void unassignedSisters_BISHOP() throws Exception {
         unassignedSistersSub("BISHOP");
     }
