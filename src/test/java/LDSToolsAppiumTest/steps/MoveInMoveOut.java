@@ -107,7 +107,7 @@ public class MoveInMoveOut extends BaseDriver {
             Assert.assertTrue(pageSource.contains("ADDRESS UNCHANGING"));
         } else {
             Assert.assertTrue(pageSource.contains("000-0417-9234"));
-            Assert.assertTrue(pageSource.contains("Male - 43"));
+            Assert.assertTrue(pageSource.contains("Male - 44"));
             Assert.assertTrue(pageSource.contains("Head of Household"));
             Assert.assertTrue(pageSource.contains("Address will remain the same after the move"));
         }
