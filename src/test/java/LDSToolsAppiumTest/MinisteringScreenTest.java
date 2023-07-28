@@ -16,7 +16,7 @@ import java.util.List;
 public class MinisteringScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke4", "daily", "daily4", "jft"}, invocationCount = 10)
     public void ministeringScreenCheck() throws Exception {
         String pageSource;
         List<String> memberList = new ArrayList<String>();
