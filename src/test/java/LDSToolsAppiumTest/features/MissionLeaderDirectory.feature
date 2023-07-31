@@ -22,7 +22,7 @@
     When they check their Mission under Directory
     Then they should see a list of their missionaries
 
-  @MQA-5397 @MQA-2223 @all @all1 @daily @daily1 @jft
+  @MQA-5397 @MQA-2223 @all @all1 @daily @daily1
   Scenario: Mission President contacts missionary
     Given a member "kumfy" logs in
     When they select a missionary under their mission
@@ -42,7 +42,7 @@
     Then the Returned Missionary info should be marked private
 
 
-  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1
+  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1 @jft @jft
   Scenario: Returned Missionary add and remove Mission President access
     Given a returned missionary logs in and Mission Leader is turned off
     When a member "tdlarkin" logs in

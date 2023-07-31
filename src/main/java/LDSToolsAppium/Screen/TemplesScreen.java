@@ -191,7 +191,8 @@ public class TemplesScreen extends BasePage {
 
     //Prayer Roll Cancel Button
 //    @AndroidFindBy(accessibility = "Navigate up")
-    @AndroidFindBy(xpath = "//android.widget.ImageButton")
+//    @AndroidFindBy(xpath = "//android.widget.ImageButton")
+    @AndroidFindBy(xpath = "//*[@content-desc='Navigate up']")
     @iOSXCUITFindBy(accessibility = "Back")
     public WebElement prayerRollCancelButton;
 

@@ -29,7 +29,7 @@
 
 
 
-    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2
+    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2 @jft
     Scenario: As a Bishopric member I should be able to mark a members attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When week one is marked attended
@@ -49,7 +49,7 @@
       When a member record is selected
       Then the individual attendance should be displayed
 
-    @MQA-3522 @all @all1 @daily @daily1 @jft
+    @MQA-3522 @all @all1 @daily @daily1
     Scenario Outline: As a leader I should be able to search for members in Class and Quorum Attendance
       Given a <leader> logs in and is on the Class and Quorum Attendance page
       When a <memberRecordElder> is searched for

@@ -120,6 +120,11 @@ public class PrayerRoll extends BaseDriver {
     @When("the member enters in five names then cancels")
     public void theMemberEntersInFiveNamesThenCancels() throws Exception  {
         LOGGER.info("the member enters in five names then cancels");
+        myTemple.prayerRoll1stName.sendKeys("Test One");
+        myTemple.prayerRoll2ndName.sendKeys("Test Two");
+        myTemple.prayerRoll3rdName.sendKeys("Test Three");
+        myTemple.prayerRoll4thName.sendKeys("Test Four");
+        myTemple.prayerRoll5thName.sendKeys("Test Five");
 //        System.out.println(myBasePage.getSourceOfPage());
         myTemple.prayerRollCancelButton.click();
     }

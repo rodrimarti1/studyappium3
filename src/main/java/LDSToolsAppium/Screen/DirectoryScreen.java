@@ -688,6 +688,7 @@ public class DirectoryScreen extends BasePage {
         } else {
             myBase.newScrollUpUnitList();
             Thread.sleep(500);
+//            System.out.println(myBase.getSourceOfPage());
             driver.get().findElement(By.xpath("//*[contains(@text,'" + myUnit + "')]/../..")).click();
         }
 
