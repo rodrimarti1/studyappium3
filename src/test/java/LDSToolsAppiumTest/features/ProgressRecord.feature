@@ -19,7 +19,7 @@
       Then the <memberRecord> will be displayed
       And the members record <can> be edited
 
-      @all @all3 @all @daily @daily3 @jft
+      @all @all3 @all @daily @daily3
       Examples:
         | leader                     | memberRecord       | can     |
         | "BISHOP"                   | "Forred, Kingston" | "true"  |
@@ -65,7 +65,7 @@
       Then the <memberRecord> for People Being Taught will be displayed
       And the members record for People Being Taught <can> be edited
 
-      @daily @daily1
+      @daily @daily1  @jft
       Examples:
         | leader                     | memberRecord   | can     |
         | "BISHOP"                   | "Erwin, Lacey" | "true"  |

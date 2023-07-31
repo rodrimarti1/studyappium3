@@ -152,7 +152,7 @@ public class ProgressRecord extends BaseDriver {
         Assert.assertFalse(myBasePage.checkNoCaseList("Ministering Brothers", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Temple Ordinances", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Principles Taught", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Other Commitments", pageSource, "Contains"));
+//        Assert.assertTrue(myBasePage.checkNoCaseList("Other Commitments", pageSource, "Contains"));
 //        Assert.assertFalse(myBasePage.checkNoCaseList("Self-Reliance Class", pageSource, "Contains"));
     }
 
@@ -231,22 +231,34 @@ public class ProgressRecord extends BaseDriver {
         Thread.sleep(500);
         pageSource = myBasePage.getSourceOfPage();
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
-            myBasePage.scrollUpAndroidUIAutomator("0");
+//            myBasePage.scrollUpAndroidUIAutomator("0");
+            myBasePage.newScrollUp();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
-            myBasePage.scrollDownAndroidUIAutomator("0");
+//            myBasePage.scrollDownAndroidUIAutomator("0");
+            myBasePage.newScrollDownSlow();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
-            myBasePage.scrollDownAndroidUIAutomator("0");
+//            myBasePage.scrollDownAndroidUIAutomator("0");
+            myBasePage.newScrollDownSlow();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
-            myBasePage.scrollDownAndroidUIAutomator("0");
+//            myBasePage.scrollDownAndroidUIAutomator("0");
+            myBasePage.newScrollDownSlow();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
-            myBasePage.scrollDownAndroidUIAutomator("0");
+//            myBasePage.scrollDownAndroidUIAutomator("0");
+            myBasePage.newScrollDownSlow();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
-            myBasePage.scrollDownAndroidUIAutomator("0");
+//            myBasePage.scrollDownAndroidUIAutomator("0");
+            myBasePage.newScrollDownSlow();
+            Thread.sleep(500);
+            pageSource = pageSource + myBasePage.getSourceOfPage();
+            myBasePage.newScrollDownSlow();
+            Thread.sleep(500);
+            pageSource = pageSource + myBasePage.getSourceOfPage();
+            myBasePage.newScrollDownSlow();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
         }

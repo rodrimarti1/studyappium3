@@ -434,7 +434,7 @@ public class ReportsScreen extends BasePage {
     public  WebElement prNewMembers;
 
     //People being taught
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='PEOPLE BEING TAUGHT']")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='People Being Taught']")
     @iOSXCUITFindBy(accessibility = "People Being Taught")
     public  WebElement prPeopleBeingTaught;
 
