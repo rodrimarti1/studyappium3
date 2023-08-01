@@ -274,13 +274,17 @@ public class ProgressRecord extends BaseDriver {
         //When they change to Compose this should work
 //        myDirectory.directoryDropdown.click();
 
+//        System.out.println(myBasePage.getSourceOfPage());
         myReports.prUnitSelected.click();
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             Thread.sleep(2000);
             driver.get().findElement(By.xpath("//*[contains(@name,'" + unit + "')]")).click();
         } else {
             Thread.sleep(2000);
-            driver.get().findElement(By.xpath("//*[contains(@text,'" + unit + "')]")).click();
+            myBasePage.newScrollUpUnitList();
+            Thread.sleep(500);
+//            System.out.println(myBasePage.getSourceOfPage());
+            driver.get().findElement(By.xpath("//*[contains(@text,'" + unit + "')]/..")).click();
 
             //When they change to Compose this should work
 //            myBasePage.newScrollUpUnitList();

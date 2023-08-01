@@ -451,7 +451,8 @@ public class ReportsScreen extends BasePage {
     public WebElement prClearSearch;
 
 
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View/android.widget.TextView" )
     @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.OneWorkView']//XCUIElementTypeStaticText[2]")
     public WebElement prUnitSelected;
 
