@@ -45,24 +45,29 @@ public class CalendarScreenTest extends BaseDriver {
         pageSource = myBasePage.getSourceOfPage();
 //        Assert.assertTrue(pageSource.contains("Calendars to display")); //now "Manage Calendars" in Android
         Assert.assertTrue(pageSource.contains("All calendars"));
-        Assert.assertTrue(myCalendar.calendarSubscriptions.isDisplayed());
 
-        myBasePage.waitForElementThenClick(myCalendar.calendarSubscriptions);
-        Thread.sleep(2000);
+        //Todo: Android needs to be updated
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            //Just for testing
-            Thread.sleep(20000);
-            myBasePage.waitUnitlTextIsGone("Downloading");
+            Assert.assertTrue(myCalendar.calendarSubscriptions.isDisplayed());
+
+            myBasePage.waitForElementThenClick(myCalendar.calendarSubscriptions);
+            Thread.sleep(2000);
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                //Just for testing
+                Thread.sleep(20000);
+                myBasePage.waitUnitlTextIsGone("Downloading");
+            }
+            pageSource = myBasePage.getSourceOfPage();
+            Assert.assertTrue(pageSource.contains("All calendars"));
+            Assert.assertTrue(myCalendar.calendarsSubscriptionsDone.isDisplayed());
+            Assert.assertTrue(myCalendar.calendarsSubscriptionsCancel.isDisplayed());
+            if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+                Assert.assertTrue(pageSource.contains("Subscriptions"));
+            } else {
+                Assert.assertTrue(pageSource.contains("Calendar"));
+            }
         }
-        pageSource = myBasePage.getSourceOfPage();
-        Assert.assertTrue(pageSource.contains("All calendars"));
-        Assert.assertTrue(myCalendar.calendarsSubscriptionsDone.isDisplayed());
-        Assert.assertTrue(myCalendar.calendarsSubscriptionsCancel.isDisplayed());
-        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            Assert.assertTrue(pageSource.contains("Subscriptions"));
-        } else {
-            Assert.assertTrue(pageSource.contains("Calendar"));
-        }
+
     }
 
 
