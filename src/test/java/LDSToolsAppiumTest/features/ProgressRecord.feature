@@ -44,7 +44,7 @@
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "Forred, Kingston" | "false" |
         | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "Forred, Kingston" | "false" |
 
-    @MQA-5157 @MQA-2225 @all @all3 @daily @daily3 @jft
+    @MQA-5157 @MQA-2225 @all @all3 @daily @daily3
     Scenario Outline: As a STAKE leader I should have access to the New Members under Progress Record
       Given a <leader> logs in to <unit>
       And is on the Progress Record page
@@ -89,15 +89,15 @@
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "Erwin, Lacey" | "false" |
         | "RELIEF_SOCIETY_SECOND_COUNSELOR" | "Erwin, Lacey" | "false" |
 
-    @MQA-5158 @MQA-2225 @all @all4 @daily @daily4
+    @MQA-5158 @MQA-2225 @all @all4 @daily @daily4 @jft
     Scenario Outline: As a STAKE leader I should have access to the People Being Taught under Progress Record
       Given a <leader> logs in selects a <unit> and is on the Progress Record Page
       When a <memberRecord> is selected under the People Being Taught tab
       Then the <memberRecord> for People Being Taught will be displayed
       And the members record for People Being Taught <can> be edited
       Examples:
-        | leader            | memberRecord     | can     | unit     |
-        | "STAKE_PRESIDENT" | "Sparks, Robert" | "false" | "Newton" |
+        | leader            | memberRecord | can     | unit     |
+        | "STAKE_PRESIDENT" | "Bamba, Moe" | "false" | "Newton" |
 #        | "STAKE_PRESIDENT_FIRST_COUNSELOR"  | "Corum, Will"      | "false" | "Newton"       |
 #        | "STAKE_PRESIDENT_SECOND_COUNSELOR" | "Cesar"            | "false" | "Hutchinson"   |
 #        | "STAKE_CLERK"                      | "Casas, Charlotte" | "false" | "Pratt"        |
