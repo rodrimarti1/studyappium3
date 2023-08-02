@@ -15,7 +15,7 @@ import java.util.List;
 
 public class TemplesScreenTest extends BaseDriver {
 
-    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily3", "jft"})
+    @Test (groups = {"all2", "all", "smoke", "smoke2", "daily", "daily3"})
     public void templeSimple() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -47,7 +47,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= {"all", "all1", "daily", "daily4"})
+    @Test (groups= {"all", "all1", "daily", "daily4", "jft"})
     public void templeRecommendReminder25Days() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -58,7 +58,7 @@ public class TemplesScreenTest extends BaseDriver {
         myHelper.proxyLogin("adambee");
         myHelper.enterPin("1", "1", "3", "3");
         //Bug making this wrong
-        myTemple.enableTempleRecommendReminder("25", mySettings.active, mySettings.temple4Weeks);
+        myTemple.enableTempleRecommendReminder("45", mySettings.active, mySettings.temple4Weeks);
         //Check the temple reminder
         Thread.sleep(6000);
         pageSource = myBasePage.getSourceOfPage();
