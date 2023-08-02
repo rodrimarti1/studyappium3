@@ -175,7 +175,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     //Broken in iOS for Proxy
     //https://jira.churchofjesuschrist.org/browse/MMIP-6476
-    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
+    @Test (groups= { "all", "all1", "daily", "daily2"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
@@ -324,6 +324,9 @@ public class TemplesScreenTest extends BaseDriver {
 //        myTemple.yesRemindMe.click();
         checkForTemplePopUps();
         myTemple.chooseDifferentTab(myTemple.allTab);
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
+        }
         Thread.sleep(8000);
 
         myTemple.searchTemple.sendKeys("Cedar City");
@@ -341,7 +344,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all4", "daily", "daily1"})
+    @Test (groups= { "all", "all4", "daily", "daily1", "jft"})
     public void templeSearchNewYork() throws Exception {
         String pageSource;
 
@@ -362,6 +365,9 @@ public class TemplesScreenTest extends BaseDriver {
         checkForTemplePopUps();
         Thread.sleep(2000);
         myTemple.chooseDifferentTab(myTemple.allTab);
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
+        }
         Thread.sleep(8000);
 
         myTemple.searchTemple.sendKeys("New York");
