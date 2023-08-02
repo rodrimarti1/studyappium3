@@ -47,7 +47,7 @@ public class TemplesScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups= {"all", "all1", "daily", "daily4", "jft"})
+    @Test (groups= {"all", "all1", "daily", "daily4"})
     public void templeRecommendReminder25Days() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
@@ -175,7 +175,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     //Broken in iOS for Proxy
     //https://jira.churchofjesuschrist.org/browse/MMIP-6476
-    @Test (groups= { "all", "all1", "daily", "daily2"})
+    @Test (groups= { "all", "all1", "daily", "daily2", "jft"})
     public void templeNearestTemples() throws Exception {
         String pageSource;
 
@@ -203,14 +203,21 @@ public class TemplesScreenTest extends BaseDriver {
             Thread.sleep(6000);
         }
         Thread.sleep(1000);
-        myTemple.chooseDifferentTab(myTemple.nearestTab);
-
-        if (!myBasePage.getOS().contains("ios")) {
-            myBasePage.waitForElementThenClick(myBasePage.alertOK);
-            myBasePage.waitForElementThenClick(myBasePage.allowButton);
+        if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+            myTemple.chooseDifferentTab(myTemple.nearestTab);
         } else {
-            myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
+            myTemple.chooseDifferentTab(myTemple.allTab);
         }
+
+
+//        if (!myBasePage.getOS().contains("ios")) {
+//            myBasePage.waitForElementThenClick(myBasePage.alertOK);
+//            myBasePage.waitForElementThenClick(myBasePage.allowButton);
+//        } else {
+//            myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
+//        }
+
+        myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
 
         Thread.sleep(12000);
 //        pageSource = myBasePage.getSourceOfPage();

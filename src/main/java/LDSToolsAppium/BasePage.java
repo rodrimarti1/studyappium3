@@ -116,7 +116,8 @@ public class BasePage extends BaseDriver {
 
 
     //Allow While Using App
-    @AndroidFindBy(xpath = "//*[@text=\"Allow only while using the app\"]")
+//    @AndroidFindBy(xpath = "//*[@text=\"Allow only while using the app\"]")
+    @AndroidFindBy(xpath = "//*[@text=\"While using the app\"]")
     @iOSXCUITFindBy(accessibility = "Allow While Using App")
     public WebElement allowWhileUsingApp;
 
