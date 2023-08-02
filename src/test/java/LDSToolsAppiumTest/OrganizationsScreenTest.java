@@ -21,7 +21,7 @@ import java.util.List;
 public class OrganizationsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3", "jft"})
+    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3"})
     public void organizationTest_BISHOP() throws Exception {
         organizationTestCheckSub("BISHOP");
     }
@@ -191,7 +191,7 @@ public class OrganizationsScreenTest extends BaseDriver {
         organizationStakeHighPriestQuorumCheckSub("MEMBER2");
     }
 
-    @Test(groups = {"all2", "all", "daily", "daily1"})
+    @Test(groups = {"all2", "all", "daily", "daily1", "jft"})
     public void organizationStakeHighPriestQuorum_ELDERS_QUORUM_PRESIDENT() throws Exception {
         organizationStakeHighPriestQuorumCheckSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -265,10 +265,12 @@ public class OrganizationsScreenTest extends BaseDriver {
         String pageSource;
 
         myMenu.selectMenu(myMenu.organizations);
-        myBasePage.waitForElementThenClick(myOrg.organizationsDropdown);
-        Thread.sleep(500);
-        myBasePage.waitForElementThenClick(myOrg.inglewoodStake);
-        Thread.sleep(500);
+//        myBasePage.waitForElementThenClick(myOrg.organizationsDropdown);
+//        Thread.sleep(500);
+//        myBasePage.waitForElementThenClick(myOrg.inglewoodStake);
+//        Thread.sleep(500);
+
+        chooseUnitOrganization("Inglewood");
         myBasePage.waitForElementThenClick(myOrg.highPriestsQuorumOrg);
         Thread.sleep(2000);
 
@@ -1005,6 +1007,23 @@ public class OrganizationsScreenTest extends BaseDriver {
 
 //        getOtherInfo(rights);
         //getHighPriestsGroupInfo(rights);
+
+    }
+
+    private void chooseUnitOrganization(String myUnit) throws Exception {
+        MissionaryScreen myMissionary = new MissionaryScreen(driver);
+        BasePage myBasePage = new BasePage(driver);
+
+        System.out.println(myBasePage.getSourceOfPage());
+        myMissionary.unitSelector.click();
+        Thread.sleep(2000);
+        if (getRunningOS().equalsIgnoreCase("ios")) {
+            driver.get().findElement(By.xpath("//*[contains(@name,'" + myUnit + "')]")).click();
+        } else {
+            myBasePage.newScrollUpUnitList();
+            Thread.sleep(1000);
+            driver.get().findElement(By.xpath("//*[contains(@text, '" + myUnit + "')]/../..")).click();
+        }
 
     }
 
