@@ -26,7 +26,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
 
 
-    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"smoke2", "smoke", "all2", "all", "daily", "daily4"})
     public void directoryScreenTest_BISHOP() throws Exception {
         directoryScreenSub("BISHOP");
     }
@@ -656,7 +656,7 @@ public class DirectoryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all2", "all", "daily", "daily3"})
+    @Test(groups = {"all2", "all", "daily", "daily3", "jft"})
     public void directoryLatLongNoGPS() throws Exception {
         String pageSource;
 
