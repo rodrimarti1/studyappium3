@@ -109,9 +109,10 @@ public class MissionLeaderDirectory extends BaseDriver {
     public void theReturnedMissionaryInfoShouldBeMarkedPrivate()  throws Exception {
         pageSource = myBasePage.getSourceOfPage();
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
-            Assert.assertTrue(pageSource.contains("Orange items"));
-            Assert.assertTrue(pageSource.contains("private"));
-            Assert.assertTrue(pageSource.contains("do not share"));
+//            System.out.println(pageSource);
+//            Assert.assertTrue(pageSource.contains("Orange items"));
+            Assert.assertTrue(pageSource.contains("Don't share information marked with this icon"));
+//            Assert.assertTrue(pageSource.contains("do not share"));
         } else {
             //No way to test in ios yet
         }

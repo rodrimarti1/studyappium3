@@ -16,7 +16,7 @@
     When they check their Mission under Directory
     Then they should see a list of their missionaries
 
-  @MQA-5400 @MQA-2223 @all @all4 @daily @daily4
+  @MQA-5401 @MQA-2223 @all @all4 @daily @daily4
   Scenario: Mission President companion (kumfyid) see all mission
     Given a member "kumfyid" logs in
     When they check their Mission under Directory
@@ -35,14 +35,14 @@
     Then the missionary opt in will be displayed
 
 
-  @MQA-5400 @MQA-2223 @all @all3 @daily @daily3
+  @MQA-5402 @MQA-2223 @all @all3 @daily @daily3
   Scenario: Mission President viewing a Return Missionary info marked private
     Given a member "kumfy" logs in
     When they select a missionary under their mission
     Then the Returned Missionary info should be marked private
 
 
-  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1 @jft @jft
+  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1 @jft
   Scenario: Returned Missionary add and remove Mission President access
     Given a returned missionary logs in and Mission Leader is turned off
     When a member "tdlarkin" logs in
