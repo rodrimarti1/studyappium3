@@ -340,7 +340,7 @@ public class Lists extends BaseDriver  {
 //        driver.get().rotate(ScreenOrientation.PORTRAIT);
         driver.get().setSetting("orientation","PORTRAIT");
         rotateMyMemberListCheck();
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         deleteListAPI();
 //        myLists.deleteAllLists();
@@ -361,7 +361,7 @@ public class Lists extends BaseDriver  {
         //Check the list members
         myLists.selectListName("New List Name");
         Thread.sleep(4000);
-        myBasePage.backButton.click();
+        myBasePage.backAltButton.click();
 
         deleteListAPI();
 //        myLists.deleteAllLists();

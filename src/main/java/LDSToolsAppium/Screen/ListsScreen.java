@@ -77,7 +77,8 @@ public class ListsScreen extends BasePage {
     //Into Lists - Android and iOS does this differently
 
     //Android - Edit List Name
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_edit_name")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/menu_item_edit_name")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc=\"Edit\"]/..")
     public WebElement listsEditName;
 
     //Android - Add member name text field
@@ -243,14 +244,15 @@ public class ListsScreen extends BasePage {
             selectListName(myListName);
             myBasePage.waitForElementThenClick(listsMoreOptions);
             myBasePage.waitForElementThenClick(listsMoreOptionsEdit);
+//            System.out.println(myBasePage.getSourceOfPage());
             myBasePage.waitForElementThenClick(listsEditName);
             listsName.clear();
             listsName.sendKeys(newName);
 //            System.out.println(getSourceOfPage());
             myBasePage.waitForElementThenClick(listsOk);
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
             Thread.sleep(2000);
-            myBasePage.backButton.click();
+            myBasePage.backAltButton.click();
         }
     }
 
