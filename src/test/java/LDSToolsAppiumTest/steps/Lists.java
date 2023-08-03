@@ -463,7 +463,7 @@ public class Lists extends BaseDriver  {
         Assert.assertTrue(myBase.checkNoCaseList("John", pageSource, "Contains"));
         Assert.assertTrue(myBase.checkNoCaseList("Steven", pageSource, "Contains"));
         Assert.assertTrue(myBase.checkNoCaseList("Rachel", pageSource, "Contains"));
-        myBase.backButton.click();
+        myBase.backAltButton.click();
         Thread.sleep(2000);
     }
 
