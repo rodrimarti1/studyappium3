@@ -261,6 +261,12 @@ public class ProgressRecord extends BaseDriver {
             myBasePage.newScrollDownSlow();
             Thread.sleep(500);
             pageSource = pageSource + myBasePage.getSourceOfPage();
+            myBasePage.newScrollDownSlow();
+            Thread.sleep(500);
+            pageSource = pageSource + myBasePage.getSourceOfPage();
+            myBasePage.newScrollDownSlow();
+            Thread.sleep(500);
+            pageSource = pageSource + myBasePage.getSourceOfPage();
         }
 
         return pageSource;
