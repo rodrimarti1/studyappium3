@@ -239,19 +239,22 @@ public class MissionaryScreenTest extends BaseDriver {
 //        chooseUnit("Centinela 2nd Ward (Tongan)");
 //        unitNumber = "129798";
 //        checkMissionaryByUnit(unitNumber);
-
+        Thread.sleep(1000);
         chooseUnit("El Segundo Ward");
         unitNumber = "76228";
         checkMissionaryByUnit(unitNumber);
 
+        Thread.sleep(1000);
         chooseUnit("Figueroa Ward (Spanish)");
         unitNumber = "216496";
         checkMissionaryByUnit(unitNumber);
 
+        Thread.sleep(1000);
         chooseUnit("Southwest Los Angeles Branch");
         unitNumber = "141399";
         checkMissionaryByUnit(unitNumber);
 
+        Thread.sleep(1000);
         chooseUnit("Westchester Ward");
         unitNumber = "21970";
         checkMissionaryByUnit(unitNumber);
