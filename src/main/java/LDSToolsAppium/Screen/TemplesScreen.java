@@ -136,7 +136,8 @@ public class TemplesScreen extends BasePage {
         public WebElement sealingSelection;
 
     //Date
-    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/dateTextView")
+//    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/dateTextView")
+    @AndroidFindBy(xpath = "//android.widget.EditText")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeCell[2]/XCUIElementTypeButton[2]")
     public WebElement templeDate;
 

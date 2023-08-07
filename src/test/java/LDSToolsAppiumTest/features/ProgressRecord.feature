@@ -1,7 +1,7 @@
 @ProgressRecord
   Feature: Progress Record tests - Used to be Missionary Progress Record
 
-    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4  @jft
+    @MQA-5156 @MQA-2225 @smoke @smoke4 @all @all4 @daily @daily4
     Scenario Outline: SMOKE as a leader I should have access to the New Members under Progress Record
       Given a <leader> logs in and is on the Progress Record Page
       When a <memberRecord> is selected under the New Members tab
@@ -65,7 +65,7 @@
       Then the <memberRecord> for People Being Taught will be displayed
       And the members record for People Being Taught <can> be edited
 
-      @daily @daily1
+      @daily @daily1 @jft
       Examples:
         | leader                     | memberRecord   | can     |
         | "BISHOP"                   | "Erwin, Lacey" | "true"  |

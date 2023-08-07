@@ -281,7 +281,8 @@ public class HelperMethods extends BaseDriver {
                     twoFactor = true;
                     twoFactorCounter++;
                     twoFactorWait();
-                    myLoginPage.twoFactorBack.click();
+                    driver.get().navigate().back();
+//                    myLoginPage.twoFactorBack.click();
 
                 } else {
                     twoFactor = false;
