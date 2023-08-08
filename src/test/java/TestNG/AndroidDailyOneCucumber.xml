@@ -11,7 +11,7 @@
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.CucumberRunnerAll"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.CucumberRunnerDaily"> </class>
         </classes>
     </test>
 </suite>
