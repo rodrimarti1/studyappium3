@@ -207,6 +207,7 @@ public class TemplesScreenTest extends BaseDriver {
             myTemple.chooseDifferentTab(myTemple.nearestTab);
         } else {
             myTemple.chooseDifferentTab(myTemple.allTab);
+            Thread.sleep(500);
         }
 
 
@@ -230,16 +231,25 @@ public class TemplesScreenTest extends BaseDriver {
             Assert.assertTrue(myBasePage.checkNoCaseList("Fresno", pageSource, "Contains"));
             Assert.assertTrue(myBasePage.checkNoCaseList("Feather River", pageSource, "Contains"));
         } else {
-            myBasePage.waitForText("Oquirrh");
+            //Simulator
+            myBasePage.waitForText("San Jose");
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Oquirrh", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Jordan", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Draper", pageSource, "Contains"));
-            Assert.assertTrue(myBasePage.checkNoCaseList("Taylorsville", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("San Jose", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Modesto", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Sacramento", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Feather River", pageSource, "Contains"));
+
+            //for real device
+//            myBasePage.waitForText("Oquirrh");
+//            pageSource = myBasePage.getSourceOfPage();
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Oquirrh", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Jordan", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Draper", pageSource, "Contains"));
+//            Assert.assertTrue(myBasePage.checkNoCaseList("Taylorsville", pageSource, "Contains"));
         }
     }
 
-    @Test (groups= { "all", "all2", "daily", "daily3"})
+    @Test (groups= { "all", "all2", "daily", "daily3", "jft"})
     public void templeAllTemples() throws Exception {
         String pageSource;
 
@@ -260,9 +270,8 @@ public class TemplesScreenTest extends BaseDriver {
 //        myTemple.yesRemindMe.click();
         Thread.sleep(2000);
         myTemple.chooseDifferentTab(myTemple.allTab);
-
-
-
+        Thread.sleep(500);
+        myBasePage.waitForElementThenClick(myBasePage.allowWhileUsingApp);
 
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
@@ -291,9 +300,16 @@ public class TemplesScreenTest extends BaseDriver {
             myBasePage.scrollDownIOS();
             myBasePage.scrollUpIOS();
             Thread.sleep(10000);
+            pageSource = myBasePage.getSourceOfPage();
+        } else {
+            pageSource = myBasePage.getSourceOfPage();
+            myBasePage.newScrollDownSlow();
+            pageSource = myBasePage.getSourceOfPage() + pageSource;
+            myBasePage.newScrollDownSlow();
+            pageSource = myBasePage.getSourceOfPage() + pageSource;
         }
 
-        pageSource = myBasePage.getSourceOfPage();
+
 
         Assert.assertTrue(myBasePage.checkNoCaseList("Aba", pageSource, "Contains"));
         Assert.assertTrue(myBasePage.checkNoCaseList("Abidjan", pageSource, "Contains"));
@@ -303,7 +319,7 @@ public class TemplesScreenTest extends BaseDriver {
 
     }
 
-    @Test (groups= { "all", "all3", "daily", "daily4", "jft"})
+    @Test (groups= { "all", "all3", "daily", "daily4"})
     public void templeSearch() throws Exception {
         String pageSource;
 
