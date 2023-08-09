@@ -102,6 +102,9 @@ public class PrayerRoll extends BaseDriver {
             myBasePage.waitForElementThenClick(myTemple.yesRemindMe);
         }
         myBasePage.waitForText("Los Angeles");
+        if (!myBasePage.checkForElement(myTemple.prayerRollButton)) {
+            myBasePage.newScrollDownSlow();
+        }
         myTemple.prayerRollButton.click();
     }
 

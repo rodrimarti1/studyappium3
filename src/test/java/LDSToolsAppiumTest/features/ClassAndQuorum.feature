@@ -33,7 +33,7 @@
 
 
 
-    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2
+    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2 @jft
     Scenario: As a Bishopric member I should be able to mark a members attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When week one is marked attended
@@ -67,7 +67,7 @@
       When a <memberRecordPrimary> is searched for
       Then the member <memberRecordPrimary> will <willPrimary> be displayed
 
-      @all @all1 @daily @daily1 @jft
+      @all @all1 @daily @daily1
       Examples:
         | leader                     | memberRecordElder | willElder | memberRecordRS  | willRS  | memberRecordAaronic | willAaronic | memberRecordYW     | willYW  | memberRecordPrimary | willPrimary |
         | "BISHOP"                   | "Bryson, David"   | "true"    | "Carter, Tanya" | "true"  | "Chappell, William" | "true"      | "Chappell, Audrey" | "true"  | "Sosa, Kailey"      | "true"      |

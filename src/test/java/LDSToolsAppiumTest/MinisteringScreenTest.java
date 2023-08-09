@@ -123,7 +123,7 @@ public class MinisteringScreenTest extends BaseDriver {
         ministeringBasicSub("MEMBER2");
     }
 
-    @Test(groups = {"all2", "all", "daily", "daily2"})
+    @Test(groups = {"all2", "all", "daily", "daily2", "jft"})
     public void ministeringBasic_ELDERS_QUORUM_PRESIDENT() throws Exception {
         ministeringBasicSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -693,7 +693,7 @@ public class MinisteringScreenTest extends BaseDriver {
 
 
 
-    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4", "jft"})
+    @Test (groups = {"all3", "all", "smoke", "smoke3", "daily", "daily4"})
     public void companionshipsElders_BISHOP() throws Exception {
         companionshipsEldersSub("BISHOP");
     }
