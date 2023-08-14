@@ -2,7 +2,7 @@
 Feature: Prayer Roll tests
 
 
-  @MQA-3180 @all @smoke @smoke1 @all1 @all @daily @daily1
+  @MQA-3180 @all @smoke @smoke1 @all1 @all @daily @daily1 @jft
   Scenario:  As a member I want to enter a name into the Prayer Roll
     Given a member is on their Temple Page
     When the prayer roll button is pressed
@@ -16,7 +16,7 @@ Feature: Prayer Roll tests
     When the member enters in five names
     Then the name should be submitted
 
-  @MQA-3182 @all @all2 @all @daily @daily3 @jft
+  @MQA-3182 @all @all2 @all @daily @daily3
   Scenario: As a member I want to cancel entering in names for the prayer roll
     Given a member is on the prayer roll page
     When the member enters in five names then cancels

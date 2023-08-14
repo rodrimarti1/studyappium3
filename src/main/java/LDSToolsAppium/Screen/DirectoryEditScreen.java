@@ -106,7 +106,8 @@ public class DirectoryEditScreen extends BasePage {
     // **************************** Privacy Settings ****************************
     //Household Visibility Limit
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Household Visibility Limit']/following-sibling::android.widget.TextView")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'HOUSEHOLD VISIBILITY')]")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, 'HOUSEHOLD VISIBILITY')]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name=\"chevron\"][1]")
     public WebElement householdVisibilityLimit;
 
     //Personal Visibility Limit

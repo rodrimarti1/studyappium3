@@ -94,6 +94,7 @@ public class Lists extends BaseDriver  {
 
     @When("I add a List {string}")
     public void iAddAList(String listName) throws Exception {
+//        System.out.println(myBasePage.getSourceOfPage());
         myBasePage.waitForElementThenClick(myLists.listsAddList);
         myLists.listsName.sendKeys(listName);
         myBasePage.waitForElementThenClick(myLists.listsOk);

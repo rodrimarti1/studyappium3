@@ -40,6 +40,7 @@ public class DirectoryEditScreenTest extends BaseDriver {
         Assert.assertTrue(myEditDirectory.directoryEditHouseholdEmail.isDisplayed());
 
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
+//            System.out.println(myBasePage.getSourceOfPage());
             myEditDirectory.householdVisibilityLimit.click();
             pageSource = myBasePage.getSourceOfPage();
             Assert.assertTrue(pageSource.contains("STAKE VISIBILITY"));

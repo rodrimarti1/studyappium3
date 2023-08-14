@@ -42,7 +42,7 @@ public class ListsScreen extends BasePage {
 
     //Add List
     @AndroidFindBy(id = "org.lds.ldstools.alpha:id/fab")
-    @iOSXCUITFindBy(accessibility = "Add List")
+    @iOSXCUITFindBy(accessibility = "Add Group")
     public WebElement listsAddList;
 
 
