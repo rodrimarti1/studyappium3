@@ -4,7 +4,8 @@
     <test name="iOS Daily Test - iPhone 14" thread-count="1" parallel="false" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="HEADLESS-iPhone 14" />
+<!--        <parameter name="testDevice" value="HEADLESS-iPhone 14" />-->
+        <parameter name="testDevice" value="iPhone 12 Pro Max" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8222" />
 

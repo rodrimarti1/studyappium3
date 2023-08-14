@@ -1204,7 +1204,7 @@ public class MinisteringScreenTest extends BaseDriver {
                 myBasePage.scrollDownIOS();
                 pageSource = myBasePage.getSourceOfPage();
                 System.out.println(pageSource);
-                Assert.assertTrue(pageSource.contains("Adams"));
+                Assert.assertTrue(pageSource.contains("Barker"));
                 Assert.assertFalse(pageSource.contains("Skywalker"));
             } else {
                 pageSource = myBasePage.getSourceOfPage();
