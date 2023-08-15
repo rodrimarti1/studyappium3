@@ -21,7 +21,7 @@ import java.util.List;
 public class OrganizationsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3", "jft"})
+    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3"})
     public void organizationTest_BISHOP() throws Exception {
         organizationTestCheckSub("BISHOP");
     }
@@ -226,7 +226,7 @@ public class OrganizationsScreenTest extends BaseDriver {
         organizationStakeHighPriestQuorumCheckSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily3"})
+    @Test(groups = {"all3", "all", "daily", "daily3", "jft"})
     public void organizationStakeHighPriestQuorum_YOUNG_WOMEN_PRESIDENT() throws Exception {
         organizationStakeHighPriestQuorumCheckSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -1013,9 +1013,10 @@ public class OrganizationsScreenTest extends BaseDriver {
     private void chooseUnitOrganization(String myUnit) throws Exception {
         MissionaryScreen myMissionary = new MissionaryScreen(driver);
         BasePage myBasePage = new BasePage(driver);
+        OrganizationsScreen myOrg = new OrganizationsScreen(driver);
 
-        System.out.println(myBasePage.getSourceOfPage());
-        myMissionary.unitSelector.click();
+//        System.out.println(myBasePage.getSourceOfPage());
+        myOrg.orgUnitSelector.click();
         Thread.sleep(2000);
         if (getRunningOS().equalsIgnoreCase("ios")) {
             driver.get().findElement(By.xpath("//*[contains(@name,'" + myUnit + "')]")).click();

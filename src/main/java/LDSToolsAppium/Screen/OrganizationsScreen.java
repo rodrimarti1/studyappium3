@@ -490,4 +490,8 @@ public class OrganizationsScreen extends BasePage {
     public WebElement generalAllMembers;
 
 
+    @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@name, '▾')]")
+    public WebElement orgUnitSelector;
+
 }
