@@ -15,7 +15,7 @@ import java.util.List;
 public class MissionaryScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1", "jft"})
+    @Test (groups = {"smoke3", "smoke", "all3", "all", "daily", "daily1"})
     public void missionaryTest_BISHOP() throws Exception {
         missionaryTestCheckSub("BISHOP");
     }
@@ -213,7 +213,7 @@ public class MissionaryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all4", "all", "daily", "daily2"})
+    @Test(groups = {"all4", "all", "daily", "daily2", "jft"})
     public void missionaryOtherUnits() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();

@@ -24,7 +24,7 @@
         </groups>
 
         <classes>
-            <class name="LDSToolsAppiumTest.TemplesScreenTest"/>
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest"/>
 
         </classes>
     </test> <!-- iOS Just For Testing test -->
