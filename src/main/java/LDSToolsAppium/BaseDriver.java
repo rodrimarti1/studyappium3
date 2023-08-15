@@ -671,7 +671,7 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             capabilities.setCapability("browserName","");
 
             capabilities.setCapability("appium:noReset", false);
-            capabilities.setCapability("appium:newCommandTimeout", 90);
+            capabilities.setCapability("appium:newCommandTimeout", 120);
             capabilities.setCapability("appium:app", app.getAbsolutePath());
 
             capabilities.setCapability("appium:platformVersion", "16.4");
