@@ -264,7 +264,7 @@ public class Lists extends BaseDriver  {
     public void aListIsCreatedWithALargeNumberOfMembers() throws Exception {
         LOGGER.info("a list is created with a large number of members");
         List<String> membersToAdd = new ArrayList<String>();
-        membersToAdd.add("adams, dewayne");
+        membersToAdd.add("adams, jon");
         membersToAdd.add("adams, zachary");
         membersToAdd.add("agcaoili, lisa");
         membersToAdd.add("smith, raynette");
@@ -282,7 +282,7 @@ public class Lists extends BaseDriver  {
         membersToAdd.add("bearden, olivia");
         membersToAdd.add("carter, earon");
         membersToAdd.add("carter, tanya");
-        membersToAdd.add("benn, hattie");
+        membersToAdd.add("bennett, eddy");
         iAddAList("Large Number Of Members");
         membersAreAddedToTheList(membersToAdd );
 

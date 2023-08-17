@@ -210,7 +210,7 @@ public class MissionLeaderDirectory extends BaseDriver {
     public void theMissionPresidentWillNotSeeTheReturnedMissionary() throws Exception {
 //        System.out.println(myBasePage.getSourceOfPage());
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
-            myDirectory.chooseUnit("Texas Houston East Mission 2020 - 2023");
+            myDirectory.chooseUnit("Texas Houston East");
         } else {
             myDirectory.chooseUnit("Texas Houston East 2020-2023");
         }

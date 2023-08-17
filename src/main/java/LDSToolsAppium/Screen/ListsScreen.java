@@ -231,6 +231,7 @@ public class ListsScreen extends BasePage {
 //            myBasePage.waitForElementThenClick((WebElement) driver.get().findElement(By.xpath("//*[contains(@name, '" + myListName + "')]")));
             myBasePage.waitForElementThenClick((WebElement) driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myListName + "']")));
             Thread.sleep(1000);
+            listsName.clear(); //iOS needs this
             listsName.sendKeys(newName);
             myBasePage.waitForElementThenClick(listsOk2);
             Thread.sleep(1000);
@@ -281,6 +282,7 @@ public class ListsScreen extends BasePage {
     public String getNumberOfListMembers(String myListName) throws Exception{
         String listNumber;
         if (getOS().equals("ios")) {
+            System.out.println(getSourceOfPage());
             listNumber = driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myListName + "']/following-sibling::XCUIElementTypeStaticText")).getAttribute("name").toString();
         } else {
 //            listNumber = driver.get().findElement(By.xpath("//android.widget.TextView[@text='"+ myListName + "']/following-sibling::android.widget.TextView")).getAttribute("text").toString();
