@@ -264,10 +264,13 @@ public class TemplesScreen extends BasePage {
             Assert.assertTrue(myBasePage.checkTextOnPage("Would you like to be reminded before your temple recommend expires?"));
             myBasePage.waitForElementThenClick(yesRemindMe);
             if (myBasePage.getOS().equals("ios")) {
-                Thread.sleep(4000);
-                myBasePage.backButton.click();
+                Thread.sleep(3500);
+                myMenu.moreMenu.click();
+//                myBasePage.backButton.click();
             }
+            Thread.sleep(500);
             myMenu.selectMenu(myMenu.directory);
+            Thread.sleep(500);
             myMenu.selectMenu(myMenu.temples);
         } else {
             //Open Settings

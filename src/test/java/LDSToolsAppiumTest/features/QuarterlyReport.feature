@@ -1,7 +1,7 @@
 @QuarterlyReport
   Feature: Test Quarterly Report and Report Submission
 
-    @MQA-7009 @MQA-2225 @all @all4 @daily @daily4 @smoke @smoke4 @jft
+    @MQA-7009 @MQA-2225 @all @all4 @daily @daily4 @smoke @smoke4
     Scenario: Verify Quarterly Report info Bishop
       Given a "BISHOP" logs in
       And is on the Quarterly Report page
@@ -18,7 +18,7 @@
       When a Quarterly Report is submitted
       Then the Quarterly Report will be sent
 
-    @MQA-7010 @MQA-2225 @all @all3 @daily @daily3
+    @MQA-7010 @MQA-2225 @all @all3 @daily @daily3 @jft
     Scenario: Stake member verify info
       Given a "STAKE_PRESIDENT" logs in
       And is on the Quarterly Report page
