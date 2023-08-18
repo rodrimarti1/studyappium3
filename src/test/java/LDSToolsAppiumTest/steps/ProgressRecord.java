@@ -67,6 +67,7 @@ public class ProgressRecord extends BaseDriver {
             myBasePage.scrollDownAndroidUIAutomator("0");
         }
         myBasePage.waitForElementThenClick(myReports.progressRecordReport);
+        Thread.sleep(500);
         chooseUnit(unit);
     }
 

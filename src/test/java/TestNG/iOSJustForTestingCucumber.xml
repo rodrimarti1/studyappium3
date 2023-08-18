@@ -8,13 +8,13 @@
 <!--        <parameter name="testDevice" value="iPhone 8" />-->
 <!--        <parameter name="testDevice" value="iPhone 11" />-->
 <!--        <parameter name="testDevice" value="HEADLESS-iPhone 12" />-->
-        <parameter name="testDevice" value="iPhone 12 Pro Max" />
-<!--        <parameter name="testDevice" value="iPhone 14" />-->
+<!--        <parameter name="testDevice" value="iPhone 12 Pro Max" />-->
+        <parameter name="testDevice" value="iPhone 14" />
         <parameter name="startSleepTime" value="0200" />
         <parameter name="systemPort" value="8251" />
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.MissionLeaderDirectory"> </class>
+            <class name="LDSToolsAppiumTest.testrunner.ProgressRecordRunner"> </class>
         </classes>
     </test>
 </suite>
