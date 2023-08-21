@@ -43,7 +43,8 @@
     <test name="iOS iPhone 12 - Cucumber Test" thread-count="2" parallel="true">
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
-        <parameter name="testDevice" value="iPhone 12" />
+<!--        <parameter name="testDevice" value="iPhone 12" />-->
+        <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />
         <parameter name="startSleepTime" value="2000" />
         <parameter name="systemPort" value="8202" />
 
