@@ -329,7 +329,13 @@ public class PaymentRequests extends BaseDriver {
                 Thread.sleep(12000);
                 myBasePage.waitForElement(myFinance.paymentRequestsImageToSelect);
                 myFinance.paymentRequestsImageToSelect.click();
-                myBasePage.waitForElementThenClick(myFinance.paymentRequestsImageToSelectChoose);
+                if (myBasePage.checkForElement(myFinance.paymentRequestsImageToSelectChoose)) {
+                    myBasePage.waitForElementThenClick(myFinance.paymentRequestsImageToSelectChoose);
+                } else {
+//                    System.out.println(myBasePage.getSourceOfPage());
+                    myBasePage.waitForElementThenClick(myFinance.paymentRequestsImageToSelectUse);
+                }
+
 
             } else {
 //                System.out.println(myBasePage.getSourceOfPage());

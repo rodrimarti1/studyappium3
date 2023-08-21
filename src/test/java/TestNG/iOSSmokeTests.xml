@@ -7,50 +7,51 @@
 <!--        <listener class-name="LDSToolsAppium.TestListener" />-->
 <!--    </listeners>-->
 
-<!--    <test name="iOS Smoke Test - iPhone 12" >-->
-<!--        <parameter name="os" value="ios" />-->
-<!--        <parameter name="fileName" value="LDS Tools.app" />-->
-<!--        <parameter name="testDevice" value="iPhone 12" />-->
-<!--        <parameter name="startSleepTime" value="0200" />-->
-<!--        <parameter name="systemPort" value="8251" />-->
-
-<!--        <groups>-->
-<!--            <run>-->
-<!--                <include name="smoke"/>-->
-<!--            </run>-->
-<!--        </groups>-->
-
-<!--        <classes>-->
-<!--            <class name="LDSToolsAppium.BaseDriver" />-->
-
-<!--            <class name="LDSToolsAppiumTest.CalendarScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.LoginPageTest" />-->
-<!--            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.PinScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.ReportsScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.TemplesScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.ListsScreenTest" />-->
-<!--            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />-->
-<!--        </classes>-->
-<!--    </test>-->
-
-    <test name="iOS iPhone 12 - Cucumber Test" thread-count="2" parallel="true">
+    <test name="iOS Smoke Test - iPad Pro" >
         <parameter name="os" value="ios" />
         <parameter name="fileName" value="LDS Tools.app" />
 <!--        <parameter name="testDevice" value="iPhone 12" />-->
         <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />
-        <parameter name="startSleepTime" value="2000" />
-        <parameter name="systemPort" value="8202" />
+        <parameter name="startSleepTime" value="0200" />
+        <parameter name="systemPort" value="8251" />
+
+        <groups>
+            <run>
+                <include name="smoke"/>
+            </run>
+        </groups>
 
         <classes>
-            <class name="LDSToolsAppiumTest.testrunner.CucumberRunnerSmoke"> </class>
+            <class name="LDSToolsAppium.BaseDriver" />
+
+            <class name="LDSToolsAppiumTest.CalendarScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryEditScreenTest" />
+            <class name="LDSToolsAppiumTest.DirectoryScreenTest" />
+            <class name="LDSToolsAppiumTest.LoginPageTest" />
+            <class name="LDSToolsAppiumTest.MinisteringScreenTest" />
+            <class name="LDSToolsAppiumTest.OrganizationsScreenTest" />
+            <class name="LDSToolsAppiumTest.PinScreenTest" />
+            <class name="LDSToolsAppiumTest.ReportsScreenTest" />
+            <class name="LDSToolsAppiumTest.WhatsNewScreenTest" />
+            <class name="LDSToolsAppiumTest.TemplesScreenTest" />
+            <class name="LDSToolsAppiumTest.QuarterlyScreenTest" />
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest" />
+            <class name="LDSToolsAppiumTest.ListsScreenTest" />
+            <class name="LDSToolsAppiumTest.MeetinghousesScreenTest" />
         </classes>
     </test>
+
+<!--    <test name="iOS iPhone 12 - Cucumber Test" thread-count="2" parallel="true">-->
+<!--        <parameter name="os" value="ios" />-->
+<!--        <parameter name="fileName" value="LDS Tools.app" />-->
+<!--&lt;!&ndash;        <parameter name="testDevice" value="iPhone 12" />&ndash;&gt;-->
+<!--        <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />-->
+<!--        <parameter name="startSleepTime" value="2000" />-->
+<!--        <parameter name="systemPort" value="8202" />-->
+
+<!--        <classes>-->
+<!--            <class name="LDSToolsAppiumTest.testrunner.CucumberRunnerSmoke"> </class>-->
+<!--        </classes>-->
+<!--    </test>-->
 
 </suite>
