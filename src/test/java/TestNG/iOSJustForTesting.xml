@@ -7,8 +7,8 @@
 <!--        <parameter name="fileName" value="LDSTools.ipa" />-->
 <!--        <parameter name="testDevice" value="iPhone 8" />-->
 <!--        <parameter name="testDevice" value="iPhone 12 Pro Max" />-->
-        <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />
-<!--            <parameter name="testDevice" value="iPhone 14" />-->
+<!--        <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />-->
+            <parameter name="testDevice" value="iPhone 14" />
 <!--        <parameter name="testDevice" value="iPhone 13" />-->
 <!--        <parameter name="testDevice" value="iPhone 11" />-->
 <!--        <parameter name="testDevice" value="HEADLESS-iPhone 13" />-->
@@ -26,7 +26,7 @@
         </groups>
 
         <classes>
-            <class name="LDSToolsAppiumTest.WhatsNewScreenTest"/>
+            <class name="LDSToolsAppiumTest.ReportsScreenTest"/>
 
         </classes>
     </test> <!-- iOS Just For Testing test -->

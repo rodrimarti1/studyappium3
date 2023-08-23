@@ -71,7 +71,7 @@ public class CalendarScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all4", "all", "smoke", "smoke4", "daily", "daily1", "jft"})
+    @Test (groups = {"all4", "all", "smoke", "smoke4", "daily", "daily1"})
     public void calendarSimple_BISHOP() throws Exception {
         calendarSimpleSub("BISHOP");
     }
@@ -185,14 +185,14 @@ public class CalendarScreenTest extends BaseDriver {
         }
     }
 
-    @Test (groups = {"all", "all3", "daily", "daily2"})
+    @Test (groups = {"all", "all3", "daily", "daily2", "jft"})
     public void calenderDisplayType() throws Exception {
         String pageSource;
         HelperMethods myHelper = new HelperMethods();
         BasePage myBasePage = new BasePage(driver);
         MenuScreen myMenu = new MenuScreen(driver);
 
-        myHelper.proxyLogin("mahina_12006");
+        myHelper.proxyLogin("mbthomas74");
         myHelper.enterPin("1", "1", "3", "3");
         //Go to Calendar
         myMenu.selectMenu(myMenu.calendar);

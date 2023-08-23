@@ -673,7 +673,8 @@ public class ReportsScreenTest extends BaseDriver {
 
     }*/
 
-    //todo: scroll down in android to get a bigger list
+    //TODO: scroll down in android to get a bigger list
+    //TODO: check for location icon and remove if it is there 
     private void getMembersMovedInReport(int rights) throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
@@ -695,7 +696,7 @@ public class ReportsScreenTest extends BaseDriver {
         }
 
 //        System.out.println(pageSource);
-        Assert.assertTrue(myBasePage.checkNoCaseList("Neely", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Shumway", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
