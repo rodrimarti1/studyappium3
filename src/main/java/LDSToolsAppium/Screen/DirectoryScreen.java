@@ -450,6 +450,8 @@ public class DirectoryScreen extends BasePage {
 //                scrollDownIOS();
                 swipeUpIOS();
                 pageSource = pageSource + getSourceOfPage();
+                swipeUpIOS();
+                pageSource = pageSource + getSourceOfPage();
                 myBasePage.backButton.click();
                 checkForLabel = false;
             }

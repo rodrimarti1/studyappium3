@@ -674,7 +674,8 @@ public class ReportsScreenTest extends BaseDriver {
     }*/
 
     //TODO: scroll down in android to get a bigger list
-    //TODO: check for location icon and remove if it is there 
+    //TODO: check for location icon and remove if it is there
+    //TODO: some sort of API to get this info. There isn't a endpoint this may have to be several api calls
     private void getMembersMovedInReport(int rights) throws Exception {
         String pageSource;
         BasePage myBasePage = new BasePage(driver);
