@@ -74,9 +74,13 @@ public class DirectoryScreen extends BasePage {
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterMenuImageButton")
     @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[2]")
     //@AndroidFindBy(xpath = "//*[@resource-id='filterMenuImageButton']")
-    @iOSXCUITFindBy(accessibility = "Sort")
+//    @iOSXCUITFindBy(accessibility = "Sort")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeImage[@name=\"More\"]")
 //    @iOSXCUITFindBy(accessibility = "Sort Options")
     public  WebElement directorySort;
+
+    @iOSXCUITFindBy(accessibility = "Sort")
+    public  WebElement directorySelectSort;
 
     //Households
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Households']")
@@ -317,6 +321,7 @@ public class DirectoryScreen extends BasePage {
         if (myBase.getOS().equalsIgnoreCase("ios")) {
             myBase.waitForElementThenClick(directorySort);
             Thread.sleep(500);
+            myBase.waitForElementThenClick(directorySelectSort);
             myBase.waitForElementThenClick(sortIndividual);
             myBase.waitForElement(searchBar);
         } else {

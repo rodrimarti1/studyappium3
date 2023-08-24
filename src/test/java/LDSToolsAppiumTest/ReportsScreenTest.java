@@ -243,6 +243,7 @@ public class ReportsScreenTest extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
 
 
+
         if (rights <= 3) {
             myMenu.selectMenu(myMenu.reports);
             Thread.sleep(2000);
