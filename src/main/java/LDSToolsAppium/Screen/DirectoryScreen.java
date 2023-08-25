@@ -43,7 +43,8 @@ public class DirectoryScreen extends BasePage {
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/drop_arrow" )
     @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[1]" )
 //    @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]/XCUIElementTypeButton")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]/XCUIElementTypeButton")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Directory']/following-sibling::XCUIElementTypeButton//XCUIElementTypeStaticText")
     public WebElement unitSelected;
 
 
@@ -688,6 +689,7 @@ public class DirectoryScreen extends BasePage {
 
         //Choose different Unit
         Thread.sleep(2000);
+        System.out.println(myBase.getSourceOfPage());
         unitSelected.click();
         Thread.sleep(2000);
         if (myBase.getOS().equalsIgnoreCase("ios")) {

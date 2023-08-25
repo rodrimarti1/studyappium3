@@ -10,7 +10,7 @@
 #    A Current Mission President: perezdomingo
 #    His Companion: magdelis1
 #
-  @MQA-5396 @MQA-2223 @daily @daily3 @smoke @smoke3 @all @all3
+  @MQA-5396 @MQA-2223 @daily @daily3 @smoke @smoke3 @all @all3 @jft
   Scenario: Mission President (kumfy) logs in and can view returned missionaries
     Given a member "kumfy" logs in
     When they check their Mission under Directory
@@ -42,7 +42,7 @@
     Then the Returned Missionary info should be marked private
 
 
-  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1 @jft
+  @MQA-5400 @MQA-2223 @all @all1 @daily @daily1
   Scenario: Returned Missionary add and remove Mission President access
     Given a returned missionary logs in and Mission Leader is turned off
     When a member "tdlarkin" logs in
