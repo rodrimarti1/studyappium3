@@ -90,7 +90,7 @@ public class MissionaryScreenTest extends BaseDriver {
         missionaryTestCheckSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all4", "all", "daily", "daily4", "jft"})
+    @Test(groups = {"all4", "all", "daily", "daily4"})
     public void missionaryTest_YOUNG_WOMEN_PRESIDENT() throws Exception {
         missionaryTestCheckSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -213,7 +213,7 @@ public class MissionaryScreenTest extends BaseDriver {
     }
 
 
-    @Test(groups = {"all4", "all", "daily", "daily2"})
+    @Test(groups = {"all4", "all", "daily", "daily2", "jft"})
     public void missionaryOtherUnits() throws Exception {
         // ********* Constructor **********
         HelperMethods myHelper = new HelperMethods();
@@ -561,7 +561,7 @@ public class MissionaryScreenTest extends BaseDriver {
                 myMissionary.tabMissionaries.click();
             }
         }
-        System.out.println(myBasePage.getSourceOfPage());
+//        System.out.println(myBasePage.getSourceOfPage());
         myMissionary.unitSelector.click();
         Thread.sleep(2000);
         if (getRunningOS().equalsIgnoreCase("ios")) {
