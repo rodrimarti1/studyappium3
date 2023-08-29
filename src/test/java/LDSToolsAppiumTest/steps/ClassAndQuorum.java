@@ -44,12 +44,14 @@ public class ClassAndQuorum extends BaseDriver {
         myHelper.proxyLogin(callingRights[1]);
         myHelper.enterPin("1", "1", "3", "3");
         myMenu.selectMenu(myMenu.reports);
+//        Thread.sleep(40000); //Just for testing
         myBasePage.waitForElementThenClick(myReports.classAndQuorumAttendanceReport);
     }
 
     @When("a {string} is searched for")
     public void aMemberRecordIsSearchedFor(String memberRecord) throws Exception {
         LOGGER.info("a " + memberRecord + " is searched for");
+//        myBasePage.scrollUpIOS();
         searchClassAndQuorum(memberRecord);
     }
 

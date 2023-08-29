@@ -50,9 +50,9 @@ public class MissionLeaderDirectory extends BaseDriver {
     public void theySelectAMissionaryUnderTheirMission() throws Exception {
         myDirectory.chooseUnit("Ukraine");
         Thread.sleep(2000);
-//        System.out.println(myBasePage.getSourceOfPage());
         if (myBasePage.getOS().equalsIgnoreCase("ios")) {
             myDirectory.searchAndClickReturnedMissionary("Gallafent, Zachary");
+            System.out.println(myBasePage.getSourceOfPage());
         } else {
             myDirectory.searchAndClickReturnedMissionary("Gallafent, Zachary");
         }

@@ -44,7 +44,7 @@
         | "WARD_EXECUTIVE_SECRETARY"        | "true"  |
         | "ELDERS_QUORUM_PRESIDENT"         | "true"  |
         | "ELDERS_QUORUM_FIRST_COUNSELOR"   | "true"  |
-        | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "true"  |
+#        | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "true"  |
         | "ELDERS_QUORUM_SECRETARY"         | "true"  |
         | "RELIEF_SOCIETY_PRESIDENT"        | "true"  |
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"  |
@@ -84,7 +84,7 @@
         | "WARD_EXECUTIVE_SECRETARY"        | "true"  |
         | "ELDERS_QUORUM_PRESIDENT"         | "true"  |
         | "ELDERS_QUORUM_FIRST_COUNSELOR"   | "true"  |
-        | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "true"  |
+#        | "ELDERS_QUORUM_SECOND_COUNSELOR"  | "true"  |
         | "ELDERS_QUORUM_SECRETARY"         | "true"  |
         | "RELIEF_SOCIETY_PRESIDENT"        | "true"  |
         | "RELIEF_SOCIETY_FIRST_COUNSELOR"  | "true"  |
