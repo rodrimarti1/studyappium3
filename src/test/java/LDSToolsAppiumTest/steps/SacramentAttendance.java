@@ -260,6 +260,7 @@ public class SacramentAttendance extends BaseDriver {
         return myText;
     }
 
+    //TODO: need to check for the Month in the GUI the last week of the month will display the next month not the current month
     public WebElement getSunday(String elementName, String textField) throws Exception {
         WebElement returnElement = null;
         Calendar cal = Calendar.getInstance();

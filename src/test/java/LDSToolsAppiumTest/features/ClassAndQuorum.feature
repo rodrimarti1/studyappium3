@@ -8,7 +8,7 @@
       Then the class and quorum attendance <memberRecord> will be displayed
       And the attendance <can> be edited
 
-      @all @all1 @daily @daily2
+      @all @all1 @daily @daily2 @jft
       Examples:
         | leader                     | memberRecord      | can    |
         | "BISHOP"                   | "Bryson, David"   | "true" |
@@ -33,7 +33,7 @@
 
 
 
-    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2 @jft
+    @MQA-3519 @all @smoke @smoke2 @all1 @daily @daily2
     Scenario: As a Bishopric member I should be able to mark a members attendance
       Given a member of the bishopric logs in and is on the Class and Quorum Attendance page
       When week one is marked attended
