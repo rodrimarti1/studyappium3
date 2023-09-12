@@ -16,6 +16,7 @@ import com.google.gson.*;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 import okhttp3.*;
+import okhttp3.Request.Builder;
 import okhttp3.logging.HttpLoggingInterceptor;
 
 
@@ -677,7 +678,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestURLNoProxyUser(baseURL + "admin/users/accounts?positions=" + position + "&units="+ unitNumber );
+//        Request request = requestURLNoProxyUser(baseURL + "admin/users/accounts?positions=" + position + "&units="+ unitNumber );
+        Request request = requestURLNoProxyUser("https://membertools-api-stage.churchofjesuschrist.org/api/v5/" + "admin/users/accounts?positions=" + position + "&units="+ unitNumber );
 
 //        if (!organizationFile.exists()) {
             try (Response response = httpClient.newCall(request).execute()) {
@@ -718,7 +720,8 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
+//        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
+        Request request = requestProxyURL("https://membertools-api-stage.churchofjesuschrist.org/api/v5/" + "households?units=" + unitNumber, proxyLogin );
 
 
         if (!householdFile.exists()) {
@@ -2167,6 +2170,51 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
         }
 
         return memberNames;
+    }
+
+
+    public ApiHousehold getPersonalInfoFromNameAPI( String memberToFind, String unitNumber, String proxyLogin) throws Exception {
+        OkHttpClient httpClient = loginCred();
+        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
+        JsonParser parser = new JsonParser();
+        String responseData;
+//        String myPositions = "";
+        ArrayList<String> myPositions = new ArrayList<String>();
+        Gson gson = new Gson();
+
+        Type apiHousehold = new TypeToken<ArrayList<ApiHousehold>>(){}.getType();
+
+
+        ArrayList<String> memberNames = new ArrayList<String>();
+
+        responseData = getHouseholdJson(unitNumber, proxyLogin);
+        ApiHousehold returnHousehold = new ApiHousehold();
+
+//        System.out.println("Response String: " + responseData);
+        JsonElement jsonElement = parser.parse(responseData);
+//        System.out.println("Json element to String GET NAME FROM UUID: " + jsonElement.toString());
+        if (jsonElement instanceof JsonObject) {
+//            System.out.println("JSON Object!");
+//            System.out.println("Name: " + ((JsonObject) jsonElement).get("name").getAsString());
+        } else if (jsonElement instanceof JsonArray) {
+//            System.out.println("JSON Array!");
+            JsonArray jsonData = jsonElement.getAsJsonArray();
+            List<ApiHousehold> testHouseHold = gson.fromJson(jsonElement, apiHousehold);
+
+            for (ApiHousehold household : testHouseHold) {
+//                System.out.println(household.getDisplayName());
+//                System.out.println(household.getUuid());
+                for (Member searchForMember : household.getMembers()) {
+//                    System.out.println("Household: uuid - Search For Member: " + searchForMember.getUuid());
+//                    System.out.println("Household: Display Name - Search For Member: " + searchForMember.getDisplayName());
+                    if (searchForMember.getDisplayName().contains(memberToFind)) {
+                        returnHousehold = household;
+                    }
+                }
+            }
+        }
+
+        return returnHousehold;
     }
 
     public String getUdidFromName( String memberToFind, String unitNumber, String proxyLogin) throws Exception {

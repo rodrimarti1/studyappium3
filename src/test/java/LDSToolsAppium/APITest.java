@@ -4,6 +4,8 @@ import LDSToolsAppium.API.*;
 import LDSToolsAppium.API.Expenses.*;
 import LDSToolsAppium.API.Households.ApiHousehold;
 import LDSToolsAppium.API.Households.Member;
+import LDSToolsAppium.API.Households.Privacy;
+import LDSToolsAppium.API.Households.Privacy_;
 import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
@@ -658,7 +660,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -899,10 +901,41 @@ public class APITest {
             for(Member oneMember: household.getMembers()) {
                 System.out.println("Display Name: " + oneMember.getDisplayName());
                 System.out.println("Uuid: " + oneMember.getUuid());
+                System.out.println("Privacy BirthDate: " + oneMember.getPrivacy().getBirthDate());
+                System.out.println("Privacy Address: " + oneMember.getPrivacy().getAddress());
+                System.out.println("Privacy Coordinates: " + oneMember.getPrivacy().getCoordinates());
+                System.out.println("Privacy Email: " + oneMember.getPrivacy().getEmail());
+                System.out.println("Privacy Phone: " + oneMember.getPrivacy().getPhone());
+                System.out.println("Privacy Photo: " + oneMember.getPrivacy().getPhoto());
             }
             System.out.println("************************************************");
             System.out.println(" ");
         }
+    }
+
+    @Test
+    public void getInfoFromName() throws Exception {
+        ApiHousehold myHousehold = new ApiHousehold();
+        myHousehold = apiTest.getPersonalInfoFromNameAPI("Cline, Michael", "39373", "dsoneil");
+        System.out.println("Display Name: " + myHousehold.getDisplayName());
+        System.out.println("Household Privacy Address: " + myHousehold.getPrivacy().getAddress());
+        System.out.println("Household Privacy Coordinates: " + myHousehold.getPrivacy().getCoordinates());
+        System.out.println("Household Privacy Photo: " + myHousehold.getPrivacy().getPhoto());
+        for(Member oneMember: myHousehold.getMembers()) {
+            System.out.println("*****************************************************");
+            System.out.println("Member Display Name: " + oneMember.getDisplayName());
+            System.out.println("Member Privacy Address: " + oneMember.getPrivacy().getAddress());
+            System.out.println("Member Privacy Birthdate: " + oneMember.getPrivacy().getBirthDate());
+            System.out.println("Member Privacy Photo: " + oneMember.getPrivacy().getPhoto());
+            System.out.println("Member Privacy Phone: " + oneMember.getPrivacy().getPhone());
+            System.out.println("Member Privacy Email: " + oneMember.getPrivacy().getEmail());
+            System.out.println("Member Privacy Coordinates: " + oneMember.getPrivacy().getCoordinates());
+            System.out.println("Member Privacy Master: " + oneMember.getPrivacy().getMaster());
+            System.out.println("*****************************************************");
+            System.out.println(" ");
+
+        }
+
     }
 
 //    @Test

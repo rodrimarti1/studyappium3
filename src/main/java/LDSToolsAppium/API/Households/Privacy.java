@@ -23,6 +23,9 @@ public class Privacy {
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("birthDate")
+    @Expose
+    private String birthDate;
 
     public String getAddress() {
         return address;
@@ -70,6 +73,14 @@ public class Privacy {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
 }

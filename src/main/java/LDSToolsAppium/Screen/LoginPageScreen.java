@@ -51,7 +51,7 @@ public class LoginPageScreen extends BasePage {
     //Login Name
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/usernameEditText")
 //    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Username']/following-sibling::android.view.View")
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Username']/../..")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Username']/..")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther/XCUIElementTypeTextField")
     public  WebElement loginName;
 

@@ -951,22 +951,38 @@ public class HelperMethods extends BaseDriver {
         //iOS may need this.
         dismissWhatsNewPage();
 
+        if (myBasePage.getOS().equalsIgnoreCase("android")) {
+            myBasePage.waitForElementThenClick(myBasePage.visibilityPopUpAcknowledge);
+            myBasePage.waitForElementThenClick(myBasePage.visibilityPopUpNext);
+            myBasePage.waitForElementThenClick(myBasePage.visibilityPopUpDone);
+
+        }
+
+
+
 
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
-//            System.out.println("Check for Cancel");
-            Thread.sleep(1000);
-                if (myBasePage.checkForElement(myBasePage.alertCancel)) {
-//                    System.out.println("Cancel Found!");
-                    myBasePage.alertCancel.click();
-                }
+            Thread.sleep(4000);
+            System.out.println("Check for Cancel");
+            if (myBasePage.checkForElement(myBasePage.alertCancel)) {
+                System.out.println("Cancel Found!");
+                myBasePage.alertCancel.click();
+            }
 
-                if (myBasePage.checkForElement(myBasePage.dragHandle)) {
-                    myBasePage.dragHandleScrollAway();
-                }
+//            System.out.println(myBasePage.getSourceOfPage());
+            System.out.println("Check for Dismiss");
+            if (myBasePage.checkForElement(myBasePage.dismissButton)) {
+                System.out.println("Dismiss Button Found!");
+                myBasePage.dismissButton.click();
+            }
 
-                if (myBasePage.checkForElement(myMenuScreen.directory)) {
-                    myMenuScreen.directory.click();
-                }
+            if (myBasePage.checkForElement(myBasePage.dragHandle)) {
+                myBasePage.dragHandleScrollAway();
+            }
+
+            if (myBasePage.checkForElement(myMenuScreen.directory)) {
+                myMenuScreen.directory.click();
+            }
         }
 
 

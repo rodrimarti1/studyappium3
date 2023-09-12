@@ -141,6 +141,9 @@ public class BasePage extends BaseDriver {
     @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
     public WebElement unitSelected;
 
+    //Dismiss button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Dismiss']")
+    public  WebElement dismissButton;
 
     //Drag Handle
     @AndroidFindBy(xpath ="//android.view.View[@content-desc='Drag handle']")
@@ -148,6 +151,17 @@ public class BasePage extends BaseDriver {
 
 
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Acknowledge']" )
+    @iOSXCUITFindBy(accessibility = "Acknowledge")
+    public WebElement visibilityPopUpAcknowledge;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Next']" )
+    @iOSXCUITFindBy(accessibility = "Next")
+    public WebElement visibilityPopUpNext;
+
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Done']" )
+    @iOSXCUITFindBy(accessibility = "Done")
+    public WebElement visibilityPopUpDone;
 
     public BasePage(AppiumDriver driver) {
 
