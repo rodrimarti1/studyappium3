@@ -1186,6 +1186,33 @@ public class BasePage extends BaseDriver {
 
     }
 
+    public void apiCheckDataWithScroll(List<String> jsonList) throws Exception {
+        String pageSource = null;
+        pageSource = getSourceOfPage();
+        Thread.sleep(500);
+
+        if (getOS().equalsIgnoreCase("android")) {
+            for (int x = 1 ; x < 3 ; x++) {
+                newScrollDownSlow();
+                pageSource = pageSource + getSourceOfPage();
+            }
+        } else {
+            for (int x = 1 ; x < 3 ; x++) {
+                swipeUpIOS();
+                Thread.sleep(500);
+                pageSource = pageSource + getSourceOfPage();
+            }
+        }
+
+        System.out.println(pageSource);
+
+        for (String apiUser : jsonList) {
+            System.out.println("API Data: "  + apiUser);
+            Assert.assertTrue(checkNoCaseList(apiUser, pageSource, "Contains"));
+        }
+
+    }
+
     public void compareWebData(List<String> myList, List<String> androidList, Boolean onePage) throws Exception {
         String pageSource = null;
         int pageSize;

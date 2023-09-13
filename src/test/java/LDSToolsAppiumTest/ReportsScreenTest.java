@@ -684,6 +684,10 @@ public class ReportsScreenTest extends BaseDriver {
 
         myReports.membersMoveInAndOutReport.click();
         Thread.sleep(3000);
+        if (myBasePage.checkForElement(myReports.moveReportLocationIcon)) {
+            myReports.moveReportLocationIcon.click();
+            Thread.sleep(500);
+        }
         pageSource = myBasePage.getSourceOfPage();
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             for (int x = 1 ; x < 6 ; x++) {
@@ -727,7 +731,8 @@ public class ReportsScreenTest extends BaseDriver {
             shortList.add(memberList.get(i));
         }
 
-        myBasePage.apiCheckData(shortList);
+//        myBasePage.apiCheckData(shortList);
+        myBasePage.apiCheckDataWithScroll(shortList);
 
 
         Thread.sleep(1000);

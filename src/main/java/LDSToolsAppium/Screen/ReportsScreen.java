@@ -80,6 +80,11 @@ public class ReportsScreen extends BasePage {
     public WebElement moveReportOutTab;
 
 
+    //Move In and Out Location Icon
+    @iOSXCUITFindBy(accessibility = "Close")
+    public WebElement moveReportLocationIcon;
+
+
     //Members with Callings
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Members with Callings']")
     @iOSXCUITFindBy(accessibility = "Members with Callings")
