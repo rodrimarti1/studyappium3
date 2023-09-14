@@ -1198,7 +1198,8 @@ public class BasePage extends BaseDriver {
             }
         } else {
             for (int x = 1 ; x < 3 ; x++) {
-                swipeUpIOS();
+//                swipeUpIOS();
+                scrollDownIOS();
                 Thread.sleep(500);
                 pageSource = pageSource + getSourceOfPage();
             }

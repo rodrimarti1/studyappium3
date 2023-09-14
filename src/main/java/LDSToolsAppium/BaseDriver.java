@@ -652,6 +652,10 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
                 capabilities.setCapability("isHeadless", true);
             }
 
+            if (testDevice.contains("DAILY")) {
+                testDevice = "iPhone 13";
+            }
+
             System.out.println("Device Name: " + testDevice + " UDID: " + myUdid);
 
 

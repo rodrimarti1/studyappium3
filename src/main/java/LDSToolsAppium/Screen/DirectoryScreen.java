@@ -96,6 +96,11 @@ public class DirectoryScreen extends BasePage {
     public  WebElement sortIndividual;
 
 
+
+    @iOSXCUITFindBy(xpath = "//*[contains(@name, \"Filter\")]")
+    public  WebElement sortFilter;
+
+
     // ****************** Edit ******************
     //Edit Button
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/edit_fab")
@@ -363,8 +368,12 @@ public class DirectoryScreen extends BasePage {
 
     public void searchAndClickHousehold(String myUser) throws Exception {
         String tempMyUser = myUser.toLowerCase();
+        BasePage myBase = new BasePage(driver);
 
         directorySort.click();
+        if (myBase.getOS().equalsIgnoreCase("ios")) {
+            directorySelectSort.click();
+        }
         sortHousehold.click();
 
         if (tempMyUser.contains("tools")) {

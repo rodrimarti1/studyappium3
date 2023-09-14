@@ -303,7 +303,7 @@ public class MinisteringScreenTest extends BaseDriver {
     }
 
 
-    @Test (groups = {"all4", "all", "daily", "daily2"})
+    @Test (groups = {"all4", "all", "daily", "daily2", "jft"})
     public void ministeringUnassignedHouseholds_BISHOP() throws Exception {
         ministeringUnassignedHouseholdsCheckSub("BISHOP");
     }
@@ -363,7 +363,7 @@ public class MinisteringScreenTest extends BaseDriver {
 //        ministeringUnassignedHouseholdsCheckSub("ELDERS_QUORUM_SECRETARY");
 //    }
 
-    @Test(groups = {"all4", "all", "daily", "daily3", "jft"})
+    @Test(groups = {"all4", "all", "daily", "daily3"})
     public void ministeringUnassignedHouseholds_RELIEF_SOCIETY_PRESIDENT() throws Exception {
         ministeringUnassignedHouseholdsCheckSub("RELIEF_SOCIETY_PRESIDENT");
     }

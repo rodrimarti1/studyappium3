@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="iOS Daily - Cucumber Suite" configfailurepolicy="continue" verbose="1" >
+    <test name="iOS Just For Testing - Cucumber Test">
+        <parameter name="os" value="ios" />
+        <parameter name="fileName" value="LDS Tools.app" />
+<!--        <parameter name="fileName" value="LDSTools.ipa" />-->
+<!--        <parameter name="testDevice" value="iPhone 8" />-->
+<!--        <parameter name="testDevice" value="iPhone 11" />-->
+<!--        <parameter name="testDevice" value="HEADLESS-iPhone 12" />-->
+<!--        <parameter name="testDevice" value="iPhone 12 Pro Max" />-->
+<!--        <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />-->
+        <parameter name="testDevice" value="DAILY" />
+        <parameter name="startSleepTime" value="0200" />
+        <parameter name="systemPort" value="8253" />
+
+        <classes>
+            <class name="LDSToolsAppiumTest.testrunner.DailyClassAndQuorumVisitorRunner"> </class>
+        </classes>
+    </test>
+</suite>
