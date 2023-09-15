@@ -6,6 +6,9 @@ sleep 30
 /opt/homebrew/bin/mvn clean test -DsuiteXmlFile=src/test/java/TestNG/iOSDaily/iOSDailyDirectory.xml
 cp /Users/zmaxfield/Documents/workspace/qa-membertools-all/target/surefire-reports/testng-results.xml /Users/zmaxfield/Documents/iOSDailyDirectory.xml
 sleep 30
+/opt/homebrew/bin/mvn clean test -DsuiteXmlFile=src/test/java/TestNG/iOSDaily/iOSDailyCalendar.xml
+cp /Users/zmaxfield/Documents/workspace/qa-membertools-all/target/surefire-reports/testng-results.xml /Users/zmaxfield/Documents/iOSDailyCalendar.xml
+sleep 30
 /opt/homebrew/bin/mvn clean test -DsuiteXmlFile=src/test/java/TestNG/iOSDaily/iOSDailyMeetinghouses.xml
 cp /Users/zmaxfield/Documents/workspace/qa-membertools-all/target/surefire-reports/testng-results.xml /Users/zmaxfield/Documents/iOSDailyMeetinghouses.xml
 sleep 30
