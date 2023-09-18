@@ -236,17 +236,14 @@ public class MissionaryScreenTest extends BaseDriver {
         unitNumber = "21628";
         checkMissionaryByUnit(unitNumber);
 
-//        chooseUnit("Centinela 2nd Ward (Tongan)");
-//        unitNumber = "129798";
-//        checkMissionaryByUnit(unitNumber);
-        Thread.sleep(1000);
-        chooseUnit("El Segundo Ward");
-        unitNumber = "76228";
-        checkMissionaryByUnit(unitNumber);
-
         Thread.sleep(1000);
         chooseUnit("Figueroa Ward (Spanish)");
         unitNumber = "216496";
+        checkMissionaryByUnit(unitNumber);
+
+        Thread.sleep(1000);
+        chooseUnit("Hawthorne Ward (Tongan)");
+        unitNumber = "129798";
         checkMissionaryByUnit(unitNumber);
 
         Thread.sleep(1000);
@@ -544,10 +541,10 @@ public class MissionaryScreenTest extends BaseDriver {
 
         //Check Ward Missionaries
         memberList = apiTest.getOrganizationMembers("Ward Missionaries", "mbthomas74", unitNumber);
-        if (getRunningOS().equalsIgnoreCase("ios")) {
-            memberListIos = myBasePage.swapLastNameCommaFirstName(memberList);
-            memberList = memberListIos;
-        }
+//        if (getRunningOS().equalsIgnoreCase("ios")) {
+//            memberListIos = myBasePage.swapLastNameCommaFirstName(memberList);
+//            memberList = memberListIos;
+//        }
         myBasePage.apiCheckDataPageSource(memberList, pageSource);
     }
 

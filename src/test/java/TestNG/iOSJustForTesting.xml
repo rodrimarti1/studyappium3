@@ -9,6 +9,7 @@
 <!--        <parameter name="testDevice" value="iPhone 12 Pro Max" />-->
 <!--        <parameter name="testDevice" value="iPad Pro (11-inch) (4th generation)" />-->
             <parameter name="testDevice" value="iPhone 14" />
+<!--            <parameter name="testDevice" value="iPad mini (6th generation)" />-->
 <!--        <parameter name="testDevice" value="iPhone 13" />-->
 <!--        <parameter name="testDevice" value="iPhone 11" />-->
 <!--        <parameter name="testDevice" value="HEADLESS-iPhone 13" />-->
@@ -26,7 +27,7 @@
         </groups>
 
         <classes>
-            <class name="LDSToolsAppiumTest.DirectoryScreenTest"/>
+            <class name="LDSToolsAppiumTest.MissionaryScreenTest"/>
 
         </classes>
     </test> <!-- iOS Just For Testing test -->
