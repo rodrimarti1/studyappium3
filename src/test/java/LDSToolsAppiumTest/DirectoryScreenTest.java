@@ -66,7 +66,7 @@ public class DirectoryScreenTest extends BaseDriver {
         directoryScreenSub("MEMBER2");
     }
 
-    @Test(groups = {"all2", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all2", "all", "daily", "daily2"})
     public void directoryScreenTest_ELDERS_QUORUM_PRESIDENT() throws Exception {
         directoryScreenSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -339,7 +339,7 @@ public class DirectoryScreenTest extends BaseDriver {
 
 
 
-    @Test(groups = {"all3", "all", "daily", "daily1"})
+    @Test(groups = {"all3", "all", "daily", "daily1", "jft"})
     public void directoryMemberInfoHousehold() throws Exception {
 
         // ********* Constructor **********
@@ -353,6 +353,7 @@ public class DirectoryScreenTest extends BaseDriver {
         myHelper.enterPin("1", "1", "3", "3");
 
         if (myBasePage.getOS().contains("ios")) {
+//            Thread.sleep(1000);
             myDirectory.searchAndClickHousehold("Ryan, Ken");
             Thread.sleep(1000);
 //            myBasePage.clickByTextContains("Ryan, Ken");
