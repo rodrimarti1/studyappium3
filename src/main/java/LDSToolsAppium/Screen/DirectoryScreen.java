@@ -295,14 +295,12 @@ public class DirectoryScreen extends BasePage {
     public void clickDirectoryUser(String myUser) throws Exception {
         if (getOS().equals("ios")) {
 //            clickByCords(myUser);
-            System.out.println(getSourceOfPage());
-//            driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
-//            driver.get().findElement(By.xpath("//XCUIElementTypeButton[@name='" + myUser + "']")).click();
-            driver.get().findElement(By.xpath("//XCUIElementTypeButton[contains(@name, \"" + myUser + "\")]")).click();
-//            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
-//            driver.get().findElement(MobileBy.AccessibilityId(myUser)).click();
-//            driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
-            //driver.findElement(By.xpath("//XCUIElementTypeCell/XCUIElementTypeStaticText[contains(@value, '" + myUser + "')]"));
+//            System.out.println(getSourceOfPage());
+//            driver.get().findElement(By.xpath("//XCUIElementTypeButton[contains(@name, \"" + myUser + "\")]")).click();
+//            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[contains(@name, \"" + myUser + "\")]")).click();
+            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
+            Thread.sleep(500);
+            driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
         } else {
             String appPackage = driver.get().getCapabilities().getCapability("appPackage").toString();
             System.out.println("App Package: " + appPackage);
@@ -370,7 +368,7 @@ public class DirectoryScreen extends BasePage {
         String tempMyUser = myUser.toLowerCase();
         BasePage myBase = new BasePage(driver);
 
-        System.out.println(getSourceOfPage());
+//        System.out.println(getSourceOfPage());
         directorySort.click();
         if (myBase.getOS().equalsIgnoreCase("ios")) {
             directorySelectSort.click();

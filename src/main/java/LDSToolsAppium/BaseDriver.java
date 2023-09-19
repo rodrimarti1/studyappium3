@@ -653,7 +653,9 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
             }
 
             if (testDevice.contains("DAILY")) {
-                testDevice = "iPhone 13";
+                testDevice = "iPhone 14";
+//                testDevice = "iPhone 14 Pro";
+//                testDevice = "iPad mini (6th generation)";
             }
 
             System.out.println("Device Name: " + testDevice + " UDID: " + myUdid);
