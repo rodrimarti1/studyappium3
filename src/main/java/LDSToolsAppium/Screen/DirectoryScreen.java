@@ -44,7 +44,8 @@ public class DirectoryScreen extends BasePage {
     @AndroidFindBy(xpath = "//android.widget.HorizontalScrollView/android.view.View[1]" )
 //    @iOSXCUITFindBy(xpath = "//*[@name='LDS_Tools.DirectoryView']//XCUIElementTypeStaticText[2]")
 //    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, '▾')]/XCUIElementTypeButton")
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Directory']/following-sibling::XCUIElementTypeStaticText")
+//    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Directory']/following-sibling::XCUIElementTypeStaticText")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeImage[@name='Go Down']")
     public WebElement unitSelected;
 
 
