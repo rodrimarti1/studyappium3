@@ -21,7 +21,7 @@ import java.util.List;
 public class OrganizationsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3"})
+    @Test (groups = {"smoke1", "smoke", "all1", "all", "daily", "daily3", "jft"})
     public void organizationTest_BISHOP() throws Exception {
         organizationTestCheckSub("BISHOP");
     }
@@ -226,7 +226,7 @@ public class OrganizationsScreenTest extends BaseDriver {
         organizationStakeHighPriestQuorumCheckSub("RELIEF_SOCIETY_SECOND_COUNSELOR");
     }
 
-    @Test(groups = {"all3", "all", "daily", "daily3", "jft"})
+    @Test(groups = {"all3", "all", "daily", "daily3"})
     public void organizationStakeHighPriestQuorum_YOUNG_WOMEN_PRESIDENT() throws Exception {
         organizationStakeHighPriestQuorumCheckSub("YOUNG_WOMEN_PRESIDENT");
     }
@@ -400,8 +400,8 @@ public class OrganizationsScreenTest extends BaseDriver {
         Assert.assertTrue(myBasePage.checkNoCaseList("Brando", pageSource, "Contains"));
 
         Assert.assertTrue(myBasePage.checkNoCaseList("Bishopric Second Counselor", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Loeb", pageSource, "Contains"));
-        Assert.assertTrue(myBasePage.checkNoCaseList("Andrew", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Snow", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Paul", pageSource, "Contains"));
 
 //        Assert.assertTrue(myBasePage.checkNoCaseList("Ward Executive Secretary", pageSource, "Contains"));
 //        Assert.assertTrue(myBasePage.checkNoCaseList("Salas", pageSource, "Contains"));

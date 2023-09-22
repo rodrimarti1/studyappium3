@@ -67,7 +67,7 @@
       When a <memberRecordPrimary> is searched for
       Then the member <memberRecordPrimary> will <willPrimary> be displayed
 
-      @all @all1 @daily @daily1  @jft
+      @all @all1 @daily @daily1 @jft
       Examples:
         | leader                     | memberRecordElder | willElder | memberRecordRS  | willRS  | memberRecordAaronic | willAaronic | memberRecordYW     | willYW  | memberRecordPrimary | willPrimary |
         | "BISHOP"                   | "Bryson, David"   | "true"    | "Carter, Tanya" | "true"  | "Chappell, William" | "true"      | "Chappell, Audrey" | "true"  | "Sosa, Kailey"      | "true"      |

@@ -660,7 +660,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-//    @Test
+    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -734,7 +734,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("39373", callingId);
+            memberList = apiTest.getAccounts("21628", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
@@ -913,7 +913,7 @@ public class APITest {
         }
     }
 
-    @Test
+//    @Test
     public void getInfoFromName() throws Exception {
         ApiHousehold myHousehold = new ApiHousehold();
         myHousehold = apiTest.getPersonalInfoFromNameAPI("Cline, Michael", "39373", "dsoneil");
