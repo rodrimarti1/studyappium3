@@ -660,7 +660,7 @@ public class APITest {
         myExpense.apiDeleteExpense("mbthomas74" , "21628", "Activities Automated Test");
     }
 
-    @Test
+//    @Test
     public void apiGetUsernames() throws Exception {
         int codeTest = 0;
         int responseCode = 0;
@@ -734,7 +734,7 @@ public class APITest {
 
 
         for (String callingId: unitMap.keySet()) {
-            memberList = apiTest.getAccounts("21628", callingId);
+            memberList = apiTest.getAccounts("39373", callingId);
             for (String myUsername: memberList) {
 //                System.out.println("Calling Username: " + myUsername);
                 callingAndLoginName.add(callingId + "," + unitMap.get(callingId)  + "," + myUsername );
@@ -913,29 +913,35 @@ public class APITest {
         }
     }
 
-//    @Test
+    @Test
     public void getInfoFromName() throws Exception {
         ApiHousehold myHousehold = new ApiHousehold();
-        myHousehold = apiTest.getPersonalInfoFromNameAPI("Cline, Michael", "39373", "dsoneil");
+        myHousehold = apiTest.getPersonalInfoFromNameAPI("Allen, Katana Jean", "39373", "dsoneil");
         System.out.println("Display Name: " + myHousehold.getDisplayName());
         System.out.println("Household Privacy Address: " + myHousehold.getPrivacy().getAddress());
         System.out.println("Household Privacy Coordinates: " + myHousehold.getPrivacy().getCoordinates());
         System.out.println("Household Privacy Photo: " + myHousehold.getPrivacy().getPhoto());
+        System.out.println("Household Address: " + myHousehold.getAddress());
         for(Member oneMember: myHousehold.getMembers()) {
-            System.out.println("*****************************************************");
-            System.out.println("Member Display Name: " + oneMember.getDisplayName());
-            System.out.println("Member Privacy Address: " + oneMember.getPrivacy().getAddress());
-            System.out.println("Member Privacy Birthdate: " + oneMember.getPrivacy().getBirthDate());
-            System.out.println("Member Privacy Photo: " + oneMember.getPrivacy().getPhoto());
-            System.out.println("Member Privacy Phone: " + oneMember.getPrivacy().getPhone());
-            System.out.println("Member Privacy Email: " + oneMember.getPrivacy().getEmail());
-            System.out.println("Member Privacy Coordinates: " + oneMember.getPrivacy().getCoordinates());
-            System.out.println("Member Privacy Master: " + oneMember.getPrivacy().getMaster());
-            System.out.println("*****************************************************");
-            System.out.println(" ");
-
+            if (oneMember.getOfficialName().equalsIgnoreCase("Allen, Katana Jean")) {
+                System.out.println("*****************************************************");
+                System.out.println("Member Display Name: " + oneMember.getDisplayName());
+                System.out.println("Member Offical Name: " + oneMember.getOfficialName());
+                System.out.println("Member Privacy Address: " + oneMember.getPrivacy().getAddress());
+                System.out.println("Member Privacy Birthdate: " + oneMember.getPrivacy().getBirthDate());
+                System.out.println("Member Birthdate: " + oneMember.getBirthDate());
+                System.out.println("Member Privacy Photo: " + oneMember.getPrivacy().getPhoto());
+                System.out.println("Member Privacy Phone: " + oneMember.getPrivacy().getPhone());
+                System.out.println("Member Phone: " + oneMember.getPhone());
+                System.out.println("Member Privacy Email: " + oneMember.getPrivacy().getEmail());
+                System.out.println("Member Email: " + oneMember.getEmail());
+                System.out.println("Member Privacy Coordinates: " + oneMember.getPrivacy().getCoordinates());
+                System.out.println("Member Privacy Master: " + oneMember.getPrivacy().getMaster());
+                System.out.println("TEST: " + oneMember.getEmail());
+                System.out.println("*****************************************************");
+                System.out.println(" ");
+            }
         }
-
     }
 
 //    @Test

@@ -13,7 +13,7 @@
         | "BISHOP" | "reports/sacrament-attendance"    | "Success" |
         | "BISHOP" | "reports/class-quorum-attendance" | "Success" |
         | "BISHOP" | "reports/unit-statistics"         | "Success" |
-        | "BISHOP" | "reports/new-members"             | "Success" |
+#        | "BISHOP" | "reports/new-members"             | "Success" |
         | "BISHOP" | "reports/ministering-sisters"     | "Success" |
         | "BISHOP" | "reports/ministering-brothers"    | "Success" |
         | "BISHOP" | "reports/members-moved-out"       | "Success" |

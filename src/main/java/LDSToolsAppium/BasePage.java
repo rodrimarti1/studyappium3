@@ -159,6 +159,10 @@ public class BasePage extends BaseDriver {
     @iOSXCUITFindBy(accessibility = "Next")
     public WebElement visibilityPopUpNext;
 
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Back']" )
+    @iOSXCUITFindBy(accessibility = "Back")
+    public WebElement visibilityPopUpBack;
+
     @AndroidFindBy(xpath = "//android.widget.TextView[@text='Done']" )
     @iOSXCUITFindBy(accessibility = "Done")
     public WebElement visibilityPopUpDone;

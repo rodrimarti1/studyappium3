@@ -236,6 +236,51 @@ public class DirectoryEditScreen extends BasePage {
     public WebElement unitSelector;
 
 
+    // **************************** NEW Visibility ****************************
+    //Edit Visibility Button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit visibility']/..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
+    public WebElement editVisibilityButton;
+
+    //Edit data settings Button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit data settings']/..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
+    public WebElement editDataSettings;
+
+    //Close Edit Visibility
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Close']/..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
+    public WebElement closeEditVisibility;
+
+
+    //Edit Information Button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit information']/..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
+    public WebElement editInformationButton;
+
+    //Information Visibility Help button
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Help']/..")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
+    public WebElement helpEditVisibility;
+
+
+    //Birth Day and Month edit button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Birth Day and Month']/..")
+    public WebElement birthDayAndMonthEditButton;
+
+    //Birth Day and Month get visibility text
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Birth Day and Month']/../android.widget.TextView[@index='2']")
+    public WebElement birthDayAndMonthGetVisibility;
+
+    //Photo edit button
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Photo']/..")
+    public WebElement personalPhotoEditButton;
+
+    //Photo get visibility text
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Photo']/../android.widget.TextView[@index='2']")
+    public WebElement personalPhotoGetVisibility;
+
+
     public void clearPhoneAndEmail() throws Exception {
         DirectoryScreen myDirectory = new DirectoryScreen(driver);
 

@@ -822,21 +822,13 @@ public class HelperMethods extends BaseDriver {
 
     }
 
-    public void enterPin(String firstNumber, String secondNumber, String thirdNumber, String fourthNumber) throws Exception {
-        BasePage myBasePage = new BasePage(driver);
-        // ********** Page Instantiations **********
-        //HelperMethods myHelper = new HelperMethods(driver);
-        PinScreen myPin = new PinScreen(driver);
-        MenuScreen myMenuScreen = new MenuScreen(driver);
-        BaseDriver myBaseDriver = new BaseDriver();
 
-        String deviceName;
+    public void pinChecker() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        PinScreen myPin = new PinScreen(driver);
         Boolean pinCheck = false;
         String pageSource;
         int myCounter = 1;
-
-
-        Thread.sleep(4000);
 
         while (!pinCheck) {
             LOGGER.info("Check for non leader PIN prompt");
@@ -852,26 +844,20 @@ public class HelperMethods extends BaseDriver {
             }
             if (pageSource.contains("Would you like to use")) {
                 pinCheck = true;
-//                System.out.println(myBasePage.getSourceOfPage());
                 myBasePage.waitForElementThenClick(myPin.pinDisableTouchID);
-//                myPin.pinDisableTouchID.click();
                 Thread.sleep(2000);
                 myBasePage.waitForElementThenClick(myPin.alertOK);
-//                myPin.alertOK.click();
             }
-
             if (myCounter >= 3) {
                 pinCheck = true;
             }
             myCounter++;
         }
+    }
 
-
-
-        //Android needs this.
-//        LOGGER.info("Check for MORE Alerts after whats new page");
-//        checkForAlertsAfterPin();
-
+    public void enterThePinDigits(String firstNumber, String secondNumber, String thirdNumber, String fourthNumber) throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        PinScreen myPin = new PinScreen(driver);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             new Actions(driver.get())
                     .sendKeys(firstNumber)
@@ -894,73 +880,21 @@ public class HelperMethods extends BaseDriver {
             pressPinKeys(thirdNumber);
             pressPinKeys(fourthNumber);
         }
+    }
 
-
-
-
-
-        //I really don't like the sleeps here but Android won't work without them.
-//        Thread.sleep(2000);
-//        pressPinKeys(firstNumber);
-////        Thread.sleep(2000);
-//        pressPinKeys(secondNumber);
-////        Thread.sleep(2000);
-//        pressPinKeys(thirdNumber);
-////        Thread.sleep(2000);
-//        pressPinKeys(fourthNumber);
-////        Thread.sleep(2000);
-
-//        if (myBasePage.getOS().equalsIgnoreCase("android")) {
-//            myPin.pinKeyEnter.click();
-//        }
-//
-//        Thread.sleep(2000);
-//
-//        pressPinKeys(firstNumber);
-//        Thread.sleep(2000);
-//        pressPinKeys(secondNumber);
-//        Thread.sleep(2000);
-//        pressPinKeys(thirdNumber);
-//        Thread.sleep(2000);
-//        pressPinKeys(fourthNumber);
-//
-//        Thread.sleep(2000);
-//
-//        if (myBasePage.getOS().equalsIgnoreCase("android")) {
-//            myPin.pinKeyEnter.click();
-//        }
-
-
-
-
-
-        //Sometimes there is a warning before the Whats new screen
-        LOGGER.info("Check for Alerts AFTER PIN");
-        if (!myBasePage.getOS().equalsIgnoreCase("ios")) {
-//            //Android needs this.
-//            checkForAlertsAfterPin();
-            Thread.sleep(2000);
-//
-//            //Android needs this.
-            dismissWhatsNewPage();
-//
-//            //Android needs this.
-//            checkForAlertsAfterPin();
-        }
-
-        //iOS may need this.
-        dismissWhatsNewPage();
-
+    public void dismissVisibilityPopUp() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             myBasePage.waitForElementThenClick(myBasePage.visibilityPopUpAcknowledge);
             myBasePage.waitForElementThenClick(myBasePage.visibilityPopUpNext);
             myBasePage.waitForElementThenClick(myBasePage.visibilityPopUpDone);
 
         }
+    }
 
-
-
-
+    public void afterPinStuff() throws Exception {
+        BasePage myBasePage = new BasePage(driver);
+        MenuScreen myMenuScreen = new MenuScreen(driver);
         if (myBasePage.getOS().equalsIgnoreCase("android")) {
             Thread.sleep(4000);
             System.out.println("Check for Cancel");
@@ -984,26 +918,25 @@ public class HelperMethods extends BaseDriver {
                 myMenuScreen.directory.click();
             }
         }
+    }
 
+    public void enterPin(String firstNumber, String secondNumber, String thirdNumber, String fourthNumber) throws Exception {
+        Thread.sleep(4000);
+        pinChecker();
+        enterThePinDigits(firstNumber, secondNumber, thirdNumber, fourthNumber);
+        //This may not be needed.
+        dismissWhatsNewPage();
+        dismissVisibilityPopUp();
+        afterPinStuff();
+    }
 
-
-//        // Click on Later then Directory
-//        if (!myBasePage.getOS().equals("ios")) {
-////            Thread.sleep(2000);
-////            checkForLater();
-//            Thread.sleep(500);
-//
-//            //Todo: may not need this anymore
-//            if (!myBasePage.checkForElement(myMenuScreen.directory)) {
-//                myMenuScreen.drawerButton.click();
-//            }
-//            myBasePage.waitForElement(myMenuScreen.directory);
-//            myMenuScreen.organizations.click();
-//            Thread.sleep(1000);
-//            myMenuScreen.selectMenu(myMenuScreen.directory);
-//            Thread.sleep(2000);
-//        }
-
+    public void enterPinStayOnVisibilityPopUp(String firstNumber, String secondNumber, String thirdNumber, String fourthNumber) throws Exception {
+        Thread.sleep(4000);
+        pinChecker();
+        enterThePinDigits(firstNumber, secondNumber, thirdNumber, fourthNumber);
+        //This may not be needed.
+        dismissWhatsNewPage();
+        //Should be on the visibility pop up page
     }
 
     public void changePIN(String firstNumber, String secondNumber, String thirdNumber, String fourthNumber) throws Exception {
