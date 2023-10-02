@@ -5,50 +5,35 @@ import com.google.gson.annotations.SerializedName;
 
 public class Position {
 
-    @SerializedName("activeDate")
-    @Expose
-    private String activeDate;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("setApart")
-    @Expose
-    private Boolean setApart;
-    @SerializedName("type")
-    @Expose
-    private String type;
-    @SerializedName("unitName")
-    @Expose
-    private String unitName;
-    @SerializedName("unitNumber")
-    @Expose
-    private Integer unitNumber;
+
     @SerializedName("uuid")
     @Expose
     private String uuid;
+    @SerializedName("type")
+    @Expose
+    private String type;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("unitNumber")
+    @Expose
+    private Integer unitNumber;
+    @SerializedName("unitName")
+    @Expose
+    private String unitName;
+    @SerializedName("activeDate")
+    @Expose
+    private String activeDate;
+    @SerializedName("setApart")
+    @Expose
+    private Boolean setApart;
 
-    public String getActiveDate() {
-        return activeDate;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setActiveDate(String activeDate) {
-        this.activeDate = activeDate;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Boolean getSetApart() {
-        return setApart;
-    }
-
-    public void setSetApart(Boolean setApart) {
-        this.setApart = setApart;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getType() {
@@ -59,12 +44,12 @@ public class Position {
         this.type = type;
     }
 
-    public String getUnitName() {
-        return unitName;
+    public String getName() {
+        return name;
     }
 
-    public void setUnitName(String unitName) {
-        this.unitName = unitName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Integer getUnitNumber() {
@@ -75,12 +60,28 @@ public class Position {
         this.unitNumber = unitNumber;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getUnitName() {
+        return unitName;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setUnitName(String unitName) {
+        this.unitName = unitName;
+    }
+
+    public String getActiveDate() {
+        return activeDate;
+    }
+
+    public void setActiveDate(String activeDate) {
+        this.activeDate = activeDate;
+    }
+
+    public Boolean getSetApart() {
+        return setApart;
+    }
+
+    public void setSetApart(Boolean setApart) {
+        this.setApart = setApart;
     }
 
 }

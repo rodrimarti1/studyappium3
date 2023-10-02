@@ -3,9 +3,9 @@ package LDSToolsAppium;
 import LDSToolsAppium.API.*;
 import LDSToolsAppium.API.Expenses.*;
 import LDSToolsAppium.API.Households.ApiHousehold;
+import LDSToolsAppium.API.Households.Email;
 import LDSToolsAppium.API.Households.Member;
-import LDSToolsAppium.API.Households.Privacy;
-import LDSToolsAppium.API.Households.Privacy_;
+import LDSToolsAppium.API.Households.Phone;
 import LDSToolsAppium.API.LifeResources.Contact;
 import LDSToolsAppium.API.LifeResources.LifeResource;
 import LDSToolsAppium.API.LifeResources.Resource;
@@ -27,9 +27,7 @@ import org.jboss.aerogear.security.otp.Totp;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.awt.*;
 import java.awt.desktop.SystemEventListener;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -932,12 +930,17 @@ public class APITest {
                 System.out.println("Member Birthdate: " + oneMember.getBirthDate());
                 System.out.println("Member Privacy Photo: " + oneMember.getPrivacy().getPhoto());
                 System.out.println("Member Privacy Phone: " + oneMember.getPrivacy().getPhone());
-                System.out.println("Member Phone: " + oneMember.getPhone());
-                System.out.println("Member Privacy Email: " + oneMember.getPrivacy().getEmail());
-                System.out.println("Member Email: " + oneMember.getEmail());
+                for (Phone myPhone: oneMember.getPhones()) {
+                    System.out.println(myPhone.getE164());
+                }
+
+//                System.out.println("Member Email: " + oneMember.getEmail());
                 System.out.println("Member Privacy Coordinates: " + oneMember.getPrivacy().getCoordinates());
-                System.out.println("Member Privacy Master: " + oneMember.getPrivacy().getMaster());
-                System.out.println("TEST: " + oneMember.getEmail());
+//                System.out.println("TEST: " + oneMember.getEmails().toString());
+                System.out.println("Member Privacy Email: " + oneMember.getPrivacy().getEmail());
+                for (Email myEmail: oneMember.getEmails()) {
+                    System.out.println(myEmail.getEmail());
+                }
                 System.out.println("*****************************************************");
                 System.out.println(" ");
             }

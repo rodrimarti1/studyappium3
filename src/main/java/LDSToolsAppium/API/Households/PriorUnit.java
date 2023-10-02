@@ -6,51 +6,48 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class PriorUnit {
-
-    @SerializedName("address")
-    @Expose
-    private String address;
-    @SerializedName("childUnits")
-    @Expose
-    private List<Object> childUnits = null;
-    @SerializedName("email")
-    @Expose
-    private String email;
-    @SerializedName("name")
-    @Expose
-    private String name;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
     @SerializedName("unitNumber")
     @Expose
     private Integer unitNumber;
     @SerializedName("unitType")
     @Expose
     private String unitType;
+    @SerializedName("name")
+    @Expose
+    private String name;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("address")
+    @Expose
+    private String address;
+    @SerializedName("parentUnit")
+    @Expose
+    private String parentUnit;
+    @SerializedName("childUnits")
+    @Expose
+    private List<String> childUnits;
+    @SerializedName("countryId")
+    @Expose
+    private Integer countryId;
 
-    public String getAddress() {
-        return address;
+    public Integer getUnitNumber() {
+        return unitNumber;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setUnitNumber(Integer unitNumber) {
+        this.unitNumber = unitNumber;
     }
 
-    public List<Object> getChildUnits() {
-        return childUnits;
+    public String getUnitType() {
+        return unitType;
     }
 
-    public void setChildUnits(List<Object> childUnits) {
-        this.childUnits = childUnits;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
     }
 
     public String getName() {
@@ -69,20 +66,44 @@ public class PriorUnit {
         this.phone = phone;
     }
 
-    public Integer getUnitNumber() {
-        return unitNumber;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUnitNumber(Integer unitNumber) {
-        this.unitNumber = unitNumber;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUnitType() {
-        return unitType;
+    public String getAddress() {
+        return address;
     }
 
-    public void setUnitType(String unitType) {
-        this.unitType = unitType;
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getParentUnit() {
+        return parentUnit;
+    }
+
+    public void setParentUnit(String parentUnit) {
+        this.parentUnit = parentUnit;
+    }
+
+    public List<String> getChildUnits() {
+        return childUnits;
+    }
+
+    public void setChildUnits(List<String> childUnits) {
+        this.childUnits = childUnits;
+    }
+
+    public Integer getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(Integer countryId) {
+        this.countryId = countryId;
     }
 
 }

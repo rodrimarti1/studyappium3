@@ -3,7 +3,7 @@ package LDSToolsAppium.API.Households;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Privacy_ {
+public class Privacy__1 {
 
     @SerializedName("address")
     @Expose
@@ -11,18 +11,18 @@ public class Privacy_ {
     @SerializedName("coordinates")
     @Expose
     private String coordinates;
-    @SerializedName("email")
-    @Expose
-    private String email;
-    @SerializedName("master")
-    @Expose
-    private String master;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
     @SerializedName("photo")
     @Expose
     private String photo;
+    @SerializedName("phone")
+    @Expose
+    private String phone;
+    @SerializedName("email")
+    @Expose
+    private String email;
+    @SerializedName("birthDate")
+    @Expose
+    private String birthDate;
 
     public String getAddress() {
         return address;
@@ -40,20 +40,12 @@ public class Privacy_ {
         this.coordinates = coordinates;
     }
 
-    public String getEmail() {
-        return email;
+    public String getPhoto() {
+        return photo;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getMaster() {
-        return master;
-    }
-
-    public void setMaster(String master) {
-        this.master = master;
+    public void setPhoto(String photo) {
+        this.photo = photo;
     }
 
     public String getPhone() {
@@ -64,12 +56,20 @@ public class Privacy_ {
         this.phone = phone;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
 }

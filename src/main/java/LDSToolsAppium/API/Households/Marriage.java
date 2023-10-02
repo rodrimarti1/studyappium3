@@ -5,31 +5,31 @@ import com.google.gson.annotations.SerializedName;
 
 public class Marriage {
 
-    @SerializedName("country")
+    @SerializedName("spouse")
     @Expose
-    private String country;
+    private Spouse spouse;
     @SerializedName("date")
     @Expose
     private String date;
     @SerializedName("place")
     @Expose
     private String place;
+    @SerializedName("country")
+    @Expose
+    private String country;
     @SerializedName("sealingDate")
     @Expose
     private String sealingDate;
-    @SerializedName("spouse")
-    @Expose
-    private Spouse spouse;
     @SerializedName("temple")
     @Expose
     private String temple;
 
-    public String getCountry() {
-        return country;
+    public Spouse getSpouse() {
+        return spouse;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setSpouse(Spouse spouse) {
+        this.spouse = spouse;
     }
 
     public String getDate() {
@@ -48,20 +48,20 @@ public class Marriage {
         this.place = place;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getSealingDate() {
         return sealingDate;
     }
 
     public void setSealingDate(String sealingDate) {
         this.sealingDate = sealingDate;
-    }
-
-    public Spouse getSpouse() {
-        return spouse;
-    }
-
-    public void setSpouse(Spouse spouse) {
-        this.spouse = spouse;
     }
 
     public String getTemple() {

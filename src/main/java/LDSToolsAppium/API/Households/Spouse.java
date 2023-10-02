@@ -5,22 +5,22 @@ import com.google.gson.annotations.SerializedName;
 
 public class Spouse {
 
-    @SerializedName("birthDate")
-    @Expose
-    private String birthDate;
-    @SerializedName("displayName")
-    @Expose
-    private String displayName;
     @SerializedName("uuid")
     @Expose
     private String uuid;
+    @SerializedName("displayName")
+    @Expose
+    private String displayName;
+    @SerializedName("birthDate")
+    @Expose
+    private String birthDate;
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getUuid() {
+        return uuid;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
     }
 
     public String getDisplayName() {
@@ -31,12 +31,12 @@ public class Spouse {
         this.displayName = displayName;
     }
 
-    public String getUuid() {
-        return uuid;
+    public String getBirthDate() {
+        return birthDate;
     }
 
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
     }
 
 }

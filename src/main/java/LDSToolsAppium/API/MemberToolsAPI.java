@@ -42,7 +42,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
     Response householdAPI = null;
 //    String baseURL = "https://wam-membertools-api-stage.churchofjesuschrist.org/api/v4/"; //OLD
     String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v4/";
-//    String baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v5/"; //NEW
+    String v5baseURL = "https://membertools-api-stage.churchofjesuschrist.org/api/v5/"; //NEW
 //    String baseURL;
 
     String username = "testuser";
@@ -714,41 +714,47 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
 
     public String getHouseholdJson (String unitNumber, String proxyLogin) throws Exception {
-//        proxyLogin = "mbthomas74";
         String responseData = "";
-        File householdFile = new File("ConfigFiles/households" + unitNumber + ".json");
+//        File householdFile = new File("ConfigFiles/households" + unitNumber + ".json");
         StringBuilder contentBuilder = new StringBuilder();
 
         OkHttpClient httpClient = loginCred();
 //        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
         Request request = requestProxyURL("https://membertools-api-stage.churchofjesuschrist.org/api/v5/" + "households?units=" + unitNumber, proxyLogin );
 
-
-        if (!householdFile.exists()) {
-            try (Response response = httpClient.newCall(request).execute()) {
-                assert response.body() != null;
-                responseData = response.body().string();
-                try  {
-                    FileWriter myWriter = new FileWriter(householdFile);
-                    myWriter.write(responseData);
-                    myWriter.flush();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else {
-            try {
-                responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/households" + unitNumber + ".json")), StandardCharsets.UTF_8);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
+        try (Response response = httpClient.newCall(request).execute()) {
+            assert response.body() != null;
+            responseData = response.body().string();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+//
+//        if (!householdFile.exists()) {
+//            try (Response response = httpClient.newCall(request).execute()) {
+//                assert response.body() != null;
+//                responseData = response.body().string();
+//                try  {
+//                    FileWriter myWriter = new FileWriter(householdFile);
+//                    myWriter.write(responseData);
+//                    myWriter.flush();
+//
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        } else {
+//            try {
+//                responseData = new String(Files.readAllBytes(Paths.get("ConfigFiles/households" + unitNumber + ".json")), StandardCharsets.UTF_8);
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//        }
 
         return responseData;
     }
@@ -2175,7 +2181,7 @@ public class MemberToolsAPI extends AbstractTestNGCucumberTests {
 
     public ApiHousehold getPersonalInfoFromNameAPI( String memberToFind, String unitNumber, String proxyLogin) throws Exception {
         OkHttpClient httpClient = loginCred();
-        Request request = requestProxyURL(baseURL + "households?units=" + unitNumber, proxyLogin );
+        Request request = requestProxyURL(v5baseURL + "households?units=" + unitNumber, proxyLogin );
         JsonParser parser = new JsonParser();
         String responseData;
 //        String myPositions = "";

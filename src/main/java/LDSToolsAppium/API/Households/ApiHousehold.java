@@ -6,48 +6,74 @@ import com.google.gson.annotations.SerializedName;
 
 public class ApiHousehold {
 
+    @SerializedName("uuid")
+    @Expose
+    private String uuid;
+    @SerializedName("unitNumber")
+    @Expose
+    private Integer unitNumber;
+    @SerializedName("displayName")
+    @Expose
+    private String displayName;
+    @SerializedName("familyName")
+    @Expose
+    private String familyName;
     @SerializedName("address")
     @Expose
     private String address;
     @SerializedName("coordinates")
     @Expose
     private Coordinates coordinates;
-    @SerializedName("displayName")
+    @SerializedName("verified")
     @Expose
-    private String displayName;
-    @SerializedName("email")
-    @Expose
-    private String email;
-    @SerializedName("familyName")
-    @Expose
-    private String familyName;
+    private Boolean verified;
     @SerializedName("members")
     @Expose
-    private List<Member> members = null;
-    @SerializedName("permissions")
-    @Expose
-    private List<String> permissions = null;
-    @SerializedName("phone")
-    @Expose
-    private String phone;
+    private List<Member> members;
     @SerializedName("privacy")
     @Expose
-    private Privacy_ privacy;
+    private Privacy__1 privacy;
+    @SerializedName("permissions")
+    @Expose
+    private List<String> permissions;
     @SerializedName("removed")
     @Expose
     private Boolean removed;
     @SerializedName("sortName")
     @Expose
     private String sortName;
-    @SerializedName("unitNumber")
-    @Expose
-    private Integer unitNumber;
-    @SerializedName("uuid")
-    @Expose
-    private String uuid;
-    @SerializedName("verified")
-    @Expose
-    private Boolean verified;
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    public Integer getUnitNumber() {
+        return unitNumber;
+    }
+
+    public void setUnitNumber(Integer unitNumber) {
+        this.unitNumber = unitNumber;
+    }
+
+    public String getDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getFamilyName() {
+        return familyName;
+    }
+
+    public void setFamilyName(String familyName) {
+        this.familyName = familyName;
+    }
 
     public String getAddress() {
         return address;
@@ -65,28 +91,12 @@ public class ApiHousehold {
         this.coordinates = coordinates;
     }
 
-    public String getDisplayName() {
-        return displayName;
+    public Boolean getVerified() {
+        return verified;
     }
 
-    public void setDisplayName(String displayName) {
-        this.displayName = displayName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFamilyName() {
-        return familyName;
-    }
-
-    public void setFamilyName(String familyName) {
-        this.familyName = familyName;
+    public void setVerified(Boolean verified) {
+        this.verified = verified;
     }
 
     public List<Member> getMembers() {
@@ -97,28 +107,20 @@ public class ApiHousehold {
         this.members = members;
     }
 
+    public Privacy__1 getPrivacy() {
+        return privacy;
+    }
+
+    public void setPrivacy(Privacy__1 privacy) {
+        this.privacy = privacy;
+    }
+
     public List<String> getPermissions() {
         return permissions;
     }
 
     public void setPermissions(List<String> permissions) {
         this.permissions = permissions;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public Privacy_ getPrivacy() {
-        return privacy;
-    }
-
-    public void setPrivacy(Privacy_ privacy) {
-        this.privacy = privacy;
     }
 
     public Boolean getRemoved() {
@@ -135,30 +137,6 @@ public class ApiHousehold {
 
     public void setSortName(String sortName) {
         this.sortName = sortName;
-    }
-
-    public Integer getUnitNumber() {
-        return unitNumber;
-    }
-
-    public void setUnitNumber(Integer unitNumber) {
-        this.unitNumber = unitNumber;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public Boolean getVerified() {
-        return verified;
-    }
-
-    public void setVerified(Boolean verified) {
-        this.verified = verified;
     }
 
 }
