@@ -510,6 +510,10 @@ public class BaseDriver extends AbstractTestNGCucumberTests {
                 capabilities.setCapability("isHeadless", true);
             }
 
+            if (testDevice.contains("DAILY")) {
+                testDevice = "emulator-5554";
+            }
+
 //            System.out.println("TEST DEVICE: " + testDevice);
 
             capabilities.setCapability("app", app.getAbsolutePath());
