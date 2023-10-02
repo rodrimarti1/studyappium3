@@ -932,6 +932,8 @@ public class APITest {
                 System.out.println("Member Privacy Phone: " + oneMember.getPrivacy().getPhone());
                 for (Phone myPhone: oneMember.getPhones()) {
                     System.out.println(myPhone.getE164());
+                    System.out.println(myPhone.getType());
+                    System.out.println(myPhone.getNumber());
                 }
 
 //                System.out.println("Member Email: " + oneMember.getEmail());

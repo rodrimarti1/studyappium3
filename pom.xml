@@ -201,6 +201,12 @@
             <artifactId>webdrivermanager</artifactId>
             <version>5.4.1</version>
         </dependency>
+        <dependency>
+            <groupId>com.googlecode.libphonenumber</groupId>
+            <artifactId>libphonenumber</artifactId>
+            <version>3.5</version>
+        </dependency>
+
 
 
     </dependencies>

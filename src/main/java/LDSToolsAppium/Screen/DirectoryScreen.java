@@ -52,7 +52,8 @@ public class DirectoryScreen extends BasePage {
     // ****************** Search ******************
     //Search Directory
 //    @AndroidFindBy(id = "org.lds.ldstools.alpha:id/filterEditText")
-    @AndroidFindBy(xpath = "//*[@text='Search']/../..")
+//    @AndroidFindBy(xpath = "//*[@text='Search']/../..")
+    @AndroidFindBy(xpath = "//android.view.View[@content-desc='Search']/..")
 //    @iOSXCUITFindBy(accessibility = "Search")
     @iOSXCUITFindBy(iOSNsPredicate = "value == 'Search'")
     public  WebElement searchBar;
@@ -294,6 +295,7 @@ public class DirectoryScreen extends BasePage {
 
 
     public void clickDirectoryUser(String myUser) throws Exception {
+        BasePage myBase = new BasePage(driver);
         if (getOS().equals("ios")) {
 //            clickByCords(myUser);
 //            System.out.println(getSourceOfPage());
@@ -303,11 +305,13 @@ public class DirectoryScreen extends BasePage {
             Thread.sleep(500);
             driver.get().findElement(By.xpath("//XCUIElementTypeStaticText[@name='" + myUser + "']")).click();
         } else {
-            String appPackage = driver.get().getCapabilities().getCapability("appPackage").toString();
-            System.out.println("App Package: " + appPackage);
+//            System.out.println(myBase.getSourceOfPage());
+//            String appPackage = driver.get().getCapabilities().getCapability("appPackage").toString();
+//            System.out.println("App Package: " + appPackage);
 //            System.out.println(getSourceOfPage());
 //            driver.get().findElement(By.xpath("//android.widget.TextView[@resource-id='" + appPackage +":id/name'][@text='" + myUser + "']")).click();
-            driver.get().findElement(By.xpath("//android.widget.TextView[@text='" + myUser + "']/../..")).click();
+//            driver.get().findElement(By.xpath("//android.widget.TextView[@text='" + myUser + "']/../..")).click();
+            driver.get().findElement(By.xpath("//android.widget.TextView[@text='" + myUser + "']/..")).click();
 //            driver.findElement(By.xpath("//android.widget.TextView[@id='name'][@text='" + myUser + "']")).click();
         }
     }

@@ -254,7 +254,7 @@ public class DirectoryEditScreen extends BasePage {
 
 
     //Edit Information Button
-    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit information']/..")
+    @AndroidFindBy(xpath = "//android.widget.TextView[@text='Edit Information']/..")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name, 'Leadership Only')]")
     public WebElement editInformationButton;
 

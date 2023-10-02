@@ -1,7 +1,9 @@
 package LDSToolsAppiumTest.steps;
 
 import LDSToolsAppium.API.Households.ApiHousehold;
+import LDSToolsAppium.API.Households.Email;
 import LDSToolsAppium.API.Households.Member;
+import LDSToolsAppium.API.Households.Phone;
 import LDSToolsAppium.API.MemberToolsAPI;
 import LDSToolsAppium.BaseDriver;
 import LDSToolsAppium.BasePage;
@@ -9,6 +11,7 @@ import LDSToolsAppium.Screen.DirectoryEditScreen;
 import LDSToolsAppium.Screen.DirectoryScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -37,6 +40,11 @@ public class Visibility extends BaseDriver {
     String birthYear;
     String age;
 
+    @Given("the proxy {string} logs in")
+    public void theProxyLogsIn(String userName) throws Exception {
+        myHelper.proxyLogin(userName);
+        myHelper.enterPin("1", "1", "3", "3");
+    }
 
 
     @Given("a {string} logs in to the visibility pop up page")
@@ -75,6 +83,8 @@ public class Visibility extends BaseDriver {
     @Then("the personal information will be correct for {string}")
     public void thePersonalInformationWillBeCorrectFor(String memberName) throws Exception {
         pageSource = myBasePage.getSourceOfPage();
+        myBasePage.newScrollDown();
+        pageSource = pageSource + myBasePage.getSourceOfPage();
         getHouseholdAndMemberInfoFromApi(memberName);
         Assert.assertTrue(pageSource.contains("Your Information Visibility"));
         Assert.assertTrue(pageSource.contains("Decide your information's visibility"));
@@ -87,9 +97,16 @@ public class Visibility extends BaseDriver {
         Assert.assertTrue(pageSource.contains("Mailing Address"));
         Assert.assertTrue(pageSource.contains("Address"));
         Assert.assertTrue(pageSource.contains("Email"));
-        Assert.assertTrue(pageSource.contains(oneMember.getEmail()));
+        for (Email myEmail: oneMember.getEmails()) {
+            System.out.println(myEmail.getEmail());
+            Assert.assertTrue(pageSource.contains(myEmail.getEmail()));
+        }
         Assert.assertTrue(pageSource.contains("Phone"));
-        Assert.assertTrue(pageSource.contains(oneMember.getPhone()));
+        for (Phone myPhone: oneMember.getPhones()) {
+            System.out.println(myPhone.getE164());
+            //TODO: need a E164 formatter that works.
+            Assert.assertTrue(pageSource.contains(myPhone.getE164().substring(myPhone.getE164().length() - 4)));
+        }
 
         Assert.assertTrue(pageSource.contains("Visible to ward members"));
         Assert.assertTrue(pageSource.contains("Household Photo"));
@@ -98,7 +115,6 @@ public class Visibility extends BaseDriver {
         Assert.assertTrue(pageSource.contains("Birthday and Month"));
 
         getAge(oneMember.getBirthDate());
-//        Assert.assertTrue(pageSource.contains("(April 22)"));
         Assert.assertTrue(pageSource.contains(birthMonth));
         Assert.assertTrue(pageSource.contains(birthDay));
 
@@ -109,7 +125,7 @@ public class Visibility extends BaseDriver {
         //Press the Edit visibility button
         myDirectoryEdit.editVisibilityButton.click();
         Thread.sleep(500);
-        //TODO: verify this page - should be the same as going through the directory
+        verifyInformationVisibilityDirectoryPage(memberName);
         myDirectoryEdit.closeEditVisibility.click();
 
     }
@@ -163,11 +179,16 @@ public class Visibility extends BaseDriver {
         if (myBasePage.checkForElement(myDirectory.allowWhileUsingApp)) {
             myDirectory.allowWhileUsingApp.click();
         }
+        //Change to scroll to text?
+        myBasePage.newScrollDown();
         myDirectoryEdit.editInformationButton.click();
     }
 
     @Then("the visibility information will be correct for {string}")
     public void theVisibilityInformationWillBeCorrect(String memberName) throws Exception {
+        pageSource = myBasePage.getSourceOfPage();
+        Assert.assertTrue(pageSource.contains("Information Visibility"));
+        Assert.assertTrue(myBasePage.checkForElement(myDirectoryEdit.helpEditVisibility));
         verifyInformationVisibilityDirectoryPage(memberName);
     }
 
@@ -178,10 +199,9 @@ public class Visibility extends BaseDriver {
         getHouseholdAndMemberInfoFromApi(memberName);
         getAge(oneMember.getBirthDate());
         pageSource = myBasePage.getSourceOfPage();
-        //Title Page
-        Assert.assertTrue(pageSource.contains("Information Visibility"));
+        //Title Page will be different depending on how you get there.
         Assert.assertTrue(myBasePage.checkForElement(myDirectoryEdit.closeEditVisibility));
-        Assert.assertTrue(myBasePage.checkForElement(myDirectoryEdit.helpEditVisibility));
+
 
         //Name, Birthday and Age
         Assert.assertTrue(pageSource.contains("Name, Birthday and Age"));
@@ -203,17 +223,21 @@ public class Visibility extends BaseDriver {
         Assert.assertTrue(pageSource.contains(birthDay));
         Assert.assertTrue(myDirectoryEdit.birthDayAndMonthGetVisibility
                 .getText()
-                .equalsIgnoreCase(oneMember
+                .equalsIgnoreCase(getVisibilitySettingFromApi(oneMember
                         .getPrivacy()
-                        .getBirthDate()));
+                        .getBirthDate())));
 
+        //Page down here
+        //TODO: change to scroll to text?
+        myBasePage.newScrollDownSlow();
+        pageSource = pageSource + myBasePage.getSourceOfPage();
 
         Assert.assertTrue(pageSource.contains("Photo"));
         Assert.assertTrue(myDirectoryEdit.personalPhotoGetVisibility
                 .getText()
-                .equalsIgnoreCase(oneMember
+                .equalsIgnoreCase(getVisibilitySettingFromApi(oneMember
                         .getPrivacy()
-                        .getPhoto()));
+                        .getPhoto())));
     }
 
     public String getVisibilitySettingFromApi(String apiSetting) throws Exception {
@@ -228,6 +252,7 @@ public class Visibility extends BaseDriver {
             returnString = "Visible to stake and ward organization presidencies";
         }
 
+        System.out.println(returnString);
         return returnString;
     }
 
@@ -255,12 +280,15 @@ public class Visibility extends BaseDriver {
 
         Month monthName = Month.of(monthInt);
         birthMonth = monthName.toString();
+        System.out.println(birthMonth);
+        birthMonth = birthMonth.toLowerCase();
+        birthMonth = birthMonth.substring(0, 1).toUpperCase() + birthMonth.substring(1);
+        System.out.println(birthMonth);
         birthDay = Integer.toString(day);
         birthYear = Integer.toString(year);
         age = Integer.toString(ageInt);
-
-
     }
+
 
 
 }
