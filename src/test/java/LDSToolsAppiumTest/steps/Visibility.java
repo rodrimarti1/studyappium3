@@ -12,6 +12,8 @@ import LDSToolsAppium.Screen.DirectoryScreen;
 import LDSToolsAppium.Screen.MenuScreen;
 import LDSToolsAppiumTest.HelperMethods;
 
+import com.google.i18n.phonenumbers.PhoneNumberUtil;
+import com.google.i18n.phonenumbers.Phonenumber;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -104,8 +106,8 @@ public class Visibility extends BaseDriver {
         Assert.assertTrue(pageSource.contains("Phone"));
         for (Phone myPhone: oneMember.getPhones()) {
             System.out.println(myPhone.getE164());
-            //TODO: need a E164 formatter that works.
-            Assert.assertTrue(pageSource.contains(myPhone.getE164().substring(myPhone.getE164().length() - 4)));
+//            Assert.assertTrue(pageSource.contains(myPhone.getE164().substring(myPhone.getE164().length() - 4)));
+            Assert.assertTrue(pageSource.contains(convertPhoneNumber(myPhone.getE164())));
         }
 
         Assert.assertTrue(pageSource.contains("Visible to ward members"));
@@ -228,8 +230,7 @@ public class Visibility extends BaseDriver {
                         .getBirthDate())));
 
         //Page down here
-        //TODO: change to scroll to text?
-        myBasePage.newScrollDownSlow();
+        myBasePage.newScrollToText("Email");
         pageSource = pageSource + myBasePage.getSourceOfPage();
 
         Assert.assertTrue(pageSource.contains("Photo"));
@@ -287,6 +288,16 @@ public class Visibility extends BaseDriver {
         birthDay = Integer.toString(day);
         birthYear = Integer.toString(year);
         age = Integer.toString(ageInt);
+    }
+
+    public String convertPhoneNumber(String inputNumber) throws Exception {
+        String returnPhoneNumber;
+        PhoneNumberUtil phoneUtil = PhoneNumberUtil.getInstance();
+        Phonenumber.PhoneNumber formattedNumber = phoneUtil.parse(inputNumber, "US");
+        System.out.println(formattedNumber.toString());
+        System.out.println(phoneUtil.format(formattedNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL));
+        returnPhoneNumber = phoneUtil.format(formattedNumber, PhoneNumberUtil.PhoneNumberFormat.NATIONAL);
+        return returnPhoneNumber;
     }
 
 

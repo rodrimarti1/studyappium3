@@ -17,7 +17,7 @@
     #Default in Europe still "Stake and ward organization presidencies"
 
     #Check all buttons and info
-
+    @jft
     Scenario: New install visibility pop up checker
       Given a "katanajeanw" logs in to the visibility pop up page
       When Your Information Visibility page is displayed
@@ -28,7 +28,7 @@
       Then the Data settings page information will be correct
 
       #Check all buttons and info
-    @jft
+
     Scenario: New install visibility settings checker
       Given the proxy "katanajeanw" logs in
       And is on the Directory Page

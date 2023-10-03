@@ -16,7 +16,7 @@ import java.util.List;
 public class ReportsScreenTest extends BaseDriver {
 
 
-    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1"})
+    @Test (groups = {"all1", "all", "smoke", "smoke1", "report", "daily", "daily1", "jft"})
     public void reportsBasic_BISHOP() throws Exception {
         reportsBasicCheckSub("BISHOP");
     }
@@ -56,7 +56,7 @@ public class ReportsScreenTest extends BaseDriver {
         reportsBasicCheckSub("MEMBER2");
     }
 
-    @Test(groups = {"all1", "all", "daily", "daily2", "jft"})
+    @Test(groups = {"all1", "all", "daily", "daily2"})
     public void reportsBasic_ELDERS_QUORUM_PRESIDENT() throws Exception {
         reportsBasicCheckSub("ELDERS_QUORUM_PRESIDENT");
     }
@@ -702,7 +702,7 @@ public class ReportsScreenTest extends BaseDriver {
         }
 
 //        System.out.println(pageSource);
-        Assert.assertTrue(myBasePage.checkNoCaseList("Shumway", pageSource, "Contains"));
+        Assert.assertTrue(myBasePage.checkNoCaseList("Tara", pageSource, "Contains"));
         Assert.assertFalse(myBasePage.checkNoCaseList("Skywalker, Luke", pageSource, "Equals"));
 
         Thread.sleep(1000);
@@ -1011,7 +1011,7 @@ public class ReportsScreenTest extends BaseDriver {
             Assert.assertFalse(pageSource.contains("Jinn, Qui-Gon"));
         } else {
             pageSource = myBasePage.getSourceOfPage();
-            Assert.assertTrue(myBasePage.checkNoCaseList("Karen", pageSource, "Contains"));
+            Assert.assertTrue(myBasePage.checkNoCaseList("Castillo", pageSource, "Contains"));
             Assert.assertFalse(myBasePage.checkNoCaseList("Jinn, Qui-Gon", pageSource, "Contains"));
         }
 

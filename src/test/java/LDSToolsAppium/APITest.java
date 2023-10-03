@@ -23,6 +23,7 @@ import LDSToolsAppium.API.QuarterlyReport.Entry;
 import LDSToolsAppium.API.QuarterlyReport.QuarterlyReport;
 import LDSToolsAppium.API.QuarterlyReport.Section;
 import LDSToolsAppiumTest.steps.Expenses;
+import LDSToolsAppiumTest.steps.Visibility;
 import org.jboss.aerogear.security.otp.Totp;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -911,7 +912,7 @@ public class APITest {
         }
     }
 
-    @Test
+//    @Test
     public void getInfoFromName() throws Exception {
         ApiHousehold myHousehold = new ApiHousehold();
         myHousehold = apiTest.getPersonalInfoFromNameAPI("Allen, Katana Jean", "39373", "dsoneil");
@@ -947,6 +948,12 @@ public class APITest {
                 System.out.println(" ");
             }
         }
+    }
+
+    @Test
+    public void phoneNumberConvertCheck() throws Exception {
+        Visibility myVisibility = new Visibility();
+        myVisibility.convertPhoneNumber("+12703638902");
     }
 
 //    @Test
